@@ -77,14 +77,38 @@ public class Giocatore {
 				presaFatta=true;
 				if(cartePerTerra.size()==0) {System.out.println("Scopa! punto per "+this.getNome()); this.punti++;}
 				break;
-				}
 			}
+		}
+		//presa con la somma di due carte:
+		if (presaFatta==false) {
+			for (int i=0; i<cartePerTerra.size()-1; i++) {
+				for (int j=i+1; j<cartePerTerra.size(); j++) {
+					if (this.getMano().get(0).getValore()==(cartePerTerra.get(i).getValore()+cartePerTerra.get(j).getValore())) {
+						System.out.println(this.getNome()+" prende "+cartePerTerra.get(i).getValore()+" di "+cartePerTerra.get(i).getSeme()+" e "
+								+cartePerTerra.get(j).getValore()+" di "+cartePerTerra.get(j).getSeme()+" da terra");
+						Carta c1=cartePerTerra.get(i);
+						Carta c2=cartePerTerra.get(j);
+						this.getPrese().add(c1);
+						this.getPrese().add(c2);
+						this.getPrese().add(this.getMano().get(0));
+						this.getMano().remove(0);
+						cartePerTerra.remove(c1);
+						cartePerTerra.remove(c2);
+						presaFatta=true;
+						if(cartePerTerra.size()==0) {System.out.println("Scopa! punto per "+this.getNome()); this.punti++;}
+						break;
+					}
+				}
+				if (presaFatta==true) {break;}
+			}
+				
+		}
 		
 		if (presaFatta==false) {
 			System.out.println(this.getNome()+" non prende nulla");
 			cartePerTerra.add(this.getMano().get(0));
 			this.getMano().remove(0);
-			}
+		}
 		System.out.println();
 		
 	}
