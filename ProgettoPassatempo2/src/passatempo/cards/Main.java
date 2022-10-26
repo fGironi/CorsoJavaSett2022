@@ -24,6 +24,7 @@ public class Main {
 		g1.PescaIniziale(p.getMazzo());
 		g2.PescaIniziale(p.getMazzo());
 		t.TerraIniziale(p.getMazzo());
+		System.out.println();
 		
 		p.situazione(g1, g2, t);
 		
@@ -32,21 +33,25 @@ public class Main {
 		
 		while (p.getMazzo().size()>0) {
 			while (g2.getMano().size()>0) {
-				g1.Gioca(g1.getMano(), t.getCartePerTerra());
+				g1.Gioca(g1.getMano(), t.getCartePerTerra(), p);
 				p.situazione(g1, g2, t);
-				g2.Gioca(g2.getMano(), t.getCartePerTerra());
+				g2.Gioca(g2.getMano(), t.getCartePerTerra(), p);
 				p.situazione(g1, g2, t);
 			}
 		g1.PescaIniziale(p.getMazzo());
 		g2.PescaIniziale(p.getMazzo());
+		System.out.println();
 		p.situazione(g1, g2, t);
 		}
 		while (g2.getMano().size()>0) {
-			g1.Gioca(g1.getMano(), t.getCartePerTerra());
+			g1.Gioca(g1.getMano(), t.getCartePerTerra(), p);
 			p.situazione(g1, g2, t);
-			g2.Gioca(g2.getMano(), t.getCartePerTerra());
+			g2.Gioca(g2.getMano(), t.getCartePerTerra(), p);
 			p.situazione(g1, g2, t);
 		}
+		
+		g1.prendiCarteRimaste(p, t.getCartePerTerra());
+		g2.prendiCarteRimaste(p, t.getCartePerTerra());
 		
 		p.calcoloPunti(g1, g2);
 	}

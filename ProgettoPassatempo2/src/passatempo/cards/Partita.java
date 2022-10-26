@@ -4,7 +4,9 @@ import java.util.*;
 public class Partita {
 
 	private Giocatore giocatore;
-
+	private String ultimaPresa=null;
+	
+	
 	private ArrayList<Carta> mazzo =new ArrayList<Carta>(); {
 		
 		for (int i=0; i<10; i++) {
@@ -18,9 +20,15 @@ public class Partita {
 			}
 		}
 	}	
-	
-	
-	
+			
+	public String getUltimaPresa() {
+		return ultimaPresa;
+	}
+
+	public void setUltimaPresa(String ultimaPresa) {
+		this.ultimaPresa = ultimaPresa;
+	}
+
 	public Giocatore getGiocatore() {
 		return giocatore;
 	}
@@ -36,9 +44,8 @@ public class Partita {
 	public void setMazzo(ArrayList<Carta> mazzo) {
 		this.mazzo = mazzo;
 	}
-	
-	
-	
+
+
 	
 	public void situazione(Giocatore g1, Giocatore g2, Tavolo t) {
 		System.out.println("Mano di "+g1.getNome()+"("+g1.getMano().size()+" carte):");
@@ -88,14 +95,22 @@ public class Partita {
 	
 	
 	public void calcoloPunti(Giocatore g1, Giocatore g2) {
+		System.out.println("-------------------");
+		System.out.println("CALCOLO PUNTI:");
+		System.out.println();
+		
+		System.out.println("Scope fatte: "+g1.getNome()+" "+g1.getPunti()+", "+g2.getNome()+" "+g2.getScopeFatte());
+		System.out.println();
+		
 		
 	//Carte
+		System.out.println("Carte: "+g1.getNome()+" "+g1.getPrese().size()+", "+g2.getNome()+" "+g2.getPrese().size());
 		if	(g1.getPrese().size()>g2.getPrese().size()) {
-			System.out.println("Punto per le carte a "+g1.getNome());
+			System.out.println("Punto a "+g1.getNome());
 			g1.setPunti(g1.getPunti()+1);
 		}
 		else if (g2.getPrese().size()>g1.getPrese().size()) {
-			System.out.println("Punto per le carte a "+g2.getNome());
+			System.out.println("Punto a "+g2.getNome());
 			g2.setPunti(g2.getPunti()+1);
 		}
 		else {
@@ -109,13 +124,13 @@ public class Partita {
 		for (Carta c:g1.getPrese()) {
 			if (c.getSeme()=="denara") {
 				denG1++;
-				if (c.getValore()==7) {g1.setPunti(g1.getPunti()+1); System.out.println(g1.getNome()+" ha il settebello!");}
+				if (c.getValore()==7) {g1.setPunti(g1.getPunti()+1); System.out.println(g1.getNome()+" ha il settebello!"); System.out.println();}
 				}
 			}
 		for (Carta c:g2.getPrese()) {
 			if (c.getSeme()=="denara") {
 				denG2++;
-				if (c.getValore()==7) {g2.setPunti(g2.getPunti()+1); System.out.println(g2.getNome()+" ha il settebello!");}
+				if (c.getValore()==7) {g2.setPunti(g2.getPunti()+1); System.out.println(g2.getNome()+" ha il settebello!"); System.out.println();}
 			}
 		}
 		

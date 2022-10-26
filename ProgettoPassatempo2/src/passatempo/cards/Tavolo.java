@@ -3,6 +3,7 @@ package passatempo.cards;
 import java.util.ArrayList;
 
 public class Tavolo {
+	
 	private ArrayList<Carta> cartePerTerra;
 	
 	public ArrayList<Carta> getCartePerTerra() {
@@ -22,6 +23,7 @@ public class Tavolo {
 			//System.out.println("pescato"+c.getValore()+c.getSeme());
 			mazzo.remove(0);
 			}
+		System.out.println("vengono messe 4 carte per terra");
 		return mazzo;
 	}
 	

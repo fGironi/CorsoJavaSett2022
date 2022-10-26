@@ -8,6 +8,7 @@ public class Giocatore {
 	private Integer punti;
 	private ArrayList<Carta> mano;
 	private ArrayList<Carta> prese;
+	private Integer scopeFatte;
 	
 	public Giocatore(int id, String nome) {
 		super();
@@ -15,6 +16,7 @@ public class Giocatore {
 		this.nome = nome;
 		this.prese=new ArrayList<Carta>();
 		this.setPunti(0);
+		this.setScopeFatte(0);
 	}
 	public int getId() {
 		return id;
@@ -47,7 +49,12 @@ public class Giocatore {
 	public void setPunti(Integer punti) {
 		this.punti = punti;
 	}
-
+	public Integer getScopeFatte() {
+		return scopeFatte;
+	}
+	public void setScopeFatte(Integer scopeFatte) {
+		this.scopeFatte = scopeFatte;
+	}
 	
 	
 	public ArrayList<Carta> PescaIniziale(ArrayList<Carta> mazzo) {
@@ -59,11 +66,12 @@ public class Giocatore {
 			//System.out.println("pescato"+c.getValore()+c.getSeme());
 			mazzo.remove(0);
 			}
+		System.out.println(this.getNome()+" pesca 3 carte");
 		return mazzo;
 		
 	}
 	
-	public void Gioca(ArrayList<Carta> mano, ArrayList<Carta> cartePerTerra) {
+	public void Gioca(ArrayList<Carta> mano, ArrayList<Carta> cartePerTerra, Partita partita) {
 		this.getMano().get(0);
 		System.out.println(this.getNome()+" gioca "+this.getMano().get(0).getValore()+" di "+this.getMano().get(0).getSeme());
 		boolean presaFatta=false;
@@ -75,7 +83,8 @@ public class Giocatore {
 				this.getMano().remove(0);
 				cartePerTerra.remove(c);
 				presaFatta=true;
-				if(cartePerTerra.size()==0) {System.out.println("Scopa! punto per "+this.getNome()); this.punti++;}
+				partita.setUltimaPresa(this.getNome());
+				if(cartePerTerra.size()==0) {System.out.println("Scopa! punto per "+this.getNome()); this.punti++; this.scopeFatte++;}
 				break;
 			}
 		}
@@ -95,6 +104,7 @@ public class Giocatore {
 						cartePerTerra.remove(c1);
 						cartePerTerra.remove(c2);
 						presaFatta=true;
+						partita.setUltimaPresa(this.getNome());
 						if(cartePerTerra.size()==0) {System.out.println("Scopa! punto per "+this.getNome()); this.punti++;}
 						break;
 					}
@@ -112,6 +122,19 @@ public class Giocatore {
 		System.out.println();
 		
 	}
+	
+	
+	public void prendiCarteRimaste(Partita p, ArrayList<Carta> cartePerTerra) {
+			if (p.getUltimaPresa()==this.getNome()) {
+				System.out.println(this.getNome()+" ha fatto l'ultima presa, quindi prende le carte rimaste");
+				for (Carta c:cartePerTerra) {
+					this.getPrese().add(c);
+					System.out.println(this.getNome()+" prende "+c.getValore()+" di "+c.getSeme());
+					}
+				System.out.println();
+		}	 
+	}
+
 
 	
 
