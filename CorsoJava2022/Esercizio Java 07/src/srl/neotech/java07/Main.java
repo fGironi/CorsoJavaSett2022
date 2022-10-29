@@ -16,6 +16,5 @@ public class Main {
 			else if (g instanceof Mostro) {	((Mostro) g).caccia(); ((Mostro) g).vaInLetargo();}
 			System.out.println();
 		}
-		System.out.println("tutto su github");
 	}
 }
