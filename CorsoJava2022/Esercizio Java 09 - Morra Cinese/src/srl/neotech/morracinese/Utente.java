@@ -19,7 +19,7 @@ public class Utente {
 		int i=0;
 
 		while (i==0) {
-			System.out.println("scrivi 'sasso', 'carta' o 'forbice', scrivi stop in qualsiasi momento per smettere");
+			System.out.println("scrivi 'sasso', 'carta' o 'forbice', scrivi 'stop' in qualsiasi momento per smettere");
 			String str=userInput.nextLine();
 			if (str.equals("sasso") || str.equals("carta") || str.equals("forbice")) {
 				this.morraUtente=str;

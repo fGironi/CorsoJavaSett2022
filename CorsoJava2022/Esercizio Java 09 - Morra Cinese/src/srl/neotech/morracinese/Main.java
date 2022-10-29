@@ -12,47 +12,46 @@ public class Main {
 
 
 		System.out.println("Benvenuto ad una banale partita di morra cinese!");
-		m.faiMorra();
+
 		while (u.gioca==true) {
-		u.scegliMorra();
-
-		
-		
-
-		if (m.getMorraMacchina()=="sasso") {
-			if (u.getMorraUtente().equals("forbice")) {
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai perso!");
+			System.out.println();
+			m.faiMorra();
+			u.scegliMorra();
+	
+			if (m.getMorraMacchina().equals("sasso")) {
+				if (u.getMorraUtente().equals("forbice")) {
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai perso!");
+					}
+				if (u.getMorraUtente().equals("sasso")) {
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", pareggio!");
 				}
-			if (u.getMorraUtente()=="sasso") {
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", pareggio!");
+				if (u.getMorraUtente().equals("carta")) {
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai vinto!");
+				}
 			}
-			if (u.getMorraUtente()=="carta") {
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai vinto!");
+			if (m.getMorraMacchina().equals("carta")) {
+				if (u.getMorraUtente().equals("sasso")) { 
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai perso!");
+				}
+				if (u.getMorraUtente().equals("carta")) {
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", pareggio!");
+				}
+				if (u.getMorraUtente().equals("forbice")) {
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai vinto!");
+				}
 			}
-		}
-		if (m.getMorraMacchina()=="carta") {
-			if (u.getMorraUtente().equals("sasso")) { 
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai perso!");
-			}
-			if (u.getMorraUtente()=="carta") {
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", pareggio!");
-			}
-			if (u.getMorraUtente().equals("forbice")) {
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai vinto!");
-			}
-		}
-		if (m.getMorraMacchina()=="forbice") {
-			if (u.getMorraUtente().equals("carta")) {
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai perso!");
-			}
-			if (u.getMorraUtente().equals("forbice")) {
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", pareggio!");
-			}
-			if (u.getMorraUtente().equals("sasso")) {
-				System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai vinto!");
-			}
-		System.out.println();
-		
+			if (m.getMorraMacchina().equals("forbice")) {
+				if (u.getMorraUtente().equals("carta")) {
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai perso!");
+				}
+				if (u.getMorraUtente().equals("forbice")) {
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", pareggio!");
+				}
+				if (u.getMorraUtente().equals("sasso")) {
+					System.out.println("la macchina ha scelto "+m.getMorraMacchina()+", hai vinto!");
+				}
+			
+			
 		}
 	}
 	}
