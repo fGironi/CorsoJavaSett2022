@@ -9,6 +9,7 @@ public class Main {
 
 		System.out.println("panico da merge!");
 		Integer panico=1000;
+		System.out.println(panico);
 
 
 	}
