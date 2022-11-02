@@ -29,6 +29,15 @@ public class Guerriero extends Umano{
 	public void dormi() {
 		System.out.println(this.nomeClasse+" dorme nel letto");
 	}
+	@Override
+	public String getNomeClasse() {
+		return this.nomeClasse;
+	}
+	@Override
+	public void setNomeClasse(String nomeClasse) {
+		this.setNomeClasse(nomeClasse);
+	}
+
 
 
 }
