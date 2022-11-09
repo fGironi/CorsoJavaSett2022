@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Fabbrica {
 	private ArrayList<Cisterna> listaCisterne;
-	private Integer threshold=15;
+	private Integer threshold=10;
 	
 	public Fabbrica () {
 		this.listaCisterne=new ArrayList<Cisterna>();
@@ -30,15 +30,15 @@ public class Fabbrica {
 		Random rnd=new Random();
 	
 		Integer quantitaRame=rnd.nextInt(1001);
-		Integer evapPerDiRame=rnd.nextInt(1, 11);
+		Integer evapPerDiRame=rnd.nextInt(1, 21);
 		Integer livelloGasRame=rnd.nextInt(10, 101);
 		
 		Integer quantitaAcciaio=rnd.nextInt(1001);
-		Integer evapPerDiAcciaio=rnd.nextInt(1, 11);
+		Integer evapPerDiAcciaio=rnd.nextInt(1, 21);
 		Integer livelloGasAcciaio=rnd.nextInt(10, 101);
 		
 		Integer quantitaAlluminio=rnd.nextInt(1001);
-		Integer evapPerDiAlluminio=rnd.nextInt(1, 11);;
+		Integer evapPerDiAlluminio=rnd.nextInt(1, 21);;
 		Integer livelloGasAlluminio=rnd.nextInt(10, 101);
 		
 		for (Cisterna c:this.listaCisterne)
