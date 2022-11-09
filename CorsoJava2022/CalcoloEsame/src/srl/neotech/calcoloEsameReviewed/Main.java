@@ -15,12 +15,18 @@ public class Main {
 		
 		//loop per assegnare un voto e valutare tutti gli studenti partecipanti
 		for (Studente s: studEsaminati.values()) {
-			s.daiVotoRandom();
+			s.prendiVotoRandom();
 			e.valuta(s);
 			System.out.println(s); //syso eliminabile se si usa lo scanner qua sotto
 		}
+		
+		
+		
 		System.out.println(); System.out.println("----------------------"); System.out.println();
-				
+		//Test: massimizzo il voto di Rossi Marco
+			System.out.println("A scopo di testing il voto di Rossi Marco e' stato ora massimizzato");
+			s1.setVotoOrale(24); s1.setVotoScritto(8); e.valuta(s1);	
+			
 		Scanner scan=new Scanner(System.in);
 		Ricerca r=new Ricerca();
 		r.ricercaRisultati(scan, e);

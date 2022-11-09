@@ -21,8 +21,9 @@ public class Esame {
 		this.votoMinimo = votoMinimo;
 	}
 	
-	//valuta lo studente sulla base dei voti assegnati
+	//valuta lo studente sulla base dei voti assegnati e ne imposta il valore stringa "risultato"
 	public void valuta (Studente s) { 
+		s.setVotoTotale(s.getVotoScritto()+s.getVotoOrale());
 		if (s.getVotoScritto()<=0) s.setRisultato("bocciato");
 		else if (s.getVotoOrale()<16) s.setRisultato("bocciato");
 		else if (s.getVotoTotale()<this.votoMinimo) s.setRisultato("bocciato");
