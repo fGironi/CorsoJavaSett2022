@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import com.github.javafaker.Faker;
-
+//TODO: risoluzione bug in caso di restituzione libro per un utente che non ha libri
 
 public class Main {
 
