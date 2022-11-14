@@ -269,19 +269,23 @@ public class Main {
 			}
 			
 		
-			
-			String userIn=input.nextLine();
-			if (aero.getAereiInArrivo().containsKey(userIn)) {
-				Aereo arA=(aero.getAereiInArrivo().get(userIn));
-				System.out.println("Aereo in arrivo:");
-				arA.bestToString();
-				input.nextLine();
-			}
-			if (aero.getAereiInPartenza().containsKey(userIn)) {
-				Aereo arP=(aero.getAereiInPartenza().get(userIn));
-				System.out.println("Aereo in partenza:");
-				arP.bestToString();
-				input.nextLine();
+			//Sistema di ricerca:
+			Boolean ricerca=true;
+			while (ricerca==true) {
+				String userIn=input.nextLine();
+				
+				if (aero.getAereiInArrivo().containsKey(userIn)) {
+					Aereo arA=(aero.getAereiInArrivo().get(userIn));
+					System.out.println("Aereo in arrivo:");
+					arA.bestToString();
+				}
+				if (aero.getAereiInPartenza().containsKey(userIn)) {
+					Aereo arP=(aero.getAereiInPartenza().get(userIn));
+					System.out.println("Aereo in partenza:");
+					arP.bestToString();
+				}
+				
+				else ricerca=false;
 			}
 			
 			//rimozione degli aerei
