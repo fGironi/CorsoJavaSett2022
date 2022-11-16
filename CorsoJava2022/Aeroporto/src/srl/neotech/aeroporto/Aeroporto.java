@@ -105,15 +105,15 @@ public class Aeroporto {
 	public Passeggero checkin(Passeggero p) {
 		System.out.println("Checkin "+p);
 		
-		if (p.getClasse()==ClasseViaggiatore.Business) {
-			p.setHaGiornale(true); 
+		if (p instanceof Business) {
+			((Business)p).setHaGiornale(true); 
 			System.out.println("Aggiunto giornale ");
 		}
-		if (p.getClasse()==ClasseViaggiatore.Excelsior) {
+		if (p instanceof Excelsior) {
 			System.out.print("Aggiunto ");
-			p.setHaChampagne(true); System.out.print("champagne ");
-			if (p.getMf().equals("F")) {
-				p.setHaFiore(true); System.out.print("e fiore");
+			((Excelsior)p).setHaChampagne(true); System.out.print("champagne ");
+			if (((Excelsior)p).getMf().equals("F")) {
+				((Excelsior)p).setHaFiore(true); System.out.print("e fiore");
 			}
 			System.out.println();
 		}

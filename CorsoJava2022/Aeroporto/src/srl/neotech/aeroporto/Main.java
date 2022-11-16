@@ -30,14 +30,22 @@ public class Main {
 		
 		//Creazione di 10000 passeggeri random pronti al check-in
 		for (int i=0; i<10000; i++) {
-			Passeggero p=new Passeggero();
+			//randomizzazione della classe del passeggero
+			Passeggero p;
+			Integer rndclv=rnd.nextInt(3);
+			if (rndclv==0) {
+				p=new Business();
+			}
+			else if (rndclv==1) {
+				p=new Excelsior();
+			}
+			else {
+				p=new Turista();
+			}
+			
 			//imposto l'id del passeggero
 			p.setIdPasseggero("P"+i);
-			//randomizzazione della classe del passeggero
-			Integer rndclv=rnd.nextInt(3);
-			if (rndclv==0) p.setClasse(ClasseViaggiatore.Business);
-			else if (rndclv==1) p.setClasse(ClasseViaggiatore.Excelsior);
-			else if (rndclv==2) p.setClasse(ClasseViaggiatore.Turista);
+			
 			//randomizzazione del genere del passeggero
 			Integer rndMF=rnd.nextInt(2);
 			if (rndMF==0) p.setMf("M");
@@ -148,13 +156,23 @@ public class Main {
 				//popolo i passeggeri degli aerei in arrivo
 				Integer passArr=rnd.nextInt(1,20);
 				for (int j=0; j<passArr; j++) {
-					Passeggero p=new Passeggero();
-					p.setIdPasseggero(a.getIdAereo()+"-P"+j);
 					//randomizzazione della classe del passeggero
+					Passeggero p;
 					Integer rndclv=rnd.nextInt(3);
-					if (rndclv==0) p.setClasse(ClasseViaggiatore.Business);
-					else if (rndclv==1) p.setClasse(ClasseViaggiatore.Excelsior);
-					else if (rndclv==2) p.setClasse(ClasseViaggiatore.Turista);
+					if (rndclv==0) {
+						p=new Business();
+					}
+					else if (rndclv==1) {
+						p=new Excelsior();
+					}
+					else {
+						p=new Turista();
+					}
+					
+					//Imposto l'id del passeggero
+					p.setIdPasseggero(a.getIdAereo()+"-P"+j);
+					
+					
 					//randomizzazione del genere del passeggero
 					Integer rndMF=rnd.nextInt(2);
 					if (rndMF==0) p.setMf("M");
