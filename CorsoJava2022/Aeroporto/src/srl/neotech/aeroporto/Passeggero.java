@@ -11,9 +11,8 @@ public class Passeggero {
 	private Integer eta;
 	private ClasseViaggiatore classe;
 	private Boolean haBagagli;
-	private Boolean haChampagne=false;
-	private Boolean haFiore=false;
-	private Boolean haGiornale=false;
+
+
 	private String destinazione;
 	
 	
@@ -47,24 +46,8 @@ public class Passeggero {
 	public void setHaBagagli(Boolean haBagagli) {
 		this.haBagagli = haBagagli;
 	}
-	public Boolean getHaChampagne() {
-		return haChampagne;
-	}
-	public void setHaChampagne(Boolean haChampagne) {
-		this.haChampagne = haChampagne;
-	}
-	public Boolean getHaFiore() {
-		return haFiore;
-	}
-	public void setHaFiore(Boolean haFiore) {
-		this.haFiore = haFiore;
-	}
-	public Boolean getHaGiornale() {
-		return haGiornale;
-	}
-	public void setHaGiornale(Boolean haGiornale) {
-		this.haGiornale = haGiornale;
-	}
+
+
 	public String getNominativo() {
 		return nominativo;
 	}
