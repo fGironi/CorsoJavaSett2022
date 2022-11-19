@@ -71,16 +71,16 @@ public class Main {
 		
 		//creazione di 300 aerei random, di cui 200 in arrivo e 100 in partenza
 		for (int i=0; i<300; i++) {
-			Aereo a;
+			Aereo a=new Aereo();
 			
 			//randomizzazione del modello
 			Integer rndmdl=rnd.nextInt(6);
-			if (rndmdl== 0)	a=new Modello("Airbus A320", 170);
-			else if (rndmdl== 1)	 a=new Modello("Boeing 777", 120);
-			else if (rndmdl== 2)	 a=new Modello("Boeing 737", 70);
-			else if (rndmdl== 3)	 a=new Modello("Airbus A220", 50);
-			else if (rndmdl== 4)	 a=new Modello("Boeing 717", 60);
-			else 					 a=new Modello("Airbus A330", 150);
+			if (rndmdl== 0) 		 a.setModello(new Modello("Airbus A320", 170));
+			else if (rndmdl== 1)	 a.setModello(new Modello("Boeing 777", 120));
+			else if (rndmdl== 2)	 a.setModello(new Modello("Boeing 737", 70));
+			else if (rndmdl== 3)	 a.setModello(new Modello("Airbus A220", 50));
+			else if (rndmdl== 4)	 a.setModello(new Modello("Boeing 717", 60));
+			else 					 a.setModello(new Modello("Airbus A330", 150));
 			
 			// Impostazione dell'id univoco dell'aereo
 			a.setIdAereo("A"+i);
@@ -218,7 +218,7 @@ public class Main {
 				Date ad=calendar.getTime();
 				if (a.getOrario().equals(tempo+5)) {
 					System.out.println("Aereo "+a.getIdAereo()+" ["+a.getModello().getCodiceModello()+" "
-							+ ""+a.getModello().getCompagnia()+"] delle "+sdf.format(ad)+" per "+a.getDestinazione()+" e' in partenza");
+							+ ""+a.getCompagnia()+"] delle "+sdf.format(ad)+" per "+a.getDestinazione()+" e' in partenza");
 					//prendo i passeggeri dell'aereo (sperimentalissimo)
 					for (Passeggero p: aero.getListaPasseggeri().values()) {
 						if (p.getDestinazione().equals(a.getDestinazione())) {
@@ -296,11 +296,13 @@ public class Main {
 					Aereo arA=(aero.getAereiInArrivo().get(userIn));
 					System.out.println("Aereo in arrivo:");
 					arA.bestToString();
+					
 				}
-				if (aero.getAereiInPartenza().containsKey(userIn)) {
+				else if (aero.getAereiInPartenza().containsKey(userIn)) {
 					Aereo arP=(aero.getAereiInPartenza().get(userIn));
 					System.out.println("Aereo in partenza:");
 					arP.bestToString();
+					
 				}
 				
 				else ricerca=false;

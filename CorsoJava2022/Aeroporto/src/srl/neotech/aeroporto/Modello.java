@@ -1,19 +1,14 @@
 package srl.neotech.aeroporto;
 
-import java.util.HashMap;
-
-public class Modello extends Aereo{
+public class Modello{
 
 	private String codiceModello;
 	private Integer capienzaNumPasseggeri;
 	
 	public Modello(String codiceModello, Integer capienzaNumPasseggeri) {
 		super();
-		HashMap<String, Passeggero> lp=new HashMap<String,Passeggero>();
-		this.setListaPasseggeri(lp);
 		this.codiceModello = codiceModello;
 		this.capienzaNumPasseggeri = capienzaNumPasseggeri;
-		this.setModello(this);
 	}
 	public String getCodiceModello() {
 		return codiceModello;

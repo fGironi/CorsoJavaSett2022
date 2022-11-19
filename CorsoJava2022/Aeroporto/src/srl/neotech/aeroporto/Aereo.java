@@ -21,6 +21,11 @@ public class Aereo {
 	private StatoAereo stato;
 	private String destinazione;
 	
+	public Aereo() {
+		super();
+		HashMap<String, Passeggero> lp=new HashMap<String,Passeggero>();
+		this.setListaPasseggeri(lp);
+	}
 	
 	public String getIdAereo() {
 		return idAereo;
