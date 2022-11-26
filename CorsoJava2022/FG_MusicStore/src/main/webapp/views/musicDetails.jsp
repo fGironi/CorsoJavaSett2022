@@ -27,7 +27,7 @@
 <td><img class="musicpreview" src="https://previews.123rf.com/images/skovoroda/skovoroda1301/skovoroda130100007/17229770-icona-della-musica-mp3-player-isolato-su-sfondo-bianco.jpg"</td>
 </tr>
 </table>
-
+<a href="http://127.0.0.1:8080/FG_MusicStore/listMusic">torna alla lista canzoni</a><p>
 <p>Acquistato da: <br>
 <ul>
 <li>Mario Rossi</li> <br>
