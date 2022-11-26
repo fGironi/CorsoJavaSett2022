@@ -45,15 +45,6 @@ public class ElementoViewController {
 	    return "getDetail";
 	}
 	
-	@RequestMapping(value="/listMusic", method = RequestMethod.GET)
-	public String listMusic() {
-	    return "listMusic";
-	}	
-	
-	@RequestMapping(value="/musicDetails", method = RequestMethod.GET)
-	public String mDetails() {
-	    return "musicDetails";
-	}	
 
 
 }
