@@ -24,7 +24,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
+        <a href="/FG_AppWeb01/" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -81,6 +81,15 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Insert data
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="test" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Sondaggio Test
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>

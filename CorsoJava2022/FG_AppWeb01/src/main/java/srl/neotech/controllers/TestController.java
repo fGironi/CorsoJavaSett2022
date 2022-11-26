@@ -15,8 +15,12 @@ public class TestController {
 	
     //Mapping nuova pagina
     @RequestMapping(value="/test", method = RequestMethod.GET)
-    public String getList() {
+    public String getTest() {
         return "paginaTest";
+    }
+    @RequestMapping(value="/zero", method = RequestMethod.GET)
+    public String getZero() {
+        return "zero";
     }
     
 }

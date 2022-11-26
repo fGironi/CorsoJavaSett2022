@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+p {
+	color: black
+	
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+	color: white;
+}
+
+body {
+	background-image: url("https://img.freepik.com/free-vector/winter-blue-pink-gradient-background-vector_53876-117276.jpg?w=2000");
+	background-color: lightgrey;
+}
+
+.intestazione{
+	border: solid 2px lightblue;
+	border-radius: 10px;
+	background-color: blue;
+}
+
+.contenuto {
+	min-width: 500px;
+	max-width: 1200px;
+	width: 80%;
+	border: solid 1px darkgrey;
+	margin-left: 25px;
+	margin-bottom: 25px;
+
+}
+
+.musictab {
+	width: 100%;
+	border: solid 2px black;
+	border-radius:6px;
+	background-color: white;
+}
+
+
+
+th, td {
+	border: solid 1px black;
+	text-align: center;
+}
+
+th {
+	background-color: lightblue;
+}
+
+td {
+	background-color: #eeeeec;
+}
+.id {
+	visibility: hidden;
+}
+
+.actionlink{
+	
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 25px;
+}
+
+.musicpreview{
+	margin-left: auto;
+    margin-right: auto;
+	width: 50%;
+	max-width: 480px;
+}
