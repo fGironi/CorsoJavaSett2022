@@ -22,5 +22,8 @@ public class TestController {
     public String getZero() {
         return "zero";
     }
-    
+    @RequestMapping(value="/javascripts", method = RequestMethod.GET)
+    public String getScripts() {
+        return "testJavaScripts";
+    }
 }

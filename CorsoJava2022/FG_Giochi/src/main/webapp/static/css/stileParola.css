@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.spazioParola {
+	border: 2px solid black;
+}
+
+.spazioLet {
+	border: 1px solid black;
+	width: 25px;
+	height: 35px;
+	text-align: center;
+}
