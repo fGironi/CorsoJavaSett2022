@@ -77,7 +77,7 @@ $("#genera").click(function(){
 				if (letPar===letScelta){
 					
 					var idLetDaMostrare="let"+i;
-					$("*[id*=" + idLetDaMostrare + "]").show();
+					$("*[id=" + idLetDaMostrare + "]").show();
 					letIndovinata=true;
 					lettereIndovinate++;
 				}

@@ -131,14 +131,16 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="parolaRnd">
-							<h2> spazio per la parola</h2>
+							<h2> Indovina la parola!</h2>
+							<p>seleziona la modalità di gioco, quindi premi su genera parola</p>
+							<p>premi una lettera e poi il tasto in basso a destra per inviare</p>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-8 d-flex justify-content-center">
+					<div class="col-sm-5"></div>
+					<div class="col-sm-2 d-flex justify-content-center">
 					<div data-toggle="buttons">
 						<div class="btn-group btn-group-toggle btn-group-justified" role="group">
 					
@@ -207,8 +209,16 @@
 							</div>
 							</div>
 							</div>
-						<div class="col-sm-2"></div>
+						<div class="col-sm-5"></div>
 					</div>
+					
+					<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 d-flex justify-content-center">
+						<a href="parola" class="nav-link"><button type="button" class="btn btn-secondary">RESET</button></a>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
 					<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
@@ -218,6 +228,17 @@
 						<li>possibilita' di inserire la parola completa</li>
 						<li>reset del campo di gioco alla pressione del tasto "genera parola"</li>
 						<li>importazione delle liste di parole da file txt esterni</li> 
+						</ul>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 d-flex justify-content-center">
+						<h3>BUG:</h3>
+						<ul>
+						<li>se la parola e' piu' lunga di 10 lettere rivelare la prima rivela anche quelle da 10 in poi</li>
+						<li>ci sono diverse parole accentate che non vengono (ovviamente) mostrate correttamente</li>
 						</ul>
 					</div>
 					<div class="col-sm-2"></div>
