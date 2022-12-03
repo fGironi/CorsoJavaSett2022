@@ -105,6 +105,7 @@
 										<option value="parola">Parola casuale - ITA</option>
 										<option value="capitale">Geografia - Capitale</option>
 										<option value="dragonball">Dragon Ball - Personaggio</option>
+										<option value="test">TESTING</option>
 									</select>
 								
 								<button class="btn btn-primary" type="button" id="genera">Genera
@@ -133,83 +134,84 @@
 						<div id="parolaRnd">
 							<h2> Indovina la parola!</h2>
 							<p>seleziona la modalità di gioco, quindi premi su genera parola</p>
-							<p>premi una lettera e poi il tasto in basso a destra per inviare</p>
+							<p>premi una lettera e poi il tasto di conferma per inviare</p>
+							<p>se in una casella c'è _ vuol dire che là c'è uno spazio</p>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-5"></div>
-					<div class="col-sm-2 d-flex justify-content-center">
-					<div data-toggle="buttons">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4 d-flex justify-content-center align-items-center">
+					<div data-toggle="buttons" id="tastiera">
 						<div class="btn-group btn-group-toggle btn-group-justified" role="group">
 					
-							<label class="btn btn-light" id="letQ"> <input type="radio" value="Q"
-								name="letter" id="letQ" autocomplete="off"> Q
-							</label><label class="btn btn-light" id="letW"> <input type="radio" value="W"
-								name="letter" id="letW" autocomplete="off"> W 
-							</label><label class="btn btn-light" id="letE"> <input type="radio" value="E"
-								name="letter" id="letE" autocomplete="off"> E
-							</label><label class="btn btn-light" id="letR"> <input type="radio" value="R"
-								name="letter" id="letR" autocomplete="off"> R
-							</label><label class="btn btn-light" id="letT"> <input type="radio" value="T"
-								name="letter" id="letT" autocomplete="off"> T
-							</label><label class="btn btn-light" id="letY"> <input type="radio" value="Y"
-								name="letter" id="letY" autocomplete="off"> Y
-							</label><label class="btn btn-light" id="letU"> <input type="radio" value="U"
-								name="letter" id="letU" autocomplete="off"> U
-							</label><label class="btn btn-light" id="letI"> <input type="radio" value="I"
-								name="letter" id="letI" autocomplete="off"> I
-							</label><label class="btn btn-light" id="letO"> <input type="radio" value="O"
-								name="letter" id="letO" autocomplete="off"> O
-							</label><label class="btn btn-light" id="letP"> <input type="radio" value="P"
-								name="letter" id="letP" autocomplete="off"> P
+							<label class="btn btn-light" id="lLetQ"> <input type="radio" value="Q"
+								name="letter" id="pLetQ" autocomplete="off"> Q
+							</label><label class="btn btn-light" id="lLetW"> <input type="radio" value="W"
+								name="letter" id="pLetW" autocomplete="off"> W 
+							</label><label class="btn btn-light" id="lLetE"> <input type="radio" value="E"
+								name="letter" id="pLetE" autocomplete="off"> E
+							</label><label class="btn btn-light" id="lLetR"> <input type="radio" value="R"
+								name="letter" id="pLetR" autocomplete="off"> R
+							</label><label class="btn btn-light" id="lLetT"> <input type="radio" value="T"
+								name="letter" id="pLetT" autocomplete="off"> T
+							</label><label class="btn btn-light" id="lLetY"> <input type="radio" value="Y"
+								name="letter" id="pLetY" autocomplete="off"> Y
+							</label><label class="btn btn-light" id="lLetU"> <input type="radio" value="U"
+								name="letter" id="pLetU" autocomplete="off"> U
+							</label><label class="btn btn-light" id="lLetI"> <input type="radio" value="I"
+								name="letter" id="pLetI" autocomplete="off"> I
+							</label><label class="btn btn-light" id="lLetO"> <input type="radio" value="O"
+								name="letter" id="pLetO" autocomplete="off"> O
+							</label><label class="btn btn-light" id="lLetP"> <input type="radio" value="P"
+								name="letter" id="pLetP" autocomplete="off"> P
 							</label>
 							</div><div class="btn-group btn-group-toggle btn-group-justified" role="group">
-							<label class="btn btn-light" id="letA"> <input type="radio" value="A"
-								name="letter" id="letA" autocomplete="off"> A
-							</label><label class="btn btn-light" id="letS"> <input type="radio" value="S"
-								name="letter" id="letS" autocomplete="off"> S 
-							</label><label class="btn btn-light" id="letD"> <input type="radio" value="D"
-								name="letter" id="letD" autocomplete="off"> D
-							</label><label class="btn btn-light" id="letF"> <input type="radio" value="F"
-								name="letter" id="letF" autocomplete="off"> F
-							</label><label class="btn btn-light" id="letG"> <input type="radio" value="G"
-								name="letter" id="letG" autocomplete="off"> G
-							</label><label class="btn btn-light" id="letH"> <input type="radio" value="H"
-								name="letter" id="letH" autocomplete="off"> H
-							</label><label class="btn btn-light" id="letJ"> <input type="radio" value="J"
-								name="letter" id="letJ" autocomplete="off"> J
-							</label><label class="btn btn-light" id="letK"> <input type="radio" value="K"
-								name="letter" id="letK" autocomplete="off"> K
-							</label><label class="btn btn-light" id="letL"> <input type="radio" value="L"
-								name="letter" id="letL" autocomplete="off"> L
-							</label><label class="btn btn-light" id="let'"><input type="radio" value="'"
-								name="letter" id="let'" autocomplete="off"> '
+							<label class="btn btn-light" id="lLetA"> <input type="radio" value="A"
+								name="letter" id="pLetA" autocomplete="off"> A
+							</label><label class="btn btn-light" id="lLetS"> <input type="radio" value="S"
+								name="letter" id="pLetS" autocomplete="off"> S 
+							</label><label class="btn btn-light" id="lLetD"> <input type="radio" value="D"
+								name="letter" id="pLetD" autocomplete="off"> D
+							</label><label class="btn btn-light" id="lLetF"> <input type="radio" value="F"
+								name="letter" id="pLetF" autocomplete="off"> F
+							</label><label class="btn btn-light" id="lLetG"> <input type="radio" value="G"
+								name="letter" id="pLetG" autocomplete="off"> G
+							</label><label class="btn btn-light" id="lLetH"> <input type="radio" value="H"
+								name="letter" id="pLetH" autocomplete="off"> H
+							</label><label class="btn btn-light" id="lLetJ"> <input type="radio" value="J"
+								name="letter" id="pLetJ" autocomplete="off"> J
+							</label><label class="btn btn-light" id="lLetK"> <input type="radio" value="K"
+								name="letter" id="pLetK" autocomplete="off"> K
+							</label><label class="btn btn-light" id="lLetL"> <input type="radio" value="L"
+								name="letter" id="pLetL" autocomplete="off"> L
+							</label><label class="btn btn-light" id="lLet'"><input type="radio" value="'"
+								name="letter" id="pLet'" autocomplete="off"> '
 							</label>
 							</div><div class="btn-group btn-group-toggle btn-group-justified" role="group">
 							<label class="btn btn-primary"> <input type="radio" value=""
-								name="letter" id="cancel" autocomplete="off"> &#x2B05 
-							</label><label class="btn btn-light" id="letZ"> <input type="radio" value="Z"
-								name="letter" id="letZ" autocomplete="off"> Z 
-							</label> <label class="btn btn-light" id="letX"> <input type="radio" value="X"
-								name="letter" id="letX" autocomplete="off"> X
-							</label> <label class="btn btn-light" id="letC"> <input type="radio" value="C"
-								name="letter" id="letC" autocomplete="off"> C
-							</label> <label class="btn btn-light" id="letV"> <input type="radio" value="V"
-								name="letter" id="letV" autocomplete="off"> V
-							</label> <label class="btn btn-light" id="letB"> <input type="radio" value="B"
-								name="letter" id="letB" autocomplete="off"> B
-							</label> <label class="btn btn-light" id="letN"> <input type="radio" value="N"
-								name="letter" id="letN" autocomplete="off"> N
-							</label> <label class="btn btn-light" id="letM"> <input type="radio" value="M"
-								name="letter" id="letM" autocomplete="off"> M
+								name="letter" id="cancel" autocomplete="off"> <i class="fa-solid fa-delete-left"></i> 
+							</label><label class="btn btn-light" id="lLetZ"> <input type="radio" value="Z"
+								name="letter" id="pLetZ" autocomplete="off"> Z 
+							</label> <label class="btn btn-light" id="lLetX"> <input type="radio" value="X"
+								name="letter" id="pLetX" autocomplete="off"> X
+							</label> <label class="btn btn-light" id="lLetC"> <input type="radio" value="C"
+								name="letter" id="pLetC" autocomplete="off"> C
+							</label> <label class="btn btn-light" id="lLetV"> <input type="radio" value="V"
+								name="letter" id="pLetV" autocomplete="off"> V
+							</label> <label class="btn btn-light" id="lLetB"> <input type="radio" value="B"
+								name="letter" id="pLetB" autocomplete="off"> B
+							</label> <label class="btn btn-light" id="lLetN"> <input type="radio" value="N"
+								name="letter" id="pLetN" autocomplete="off"> N
+							</label> <label class="btn btn-light" id="lLetM"> <input type="radio" value="M"
+								name="letter" id="pLetM" autocomplete="off"> M
 							</label><button type="button" class="btn btn-primary" id="scegliLet"
-							value="Submit">&#x2714</button>
+							value="Submit"><i class="fa-solid fa-check"></i></button>
 							</div>
 							</div>
 							</div>
-						<div class="col-sm-5"></div>
+						<div class="col-sm-4"></div>
 					</div>
 					
 					<div class="row">
@@ -226,8 +228,9 @@
 						<ul>
 						<li>fix della tastiera</li>
 						<li>possibilita' di inserire la parola completa</li>
-						<li>reset del campo di gioco alla pressione del tasto "genera parola"</li>
-						<li>importazione delle liste di parole da file txt esterni</li> 
+						<li>importazione delle liste di parole da file esterni</li> 
+						<li>lettura da tastiera reale</li>
+						<li>modalità streak</li>
 						</ul>
 					</div>
 					<div class="col-sm-2"></div>
@@ -237,7 +240,6 @@
 					<div class="col-sm-8 d-flex justify-content-center">
 						<h3>BUG:</h3>
 						<ul>
-						<li>se la parola e' piu' lunga di 10 lettere rivelare la prima rivela anche quelle da 10 in poi</li>
 						<li>ci sono diverse parole accentate che non vengono (ovviamente) mostrate correttamente</li>
 						</ul>
 					</div>

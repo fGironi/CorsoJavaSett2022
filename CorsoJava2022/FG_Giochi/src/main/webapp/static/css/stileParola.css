@@ -10,3 +10,10 @@
 	height: 35px;
 	text-align: center;
 }
+
+#tastiera {
+	justify-content: center;
+    align-items: center;
+    padding: auto;
+    margin: auto;
+}
