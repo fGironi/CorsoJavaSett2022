@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class GiochiController {
 
-  //Rotta per la getList
     @RequestMapping(value="/parola", method = RequestMethod.GET)
     public String getGiocoParola() {
         return "parola";
+    }
+    @RequestMapping(value="/dajequattro", method = RequestMethod.GET)
+    public String getGiocoQuattro() {
+        return "quattro";
     }
 }

@@ -65,6 +65,16 @@
 									Indovina la parola <span class="right badge badge-danger">New</span>
 								</p>
 						</a></li>
+						</li>
+           <li class="nav-item">
+            <a href="dajequattro" class="nav-link">
+             <i class="fa-solid fa-book"></i>
+              <p>
+                DajeQuattro
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
 					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->

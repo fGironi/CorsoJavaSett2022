@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Template</title>
+  <title>FG_Giochi - Home</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -12,6 +12,16 @@
   <link rel="stylesheet" href="static/js/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="static/css/adminlte.min.css">
+  <!-- jQuery -->
+<script src="static/js/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="static/js/adminlte.min.js"></script>
+<!-- Demo Template -->
+<script src="static/js/fireAjax.js"></script>
+<script src="static/js/demoTemplate.js"></script>
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -58,6 +68,16 @@
              <i class="fa-solid fa-book"></i>
               <p>
                 Indovina la parola
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          </li>
+           <li class="nav-item">
+            <a href="dajequattro" class="nav-link">
+             <i class="fa-solid fa-book"></i>
+              <p>
+                DajeQuattro
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
@@ -134,15 +154,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="static/js/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="static/js/adminlte.min.js"></script>
-<!-- Demo Template -->
-<script src="static/js/fireAjax.js"></script>
-<script src="static/js/demoTemplate.js"></script>
+
 
 </body>
 </html>

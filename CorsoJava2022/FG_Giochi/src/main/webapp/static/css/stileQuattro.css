@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.tabQuattro{
+	border: 2px solid black;
+	background-color: darkblue;
+	width:100%;
+	aspect-ratio: 7/6;
+}
+
+.cellQuattro{
+	border-radius: 25px;
+ 	border: 2px solid darkblue;
+ 	background-color: white;
+ 	text-align: center;
+ 	aspect-ratio: 1/1;
+
+}
+
+.pulsQuattro{
+	aspect-ratio: 7/1;
+	width:100%;
+	background-color: darkblue;
+}
+
+.nomePl{
+	text-align:right;
+}
+
+.celPuls{
+	text-align: center;
+}
+
+.pulsPl{
+	width:100%;
+}
+
+.redplayer{
+	color:red;
+}
+
+.yellowplayer{
+	color:orange;
+
+}
