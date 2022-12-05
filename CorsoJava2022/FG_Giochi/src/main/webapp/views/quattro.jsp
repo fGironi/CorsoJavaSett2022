@@ -80,7 +80,7 @@
           </li>
            <li class="nav-item">
             <a href="dajequattro" class="nav-link">
-             <i class="fa-solid fa-book"></i>
+             <i class="fa-solid fa-coins"></i>
               <p>
                 DajeQuattro
                 <span class="right badge badge-danger">New</span>
@@ -119,11 +119,49 @@
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-6"><h1>Daje Quattro</h1></div>
-				<div class="col-sm-2"></div>
+				<div class="col-sm-3"></div>
 			</div>
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 d-flex justify-content-center"">
+					<a href="dajequattro" class="nav-link"><button type="button" class="btn btn-primary"><i class="fa-solid fa-coins"> NUOVA PARTITA</i></button></a>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>	
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 d-flex justify-content-center"">
+					<div id="players">
+					<i class="fa-solid fa-hippo redplayer">Giocatore 1</i> vs	<i class="fa-solid fa-otter yellowplayer">Giocatore 2</i>
+					</div>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>			
 			<div class="row">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4">
+					<table id="freccegiu">
+					<tr>
+					<td><i class="fa-solid fa-arrow-down"></i></td>
+					<td><i class="fa-solid fa-arrow-down"></i></td>
+					<td><i class="fa-solid fa-arrow-down"></i></td>
+					<td><i class="fa-solid fa-arrow-down"></i></td>
+					<td><i class="fa-solid fa-arrow-down"></i></td>
+					<td><i class="fa-solid fa-arrow-down"></i></td>
+					<td><i class="fa-solid fa-arrow-down"></i></td>
+					</tr>
+					
+					</table>
+
+
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4 d-flex justify-content-center">
 					<table class="tabQuattro">
 					<tr id="riga5">
 					<td class="cellQuattro" id="0_5"></td>
@@ -184,45 +222,33 @@
 				<div class="col-sm-4"></div>
 				</div>
 				<div class="row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4">
+						<div id="baseQuattro"></div>
+					</div>
+					<div class="col-sm-4"></div>
+				</div>
+				<div class="row">
 				<div class="col-sm-4">
 				<div class="nomePl">
-				<i class="fa-solid fa-hippo redplayer">Giocatore 1</i>
+				
+					</div>
 				</div>
-				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-4 d-flex justify-content-center">
 				<table class="pulsQuattro">
-				<tr id="pulsantiRosso">
-				<td class="celPuls" id="rosso0"><button type="button" class="btn btn-danger pulsPl pulsR puls0" value=0><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="rosso1"><button type="button" class="btn btn-danger pulsPl pulsR puls1" value=1><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="rosso2"><button type="button" class="btn btn-danger pulsPl pulsR puls2" value=2><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="rosso3"><button type="button" class="btn btn-danger pulsPl pulsR puls3" value=3><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="rosso4"><button type="button" class="btn btn-danger pulsPl pulsR puls4" value=4><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="rosso5"><button type="button" class="btn btn-danger pulsPl pulsR puls5" value=5><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="rosso6"><button type="button" class="btn btn-danger pulsPl pulsR puls6" value=6><i class="fa-solid fa-arrow-up"></i></button></td>
+				<tr id="pulsanti">
+				<td class="celPuls"><button type="button" class="btn btn-danger pulsPl pulsR" id="puls0" value=0><i class="fa-solid fa-circle-up"></i></button></td>
+				<td class="celPuls"><button type="button" class="btn btn-danger pulsPl pulsR" id="puls1" value=1><i class="fa-solid fa-circle-up"></i></button></td>
+				<td class="celPuls"><button type="button" class="btn btn-danger pulsPl pulsR" id="puls2" value=2><i class="fa-solid fa-circle-up"></i></button></td>
+				<td class="celPuls"><button type="button" class="btn btn-danger pulsPl pulsR" id="puls3" value=3><i class="fa-solid fa-circle-up"></i></button></td>
+				<td class="celPuls"><button type="button" class="btn btn-danger pulsPl pulsR" id="puls4" value=4><i class="fa-solid fa-circle-up"></i></button></td>
+				<td class="celPuls"><button type="button" class="btn btn-danger pulsPl pulsR" id="puls5" value=5><i class="fa-solid fa-circle-up"></i></button></td>
+				<td class="celPuls"><button type="button" class="btn btn-danger pulsPl pulsR" id="puls6" value=6><i class="fa-solid fa-circle-up"></i></button></td>
 				</tr>
 				</table>
 				</div>
 				<div class="col-sm-4"></div>
 				</div>
-				<div class="row">
-				<div class="col-sm-4">
-					<div class="nomePl">
-					<i class="fa-solid fa-otter yellowplayer">Giocatore 2</i>
-					</div>
-				</div>
-				<div class="col-sm-4">
-				<table class="pulsQuattro">
-				<tr id="pulsantiGiallo"></tr>
-				<td class="celPuls" id="giallo0"><button type="button" class="btn btn-warning pulsPl pulsG puls0" value=0><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="giallo1"><button type="button" class="btn btn-warning pulsPl pulsG puls1" value=1><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="giallo2"><button type="button" class="btn btn-warning pulsPl pulsG puls2" value=2><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="giallo3"><button type="button" class="btn btn-warning pulsPl pulsG puls3" value=3><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="giallo4"><button type="button" class="btn btn-warning pulsPl pulsG puls4" value=4><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="giallo5"><button type="button" class="btn btn-warning pulsPl pulsG puls5" value=5><i class="fa-solid fa-arrow-up"></i></button></td>
-				<td class="celPuls" id="giallo5"><button type="button" class="btn btn-warning pulsPl pulsG puls6" value=6><i class="fa-solid fa-arrow-up"></i></button></td>
-				</table>
-				</div>
-				<div class="col-sm-4"></div>
 
 
 				

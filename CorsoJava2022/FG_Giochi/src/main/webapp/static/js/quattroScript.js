@@ -24,11 +24,25 @@ $(document).ready(function () {
 		colonne[colGet]++; 
 		$("#"+colGet+"_"+rigaGet).css("background-color", colore);
 		if (colonne[colGet]>5){
-			$(".puls"+colGet).prop("disabled",true);
+			$("#puls"+colGet).prop("disabled",true);
 		};
 		
 		
 		victoryCheck();
+		if ($(this).hasClass("pulsR")){
+			$(".pulsPl").removeClass("pulsR");
+			$(".pulsPl").removeClass("btn-danger");
+			$(".pulsPl").addClass("pulsG");
+			$(".pulsPl").addClass("btn-warning");
+			
+			
+		}
+		else if ($(this).hasClass("pulsG")){
+			$(".pulsPl").removeClass("pulsG");
+			$(".pulsPl").removeClass("btn-warning");
+			$(".pulsPl").addClass("pulsR");
+			$(".pulsPl").addClass("btn-danger");
+		}
 	})
 
 
@@ -56,7 +70,10 @@ $(document).ready(function () {
 								if (vicStreak===4){
 									horChecking=false;
 									vittoria=true;
-									alert("ha vinto "+gettoniMessi[i][0])
+									var vincitore;
+									if (gettoniMessi[i][0]==="red"){ vincitore="giocatore 1";}
+									if (gettoniMessi[i][0]==="orange"){ vincitore="giocatore 2";}
+									alert("ha vinto "+vincitore+" ("+gettoniMessi[i][0]+")")
 									$(".pulsPl").prop("disabled",true);
 								}
 							}
@@ -90,7 +107,10 @@ $(document).ready(function () {
 								if (vicStreak===4){
 									verChecking=false;
 									vittoria=true;
-									alert("ha vinto "+gettoniMessi[i][0])
+									var vincitore;
+									if (gettoniMessi[i][0]==="red"){ vincitore="giocatore 1";}
+									if (gettoniMessi[i][0]==="orange"){ vincitore="giocatore 2";}
+									alert("ha vinto "+vincitore+" ("+gettoniMessi[i][0]+")")
 									$(".pulsPl").prop("disabled",true);
 								}
 							}
@@ -125,7 +145,10 @@ $(document).ready(function () {
 								if (vicStreak===4){
 									diagChecking=false;
 									vittoria=true;
-									alert("ha vinto "+gettoniMessi[i][0])
+									var vincitore;
+									if (gettoniMessi[i][0]==="red"){ vincitore="giocatore 1";}
+									if (gettoniMessi[i][0]==="orange"){ vincitore="giocatore 2";}
+									alert("ha vinto "+vincitore+" ("+gettoniMessi[i][0]+")")
 									$(".pulsPl").prop("disabled",true);
 								}
 							}
@@ -159,7 +182,10 @@ $(document).ready(function () {
 								if (vicStreak===4){
 									revDiagChecking=false;
 									vittoria=true;
-									alert("ha vinto "+gettoniMessi[i][0])
+									var vincitore;
+									if (gettoniMessi[i][0]==="red"){ vincitore="giocatore 1";}
+									if (gettoniMessi[i][0]==="orange"){ vincitore="giocatore 2";}
+									alert("ha vinto "+vincitore+" ("+gettoniMessi[i][0]+")")
 									$(".pulsPl").prop("disabled",true);
 								}
 							}

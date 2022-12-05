@@ -1,8 +1,12 @@
 $(document).ready(function () {
+	$("#streakPuls").hide();
 	var modScelta;
+	var possibiliParole;
 	var parolaScelta;
 	var lettereIndovinate;
 	var errori;
+	var letTentate;
+	var streak;
 	$("#mode").change(function () {
 		modScelta = $("#mode option:selected").val();
 		//alert("Hai scelto la modalita' " + modScelta);
@@ -20,11 +24,16 @@ const lisPar = [
 	'IDEA'
 	]
 	
-const lisDB = [
-	'GOKU',
-	'VEGETA',
-	'PICCOLO',
-	'GOHAN',
+const lisDisney = [
+	'ABU', 'ADE', 'HERCULES', 'ALADDIN', 'AKELA', 'ALICE', 'ANACLETO', 'ANNA', 'ARIEL', 'AURORA', 'BAGHERA', 'BALOO', 'BAMBI',
+	'BASIL', 'BAYMAX', 'BESTIA', 'BIAGIO', 'BIANCA', 'BERNIE', 'BIANCANEVE', 'BIANCONIGLIO', 'BIZET', 'BOLLY BONES', 'BRUCALIFFO', 'UNCINO', 'CENERENTOLA', 'CHICKEN LITTLE',
+	'CLAYTON', 'CRUDELIA DE MON', 'DUCHESSA', 'ELSA', 'ESMERALDA', 'FEBO', 'FATA AZZURRA', 'FATA SMEMORINA',
+	'FIDO', 'FILOTTETE', 'FLOUNDER', 'FLYNN RIDER', 'FRA TUCK', 'GAS', 'GASTON', 'HANS', 'IAGO', 'IH OH', 'JAFAR', 'JANE', 'JIM HAWKINS', 'JOHN SMITH', 'KAA', 'KALA', 'KERCHAK', 'KRONK',
+	'KUZKO', 'LADY MARIAN', 'LILO', 'LILLI', 'LITTLE JOHN', 'LOUIS', 'LUMIERE', 'LUCIGNOLO', 
+	'GEPPETTO', 'MERLINO', 'MALEFICA', 'MANGIAFUOCO', 'MATISSE', 'MAUI', 'MEGARA', 'MINOU', 'MOWGLI', 'MUFASA', 'MULAN', 'MUSHU', 'NALA', 'OLAF',
+	'OLIVER', 'PEGGY', 'PETER PAN', 'POCAHONTAS', 'PONGO', 'FILIPPO', 'JASMINE', 'GIOVANNI', 'PUMBAA', 
+	'QUASIMODO', 'RALPH', 'GRIMILDE', 'ROBIN HOOD', 'ROMEO', 'SEBASTIAN', 'SEMOLA', 'SHERE KHAN', 'SIMBA', 'STITCH', 'SPUGNA', 'TARZAN', 'TARON', 'TAMBURINO', 'TIGRO', 'TOPOLINO', 'PAPERINO', 'PIPPO', 'PLUTO', 'MINNIE', 'DUMBO', 'PIMPI', 'PAPERINA', 'PAPERON DE\'PAPERONI', 'TRILLI',
+	'URSULA', 'WHISKY', 'WINNIE THE POOH', 'ZEUS', 'VAIANA'
 ]
 
 const lisCap =[
@@ -44,37 +53,52 @@ const lisCap =[
 	'BUDAPEST',	'MONTEVIDEO',	'TASHKENT',	'PORT VILA',	'CITTA DEL VATICANO',	'CARACAS',	'HANOI',	'SANA\'A',	'LUSAKA',	'HARARE'
 	]
 	
+const lisAni =[
+	'ACCIUGA', 'AIRONE', 'ALBATRO', 'ALCE', 'ALLIGATORE', 'ALLODOLA', 'ALPACA', 'ANACONDA', 'ANGUILLA', 'ANTILOPE', 'AQUILA', 'ARA', 'ARINGA', 'ARAGOSTA', 'ARMADILLO', 'ASINO', 'AVERLA', 'AVVOLTOIO',
+	'BABBUINO', 'BALENA', 'BARRACUDA', 'BECCACCINO', 'BISCIA', 'BOA', 'BONOBO', 'BRADIPO', 'BRANZINO', 'BUE', 'BUFALO',
+	'CACATUA', 'CAMALEONTE', 'CAMMELLO', 'CAMOSCIO', 'CANE', 'CAPIBARA', 'CAPODOGLIO', 'CAPRA', 'CARDELLINO', 'CARIBU', 'CASTORO', 'CAVALLO', 'CERVO', 'CICOGNA', 'CIGNO', 'CIMICE', 'CINCILLA', 'CINGHIALE', 'COBRA', 'COCCODRILLO', 'COLIBRI', 'CONDOR', 'CONIGLIO', 'CORMORANO', 'CORNACCHIA', 'CORVO', 'COYOTE', 'CRICETO',
+	'DAINO', 'DELFINO', 'DODO', 'DONNOLA', 'DRAGO DI KOMODO', 'DROMEDARIO', 'DUGONGO', 'ELEFANTE', 'EMU', 'ERMELLINO', 
+	'FACOCERO', 'FAGIANO', 'FAINA', 'FALCO', 'FARAONA', 'FOCA', 'FORMICA', 'FORMICHIERE', 'FRINGUELLO', 'FURETTO', 'GABBIANO', 'GALLINA', 'GATTO', 'GAZZA', 'GAZZELLA', 'GECO', 'GIAGUARO', 'GIRAFFA', 'GERBILLO', 'GHEPARDO', 'GHIRO', 'GNU', 'GORILLA', 'GRANCHIO', 'GRILLO', 'GRU', 'GUFO', 
+	'IBIS', 'IENA', 'IGUANA', 'IMPALA', 'IPPOPOTAMO', 'IPPOCAMPO', 'ISTRICE', 'KIWI', 'KOALA',
+	'LEMMING', 'LEMURE', 'LEONE', 'LEOPARDO', 'LEPRE', 'LIBELLULA', 'LICAONE', 'LINCE', 'LONTRA', 'LUCCIOLA', 'LUCERTOLA', 'LUPO', 'MACACO', 'MAIALE', 'MAMMUT', 'MANDRILLO', 'MANGUSTA', 'MANTIDE', 'MARABU', 'MARMOTTA', 'MARTIN PESCATORE', 'MARTORA', 'MEDUSA', 'MEGATTERA', 'MERLO', 'MERLUZZO', 'MOFFETTA', 
+	'MOSCA', 'MOSCARDINO', 'MOSCERINO', 'MUFLONE', 'MULO', 'MURENA', 'MUCCA', 'MONTONE',
+	'NARVALO', 'NASELLO', 'NUTRIA', 'OCELOT', 'OPOSSUM', 'ORANGO', 'ORATA', 'ORCA', 'ORNITORINCO', 'ORSO',
+	'PALOMBO', 'PANDA', 'PANGOLINO', 'PAPPAGALLO', 'PASSERO', 'PAVONE', 'PELLICANO', 'PESCE GATTO', 'PESCE SPADA', 'PESCE PALLA', 'PETTIROSSO', 'PICCHIO', 'PIPISTRELLO', 'PINGUINO', 'PITONE', 'PIRANHA', 'POLPO', 'PORCELLINO D\'INDIA', 'PROCIONE', 'PUMA', 'PUZZOLA',
+	'QUAGGA', 'QUAGLIA', 'RAGNO', 'RAGANELLA', 'RAMARRO', 'RANA', 'RATTO', 'RICCIO', 'RINOCERONTE', 'ROMBO', 'RONDINE', 'ROSPO', 
+	'SALMONE', 'SARDINA', 'SCARABEO', 'SCARAFAGGIO', 'SCIACALLO', 'SCIMMIA', 'SCIMPANZE', 'SCOIATTOLO', 'SEPENTE', 'SGOMBRO', 'SOGLIOLA', 'SQUALO BIANCO', 'SQUALO BALENA', 'SQUALO MARTELLO',
+	'TACCHINO', 'TAFANO', 'TARTARUGA', 'TASSO', 'TESTUGGINE', 'TIGRE', 'TONNO', 'TOPO', 'TORDO', 'TROTA', 'TRIGLIA',
+	'UPUPA', 'USIGNOLO', 'VESPA', 'VIPERA', 'VOLPE', 'YAK', 'ZEBRA'
+	
+]
+	
 const lisTest =[
 	'TEST TEST',
 	'ALL\'ORA'	
 ]
 
 $("#genera").click(function(){
-	
+	streak=0;
+	$("#streakPuls").hide();
 	lettereIndovinate=0;
 	errori=0;
-	$("*[id*=vita]").attr('class', 'fa-solid fa-heart');
-	$("*[id*=lLet]").attr('class', 'btn btn-light');
+	letTentate=[];
+	$("#streak").html(streak)
+	$("*[id*=vita]").removeClass('fa-regular');
+	$("*[id*=vita]").addClass('fa-solid');
+		
+	$("*[id*=pLet]").removeClass('btn-success');
+	$("*[id*=pLet]").removeClass('btn-danger');
+	$("*[id*=pLet]").addClass('btn-light');
 	$("#scegliLet").prop("disabled",false);
 	$("*[id*=pLet]").prop("disabled",false);
-	if (modScelta==="parola") {
-		parolaScelta = lisPar[Math.floor(Math.random() * lisPar.length)];
-
-		}
-		
-	if (modScelta==='capitale') {
-		parolaScelta = lisCap[Math.floor(Math.random() * lisCap.length)];
-
-		}
-	if (modScelta==='dragonball') {
-		parolaScelta = lisDB[Math.floor(Math.random() * lisDB.length)];
-
-		}
-		
-	if (modScelta==='test') {
-		parolaScelta = lisTest[Math.floor(Math.random() * lisTest.length)];
-
-		}
+	possibiliParole=[];
+	if (modScelta==="parola") {possibiliParole = Array.from(lisPar);	}
+	if (modScelta==='capitale') {possibiliParole = Array.from(lisCap);	}
+	if (modScelta==='disney') {possibiliParole = Array.from(lisDisney);}
+	if (modScelta==='animali') {possibiliParole = Array.from(lisAni);}
+	if (modScelta==='test') {possibiliParole = Array.from(lisTest);}
+	
+	parolaScelta = possibiliParole[Math.floor(Math.random() * possibiliParole.length)];
 
 	var htmlStr="<table class=\"spazioParola\"><tr>";
 	for (var i=0; i<parolaScelta.length; i++ ){
@@ -88,12 +112,20 @@ $("#genera").click(function(){
 	htmlStr+=" </tr></table>";
 	$("#parolaRnd").html(htmlStr);
 	$(".letSegr").hide();
-})
+});
+
+
+	$(".pulsLet").click(function(){
+		$("#scegliLet").val($(this).val());
+	})
+
 	$("#scegliLet").click(function(){
-		var letScelta=$("input[name='letter']:checked").val();
+		var letScelta=$("#scegliLet").val();
 		var letIndovinata=false;
 		if (letScelta.length<1) {alert("Scegli una lettera per continuare!");}
+		if (letTentate.indexOf(letScelta)!==-1){alert("hai gia' messo questa lettera")}
 		else {
+			letTentate.push(letScelta);
 			for (var i=0; i<parolaScelta.length; i++){
 				var letPar=parolaScelta.charAt(i);
 				if (letPar===letScelta){
@@ -106,30 +138,73 @@ $("#genera").click(function(){
 				
 			}
 				
-		var butDaColorare="lLet"+letScelta;		
+		var butDaColorare="pLet"+letScelta;		
 		var butDaSpegnere="pLet"+letScelta;
 		if (letIndovinata===true){
-			$("*[id*=" + butDaColorare + "]").attr('class', 'btn btn-success');
+			$("*[id=" + butDaColorare + "]").removeClass('btn-light');
+			$("*[id=" + butDaColorare + "]").addClass('btn-success');
+			
 		}
 		if (letIndovinata===false){
-			$("*[id*=" + butDaColorare + "]").attr('class', 'btn btn-danger')
+			$("*[id=" + butDaColorare + "]").removeClass('btn-light');
+			$("*[id=" + butDaColorare + "]").addClass('btn-danger');
 			errori++;
 			var vitaDaTogliere="vita"+errori;
-			$("*[id*=" + vitaDaTogliere + "]").attr('class', 'fa-regular fa-heart');
+			$("*[id=" + vitaDaTogliere + "]").removeClass('fa-solid ');
+			$("*[id=" + vitaDaTogliere + "]").addClass('fa-regular');
 		}
-		$("*[id*=" + butDaSpegnere + "]").prop("disabled",true);
+		$("*[id*=" + butDaSpegnere + "]").prop('disabled',true);
 		
 		if (lettereIndovinate===parolaScelta.length){
 			alert("hai vinto!");
-			$("#scegliLet").prop("disabled",true);
+			$("#scegliLet").prop('disabled',true);
+			streak++;
+			var indexParola = possibiliParole.indexOf(parolaScelta);
+			if (indexParola > -1) { // only splice array when item is found
+  				possibiliParole.splice(indexParola, 1);
+  			}
+  			$("#streakPuls").show();
 		}
-		if (errori===7){
-			alert("niente più vite, hai perso! la parola era "+parolaScelta)
-			$("#scegliLet").prop("disabled",true);
+		if (errori===9){
+			alert("niente piu' vite, hai perso! la parola era "+parolaScelta)
+			$("#scegliLet").prop('disabled',true);
+			streak=0;
+			$("#streakPuls").hide();
 		}
 		}
 		
 	});
 	
-	
+	$("#keepStreak").click(function(){
+		lettereIndovinate=0;
+		letTentate=[];
+		$("#streakPuls").hide();
+		$("#streak").html(streak)
+		$("*[id*=pLet]").removeClass('btn-success')
+		$("*[id*=pLet]").removeClass('btn-danger');
+		$("*[id*=pLet]").addClass('btn-light');
+		$("#scegliLet").prop("disabled",false);
+		$("*[id*=pLet]").prop("disabled",false);
+		if (possibiliParole.length<1){
+			alert("hai indovinato tutte le parole di questa categoria! SEI 'NA BRANDA");
+		}
+		else {
+		parolaScelta = possibiliParole[Math.floor(Math.random() * possibiliParole.length)];
+
+		var htmlStr="<table class=\"spazioParola\"><tr>";
+		for (var i=0; i<parolaScelta.length; i++ ){
+			var rndC= parolaScelta.charAt(i);
+			if (rndC===' ') {
+				htmlStr+="<td border=\"1px, solid, black\" class=\"spazioLet\" id=\"seg"+i+"\">_</td>";
+				lettereIndovinate++;
+			} 
+			else htmlStr+="<td border=\"1px, solid, black\" class=\"spazioLet\"> <h2 id=\"seg"+i+"\" class=\"letSegr\">"+rndC+"</h2> </td>"
+		}
+		htmlStr+=" </tr></table>";
+		$("#parolaRnd").html(htmlStr);
+		$(".letSegr").hide();
+		}
+	});
+		
+		
 	});

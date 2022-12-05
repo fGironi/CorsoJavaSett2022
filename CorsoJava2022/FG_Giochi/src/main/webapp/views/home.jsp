@@ -9,7 +9,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="static/js/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="static/css/adminlte.min.css">
   <!-- jQuery -->
@@ -75,7 +75,7 @@
           </li>
            <li class="nav-item">
             <a href="dajequattro" class="nav-link">
-             <i class="fa-solid fa-book"></i>
+             <i class="fa-solid fa-coins"></i>
               <p>
                 DajeQuattro
                 <span class="right badge badge-danger">New</span>

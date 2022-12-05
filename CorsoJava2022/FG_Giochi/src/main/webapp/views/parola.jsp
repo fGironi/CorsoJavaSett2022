@@ -16,9 +16,17 @@
 <!-- Script gioco -->
 <link rel="stylesheet" href="static/css/stileParola.css">
 
+
 <!-- jQuery -->
 <script src="static/js/plugins/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap 4 -->
+	<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"
+		type="text/javascript"></script>
+
 <script src="static/js/parolaScript.js"></script>
+
+
 </head>
 <body class="hold-transition sidebar-mini">
 	<!-- Site wrapper -->
@@ -68,7 +76,7 @@
 						</li>
            <li class="nav-item">
             <a href="dajequattro" class="nav-link">
-             <i class="fa-solid fa-book"></i>
+             <i class="fa-solid fa-coins"></i>
               <p>
                 DajeQuattro
                 <span class="right badge badge-danger">New</span>
@@ -114,26 +122,39 @@
 										<option selected>Scegli una modalita'...</option>
 										<option value="parola">Parola casuale - ITA</option>
 										<option value="capitale">Geografia - Capitale</option>
-										<option value="dragonball">Dragon Ball - Personaggio</option>
+										<option value="disney">Disney - Personaggio</option>
+										<option value="animali">Natura - Animali</option>
 										<option value="test">TESTING</option>
 									</select>
 								
-								<button class="btn btn-primary" type="button" id="genera">Genera
-										Parola</button>
+								<button class="btn btn-primary" type="button" id="genera">Nuova
+										Partita</button>
 								</div>	
 					<div class="col-sm-3"></div>	
 					</div>
+					<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 d-flex justify-content-center">
+						<div id="streakSpace">
+							<h4>Streak: <span id="streak">0</span></h4>
+							<span id="streakPuls"><button class="btn btn-success" type="button" id="keepStreak">STREAK!</button></span>
+						</div>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
 				<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="tentativi">
-							<i id="vita7" class="fa-solid fa-heart"></i>
-							<i id="vita6" class="fa-solid fa-heart"></i>
-							<i id="vita5" class="fa-solid fa-heart"></i>
-							<i id="vita4" class="fa-solid fa-heart"></i>
-							<i id="vita3" class="fa-solid fa-heart"></i>
-							<i id="vita2" class="fa-solid fa-heart"></i>
-							<i id="vita1" class="fa-solid fa-heart"></i>
+							<i id="vita9" class="vitG fa-solid fa-heart"></i>
+							<i id="vita8" class="vitG fa-solid fa-heart"></i>
+							<i id="vita7" class="vitG fa-solid fa-heart"></i>
+							<i id="vita6" class="vitG fa-solid fa-heart"></i>
+							<i id="vita5" class="vitG fa-solid fa-heart"></i>
+							<i id="vita4" class="vitG fa-solid fa-heart"></i>
+							<i id="vita3" class="vitG fa-solid fa-heart"></i>
+							<i id="vita2" class="vitG fa-solid fa-heart"></i>
+							<i id="vita1" class="vitG fa-solid fa-heart"></i>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>
@@ -142,105 +163,84 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="parolaRnd">
-							<h2> Indovina la parola!</h2>
-							<p>seleziona la modalità di gioco, quindi premi su genera parola</p>
-							<p>premi una lettera e poi il tasto di conferma per inviare</p>
-							<p>se in una casella c'è _ vuol dire che là c'è uno spazio</p>
+							<h2>Indovina la parola!</h2>
+							<p>seleziona la modalita' di gioco, quindi premi su nuova partita</p>
+							<p>premi una lettera e poi nell'enorme casella al centro</p>
+							<p>se in una casella c'e' _ vuol dire che la' c'e' uno spazio</p>
+							<p>buona streak!</p>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-4"></div>
+					<div class="col-sm-4 d-flex justify-content-center""><div class="guessSpace"><input type="button" class="btn btn-primary bigPuls" id="scegliLet"
+							value=""/></div></div>
+					<div class="col-sm-4"></div>
+				</div>				
+				<div class="row">
+					<div class="col-sm-4"></div>
 					<div class="col-sm-4 d-flex justify-content-center align-items-center">
-					<div data-toggle="buttons" id="tastiera">
-						<div class="btn-group btn-group-toggle btn-group-justified" role="group">
-					
-							<label class="btn btn-light" id="lLetQ"> <input type="radio" value="Q"
-								name="letter" id="pLetQ" autocomplete="off"> Q
-							</label><label class="btn btn-light" id="lLetW"> <input type="radio" value="W"
-								name="letter" id="pLetW" autocomplete="off"> W 
-							</label><label class="btn btn-light" id="lLetE"> <input type="radio" value="E"
-								name="letter" id="pLetE" autocomplete="off"> E
-							</label><label class="btn btn-light" id="lLetR"> <input type="radio" value="R"
-								name="letter" id="pLetR" autocomplete="off"> R
-							</label><label class="btn btn-light" id="lLetT"> <input type="radio" value="T"
-								name="letter" id="pLetT" autocomplete="off"> T
-							</label><label class="btn btn-light" id="lLetY"> <input type="radio" value="Y"
-								name="letter" id="pLetY" autocomplete="off"> Y
-							</label><label class="btn btn-light" id="lLetU"> <input type="radio" value="U"
-								name="letter" id="pLetU" autocomplete="off"> U
-							</label><label class="btn btn-light" id="lLetI"> <input type="radio" value="I"
-								name="letter" id="pLetI" autocomplete="off"> I
-							</label><label class="btn btn-light" id="lLetO"> <input type="radio" value="O"
-								name="letter" id="pLetO" autocomplete="off"> O
-							</label><label class="btn btn-light" id="lLetP"> <input type="radio" value="P"
-								name="letter" id="pLetP" autocomplete="off"> P
-							</label>
-							</div><div class="btn-group btn-group-toggle btn-group-justified" role="group">
-							<label class="btn btn-light" id="lLetA"> <input type="radio" value="A"
-								name="letter" id="pLetA" autocomplete="off"> A
-							</label><label class="btn btn-light" id="lLetS"> <input type="radio" value="S"
-								name="letter" id="pLetS" autocomplete="off"> S 
-							</label><label class="btn btn-light" id="lLetD"> <input type="radio" value="D"
-								name="letter" id="pLetD" autocomplete="off"> D
-							</label><label class="btn btn-light" id="lLetF"> <input type="radio" value="F"
-								name="letter" id="pLetF" autocomplete="off"> F
-							</label><label class="btn btn-light" id="lLetG"> <input type="radio" value="G"
-								name="letter" id="pLetG" autocomplete="off"> G
-							</label><label class="btn btn-light" id="lLetH"> <input type="radio" value="H"
-								name="letter" id="pLetH" autocomplete="off"> H
-							</label><label class="btn btn-light" id="lLetJ"> <input type="radio" value="J"
-								name="letter" id="pLetJ" autocomplete="off"> J
-							</label><label class="btn btn-light" id="lLetK"> <input type="radio" value="K"
-								name="letter" id="pLetK" autocomplete="off"> K
-							</label><label class="btn btn-light" id="lLetL"> <input type="radio" value="L"
-								name="letter" id="pLetL" autocomplete="off"> L
-							</label><label class="btn btn-light" id="lLet'"><input type="radio" value="'"
-								name="letter" id="pLet'" autocomplete="off"> '
-							</label>
-							</div><div class="btn-group btn-group-toggle btn-group-justified" role="group">
-							<label class="btn btn-primary"> <input type="radio" value=""
-								name="letter" id="cancel" autocomplete="off"> <i class="fa-solid fa-delete-left"></i> 
-							</label><label class="btn btn-light" id="lLetZ"> <input type="radio" value="Z"
-								name="letter" id="pLetZ" autocomplete="off"> Z 
-							</label> <label class="btn btn-light" id="lLetX"> <input type="radio" value="X"
-								name="letter" id="pLetX" autocomplete="off"> X
-							</label> <label class="btn btn-light" id="lLetC"> <input type="radio" value="C"
-								name="letter" id="pLetC" autocomplete="off"> C
-							</label> <label class="btn btn-light" id="lLetV"> <input type="radio" value="V"
-								name="letter" id="pLetV" autocomplete="off"> V
-							</label> <label class="btn btn-light" id="lLetB"> <input type="radio" value="B"
-								name="letter" id="pLetB" autocomplete="off"> B
-							</label> <label class="btn btn-light" id="lLetN"> <input type="radio" value="N"
-								name="letter" id="pLetN" autocomplete="off"> N
-							</label> <label class="btn btn-light" id="lLetM"> <input type="radio" value="M"
-								name="letter" id="pLetM" autocomplete="off"> M
-							</label><button type="button" class="btn btn-primary" id="scegliLet"
-							value="Submit"><i class="fa-solid fa-check"></i></button>
-							</div>
-							</div>
-							</div>
-						<div class="col-sm-4"></div>
+						<button type="button" class="pulsLet btn btn-light" value="Q" id="pLetQ" autocomplete="off">Q</button>
+						<button type="button" class="pulsLet btn btn-light" value="W" id="pLetW" autocomplete="off">W</button>
+						<button type="button" class="pulsLet btn btn-light" value="E" id="pLetE" autocomplete="off">E</button>
+						<button type="button" class="pulsLet btn btn-light" value="R" id="pLetR" autocomplete="off">R</button>
+						<button type="button" class="pulsLet btn btn-light" value="T" id="pLetT" autocomplete="off">T</button>
+						<button type="button" class="pulsLet btn btn-light" value="Y" id="pLetY" autocomplete="off">Y</button>
+						<button type="button" class="pulsLet btn btn-light" value="U" id="pLetU" autocomplete="off">U</button>
+						<button type="button" class="pulsLet btn btn-light" value="I" id="pLetI" autocomplete="off">I</button>
+						<button type="button" class="pulsLet btn btn-light" value="O" id="pLetO" autocomplete="off">O</button>
+						<button type="button" class="pulsLet btn btn-light" value="P" id="pLetP" autocomplete="off">P</button>
 					</div>
+					<div class="col-sm-4"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4 d-flex justify-content-center align-items-center">
+						<button type="button" class="pulsLet btn btn-light" value="A" id="pLetA" autocomplete="off">A</button>
+						<button type="button" class="pulsLet btn btn-light" value="S" id="pLetS" autocomplete="off">S</button>
+						<button type="button" class="pulsLet btn btn-light" value="D" id="pLetD" autocomplete="off">D</button>
+						<button type="button" class="pulsLet btn btn-light" value="F" id="pLetF" autocomplete="off">F</button>
+						<button type="button" class="pulsLet btn btn-light" value="G" id="pLetG" autocomplete="off">G</button>
+						<button type="button" class="pulsLet btn btn-light" value="H" id="pLetH" autocomplete="off">H</button>
+						<button type="button" class="pulsLet btn btn-light" value="J" id="pLetJ" autocomplete="off">J</button>
+						<button type="button" class="pulsLet btn btn-light" value="K" id="pLetK" autocomplete="off">K</button>
+						<button type="button" class="pulsLet btn btn-light" value="L" id="pLetL" autocomplete="off">L</button>
+					</div>
+					<div class="col-sm-4"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4 d-flex justify-content-center align-items-center">
+						<button type="button" class="pulsLet btn btn-light" value="Z" id="pLetZ" autocomplete="off">Z</button>
+						<button type="button" class="pulsLet btn btn-light" value="X" id="pLetX" autocomplete="off">X</button>
+						<button type="button" class="pulsLet btn btn-light" value="C" id="pLetC" autocomplete="off">C</button>
+						<button type="button" class="pulsLet btn btn-light" value="V" id="pLetV" autocomplete="off">V</button>
+						<button type="button" class="pulsLet btn btn-light" value="B" id="pLetB" autocomplete="off">B</button>
+						<button type="button" class="pulsLet btn btn-light" value="N" id="pLetN" autocomplete="off">N</button>
+						<button type="button" class="pulsLet btn btn-light" value="M" id="pLetM" autocomplete="off">M</button>
+						<button type="button" class="pulsLet btn btn-light" value="'" id="pLet\'" autocomplete="off">'</button>
+						<button type="button" class="btn btn-primary" id="scegliLet" value=""><i class="fa-solid fa-check"></i></button>
+					</div>
+					<div class="col-sm-4"></div>
+				</div>
+				
 					
 					<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-8 d-flex justify-content-center">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4 d-flex justify-content-right">
 						<a href="parola" class="nav-link"><button type="button" class="btn btn-secondary">RESET</button></a>
 					</div>
-					<div class="col-sm-2"></div>
+					<div class="col-sm-4"></div>
 				</div>
 					<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<h3>TODO:</h3>
 						<ul>
-						<li>fix della tastiera</li>
 						<li>possibilita' di inserire la parola completa</li>
 						<li>importazione delle liste di parole da file esterni</li> 
 						<li>lettura da tastiera reale</li>
-						<li>modalità streak</li>
 						</ul>
 					</div>
 					<div class="col-sm-2"></div>
@@ -250,12 +250,13 @@
 					<div class="col-sm-8 d-flex justify-content-center">
 						<h3>BUG:</h3>
 						<ul>
-						<li>ci sono diverse parole accentate che non vengono (ovviamente) mostrate correttamente</li>
+						<li>l'apostrofo e' buggato, non toglie vite se non c'e' e non cambia colore</li>
 						</ul>
 					</div>
 					<div class="col-sm-2"></div>
 				</div>
 					</div>
+					
 					
 				</div>
 			</section>
@@ -288,9 +289,7 @@
 	<div></div>
 	<!-- ./wrapper -->
 
-	<!-- Bootstrap 4 -->
-	<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"
-		type="text/javascript"></script>
+
 	<!-- AdminLTE App -->
 	<script src="static/js/adminlte.min.js" type="text/javascript"></script>
 	<!-- Demo Template -->
