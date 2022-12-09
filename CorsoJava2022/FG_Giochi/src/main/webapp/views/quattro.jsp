@@ -101,12 +101,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page</h1>
+            <h1>DajeQuattro</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item"><a href="/FG_Giochi">Home</a></li>
+              <li class="breadcrumb-item active">DajeQuattro</li>
             </ol>
           </div>
         </div>
@@ -118,7 +118,7 @@
 		<div class="clearfix">
 			<div class="row">
 				<div class="col-sm-3"></div>
-				<div class="col-sm-6"><h1>Daje Quattro</h1></div>
+				<div class="col-sm-6 d-flex justify-content-center"><h2>Metti 4 gettoni in fila per vincere!</h2></div>
 				<div class="col-sm-3"></div>
 			</div>
 			<div class="row">
@@ -132,14 +132,14 @@
 				<div class="col-sm-3"></div>
 				<div class="col-sm-6 d-flex justify-content-center"">
 					<div id="players">
-					<i class="fa-solid fa-hippo redplayer">Giocatore 1</i> vs	<i class="fa-solid fa-otter yellowplayer">Giocatore 2</i>
+					<i class="fa-solid fa-otter redplayer">Hot Otter</i> vs	<i class="fa-solid fa-hippo yellowplayer">Happy Hippo</i>
 					</div>
 				</div>
 				<div class="col-sm-3"></div>
 			</div>			
 			<div class="row">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 d-flex justify-content-center">
 					<table id="freccegiu">
 					<tr>
 					<td><i class="fa-solid fa-arrow-down"></i></td>
@@ -155,13 +155,13 @@
 
 
 				</div>
-				<div class="col-sm-4"></div>
+				<div class="col-sm-3"></div>
 			</div>
 			
 			
 			<div class="row">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4 d-flex justify-content-center">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 d-flex justify-content-center">
 					<table class="tabQuattro">
 					<tr id="riga5">
 					<td class="cellQuattro" id="0_5"></td>
@@ -219,22 +219,18 @@
 					</tr>
 					</table>
 				</div>
-				<div class="col-sm-4"></div>
+				<div class="col-sm-3"></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-4"></div>
-					<div class="col-sm-4">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6 d-flex justify-content-center">
 						<div id="baseQuattro"></div>
 					</div>
-					<div class="col-sm-4"></div>
+					<div class="col-sm-3"></div>
 				</div>
 				<div class="row">
-				<div class="col-sm-4">
-				<div class="nomePl">
-				
-					</div>
-				</div>
-				<div class="col-sm-4 d-flex justify-content-center">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 d-flex justify-content-center">
 				<table class="pulsQuattro">
 				<tr id="pulsanti">
 				<td class="celPuls"><button type="button" class="btn btn-danger pulsPl pulsR" id="puls0" value=0><i class="fa-solid fa-circle-up"></i></button></td>
@@ -247,7 +243,7 @@
 				</tr>
 				</table>
 				</div>
-				<div class="col-sm-4"></div>
+				<div class="col-sm-3"></div>
 				</div>
 
 

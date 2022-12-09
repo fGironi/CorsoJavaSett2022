@@ -101,7 +101,7 @@
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item"><a href="/FG_Giochi">Home</a></li>
 								<li class="breadcrumb-item active">Indovina la parola</li>
 							</ol>
 						</div>
@@ -174,7 +174,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-4"></div>
-					<div class="col-sm-4 d-flex justify-content-center""><div class="guessSpace"><input type="button" class="btn btn-primary bigPuls" id="scegliLet"
+					<div class="col-sm-4 d-flex justify-content-center""><div class="guessSpace"><input type="button" class="btn btn-primary scegliLet" id="bgScLet"
 							value=""/></div></div>
 					<div class="col-sm-4"></div>
 				</div>				
@@ -220,7 +220,7 @@
 						<button type="button" class="pulsLet btn btn-light" value="N" id="pLetN" autocomplete="off">N</button>
 						<button type="button" class="pulsLet btn btn-light" value="M" id="pLetM" autocomplete="off">M</button>
 						<button type="button" class="pulsLet btn btn-light" value="'" id="pLet\'" autocomplete="off">'</button>
-						<button type="button" class="btn btn-primary" id="scegliLet" value=""><i class="fa-solid fa-check"></i></button>
+						<button type="button" class="btn btn-primary scegliLet" id="smScLet" value=""><i class="fa-solid fa-check"></i></button>
 					</div>
 					<div class="col-sm-4"></div>
 				</div>

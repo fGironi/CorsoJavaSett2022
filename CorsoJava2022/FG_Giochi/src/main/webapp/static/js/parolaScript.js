@@ -49,7 +49,7 @@ const lisCap =[
 	'NIAMEY',	'ABUJA',	'OSLO',	'WELLINGTON',	'MASCATE',	'AMSTERDAM',	'ISLAMABAD',	'NGERULMUD',	'RAMALLAH',	'PORT MORESBY',	'ASUNCION',	'LIMA',	'VARSAVIA',	'LISBONA',	'DOHA',	'LONDRA',
 	'BUCAREST',	'KIGALI',	'HONIARA',	'APIA',	'SAN MARINO',	'CASTRIES',	'DAKAR',	'SAO TOME',	'BELGRADO',	'VICTORIA',	'FREETOWN',	'SINGAPORE',	'DAMASCO',	'BRATISLAVA',	'LUBIANA',	'MOGADISCIO',	'MADRID',
 	'SRI JAYAWARDENAPURA',	'WASHINGTON',	'BLOEMFONTEIN',	'CITTA DEL CAPO',	'PRETORIA',	'KHARTUM',	'GIUBA',	'PARAMARIBO',	'STOCCOLMA',	'BERNA',	'MBABANE',
-	'DUSANBE',	'DODOMA',	'BANGKOK',	'DILI',	'LOME',	'NUKU\'ALOFA',	'PORT OF SPAIN',	'TUNISI',	'ANKARA',	'ASGABAT',	'FUNAFUTI',	'KIEV',	'KAMPALA',
+	'DUSHANBE',	'DODOMA',	'BANGKOK',	'DILI',	'LOME',	'NUKU\'ALOFA',	'PORT OF SPAIN',	'TUNISI',	'ANKARA',	'ASGABAT',	'FUNAFUTI',	'KIEV',	'KAMPALA',
 	'BUDAPEST',	'MONTEVIDEO',	'TASHKENT',	'PORT VILA',	'CITTA DEL VATICANO',	'CARACAS',	'HANOI',	'SANA\'A',	'LUSAKA',	'HARARE'
 	]
 	
@@ -89,7 +89,7 @@ $("#genera").click(function(){
 	$("*[id*=pLet]").removeClass('btn-success');
 	$("*[id*=pLet]").removeClass('btn-danger');
 	$("*[id*=pLet]").addClass('btn-light');
-	$("#scegliLet").prop("disabled",false);
+	$(".scegliLet").prop("disabled",false);
 	$("*[id*=pLet]").prop("disabled",false);
 	possibiliParole=[];
 	if (modScelta==="parola") {possibiliParole = Array.from(lisPar);	}
@@ -116,11 +116,11 @@ $("#genera").click(function(){
 
 
 	$(".pulsLet").click(function(){
-		$("#scegliLet").val($(this).val());
+		$(".scegliLet").val($(this).val());
 	})
 
-	$("#scegliLet").click(function(){
-		var letScelta=$("#scegliLet").val();
+	$(".scegliLet").click(function(){
+		var letScelta=$(".scegliLet").val();
 		var letIndovinata=false;
 		if (letScelta.length<1) {alert("Scegli una lettera per continuare!");}
 		if (letTentate.indexOf(letScelta)!==-1){alert("hai gia' messo questa lettera")}
@@ -157,7 +157,7 @@ $("#genera").click(function(){
 		
 		if (lettereIndovinate===parolaScelta.length){
 			alert("hai vinto!");
-			$("#scegliLet").prop('disabled',true);
+			$(".scegliLet").prop('disabled',true);
 			streak++;
 			var indexParola = possibiliParole.indexOf(parolaScelta);
 			if (indexParola > -1) { // only splice array when item is found
@@ -167,7 +167,7 @@ $("#genera").click(function(){
 		}
 		if (errori===9){
 			alert("niente piu' vite, hai perso! la parola era "+parolaScelta)
-			$("#scegliLet").prop('disabled',true);
+			$(".scegliLet").prop('disabled',true);
 			streak=0;
 			$("#streakPuls").hide();
 		}
@@ -183,8 +183,16 @@ $("#genera").click(function(){
 		$("*[id*=pLet]").removeClass('btn-success')
 		$("*[id*=pLet]").removeClass('btn-danger');
 		$("*[id*=pLet]").addClass('btn-light');
-		$("#scegliLet").prop("disabled",false);
+		$(".scegliLet").prop("disabled",false);
 		$("*[id*=pLet]").prop("disabled",false);
+		if (errori>0){			
+			var vitaDaMettere="vita"+errori;
+			$("*[id=" + vitaDaMettere + "]").removeClass('fa-regular');
+			$("*[id=" + vitaDaMettere + "]").addClass('fa-solid');
+			errori--;
+			}
+			
+		
 		if (possibiliParole.length<1){
 			alert("hai indovinato tutte le parole di questa categoria! SEI 'NA BRANDA");
 		}

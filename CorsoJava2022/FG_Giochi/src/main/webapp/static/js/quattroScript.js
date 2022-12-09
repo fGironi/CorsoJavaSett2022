@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	
-	var colonne=[];
+	var colonne=[]; //=[0, 0, 0, 0, 0, 0, 0]
 	var gettoniMessi=[];
 	const victoryReq=4;
 	
@@ -48,7 +48,7 @@ $(document).ready(function () {
 
 	function victoryCheck(){
 		var vicStreak;
-		var vittoria=false;
+
 		for (var i=0; i<gettoniMessi.length; i++){ //per ogni gettone messo
 			console.log("controllo gettone "+i+": "+gettoniMessi[i])
 			vicStreak=1; //fila da 1
@@ -59,22 +59,17 @@ $(document).ready(function () {
 					console.log("paragono gettone "+i+": "+gettoniMessi[i]+" e gettone "+j+": "+gettoniMessi[j])
 					if (gettoniMessi[i][0]===gettoniMessi[j][0]){ //se ha lo stesso colore
 					console.log("gettone "+i+" "+gettoniMessi[i][0]+" e gettone "+j+" "+gettoniMessi[j][0]+ " hanno lo stesso colore")
-						if (gettoniMessi[i][2]===gettoniMessi[j][2]) {
+						if (gettoniMessi[i][2]===gettoniMessi[j][2]) { //Se sono sulla stessa riga
 							console.log("gettone "+i+" "+gettoniMessi[i][2]+" e gettone "+j+" "+gettoniMessi[j][2]+ " hanno la stessa y")
 							var getVicinoX=parseInt(gettoniMessi[i][1])+vicStreak;
 							console.log(getVicinoX)
-							if (parseInt(gettoniMessi[j][1])===getVicinoX) {
+							if (parseInt(gettoniMessi[j][1])===getVicinoX) { //Se sono a "vicStreak" caselle di distanza orizzontalmente
 								vicStreak++;
 								console.log("gettone "+i+" "+gettoniMessi[i][1]+" e gettone "+j+" "+gettoniMessi[j][1]+ " sono vicini sulle x, streak="+vicStreak)
 								horFound=true;
-								if (vicStreak===4){
+								if (vicStreak===victoryReq){ //se è una fila da 4
 									horChecking=false;
-									vittoria=true;
-									var vincitore;
-									if (gettoniMessi[i][0]==="red"){ vincitore="giocatore 1";}
-									if (gettoniMessi[i][0]==="orange"){ vincitore="giocatore 2";}
-									alert("ha vinto "+vincitore+" ("+gettoniMessi[i][0]+")")
-									$(".pulsPl").prop("disabled",true);
+									dichiaraVit(gettoniMessi[i][0]);
 								}
 							}
 							
@@ -85,9 +80,7 @@ $(document).ready(function () {
 					horChecking=false
 				}
 			}
-		}
-		for (var i=0; i<gettoniMessi.length; i++){ //per ogni gettone messo
-			console.log("controllo gettone "+i+": "+gettoniMessi[i])
+			
 			vicStreak=1; //fila da 1
 			var verChecking=true; //sto controllando le streak verticali
 			while (verChecking===true){ //mentre sto controllando
@@ -96,22 +89,17 @@ $(document).ready(function () {
 					console.log("paragono gettone "+i+": "+gettoniMessi[i]+" e gettone "+j+": "+gettoniMessi[j])
 					if (gettoniMessi[i][0]===gettoniMessi[j][0]){ //se ha lo stesso colore
 					console.log("gettone "+i+" "+gettoniMessi[i][0]+" e gettone "+j+" "+gettoniMessi[j][0]+ " hanno lo stesso colore")
-						if (parseInt(gettoniMessi[i][1])===parseInt(gettoniMessi[j][1])) {
+						if (parseInt(gettoniMessi[i][1])===parseInt(gettoniMessi[j][1])) { //Se sono sulla stessa colonna
 							console.log("gettone "+i+" "+gettoniMessi[i][1]+" e gettone "+j+" "+gettoniMessi[j][1]+ " hanno la stessa x")
 							var getVicinoY=parseInt(gettoniMessi[i][2])+vicStreak;
 							console.log(getVicinoY)
-							if (parseInt(gettoniMessi[j][2])===getVicinoY) {
+							if (parseInt(gettoniMessi[j][2])===getVicinoY) { //Se sono a "vicStreak" caselle di distanza verticalmente
 								vicStreak++;
 								console.log("gettone "+i+" "+gettoniMessi[i][2]+" e gettone "+j+" "+gettoniMessi[j][2]+ " sono vicini sulle y, streak="+vicStreak)
 								verFound=true;
-								if (vicStreak===4){
+								if (vicStreak===victoryReq){
 									verChecking=false;
-									vittoria=true;
-									var vincitore;
-									if (gettoniMessi[i][0]==="red"){ vincitore="giocatore 1";}
-									if (gettoniMessi[i][0]==="orange"){ vincitore="giocatore 2";}
-									alert("ha vinto "+vincitore+" ("+gettoniMessi[i][0]+")")
-									$(".pulsPl").prop("disabled",true);
+									dichiaraVit(gettoniMessi[i][0]);
 								}
 							}
 							
@@ -123,9 +111,7 @@ $(document).ready(function () {
 				}
 			
 			}
-		}
-		for (var i=0; i<gettoniMessi.length; i++){ //per ogni gettone messo
-			console.log("controllo gettone "+i+": "+gettoniMessi[i])
+			
 			vicStreak=1; //fila da 1
 			var diagChecking=true; //sto controllando le streak diagonali
 			while (diagChecking===true){ //mentre sto controllando
@@ -142,14 +128,9 @@ $(document).ready(function () {
 								vicStreak++;
 								console.log("gettone "+i+" "+gettoniMessi[i][1]+" e gettone "+j+" "+gettoniMessi[j][1]+ " sono vicini sulle x, streak="+vicStreak)
 								diagFound=true;
-								if (vicStreak===4){
+								if (vicStreak===victoryReq){
 									diagChecking=false;
-									vittoria=true;
-									var vincitore;
-									if (gettoniMessi[i][0]==="red"){ vincitore="giocatore 1";}
-									if (gettoniMessi[i][0]==="orange"){ vincitore="giocatore 2";}
-									alert("ha vinto "+vincitore+" ("+gettoniMessi[i][0]+")")
-									$(".pulsPl").prop("disabled",true);
+									dichiaraVit(gettoniMessi[i][0]);
 								}
 							}
 							
@@ -160,9 +141,7 @@ $(document).ready(function () {
 					diagChecking=false
 				}
 			}
-		}
-		for (var i=0; i<gettoniMessi.length; i++){ //per ogni gettone messo
-			console.log("controllo gettone "+i+": "+gettoniMessi[i])
+			
 			vicStreak=1; //fila da 1
 			var revDiagChecking=true; //sto controllando le streak diagonali al contrario
 			while (revDiagChecking===true){ //mentre sto controllando
@@ -179,14 +158,9 @@ $(document).ready(function () {
 								vicStreak++;
 								console.log("gettone "+i+" "+gettoniMessi[i][1]+" e gettone "+j+" "+gettoniMessi[j][1]+ " sono vicini sulle x, streak="+vicStreak)
 								revDiagFound=true;
-								if (vicStreak===4){
-									revDiagChecking=false;
-									vittoria=true;
-									var vincitore;
-									if (gettoniMessi[i][0]==="red"){ vincitore="giocatore 1";}
-									if (gettoniMessi[i][0]==="orange"){ vincitore="giocatore 2";}
-									alert("ha vinto "+vincitore+" ("+gettoniMessi[i][0]+")")
-									$(".pulsPl").prop("disabled",true);
+								if (vicStreak===victoryReq){
+									revDiagChecking=false;;
+									dichiaraVit(gettoniMessi[i][0]);
 								}
 							}
 							
@@ -197,8 +171,17 @@ $(document).ready(function () {
 					revDiagChecking=false
 				}
 			}
+			
 		}
-		
+	
+	}
+	
+	function dichiaraVit(coloreGettone){
+		var vincitore;
+		if (coloreGettone==="red"){ vincitore="Hot Otter";}
+		if (coloreGettone==="orange"){ vincitore="Happy Hippo";}
+		alert("ha vinto "+vincitore+" ("+coloreGettone+")")
+		$(".pulsPl").prop("disabled",true);
 	}
 	
 })
