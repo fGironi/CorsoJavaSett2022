@@ -44,6 +44,43 @@ $(document).ready(function () {
 			$(".pulsPl").addClass("btn-danger");
 		}
 	})
+	
+    $(".cellQuattro").on('taphold',function(e){
+		var tocco=String(e.touch);
+		var colore;
+		if ($(".pulsPl").hasClass("pulsR")){
+			colore="red";
+		}
+		else if ($(".pulsPl").hasClass("pulsG")){
+			colore="orange";
+		}
+		var colGet=$(this).attr("value")
+		var rigaGet=colonne[colGet];
+		var gettone=[colore, colGet, rigaGet];
+		gettoniMessi.push(gettone);
+		colonne[colGet]++; 
+		$("#"+colGet+"_"+rigaGet).css("background-color", colore);
+		if (colonne[colGet]>5){
+			$("#puls"+colGet).prop("disabled",true);
+		}
+		
+		
+		victoryCheck();
+		if ($(".pulsPl").hasClass("pulsR")){
+			$(".pulsPl").removeClass("pulsR");
+			$(".pulsPl").removeClass("btn-danger");
+			$(".pulsPl").addClass("pulsG");
+			$(".pulsPl").addClass("btn-warning");
+			
+			
+		}
+		else if ($(this).hasClass("pulsG")){
+			$(".pulsPl").removeClass("pulsG");
+			$(".pulsPl").removeClass("btn-warning");
+			$(".pulsPl").addClass("pulsR");
+			$(".pulsPl").addClass("btn-danger");
+		}
+		})
 
 
 	function victoryCheck(){

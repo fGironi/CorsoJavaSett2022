@@ -33,7 +33,7 @@
 }
 
 .pulsQuattro{
-	margin-top: 25px;
+	margin-top: 10px;
 	max-width: 650px;
 	width:100%;
 	background-color: darkblue;
@@ -62,5 +62,7 @@
 
 .yellowplayer{
 	color:orange;
-
+}
+#turni {
+	padding-top: 5px;
 }

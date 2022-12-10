@@ -52,3 +52,13 @@
 	margin-top:10px;
 	text-align: center;
 }
+
+#istruzioni {
+	padding-top: 30px;
+	text-align: center;
+}
+
+#inizia {
+	min-width: 150px;
+	min-height: 50px;
+}

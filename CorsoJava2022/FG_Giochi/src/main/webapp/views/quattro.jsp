@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,7 @@
   <link rel="stylesheet" href="static/css/adminlte.min.css">
   <!-- jQuery -->
 <script src="static/js/plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap 4 -->
 <script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -70,7 +72,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="parola" class="nav-link">
+            <a href="parolaIntro" class="nav-link">
              <i class="fa-solid fa-book"></i>
               <p>
                 Indovina la parola
@@ -164,58 +166,58 @@
 				<div class="col-sm-6 d-flex justify-content-center">
 					<table class="tabQuattro">
 					<tr id="riga5">
-					<td class="cellQuattro" id="0_5"></td>
-					<td class="cellQuattro" id="1_5"></td>
-					<td class="cellQuattro" id="2_5"></td>
-					<td class="cellQuattro" id="3_5"></td>
-					<td class="cellQuattro" id="4_5"></td>
-					<td class="cellQuattro" id="5_5"></td>
-					<td class="cellQuattro" id="6_5"></td>
+					<td class="cellQuattro" id="0_5" value="0"></td>
+					<td class="cellQuattro" id="1_5" value=1></td>
+					<td class="cellQuattro" id="2_5" value=2></td>
+					<td class="cellQuattro" id="3_5" value=3></td>
+					<td class="cellQuattro" id="4_5" value=4></td>
+					<td class="cellQuattro" id="5_5" value=5></td>
+					<td class="cellQuattro" id="6_5" value=6></td>
 					</tr>
 					<tr id="riga4">
-					<td class="cellQuattro" id="0_4"></td>
-					<td class="cellQuattro" id="1_4"></td>
-					<td class="cellQuattro" id="2_4"></td>
-					<td class="cellQuattro" id="3_4"></td>
-					<td class="cellQuattro" id="4_4"></td>
-					<td class="cellQuattro" id="5_4"></td>
-					<td class="cellQuattro" id="6_4"></td>
+					<td class="cellQuattro" id="0_4" value=0></td>
+					<td class="cellQuattro" id="1_4" value=1></td>
+					<td class="cellQuattro" id="2_4" value=2></td>
+					<td class="cellQuattro" id="3_4" value=3></td>
+					<td class="cellQuattro" id="4_4" value=4></td>
+					<td class="cellQuattro" id="5_4" value=5></td>
+					<td class="cellQuattro" id="6_4" value=6></td>
 					</tr>
 					<tr id="riga3">
-					<td class="cellQuattro" id="0_3"></td>
-					<td class="cellQuattro" id="1_3"></td>
-					<td class="cellQuattro" id="2_3"></td>
-					<td class="cellQuattro" id="3_3"></td>
-					<td class="cellQuattro" id="4_3"></td>
-					<td class="cellQuattro" id="5_3"></td>
-					<td class="cellQuattro" id="6_3"></td>
+					<td class="cellQuattro" id="0_3" value=0></td>
+					<td class="cellQuattro" id="1_3" value=1></td>
+					<td class="cellQuattro" id="2_3" value=2></td>
+					<td class="cellQuattro" id="3_3" value=3></td>
+					<td class="cellQuattro" id="4_3" value=4></td>
+					<td class="cellQuattro" id="5_3" value=5></td>
+					<td class="cellQuattro" id="6_3" value=6></td>
 					</tr>
 					<tr id="riga2">
-					<td class="cellQuattro" id="0_2"></td>
-					<td class="cellQuattro" id="1_2"></td>
-					<td class="cellQuattro" id="2_2"></td>
-					<td class="cellQuattro" id="3_2"></td>
-					<td class="cellQuattro" id="4_2"></td>
-					<td class="cellQuattro" id="5_2"></td>
-					<td class="cellQuattro" id="6_2"></td>
+					<td class="cellQuattro" id="0_2" value=0></td>
+					<td class="cellQuattro" id="1_2" value=1></td>
+					<td class="cellQuattro" id="2_2" value=2></td>
+					<td class="cellQuattro" id="3_2" value=3></td>
+					<td class="cellQuattro" id="4_2" value=4></td>
+					<td class="cellQuattro" id="5_2" value=5></td>
+					<td class="cellQuattro" id="6_2" value=6></td>
 					</tr>
 					<tr id="riga1">
-					<td class="cellQuattro" id="0_1"></td>
-					<td class="cellQuattro" id="1_1"></td>
-					<td class="cellQuattro" id="2_1"></td>
-					<td class="cellQuattro" id="3_1"></td>
-					<td class="cellQuattro" id="4_1"></td>
-					<td class="cellQuattro" id="5_1"></td>
-					<td class="cellQuattro" id="6_1"></td>
+					<td class="cellQuattro" id="0_1" value=0></td>
+					<td class="cellQuattro" id="1_1" value=1></td>
+					<td class="cellQuattro" id="2_1" value=2></td>
+					<td class="cellQuattro" id="3_1" value=3></td>
+					<td class="cellQuattro" id="4_1" value=4></td>
+					<td class="cellQuattro" id="5_1" value=5></td>
+					<td class="cellQuattro" id="6_1" value=6></td>
 					</tr>
 					<tr id="riga0">
-					<td class="cellQuattro" id="0_0"></td>
-					<td class="cellQuattro" id="1_0"></td>
-					<td class="cellQuattro" id="2_0"></td>
-					<td class="cellQuattro" id="3_0"></td>
-					<td class="cellQuattro" id="4_0"></td>
-					<td class="cellQuattro" id="5_0"></td>
-					<td class="cellQuattro" id="6_0"></td>
+					<td class="cellQuattro" id="0_0" value=0></td>
+					<td class="cellQuattro" id="1_0" value=1></td>
+					<td class="cellQuattro" id="2_0" value=2></td>
+					<td class="cellQuattro" id="3_0" value=3></td>
+					<td class="cellQuattro" id="4_0" value=4></td>
+					<td class="cellQuattro" id="5_0" value=5></td>
+					<td class="cellQuattro" id="6_0" value=6></td>
 					</tr>
 					</table>
 				</div>
@@ -228,6 +230,15 @@
 					</div>
 					<div class="col-sm-3"></div>
 				</div>
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6 d-flex justify-content-center">
+						<div id="turni"></div>
+						<i class="fa-solid fa-hourglass"> Turno di <span id=turnoG><i class="fa-solid fa-otter redplayer">Hot Otter</i></span></i>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+				
 				<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-6 d-flex justify-content-center">

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +65,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="parola" class="nav-link">
+            <a href="parolaIntro" class="nav-link">
              <i class="fa-solid fa-book"></i>
               <p>
                 Indovina la parola
@@ -96,12 +97,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page</h1>
+            <h1>FG_Giochi</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item active">FG_Giochi</li>
             </ol>
           </div>
         </div>
@@ -114,7 +115,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Title</h3>
+          <h3 class="card-title">Intro</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -126,11 +127,68 @@
           </div>
         </div>
         <div class="card-body">
-          <h1> webApp di semplici giochi se funziona, ammesso e non concesso che io riesca</h1>
+          <h2> webApp di semplici giochi</h2>
+          <p>Una serie di giochi che hanno lo scopo principale di testare le funzionalità dei vari strumenti a mia disposizione</p>
+          <p>E mentre si fanno prove, perché non creare qualcosa che possa essere un minimo divertente?</p>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-          Footer
+          FG
+        </div>
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
+
+<div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Parola</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2> Indovina la parola</h2>
+          <p>potrebbe sembrare il gioco dell'impiccato, ma è esattamente quello</p>
+          <p>Ci sono diverse modalità, un sistema di streak (parole consecutive) e cavoli vari</p>
+          <a href="parolaIntro"><button type="button" class="btn btn-info">Provalo!</button></a>
+          
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          FG
+        </div>
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
+      
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">DajeQuattro</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2><del>Forza</del>DajeQuattro</h2>
+          <p>Sì, è forza 4, ovviamente non si può giocare da soli</p>
+          <p>Sfida qualcuno a chi mette quattro gettoni in fila, il gioco è ancora molto rudimentale ma funziona</p>
+          <a href="dajequattro"><button type="button" class="btn btn-info">Provalo!</button></a>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          FG
         </div>
         <!-- /.card-footer-->
       </div>

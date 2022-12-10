@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FG_Giochi - Indovina la Parola</title>
 
@@ -13,8 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- Theme style -->
 <link rel="stylesheet" href="static/css/adminlte.min.css">
-<!-- Script gioco -->
-<link rel="stylesheet" href="static/css/stileParola.css">
+
 
 
 <!-- jQuery -->
@@ -23,8 +23,20 @@
 <!-- Bootstrap 4 -->
 	<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"
 		type="text/javascript"></script>
+<!-- Script gioco -->
 
-<script src="static/js/parolaScript.js"></script>
+	<link rel="stylesheet" href="static/css/stileParola.css">
+	<script type="text/javascript">
+	    var listaPrl = new Array();
+	    <c:forEach var="prlMap" items="${lista}" >
+	    	var prl=new String();
+	    	prl="${prlMap}"
+	  		console.log(prl);
+		    listaPrl.push(prl.toUpperCase());
+		</c:forEach>
+	</script>
+	<script src="static/js/parolaScript.js"></script>
+
 
 
 </head>
@@ -67,7 +79,7 @@
 						data-widget="treeview" role="menu" data-accordion="false">
 						<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-						<li class="nav-item"><a href="parola" class="nav-link"> <i
+						<li class="nav-item"><a href="parolaIntro" class="nav-link"> <i
 								class="fa-solid fa-book"></i>
 								<p>
 									Indovina la parola <span class="right badge badge-danger">New</span>
@@ -120,15 +132,18 @@
 					<div class="col-sm-6 d-flex justify-content-center">
 									<select class="form-select" id="mode">
 										<option selected>Scegli una modalita'...</option>
-										<option value="parola">Parola casuale - ITA</option>
+										<option value="ita">Parola casuale - ITA</option>
 										<option value="capitale">Geografia - Capitale</option>
 										<option value="disney">Disney - Personaggio</option>
 										<option value="animali">Natura - Animali</option>
+										<option value="zelda">Zelda - Personaggio</option>
+										<option value="pokemon">Pokemon - nome</option>
+										<option value="rock">Rock - nome band</option>
 										<option value="test">TESTING</option>
 									</select>
 								
-								<button class="btn btn-primary" type="button" id="genera">Nuova
-										Partita</button>
+								<a href="parola?mode=${mode}" id="genera"><button class="btn btn-primary" type="button">Nuova
+										Partita</button></a>
 								</div>	
 					<div class="col-sm-3"></div>	
 					</div>
@@ -136,7 +151,7 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="streakSpace">
-							<h4>Streak: <span id="streak">0</span></h4>
+							<h4><i class="fa-regular fa-comment"> ${mode} - Streak: <span id="streak">0</span></i></h4>
 							<span id="streakPuls"><button class="btn btn-success" type="button" id="keepStreak">STREAK!</button></span>
 						</div>
 					</div>
@@ -163,11 +178,7 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="parolaRnd">
-							<h2>Indovina la parola!</h2>
-							<p>seleziona la modalita' di gioco, quindi premi su nuova partita</p>
-							<p>premi una lettera e poi nell'enorme casella al centro</p>
-							<p>se in una casella c'e' _ vuol dire che la' c'e' uno spazio</p>
-							<p>buona streak!</p>
+							<button class="btn btn-primary" id="inizia" value="${mode}"><i class="fa-solid fa-pen"> Inizia a giocare</i></button>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>
@@ -175,12 +186,13 @@
 				<div class="row">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4 d-flex justify-content-center""><div class="guessSpace"><input type="button" class="btn btn-primary scegliLet" id="bgScLet"
-							value=""/></div></div>
+							value=""/></div>
+							</div>
 					<div class="col-sm-4"></div>
 				</div>				
 				<div class="row">
-					<div class="col-sm-4"></div>
-					<div class="col-sm-4 d-flex justify-content-center align-items-center">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 d-flex justify-content-center align-items-center">
 						<button type="button" class="pulsLet btn btn-light" value="Q" id="pLetQ" autocomplete="off">Q</button>
 						<button type="button" class="pulsLet btn btn-light" value="W" id="pLetW" autocomplete="off">W</button>
 						<button type="button" class="pulsLet btn btn-light" value="E" id="pLetE" autocomplete="off">E</button>
@@ -192,11 +204,11 @@
 						<button type="button" class="pulsLet btn btn-light" value="O" id="pLetO" autocomplete="off">O</button>
 						<button type="button" class="pulsLet btn btn-light" value="P" id="pLetP" autocomplete="off">P</button>
 					</div>
-					<div class="col-sm-4"></div>
+					<div class="col-sm-2"></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-4"></div>
-					<div class="col-sm-4 d-flex justify-content-center align-items-center">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 d-flex justify-content-center align-items-center">
 						<button type="button" class="pulsLet btn btn-light" value="A" id="pLetA" autocomplete="off">A</button>
 						<button type="button" class="pulsLet btn btn-light" value="S" id="pLetS" autocomplete="off">S</button>
 						<button type="button" class="pulsLet btn btn-light" value="D" id="pLetD" autocomplete="off">D</button>
@@ -207,11 +219,11 @@
 						<button type="button" class="pulsLet btn btn-light" value="K" id="pLetK" autocomplete="off">K</button>
 						<button type="button" class="pulsLet btn btn-light" value="L" id="pLetL" autocomplete="off">L</button>
 					</div>
-					<div class="col-sm-4"></div>
+					<div class="col-sm-2"></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-4"></div>
-					<div class="col-sm-4 d-flex justify-content-center align-items-center">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 d-flex justify-content-center align-items-center">
 						<button type="button" class="pulsLet btn btn-light" value="Z" id="pLetZ" autocomplete="off">Z</button>
 						<button type="button" class="pulsLet btn btn-light" value="X" id="pLetX" autocomplete="off">X</button>
 						<button type="button" class="pulsLet btn btn-light" value="C" id="pLetC" autocomplete="off">C</button>
@@ -219,17 +231,16 @@
 						<button type="button" class="pulsLet btn btn-light" value="B" id="pLetB" autocomplete="off">B</button>
 						<button type="button" class="pulsLet btn btn-light" value="N" id="pLetN" autocomplete="off">N</button>
 						<button type="button" class="pulsLet btn btn-light" value="M" id="pLetM" autocomplete="off">M</button>
-						<button type="button" class="pulsLet btn btn-light" value="'" id="pLet\'" autocomplete="off">'</button>
 						<button type="button" class="btn btn-primary scegliLet" id="smScLet" value=""><i class="fa-solid fa-check"></i></button>
 					</div>
-					<div class="col-sm-4"></div>
+					<div class="col-sm-2"></div>
 				</div>
 				
 					
 					<div class="row">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4 d-flex justify-content-right">
-						<a href="parola" class="nav-link"><button type="button" class="btn btn-secondary">RESET</button></a>
+						<a href="parolaIntro" class="nav-link"><button type="button" class="btn btn-secondary">RESET</button></a>
 					</div>
 					<div class="col-sm-4"></div>
 				</div>
@@ -240,7 +251,6 @@
 						<ul>
 						<li>possibilita' di inserire la parola completa</li>
 						<li>importazione delle liste di parole da file esterni</li> 
-						<li>lettura da tastiera reale</li>
 						</ul>
 					</div>
 					<div class="col-sm-2"></div>
@@ -250,7 +260,7 @@
 					<div class="col-sm-8 d-flex justify-content-center">
 						<h3>BUG:</h3>
 						<ul>
-						<li>l'apostrofo e' buggato, non toglie vite se non c'e' e non cambia colore</li>
+						<li>//</li>
 						</ul>
 					</div>
 					<div class="col-sm-2"></div>
