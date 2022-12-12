@@ -26,7 +26,7 @@ public class ElementoRepository {
 	
 	
 	public Integer countElementi() {
-		//Parametri da passsare alla query
+		//Parametri da passare alla query
 		MapSqlParameterSource params=new MapSqlParameterSource();
 		
 		//Query

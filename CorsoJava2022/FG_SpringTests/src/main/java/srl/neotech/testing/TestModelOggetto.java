@@ -1,16 +1,17 @@
 package srl.neotech.testing;
-public class TestComponentOggetto {
+
+public class TestModelOggetto {
 
 	private String id;
 	private String descrizione;
 	private Integer valore;
 	
 	
-	public TestComponentOggetto() {
+	public TestModelOggetto() {
 		
 	}
 	
-	public TestComponentOggetto(String id, String descrizione, Integer valore) {
+	public TestModelOggetto(String id, String descrizione, Integer valore) {
 		this.id = id;
 		this.descrizione = descrizione;
 		this.valore = valore;

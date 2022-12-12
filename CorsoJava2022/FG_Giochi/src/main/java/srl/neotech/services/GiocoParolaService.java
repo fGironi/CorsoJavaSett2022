@@ -2,13 +2,15 @@ package srl.neotech.services;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.javafaker.Faker;
 
+import srl.neotech.model.Giocatore;
+import srl.neotech.model.Punteggio;
+
 @Service
-public class GiocoService {
+public class GiocoParolaService {
 
 	private ArrayList<String> listaParole;
 	
@@ -55,6 +57,31 @@ public class GiocoService {
 		return this.listaParole;
 	}
 	
-
+	public ArrayList<String> listaLoL() {
+		this.listaParole=new ArrayList<String>();
+		while (this.listaParole.size()<100) {
+			String s=faker.leagueOfLegends().champion();
+			if (this.listaParole.contains(s)==false){
+				this.listaParole.add(s);
+			}
+		}
+		return this.listaParole;
+	}
 	
+
+	public Giocatore creaNuovoGiocatore(String nomeG) {
+		Giocatore g=new Giocatore(nomeG);
+		return g;
+	}
+	
+	public void nuovoPunteggio(String modalita, Integer streak, Giocatore g) {
+		Punteggio p=new Punteggio(modalita, streak);
+		g.getPunteggi().add(p);
+	}
+	
+	public ArrayList<Punteggio> highScoreGeneral(Giocatore g){
+		ArrayList<Punteggio> highscores= new ArrayList<Punteggio>();
+				
+		return highscores;
+	}
 }

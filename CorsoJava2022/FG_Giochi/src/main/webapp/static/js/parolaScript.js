@@ -8,6 +8,8 @@ $(document).ready(function() {
 	var letTentate;
 	var streak;
 	var tastoPrem;
+	var paroleIndov;
+	var startingErr;
 
 	const lisPar = [
 		'PROVA',
@@ -71,7 +73,9 @@ $(document).ready(function() {
 	const lisTest = [
 		'TEST TEST',
 		'ALL\'ORA',
-		'SAINT JOHN\'S', 'L\'AVANA', 'SANA\'A', 'N\'DJAMENA', 'NUKU\'ALOFA'
+		'CACCA & PUPU',
+		'??Ò@E7!,8+',
+		'SUPERCALIFRAGILE ISTICHESPIRALITOSO'
 	]
 	
 //	$("#mode").change(function(){
@@ -177,6 +181,27 @@ $(document).ready(function() {
 				"<p> Te stai testando test a 'ndo te sta</p>"+
 				"<p> Breve lista per poter testare le funzionalità dello script </p>")
 		}
+		else if (modSpieg === 'lol') {
+			$("#istruzioni").html(
+				"<h2>League of Legends Champions</h2>"+
+				"<p> Indovina i nomi dei campioni di LoL</p>"+
+				"<p> tutti i nomi sono generati usando la libreria JavaFaker</p>"+
+				"<p> nota: alcuni sono sbagliati (ex: AlistEr), mi dispiace non posso farci nulla :D </p>")
+		}
+		else if (modSpieg === 'pokemon') {
+			$("#istruzioni").html(
+				"<h2>Pokémon</h2>"+
+				"<p> indovina il nome di un Pokémon </p>"+
+				"<p> tutti i nomi sono generati usando la libreria JavaFaker</p>"+
+				"<p> non so quali generazioni prenda in considerazione, ma sicuramente c'è pikachu</p>")
+		}
+		else if (modSpieg === 'rock') {
+			$("#istruzioni").html(
+				"<h2>Rock Band</h2>"+
+				"<p> Indovina il nome delle rock band </p>"+
+				"<p> tutti i nomi sono generati usando la libreria JavaFaker</p>"+
+				"<p> Alcuni nomi sono particolarmente lunghi, non per questo sono più difficli </p>")
+		}
 		else { 
 			$("#istruzioni").html(
 			"<h2>Indovina la parola!</h2>"+
@@ -199,9 +224,11 @@ $(document).ready(function() {
 	$("#inizia").click(function(){
 		var modParola=$(this).val();
 		streak = 0;
+		paroleIndov=[];
 		$("#streakPuls").hide();
 		lettereIndovinate = 0;
 		errori = 0;
+		startingErr=0;
 		letTentate = [];
 		$("#streak").html(streak)
 		$("*[id*=vita]").removeClass('fa-regular');
@@ -218,22 +245,29 @@ $(document).ready(function() {
 		if (modParola === 'disney') { possibiliParole = Array.from(lisDisney); }
 		if (modParola === 'animali') { possibiliParole = Array.from(lisAni); }
 		if (modParola === 'test') { possibiliParole = Array.from(lisTest); }
-		if (modParola === "zelda"||modParola === "pokemon" || modParola === "rock") { possibiliParole = listaPrl;}
+		if (modParola === "lol" || modParola === "pokemon" || modParola === "rock") { possibiliParole = listaPrl;}
 	
 		parolaScelta = possibiliParole[Math.floor(Math.random() * possibiliParole.length)];
-	
-		var htmlStr = "<table class=\"spazioParola\"><tr>";
+		var doppiariga=false;
+		var htmlStr = " </tr></table><table class=\"spazioParola\"><tr>";
+		
 		for (var i = 0; i < parolaScelta.length; i++) {
 			var rndC = parolaScelta.charAt(i);
 			if (rndC === ' ') {
-				htmlStr += "<td border=\"1px, solid, black\" class=\"spazioLet\" id=\"seg" + i + "\">_</td>";
+				htmlStr += "<td class=\"spazioLet\" id=\"seg" + i + "\"><h2>_</h2></td>";
 				lettereIndovinate++;
+				if (i>10 && doppiariga==false){
+					htmlStr+="<table class=\"spazioParola\"><tr>";
+					doppiariga=true;
+				}
 			}
-			else if (rndC === "\'"){
-				htmlStr += "<td border=\"1px, solid, black\" class=\"spazioLet\" id=\"seg" + i + "\">&rsquo;</td>";
-				lettereIndovinate++;
-			}
-			else htmlStr += "<td border=\"1px, solid, black\" class=\"spazioLet\"> <h2 id=\"seg" + i + "\" class=\"letSegr\">" + rndC + "</h2> </td>"
+			else if ((/^[a-zA-Z]+$/.test(rndC))){
+					htmlStr += "<td class=\"spazioLet\"> <h2 id=\"seg" + i + "\" class=\"letSegr\">" + rndC + "</h2> </td>"
+				}
+				else {
+					htmlStr += "<td class=\"spazioLet\" id=\"seg" + i + "\"><h2>"+rndC+"</h2></td>";
+					lettereIndovinate++;
+				}
 		}
 		htmlStr += " </tr></table>";
 		$("#parolaRnd").html(htmlStr);
@@ -295,6 +329,18 @@ $(document).ready(function() {
 				$(".scegliLet").prop('disabled', true);
 				streak = 0;
 				$("#streakPuls").hide();
+				$(".pulsLet").hide();
+				$(".scegliLet").hide();
+				$(".gameRecap").show();
+				$("#parolaSconfitta").text(parolaScelta);
+				for (var i=0; i<paroleIndov.length; i++) {
+					var htmlIndov="<li> "+paroleIndov[i][0]+": "+paroleIndov[i][1]+" errori</li>"
+					$("#indovinate").append(htmlIndov);	
+				}
+				
+				
+				
+				
 			}
 		}
 
@@ -313,7 +359,7 @@ $(document).ready(function() {
 				var letScelta=$(".scegliLet").val()
 				checkLettera(letScelta)
 			}
-			if (tastoPrem.length>1) {
+			else if (tastoPrem.length>1) {
 				console.log("l'utente ha premuto un tasto diverso da una lettera'")
 			}
 
@@ -325,6 +371,10 @@ $(document).ready(function() {
 	});
 
 	$("#keepStreak").click(function() {
+		var erroriFatti=errori-startingErr;
+		var parolaRecord=[parolaScelta, erroriFatti];
+		paroleIndov.push(parolaRecord)
+			
 		lettereIndovinate = 0;
 		letTentate = [];
 		$("#streakPuls").hide();
@@ -347,26 +397,33 @@ $(document).ready(function() {
 			$("*[id=" + vitaDaMettere + "]").addClass('fa-solid');
 			errori--;
 		}
-
+			startingErr=errori;
 
 		if (possibiliParole.length < 1) {
 			alert("hai indovinato tutte le parole di questa categoria! SEI 'NA BRANDA");
 		}
 		else {
 			parolaScelta = possibiliParole[Math.floor(Math.random() * possibiliParole.length)];
-
+			var doppiariga=false;
 			var htmlStr = "<table class=\"spazioParola\"><tr>";
 			for (var i = 0; i < parolaScelta.length; i++) {
 				var rndC = parolaScelta.charAt(i);
 				if (rndC === ' ') {
-					htmlStr += "<td border=\"1px, solid, black\" class=\"spazioLet\" id=\"seg" + i + "\">_</td>";
+					htmlStr += "<td class=\"spazioLet\" id=\"seg" + i + "\"><h2>_</h2></td>";
+					lettereIndovinate++;
+					if (i>10 && doppiariga==false){
+					htmlStr+="<table class=\"spazioParola\"><tr>";
+					doppiariga=true;
+				}
+				}
+				else if ((/^[a-zA-Z]+$/.test(rndC))){
+					htmlStr += "<td class=\"spazioLet\"> <h2 id=\"seg" + i + "\" class=\"letSegr\">" + rndC + "</h2> </td>"
+				}
+				else {
+					htmlStr += "<td class=\"spazioLet\" id=\"seg" + i + "\"><h2>"+rndC+"</h2></td>";
 					lettereIndovinate++;
 				}
-			else if (rndC === "\'"){
-				htmlStr += "<td border=\"1px, solid, black\" class=\"spazioLet\" id=\"seg" + i + "\">&rsquo;</td>";
-				lettereIndovinate++;
-			}
-				else htmlStr += "<td border=\"1px, solid, black\" class=\"spazioLet\"> <h2 id=\"seg" + i + "\" class=\"letSegr\">" + rndC + "</h2> </td>"
+				
 			}
 			htmlStr += " </tr></table>";
 			$("#parolaRnd").html(htmlStr);

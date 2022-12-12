@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import srl.neotech.services.GiocoService;
+import srl.neotech.services.GiocoParolaService;
 
 @Controller
 public class GiochiController {
 	
 	@Autowired
-	GiocoService gService;
+	GiocoParolaService gService;
 
     @RequestMapping(value="/parola", method = RequestMethod.GET)
     public String getGiocoParola(
@@ -28,7 +28,6 @@ public class GiochiController {
     		ArrayList<String>listaZelda=gService.listaZelda();
     		modelMap.addAttribute("lista", listaZelda);
     	}
-    	
     	if (mode.equals("pokemon")) {
     		ArrayList<String>listaPoke=gService.listaPoke();
     		modelMap.addAttribute("lista", listaPoke);
@@ -36,6 +35,10 @@ public class GiochiController {
     	if (mode.equals("rock")) {
     		ArrayList<String>listaRock=gService.listaRock();
     		modelMap.addAttribute("lista", listaRock);
+    	}
+    	if (mode.equals("lol")) {
+    		ArrayList<String>listaLoL=gService.listaLoL();
+    		modelMap.addAttribute("lista", listaLoL);
     	}
     	
     	

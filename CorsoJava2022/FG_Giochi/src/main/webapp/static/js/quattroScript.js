@@ -34,6 +34,7 @@ $(document).ready(function () {
 			$(".pulsPl").removeClass("btn-danger");
 			$(".pulsPl").addClass("pulsG");
 			$(".pulsPl").addClass("btn-warning");
+			$("#turnoG").html("<i class=\"fa-solid fa-hippo yellowplayer\">Happy Hippo</i>");
 			
 			
 		}
@@ -42,6 +43,7 @@ $(document).ready(function () {
 			$(".pulsPl").removeClass("btn-warning");
 			$(".pulsPl").addClass("pulsR");
 			$(".pulsPl").addClass("btn-danger");
+			$("#turnoG").html("<i class=\"fa-solid fa-otter redplayer\">Hot Otter</i>");
 		}
 	})
 	
@@ -71,6 +73,7 @@ $(document).ready(function () {
 			$(".pulsPl").removeClass("btn-danger");
 			$(".pulsPl").addClass("pulsG");
 			$(".pulsPl").addClass("btn-warning");
+			$("#turnoG").html("<i class=\"fa-solid fa-hippo yellowplayer\">Happy Hippo</i>");
 			
 			
 		}
@@ -79,6 +82,7 @@ $(document).ready(function () {
 			$(".pulsPl").removeClass("btn-warning");
 			$(".pulsPl").addClass("pulsR");
 			$(".pulsPl").addClass("btn-danger");
+			$("#turnoG").html("<i class=\"fa-solid fa-otter redplayer\">Hot Otter</i>");
 		}
 		})
 
@@ -92,7 +96,7 @@ $(document).ready(function () {
 			var horChecking=true; //sto controllando le streak orizzontali
 			while (horChecking===true){ //mentre sto controllando
 				var horFound=false;
-				for (var j=0; j<gettoniMessi.length; j++){ //per ogni gettone messo
+				for (var j=1; j<gettoniMessi.length; j++){ //per ogni gettone messo
 					console.log("paragono gettone "+i+": "+gettoniMessi[i]+" e gettone "+j+": "+gettoniMessi[j])
 					if (gettoniMessi[i][0]===gettoniMessi[j][0]){ //se ha lo stesso colore
 					console.log("gettone "+i+" "+gettoniMessi[i][0]+" e gettone "+j+" "+gettoniMessi[j][0]+ " hanno lo stesso colore")
@@ -122,7 +126,7 @@ $(document).ready(function () {
 			var verChecking=true; //sto controllando le streak verticali
 			while (verChecking===true){ //mentre sto controllando
 				var verFound=false;
-				for (var j=0; j<gettoniMessi.length; j++){ //per ogni gettone messo
+				for (var j=1; j<gettoniMessi.length; j++){ //per ogni gettone messo
 					console.log("paragono gettone "+i+": "+gettoniMessi[i]+" e gettone "+j+": "+gettoniMessi[j])
 					if (gettoniMessi[i][0]===gettoniMessi[j][0]){ //se ha lo stesso colore
 					console.log("gettone "+i+" "+gettoniMessi[i][0]+" e gettone "+j+" "+gettoniMessi[j][0]+ " hanno lo stesso colore")
@@ -153,7 +157,7 @@ $(document).ready(function () {
 			var diagChecking=true; //sto controllando le streak diagonali
 			while (diagChecking===true){ //mentre sto controllando
 				var diagFound=false;
-				for (var j=0; j<gettoniMessi.length; j++){ //per ogni gettone messo
+				for (var j=1; j<gettoniMessi.length; j++){ //per ogni gettone messo
 					console.log("paragono gettone "+i+": "+gettoniMessi[i]+" e gettone "+j+": "+gettoniMessi[j])
 					if (gettoniMessi[i][0]===gettoniMessi[j][0]){ //se ha lo stesso colore
 					console.log("gettone "+i+" "+gettoniMessi[i][0]+" e gettone "+j+" "+gettoniMessi[j][0]+ " hanno lo stesso colore")
@@ -183,7 +187,7 @@ $(document).ready(function () {
 			var revDiagChecking=true; //sto controllando le streak diagonali al contrario
 			while (revDiagChecking===true){ //mentre sto controllando
 				var revDiagFound=false;
-				for (var j=0; j<gettoniMessi.length; j++){ //per ogni gettone messo
+				for (var j=1; j<gettoniMessi.length; j++){ //per ogni gettone messo
 					console.log("paragono gettone "+i+": "+gettoniMessi[i]+" e gettone "+j+": "+gettoniMessi[j])
 					if (gettoniMessi[i][0]===gettoniMessi[j][0]){ //se ha lo stesso colore
 					console.log("gettone "+i+" "+gettoniMessi[i][0]+" e gettone "+j+" "+gettoniMessi[j][0]+ " hanno lo stesso colore")

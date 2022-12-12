@@ -136,8 +136,8 @@
 										<option value="capitale">Geografia - Capitale</option>
 										<option value="disney">Disney - Personaggio</option>
 										<option value="animali">Natura - Animali</option>
-										<option value="zelda">Zelda - Personaggio</option>
 										<option value="pokemon">Pokemon - nome</option>
+										<option value="lol">League of Legends - Campioni</option>
 										<option value="rock">Rock - nome band</option>
 										<option value="test">TESTING</option>
 									</select>
@@ -152,7 +152,7 @@
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="streakSpace">
 							<h4><i class="fa-regular fa-comment"> ${mode} - Streak: <span id="streak">0</span></i></h4>
-							<span id="streakPuls"><button class="btn btn-success" type="button" id="keepStreak">STREAK!</button></span>
+							<span id="streakPuls"><button class="btn btn-lg btn-success" type="button" id="keepStreak">STREAK!</button></span>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>
@@ -185,11 +185,31 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-4"></div>
+					<div class="col-sm-4 d-flex justify-content-center"">
+						<div class="gameRecap" id="sconfitta"><h3>la parola era: <span id="parolaSconfitta"></span></h3></div>
+					</div>
+					<div class="col-sm-4"></div>
+				</div>		
+				<div class="row">
+					<div class="col-sm-4"></div>
 					<div class="col-sm-4 d-flex justify-content-center""><div class="guessSpace"><input type="button" class="btn btn-primary scegliLet" id="bgScLet"
 							value=""/></div>
 							</div>
 					<div class="col-sm-4"></div>
-				</div>				
+				</div>
+				<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 d-flex justify-content-center">
+						<div id="paroleIndovinate" class="gameRecap">
+						<h3>fine partita</h3>
+						<p>Modalità: ${mode}, parole indovinate:</p>
+						<ul>
+							<span id="indovinate"></span>
+						</ul>
+						</div>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>		
 				<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center align-items-center">
@@ -237,7 +257,7 @@
 				</div>
 				
 					
-					<div class="row">
+				<div class="row">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4 d-flex justify-content-right">
 						<a href="parolaIntro" class="nav-link"><button type="button" class="btn btn-secondary">RESET</button></a>
@@ -250,7 +270,7 @@
 						<h3>TODO:</h3>
 						<ul>
 						<li>possibilita' di inserire la parola completa</li>
-						<li>importazione delle liste di parole da file esterni</li> 
+						<li>sistema di registrazione utente & highscore</li> 
 						</ul>
 					</div>
 					<div class="col-sm-2"></div>

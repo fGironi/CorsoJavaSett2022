@@ -125,8 +125,8 @@
 										<option value="capitale">Geografia - Capitale</option>
 										<option value="disney">Disney - Personaggio</option>
 										<option value="animali">Natura - Animali</option>
-										<option value="zelda">Zelda - Personaggio</option>
 										<option value="pokemon">Pokemon - nome</option>
+										<option value="lol">League of Legends - Campioni</option>
 										<option value="rock">Rock - nome band</option>
 										<option value="test">TESTING</option>
 									</select>
@@ -166,7 +166,7 @@
 						<h3>TODO:</h3>
 						<ul>
 						<li>possibilita' di inserire la parola completa</li>
-						<li>importazione delle liste di parole da file esterni</li> 
+						<li>sistema di registrazione utente & highscore</li>  
 						</ul>
 					</div>
 					<div class="col-sm-2"></div>
@@ -223,6 +223,19 @@
 	<!-- Demo Template -->
 	<script src="static/js/fireAjax.js" type="text/javascript"></script>
 	<script src="static/js/demoTemplate.js" type="text/javascript"></script>
+	
+	<script>
+// 	$(document).ready(function(){
+// 			  let nomeGioc = prompt("Inserisci il tuo nome per salvare i tuoi punteggi(wip) ", "");
+// 			  if (nomeGioc == null || nomeGioc == "") {
+// 			    console.log("User cancelled the prompt");
+// 			  } else {
+// 			    console.log(nomeGioc+ " ha iniziato a giocare");
+// 			  }
+			  
+// 	})
+	</script>
+	
 
 </body>
 </html>

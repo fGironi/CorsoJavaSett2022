@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import srl.neotech.testing.TestComponentOggetto;
+import srl.neotech.testing.TestModelOggetto;
 import srl.neotech.testing.TestComponentUtente;
 import srl.neotech.testing.TestService;
 
@@ -31,7 +30,7 @@ public class TestController {
 	
 	 @GetMapping(value="/testAdd")
 	    public String testSpringAdd(@RequestParam("idOgg") String idOgg) {
-		 TestComponentOggetto oggettoPreso=service.getMapOgg().get(idOgg);		 
+		 TestModelOggetto oggettoPreso=service.getMapOgg().get(idOgg);		 
 		 service.aggiungiOggetto(utente.getInventario(), oggettoPreso);
 		 return "testAdd";
 	    }

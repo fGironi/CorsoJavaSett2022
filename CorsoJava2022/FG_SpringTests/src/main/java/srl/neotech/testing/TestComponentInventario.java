@@ -1,7 +1,6 @@
 package srl.neotech.testing;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -12,10 +11,10 @@ public class TestComponentInventario {
 	
 	private Integer valoreInventario=0;
 	private String codiceInventario;
-	private ArrayList<TestComponentOggetto> listaInventario;
+	private ArrayList<TestModelOggetto> listaInventario;
 	
 	public TestComponentInventario(){
-		 this.setListaInventario(new ArrayList<TestComponentOggetto>());
+		 this.setListaInventario(new ArrayList<TestModelOggetto>());
 	}
 	
 	
@@ -35,13 +34,13 @@ public class TestComponentInventario {
 
 
 
-	public ArrayList<TestComponentOggetto> getListaInventario() {
+	public ArrayList<TestModelOggetto> getListaInventario() {
 		return listaInventario;
 	}
 
 
 
-	public void setListaInventario(ArrayList<TestComponentOggetto> listaInventario) {
+	public void setListaInventario(ArrayList<TestModelOggetto> listaInventario) {
 		this.listaInventario = listaInventario;
 	}
 
