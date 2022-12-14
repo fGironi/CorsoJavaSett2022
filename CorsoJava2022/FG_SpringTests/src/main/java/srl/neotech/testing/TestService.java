@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 public class TestService {
 
 	private Integer contaConnessioni=0;
+	private Integer contaOggettcreati=0;
 	private HashMap<String, TestModelOggetto> mapOgg;
 	
 	public TestService(){
@@ -43,7 +44,7 @@ public class TestService {
 		String stampa="";
 		for (TestModelOggetto ogg: inv.getListaInventario()) {
 			System.out.println(ogg);
-			stampa=(stampa+" "+ogg.getDescrizione()+",");
+			stampa=(stampa+" "+ogg.getNome()+",");
 		}
 		return stampa;
 	}
@@ -57,6 +58,12 @@ public class TestService {
 		System.out.println("valore complessivo: "+inv.getValoreInventario());
 		Integer totale=inv.getValoreInventario();
 		return totale;
+	}
+	
+	public String assegnaIdOggetto() {
+		String nuovoID="U"+this.contaOggettcreati;
+		this.contaOggettcreati++;
+		return nuovoID;
 	}
 	
 	
@@ -78,5 +85,15 @@ public class TestService {
 
 	public void setMapOgg(HashMap<String, TestModelOggetto> mapOgg) {
 		this.mapOgg = mapOgg;
+	}
+
+
+	public Integer getContaOggettcreati() {
+		return contaOggettcreati;
+	}
+
+
+	public void setContaOggettcreati(Integer contaOggettcreati) {
+		this.contaOggettcreati = contaOggettcreati;
 	}
 }

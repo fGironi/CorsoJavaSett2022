@@ -3,13 +3,16 @@ package srl.neotech.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import srl.neotech.testing.TestModelOggetto;
 import srl.neotech.testing.TestComponentUtente;
+import srl.neotech.testing.TestModelOggetto;
 import srl.neotech.testing.TestService;
 
 @Controller
@@ -24,6 +27,13 @@ public class TestController {
 	    public String testSpringLog(ModelMap modelMap) {
 		 service.assegnaCodiceInventario(utente.getInventario());
 		 String codiceInv=utente.getInventario().getCodiceInventario();
+		 String mostruosita="";
+		 for (String id: service.getMapOgg().keySet()) {
+			 TestModelOggetto ogg=service.getMapOgg().get(id);
+			 mostruosita=mostruosita+"<option value=\""+ogg.getId()+"\">"+ogg.getNome()+"</option>";
+			 
+		 }
+		 modelMap.addAttribute("oggetti", mostruosita);
 		 modelMap.addAttribute("codiceInv", codiceInv);
 	        return "test";
 	    }
@@ -48,9 +58,6 @@ public class TestController {
 			 System.out.println("inserito codice sbagliato:"+idInv+", codice corretto="+codInvCorr+".");
 			 modelMap.addAttribute("inventario", "inserito codice sbagliato");
 		 }
-		 
-		
-
 		 return "testPrint";
 	    }
 	 
@@ -60,4 +67,31 @@ public class TestController {
 		 modelMap.addAttribute("totale", service.calcolaValoreInventario(utente.getInventario()));
 		 return "testCalc";
 	    }
+	 
+	 @RequestMapping(value="/testForm")
+	 	public String testSpringForm(ModelMap modelMap) {
+		 TestModelOggetto oggettoDTO=new TestModelOggetto();
+		 modelMap.addAttribute("oggettoDTO", oggettoDTO);
+		  return "testForm";
+	    }
+	
+	 
+	 @PostMapping(value="/testPost")
+	 	public String testSpringPost(@ModelAttribute("oggettoDTO") 
+	 	TestModelOggetto oggettoDTO, 
+	 	ModelMap modelMap, 
+	 	BindingResult result) {
+	        if (result.hasErrors()) {
+	            return "error";
+	        }
+		 //String id, String descrizione, Integer valore
+	      String nuovoID=service.assegnaIdOggetto();
+		 modelMap.addAttribute("id", nuovoID);
+		 modelMap.addAttribute("nome", oggettoDTO.getNome());
+		 modelMap.addAttribute("valore", oggettoDTO.getValore());
+		 modelMap.addAttribute("note", oggettoDTO.getNote());
+		 TestModelOggetto veroOggetto=new TestModelOggetto(nuovoID, oggettoDTO.getNome(), oggettoDTO.getValore());
+		 service.getMapOgg().put(nuovoID, veroOggetto);
+		 return "testPost";
+	 }
 }

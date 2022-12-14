@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +17,12 @@
 <p>Benvenuto, il codice del tuo carrello è: ${codiceInv}</p>
 
 <form action="testAdd" method="get">
-<label for="idOgg">Oggetti disponibili:</label>
+<label id="labelIdOgg">Oggetti disponibili:</label>
 <select name="idOgg" id="idOgg">
-  <option value="A1">Sfera</option>
-  <option value="B2">Cubo</option>
-  <option value="C3">Piramide</option>
+  "${oggetti}"
+
  </select>
- <input type="submit" value="Prendi oggetto"></input>
+ <button type="submit" value="Prendi oggetto">Prendi Oggetto</button>
  </form>
  
  
@@ -43,6 +43,7 @@
 
 
 <a href="testCalc"><button>Somma valore oggetti</button></a>
+<a href="testForm"><button>Crea un nuovo oggetto</button></a>
 
 
 

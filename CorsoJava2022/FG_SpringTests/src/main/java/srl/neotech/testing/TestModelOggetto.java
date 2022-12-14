@@ -1,10 +1,12 @@
 package srl.neotech.testing;
 
+
 public class TestModelOggetto {
 
 	private String id;
-	private String descrizione;
+	private String nome;
 	private Integer valore;
+	private String note;
 	
 	
 	public TestModelOggetto() {
@@ -13,7 +15,7 @@ public class TestModelOggetto {
 	
 	public TestModelOggetto(String id, String descrizione, Integer valore) {
 		this.id = id;
-		this.descrizione = descrizione;
+		this.nome = descrizione;
 		this.valore = valore;
 	}
 	public String getId() {
@@ -22,11 +24,11 @@ public class TestModelOggetto {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getDescrizione() {
-		return descrizione;
+	public String getNome() {
+		return nome;
 	}
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+	public void setNome(String descrizione) {
+		this.nome = descrizione;
 	}
 	public Integer getValore() {
 		return valore;
@@ -37,7 +39,15 @@ public class TestModelOggetto {
 	
 	@Override
 	public String toString() {
-		return "Oggetto [id=" + id + ", descrizione=" + descrizione + ", valore=" + valore + "]";
+		return "Oggetto [id=" + id + ", descrizione=" + nome + ", valore=" + valore + "]";
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 	
 	
