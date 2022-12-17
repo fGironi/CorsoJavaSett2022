@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
 
+	//Variabili a fine di testing
 	private Integer contaConnessioni=0;
 	private Integer contaOggettcreati=0;
 	private HashMap<String, TestModelOggetto> mapOgg;
@@ -60,10 +61,10 @@ public class TestService {
 		return totale;
 	}
 	
-	public String assegnaIdOggetto() {
+	public void assegnaIdOggetto(TestModelOggetto oggetto) {
 		String nuovoID="U"+this.contaOggettcreati;
 		this.contaOggettcreati++;
-		return nuovoID;
+		oggetto.setId(nuovoID);
 	}
 	
 	

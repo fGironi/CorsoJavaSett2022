@@ -23,17 +23,16 @@ public class TestController {
 	@Autowired
 	TestService service;
 	
-	 @RequestMapping(value="/test")
+	 @GetMapping(value="/test")
 	    public String testSpringLog(ModelMap modelMap) {
 		 service.assegnaCodiceInventario(utente.getInventario());
 		 String codiceInv=utente.getInventario().getCodiceInventario();
-		 String mostruosita="";
-		 for (String id: service.getMapOgg().keySet()) {
-			 TestModelOggetto ogg=service.getMapOgg().get(id);
-			 mostruosita=mostruosita+"<option value=\""+ogg.getId()+"\">"+ogg.getNome()+"</option>";
-			 
-		 }
-		 modelMap.addAttribute("oggetti", mostruosita);
+		 //String mostruosita="";
+		 // for (String id: service.getMapOgg().keySet()) {
+		 //	 TestModelOggetto ogg=service.getMapOgg().get(id);
+		 //	 mostruosita=mostruosita+"<option value=\""+ogg.getId()+"\">"+ogg.getNome()+"</option>";
+		 //}
+		 modelMap.addAttribute("oggetti", service.getMapOgg());
 		 modelMap.addAttribute("codiceInv", codiceInv);
 	        return "test";
 	    }
@@ -80,18 +79,16 @@ public class TestController {
 	 	public String testSpringPost(@ModelAttribute("oggettoDTO") 
 	 	TestModelOggetto oggettoDTO, 
 	 	ModelMap modelMap, 
-	 	BindingResult result) {
+	 	BindingResult result) {  //parte copiata, non so bene cosa fa
 	        if (result.hasErrors()) {
 	            return "error";
 	        }
-		 //String id, String descrizione, Integer valore
-	      String nuovoID=service.assegnaIdOggetto();
-		 modelMap.addAttribute("id", nuovoID);
+	     service.assegnaIdOggetto(oggettoDTO);
+		 modelMap.addAttribute("id", oggettoDTO.getId());
 		 modelMap.addAttribute("nome", oggettoDTO.getNome());
 		 modelMap.addAttribute("valore", oggettoDTO.getValore());
 		 modelMap.addAttribute("note", oggettoDTO.getNote());
-		 TestModelOggetto veroOggetto=new TestModelOggetto(nuovoID, oggettoDTO.getNome(), oggettoDTO.getValore());
-		 service.getMapOgg().put(nuovoID, veroOggetto);
+		 service.getMapOgg().put(oggettoDTO.getId(), oggettoDTO);
 		 return "testPost";
 	 }
 }

@@ -125,91 +125,49 @@
 			<!-- Main content -->
 			<section class="content">
 				<!-- /.stuff -->
-				
-				
+				<div class="clearfix">
 				<div class="row">
-					<div class="col-sm-3"></div>
-					<div class="col-sm-6 d-flex justify-content-center">
-									<select class="form-select" id="mode">
-										<option selected>Scegli una modalita'...</option>
-										<option value="ita">Parola casuale - ITA</option>
-										<option value="capitale">Geografia - Capitale</option>
-										<option value="disney">Disney - Personaggio</option>
-										<option value="animali">Natura - Animali</option>
-										<option value="pokemon">Pokemon - nome</option>
-										<option value="lol">League of Legends - Campioni</option>
-										<option value="rock">Rock - nome band</option>
-										<option value="test">TESTING</option>
-									</select>
-								
-								<a id="genera"><button disabled="true" class="btn btn-primary" id="generaPuls" type="button">Nuova
-										Partita</button></a>
-								</div>	
-					<div class="col-sm-3"></div>	
-					</div>
-				<div class="row">
-				<div class="col-sm-10"></div>
-				<div class="col-sm-2">
-				<a href="profiloUtente"><i class="fa-solid ${iconaUser}">${nomeUser}</i></a>
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+				<h2 style="color: red">${errore}</h2>
+				<h2>Iscriviti al sito!</h2>
+				<p>piccola nota: il sito non fornisce alcun tipo di protezione reale, non mettere nessun dato sensibile!</p>
+					<form:form action="/FG_Giochi/creaProfiloGiocatore" method="POST" id="formNuovoUtente" modelAttribute="giocatoreDTO">
+						<div class="row">
+						<form:label id="labelNome" path="nome">Scrivi il tuo nome</form:label>
+						<form:input id="inputNome" path="nome"></form:input>
+						</div><div class="row">
+						<form:label id="labelIcona" path="icona">Scegli la tua icona</form:label><br>					
+						<form:radiobutton id="iconaStella" path="icona" value="fa-star"></form:radiobutton><i class="fa-solid fa-star"></i>
+						<form:radiobutton id="iconaCacca" path="icona" value="fa-poo"></form:radiobutton><i class="fa-solid fa-poo"></i>
+						<form:radiobutton id="iconaIppo" path="icona" value="fa-hippo"></form:radiobutton><i class="fa-solid fa-hippo"></i>
+						<form:radiobutton id="iconaFulmine" path="icona" value="fa-bolt"></form:radiobutton><i class="fa-solid fa-bolt"></i>
+						<form:radiobutton id="iconaLontra" path="icona" value="fa-otter"></form:radiobutton><i class="fa-solid fa-otter"></i>
+						<form:radiobutton id="iconaFantasma" path="icona" value="fa-ghost"></form:radiobutton><i class="fa-solid fa-ghost"></i>
+						</div>
+						<button class="btn btn-primary" value="submin">Iscriviti</button>
+					</form:form>
+				
 				</div>
-				
-				
-				</div>	
-				
-				<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-8 d-flex justify-content-center">
-					
-						<div id="istruzioni">
-							<c:choose>
-							<c:when test="${id=='null'}"><h4>Benvenuto!</h4></c:when>
-							<c:otherwise>Bentornato!</c:otherwise>
-							</c:choose>
-							<h2>Indovina la parola!</h2>
-							<p>seleziona la modalita' di gioco, quindi premi su nuova partita</p>
-							<p>puoi selezionare una lettera dalla tastiera virtuale o usando la tua tastiera reale</p>
-							<p>per confermare la lettera puoi premere invio, il segno di conferma o l'enorme lettera al centro dello schermo</p>
-							<p>Ad ogni errore perderai una vita(<i class="vitG fa-solid fa-heart"></i>), cerca di indovinare prima di finirle!</p>
-							<p>Se la "parola" è composta da più di una parola lo spazio sarà indicato con un trattino basso (_)</p>
-							<p>allo stesso modo, se c'è un apostrofo sarà già presente nella tabella!</p>
-							<p>se ti senti particolarmente bravo, puoi indovinare più parole di seguito recuperando una sola vita per volta, basta cliccare su "STREAK" quando indovini</p>
-							<p>Buona fortuna!</p>
-						</div>	
-					</div>
-					<div class="col-sm-2"></div>
-				</div>
-							
-				
-				
-					
-					
-					<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-8 d-flex justify-content-center">
-						<h3>TODO:</h3>
-						<ul>
-						<li>possibilita' di inserire la parola completa</li>
-						<li>sistema di registrazione utente & highscore</li>  
-						</ul>
-					</div>
-					<div class="col-sm-2"></div>
+				<div class="col-sm-4"></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-8 d-flex justify-content-center">
-						<a href="parola?mode=capitale"><button>Capitali</button></a>
-						<a href="parola?mode=disney"><button>Disney</button></a>
-						<a href="parola?mode=ita"><button>Parola random</button></a>
-						<a href="parola?mode=animali"><button>Animali</button></a>
-
-
-					</div>
-					<div class="col-sm-2"></div>
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+				<h2>Sei già un utente? metti il tuo ID e accedi!</h2>
+				<form method="get" action="/FG_Giochi/login">
+				<input name="id" type="text"></input><button type="submit" class="btn btn-primary" id="login" value="submit">Accedi</button>
+				</form>
 				</div>
-					</div>
-					
-					
+				<div class="col-sm-4"></div>
 				</div>
+				
+				
+				
+				
+				
+				</div>			
+				
 			</section>
 		</div>
 

@@ -3,84 +3,80 @@ package srl.neotech.services;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.github.javafaker.Faker;
 
 import srl.neotech.model.Giocatore;
-import srl.neotech.model.Punteggio;
+import srl.neotech.model.PunteggioParola;
 
 @Service
 public class GiocoParolaService {
 
-	private ArrayList<String> listaParole;
-	
 	Faker faker=new Faker();
 
-	public ArrayList<String> getListaParole() {
-		return listaParole;
-	}
-
-	public void setListaParole(ArrayList<String> listaParole) {
-		this.listaParole = listaParole;
-	}
 	
-	public ArrayList<String> listaPoke() {
-		this.listaParole=new ArrayList<String>();
+	public ArrayList<String> listaPoke(ArrayList<String> listaParole) {
+		listaParole=new ArrayList<String>();
 		for (int i=0; i<100; i++) {
 			String s=faker.pokemon().name();
-			if (this.listaParole.contains(s)){
+			if (listaParole.contains(s)){
 				i--;
 			}
-			else this.listaParole.add(s);
+			else listaParole.add(s);
 		}
-		return this.listaParole;
+		return listaParole;
 	}
 	
-	public ArrayList<String> listaZelda() {
-		this.listaParole=new ArrayList<String>();
-		while (this.listaParole.size()<100) {
+	public ArrayList<String> listaZelda(ArrayList<String> listaParole) {
+		listaParole=new ArrayList<String>();
+		while (listaParole.size()<100) {
 			String s=faker.zelda().character();
-			if (this.listaParole.contains(s)==false){
-				this.listaParole.add(s);
+			if (listaParole.contains(s)==false){
+				listaParole.add(s);
 			}
 		}
-		return this.listaParole;
+		return listaParole;
 	}
-	public ArrayList<String> listaRock() {
-		this.listaParole=new ArrayList<String>();
-		while (this.listaParole.size()<100) {
+	public ArrayList<String> listaRock(ArrayList<String> listaParole) {
+		while (listaParole.size()<100) {
 			String s=faker.rockBand().name();
-			if (this.listaParole.contains(s)==false){
-				this.listaParole.add(s);
+			if (listaParole.contains(s)==false){
+				listaParole.add(s);
 			}
 		}
-		return this.listaParole;
+		return listaParole;
 	}
 	
-	public ArrayList<String> listaLoL() {
-		this.listaParole=new ArrayList<String>();
-		while (this.listaParole.size()<100) {
+	public ArrayList<String> listaLoL(ArrayList<String> listaParole) {
+		while (listaParole.size()<100) {
 			String s=faker.leagueOfLegends().champion();
-			if (this.listaParole.contains(s)==false){
-				this.listaParole.add(s);
+			if (s.equals("Alister")) s="Alistar";
+			if (listaParole.contains(s)==false){
+				listaParole.add(s);
 			}
 		}
-		return this.listaParole;
+		return listaParole;
 	}
 	
 
-	public Giocatore creaNuovoGiocatore(String nomeG) {
-		Giocatore g=new Giocatore(nomeG);
-		return g;
-	}
+	public ArrayList<String> modePicker(String mode){
+		ArrayList<String> listaParole=new ArrayList<String>();;
+		if (mode.equals("zelda")) listaParole=this.listaZelda(listaParole);
+    	if (mode.equals("pokemon")) listaParole=this.listaPoke(listaParole);
+    	if (mode.equals("rock")) listaParole=this.listaRock(listaParole);
+    	if (mode.equals("lol")) listaParole=this.listaLoL(listaParole);
+    	return listaParole;
+		}
 	
+
 	public void nuovoPunteggio(String modalita, Integer streak, Giocatore g) {
-		Punteggio p=new Punteggio(modalita, streak);
+		PunteggioParola p=new PunteggioParola(modalita, streak);
 		g.getPunteggi().add(p);
 	}
 	
-	public ArrayList<Punteggio> highScoreGeneral(Giocatore g){
-		ArrayList<Punteggio> highscores= new ArrayList<Punteggio>();
+	public ArrayList<PunteggioParola> highScoreGeneral(Giocatore g){
+		ArrayList<PunteggioParola> highscores= new ArrayList<PunteggioParola>();
 				
 		return highscores;
 	}

@@ -95,6 +95,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="profiloUtente" class="nav-link">
+             <i class="fa-solid fa-user"></i>
+              <p>
+                Il tuo profilo
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
 					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->
@@ -148,6 +157,14 @@
 					<div class="col-sm-3"></div>	
 					</div>
 					<div class="row">
+				<div class="col-sm-10"></div>
+				<div class="col-sm-2">
+				<a href="profiloUtente"><i class="fa-solid ${iconaUser}">${nomeUser}</i></a>
+				</div>
+				
+				
+				</div>	
+					<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="streakSpace">
@@ -191,25 +208,34 @@
 					<div class="col-sm-4"></div>
 				</div>		
 				<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 d-flex justify-content-center">
+						<div id="paroleIndovinate" class="gameRecap">
+						<h3>Riepilogo</h3>
+						<p>Modalità: ${mode}, parole indovinate:</p>
+						<ul>
+							<span id="indovinate"></span>
+						</ul>
+						<c:choose>
+						<c:when test= "${id=='null'}">
+							<p>registrati per salvare il tuo punteggio</p>
+						</c:when>
+						<c:otherwise>
+							<a id="linkSalvaPunti" href="scoreParola?mode=${mode}&streak="><button class="btn btn-success">Salva il punteggio</button></a>
+						</c:otherwise>
+						</c:choose>
+						</div>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>		
+				<div class="row">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4 d-flex justify-content-center""><div class="guessSpace"><input type="button" class="btn btn-primary scegliLet" id="bgScLet"
 							value=""/></div>
 							</div>
 					<div class="col-sm-4"></div>
 				</div>
-				<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-8 d-flex justify-content-center">
-						<div id="paroleIndovinate" class="gameRecap">
-						<h3>fine partita</h3>
-						<p>Modalità: ${mode}, parole indovinate:</p>
-						<ul>
-							<span id="indovinate"></span>
-						</ul>
-						</div>
-					</div>
-					<div class="col-sm-2"></div>
-				</div>		
+				
 				<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center align-items-center">
@@ -325,6 +351,9 @@
 	<!-- Demo Template -->
 	<script src="static/js/fireAjax.js" type="text/javascript"></script>
 	<script src="static/js/demoTemplate.js" type="text/javascript"></script>
+	
+
+
 
 </body>
 </html>

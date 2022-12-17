@@ -327,6 +327,7 @@ $(document).ready(function() {
 			if (errori === 9) {
 				alert("niente piu' vite, hai perso! la parola era " + parolaScelta)
 				$(".scegliLet").prop('disabled', true);
+				$("#linkSalvaPunti").attr("href", $("#linkSalvaPunti").attr("href") + streak);
 				streak = 0;
 				$("#streakPuls").hide();
 				$(".pulsLet").hide();

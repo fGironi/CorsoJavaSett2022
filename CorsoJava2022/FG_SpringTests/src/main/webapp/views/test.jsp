@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -19,9 +20,10 @@
 <form action="testAdd" method="get">
 <label id="labelIdOgg">Oggetti disponibili:</label>
 <select name="idOgg" id="idOgg">
-  "${oggetti}"
-
- </select>
+  	<c:forEach items="${oggetti}" var="oggetto">
+        <option value="${oggetto.key}">${oggetto.value}</option>
+    </c:forEach>
+</select>
  <button type="submit" value="Prendi oggetto">Prendi Oggetto</button>
  </form>
  

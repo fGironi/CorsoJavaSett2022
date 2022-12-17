@@ -83,6 +83,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="profiloUtente" class="nav-link">
+             <i class="fa-solid fa-user"></i>
+              <p>
+                Il tuo profilo
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
