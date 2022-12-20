@@ -76,8 +76,8 @@ public class TestController {
 	
 	 
 	 @PostMapping(value="/testPost")
-	 	public String testSpringPost(@ModelAttribute("oggettoDTO") 
-	 	TestModelOggetto oggettoDTO, 
+	 	public String testSpringPost(
+	 	@ModelAttribute("oggettoDTO") TestModelOggetto oggettoDTO, 
 	 	ModelMap modelMap, 
 	 	BindingResult result) {  //parte copiata, non so bene cosa fa
 	        if (result.hasErrors()) {

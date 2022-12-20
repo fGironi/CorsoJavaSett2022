@@ -1,6 +1,7 @@
 package srl.neotech.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Giocatore {
 
@@ -8,11 +9,13 @@ public class Giocatore {
 	private String nome;
 	private String icona;
 	private ArrayList<PunteggioParola> punteggi;
-	private ArrayList<PartitaParolaDTO> partiteParola;
+	private HashMap<String, PartitaParolaDTO> partiteParola;
+	private HashMap<String, PartitaParolaDTO> partiteInCorso;
 
 	public Giocatore() {
 		this.punteggi=new ArrayList<PunteggioParola>();
-		this.partiteParola=new ArrayList<PartitaParolaDTO>();
+		this.partiteParola=new HashMap<String, PartitaParolaDTO>();
+		this.partiteInCorso=new HashMap<String, PartitaParolaDTO>();
 	}
 	
 	
@@ -21,7 +24,8 @@ public class Giocatore {
 		this.id=id;
 		this.nome = nome;
 		this.punteggi=new ArrayList<PunteggioParola>();
-		this.partiteParola=new ArrayList<PartitaParolaDTO>();
+		this.partiteParola=new HashMap<String, PartitaParolaDTO>();
+		this.partiteInCorso=new HashMap<String, PartitaParolaDTO>();
 	}
 	
 	
@@ -60,14 +64,26 @@ public class Giocatore {
 
 
 
-	public ArrayList<PartitaParolaDTO> getPartiteParola() {
+	public HashMap<String, PartitaParolaDTO> getPartiteParola() {
 		return partiteParola;
 	}
 
 
 
-	public void setPartiteParola(ArrayList<PartitaParolaDTO> partiteParola) {
+	public void setPartiteParola(HashMap<String, PartitaParolaDTO> partiteParola) {
 		this.partiteParola = partiteParola;
+	}
+
+
+
+	public HashMap<String, PartitaParolaDTO> getPartiteInCorso() {
+		return partiteInCorso;
+	}
+
+
+
+	public void setPartiteInCorso(HashMap<String, PartitaParolaDTO> partiteInCorso) {
+		this.partiteInCorso = partiteInCorso;
 	}
 	
 	

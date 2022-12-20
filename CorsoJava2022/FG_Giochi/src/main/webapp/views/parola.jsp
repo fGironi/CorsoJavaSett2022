@@ -27,13 +27,10 @@
 
 	<link rel="stylesheet" href="static/css/stileParola.css">
 	<script type="text/javascript">
-	    var listaPrl = new Array();
-	    <c:forEach var="prlMap" items="${lista}" >
-	    	var prl=new String();
-	    	prl="${prlMap}"
-	  		console.log(prl);
-		    listaPrl.push(prl.toUpperCase());
-		</c:forEach>
+	   var parola="${parola}";
+	   var streak=${streak};
+	   var startVita=${vite};
+	   var idUser=${id};
 	</script>
 	<script src="static/js/parolaScript.js"></script>
 
@@ -141,14 +138,11 @@
 					<div class="col-sm-6 d-flex justify-content-center">
 									<select class="form-select" id="mode">
 										<option selected>Scegli una modalita'...</option>
-										<option value="ita">Parola casuale - ITA</option>
 										<option value="capitale">Geografia - Capitale</option>
-										<option value="disney">Disney - Personaggio</option>
-										<option value="animali">Natura - Animali</option>
+										<option value="animaliENG">Inglese - Animali</option>
 										<option value="pokemon">Pokemon - nome</option>
 										<option value="lol">League of Legends - Campioni</option>
 										<option value="rock">Rock - nome band</option>
-										<option value="test">TESTING</option>
 									</select>
 								
 								<a href="parola?mode=${mode}" id="genera"><button class="btn btn-primary" type="button">Nuova
@@ -160,6 +154,7 @@
 				<div class="col-sm-10"></div>
 				<div class="col-sm-2">
 				<a href="profiloUtente"><i class="fa-solid ${iconaUser}">${nomeUser}</i></a>
+				
 				</div>
 				
 				
@@ -168,8 +163,8 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="streakSpace">
-							<h4><i class="fa-regular fa-comment"> ${mode} - Streak: <span id="streak">0</span></i></h4>
-							<span id="streakPuls"><button class="btn btn-lg btn-success" type="button" id="keepStreak">STREAK!</button></span>
+							<h4><i class="fa-regular fa-comment"> ${mode} - Streak: ${streak}</i></h4>
+							<span id="streakPuls"><a id="streakLink" href="parolaStreak?mode=${mode}&errori="><button class="btn btn-lg btn-success" type="button" id="keepStreak">STREAK!</button></a></span>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>
@@ -178,15 +173,15 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="tentativi">
-							<i id="vita9" class="vitG fa-solid fa-heart"></i>
-							<i id="vita8" class="vitG fa-solid fa-heart"></i>
-							<i id="vita7" class="vitG fa-solid fa-heart"></i>
-							<i id="vita6" class="vitG fa-solid fa-heart"></i>
-							<i id="vita5" class="vitG fa-solid fa-heart"></i>
-							<i id="vita4" class="vitG fa-solid fa-heart"></i>
-							<i id="vita3" class="vitG fa-solid fa-heart"></i>
-							<i id="vita2" class="vitG fa-solid fa-heart"></i>
-							<i id="vita1" class="vitG fa-solid fa-heart"></i>
+							<i id="vita1" class="vitG fa-regular fa-heart"></i>
+							<i id="vita2" class="vitG fa-regular fa-heart"></i>
+							<i id="vita3" class="vitG fa-regular fa-heart"></i>
+							<i id="vita4" class="vitG fa-regular fa-heart"></i>
+							<i id="vita5" class="vitG fa-regular fa-heart"></i>
+							<i id="vita6" class="vitG fa-regular fa-heart"></i>
+							<i id="vita7" class="vitG fa-regular fa-heart"></i>
+							<i id="vita8" class="vitG fa-regular fa-heart"></i>
+							<i id="vita9" class="vitG fa-regular fa-heart"></i>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>
@@ -211,19 +206,8 @@
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
 						<div id="paroleIndovinate" class="gameRecap">
-						<h3>Riepilogo</h3>
-						<p>Modalità: ${mode}, parole indovinate:</p>
-						<ul>
-							<span id="indovinate"></span>
-						</ul>
-						<c:choose>
-						<c:when test= "${id=='null'}">
-							<p>registrati per salvare il tuo punteggio</p>
-						</c:when>
-						<c:otherwise>
-							<a id="linkSalvaPunti" href="scoreParola?mode=${mode}&streak="><button class="btn btn-success">Salva il punteggio</button></a>
-						</c:otherwise>
-						</c:choose>
+						<h3>Fine Partita</h3>
+							<a id="linkRecap" href="scoreParola?mode=${mode}&errori="><button class="btn btn-success">Riepilogo Partita</button></a>
 						</div>
 					</div>
 					<div class="col-sm-2"></div>

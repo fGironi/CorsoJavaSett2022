@@ -27,7 +27,6 @@
 	<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"
 		type="text/javascript"></script>
 
-<script src="static/js/parolaScript.js"></script>
 
 
 </head>
@@ -128,20 +127,28 @@
 				<div class="clearfix">
 				<div class="row">
 				<div class="col-sm-4"></div>
-				<div class="col-sm-4" text-align="center">
-					<h3>Profilo Giocatore</h3>
-					<p>ID giocatore: ${id}</p>
-					<p>Nome Giocatore: ${nome}</p>
-					<p>Icona Giocatore: <i class="fa-solid ${icona}"></i><p></div>
+				<div class="col-sm-4" style="text-align: center">
+					<h3><b>Profilo Giocatore</b></h3>
+					<p><b>ID giocatore:</b> ${id}</p>
+					<p><b>Nome Giocatore:</b> ${nome}</p>
+					<p><b>Icona Giocatore:</b> <i class="fa-solid ${icona}"></i><p></div>
 				<div class="col-sm-4"></div>
 				</div>
 				<div class="row">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4 d-flex justify-content-center">
+				<a href="dajequattro"><button class="btn btn-lg btn-info">Gioca a DajeQuattro!</button></a>
+				<a href="parolaIntro"><button class="btn btn-lg btn-primary">Indovina una Parola!</button></a>
+				</div>
+				<div class="col-sm-4"></div>
+				</div>
+				<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4" style="text-align: center">
 				<h4>Punteggi "indovina la parola"</h4><br>
 				<ul>
-					<c:forEach items="${puntiParola}" var="punto">
-   						 <li>${punto.categoria}: streak da ${punto.streak}</li>
+					<c:forEach items="${partiteParola}" var="partita">
+   						 <li><a href="recapParola?idGame=${partita.key}">${partita.value.categoria}: streak da ${partita.value.currentStreak}</a></li>
 					</c:forEach>
 					</ul>
 					</div>
@@ -152,8 +159,8 @@
 				
 				<div class="row">
 				<div class="col-sm-4"></div>
-				<div class="col-sm-4 d-flex justify-content-center">
-					<a href="disconnetti"><button class="btn btn-danger">Disconnettiti</button></a>
+				<div class="col-sm-4 d-flex justify-content-right">
+					<a href="disconnetti"><button class="btn btn-sm btn-danger">Disconnettiti</button></a>
 					</div>
 				<div class="col-sm-4"></div>
 				</div>

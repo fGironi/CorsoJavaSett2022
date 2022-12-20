@@ -5,25 +5,29 @@ import java.util.HashMap;
 
 public class PartitaParolaDTO {
 
+	private String ID;
 	private String categoria;
 	private Integer currentStreak;
 	private Giocatore giocatore;
 	private HashMap <String, Integer> paroleIndovinateEdErrori;
 	private ArrayList <String> listaParole;
-	private Boolean inCorso;
+	private String parolaInCorso;
+	private Integer vite;
+	private String parolaSconfitta;
 	
 	public PartitaParolaDTO(String categoria, Giocatore giocatore) {
 		this.paroleIndovinateEdErrori=new HashMap <String, Integer>();
 		this.currentStreak=0;
-		this.inCorso=true;
+		this.vite=9;
 		this.categoria = categoria;
 		this.giocatore = giocatore;
+		
 	}
 	
 	public PartitaParolaDTO() {
 		this.paroleIndovinateEdErrori=new HashMap <String, Integer>();
 		this.currentStreak=0;
-		this.inCorso=true;
+		this.vite=9;
 	}
 	
 	public String getCategoria() {
@@ -51,20 +55,44 @@ public class PartitaParolaDTO {
 		this.paroleIndovinateEdErrori = paroleIndovinateEdErrori;
 	}
 
-	public Boolean getInCorso() {
-		return inCorso;
-	}
-
-	public void setInCorso(Boolean inCorso) {
-		this.inCorso = inCorso;
-	}
-
 	public ArrayList <String> getListaParole() {
 		return listaParole;
 	}
 
 	public void setListaParole(ArrayList <String> listaParole) {
 		this.listaParole = listaParole;
+	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+
+	public String getParolaInCorso() {
+		return parolaInCorso;
+	}
+
+	public void setParolaInCorso(String parolaInCorso) {
+		this.parolaInCorso = parolaInCorso;
+	}
+
+	public Integer getVite() {
+		return vite;
+	}
+
+	public void setVite(Integer erroriTotali) {
+		this.vite = erroriTotali;
+	}
+
+	public String getParolaSconfitta() {
+		return parolaSconfitta;
+	}
+
+	public void setParolaSconfitta(String parolaSconfitta) {
+		this.parolaSconfitta = parolaSconfitta;
 	}
 	
 	

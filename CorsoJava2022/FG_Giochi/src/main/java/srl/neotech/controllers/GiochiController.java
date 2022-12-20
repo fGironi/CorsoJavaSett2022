@@ -25,47 +25,13 @@ public class GiochiController {
 	@Autowired
 	UtenteAttivo utente;
 
-    @GetMapping(value="/parola")
-    public String getGiocoParola(
-    		ModelMap modelMap,
-    		@RequestParam("mode") String mode
-    		) {
-    	modelMap.addAttribute("mode", mode);
-    	if (utente.getId()!=null) {
-    		modelMap.addAttribute("id", utente.getProfiloGiocatore().getId());
-    		modelMap.addAttribute("nomeUser", utente.getProfiloGiocatore().getNome());
-    		modelMap.addAttribute("iconaUser", utente.getProfiloGiocatore().getIcona());
-    	}
-    	else {
-    		modelMap.addAttribute("id", "null"); 	
-    		modelMap.addAttribute("nomeUser", "anonimo");
-    		modelMap.addAttribute("iconaUser", "fa-user");
-    	}
-    	
-    	modelMap.addAttribute("lista", parolaService.modePicker(mode));
-    	
-        return "parola";
-    }
-    @GetMapping(value="/parolaIntro")
-    public String getIntroParola(ModelMap modelMap) {
-    	if (utente.getId()!=null) {
-    		modelMap.addAttribute("id", utente.getId());
-    		modelMap.addAttribute("nomeUser", utente.getProfiloGiocatore().getNome());
-    		modelMap.addAttribute("iconaUser", utente.getProfiloGiocatore().getIcona());
-    	}
-    	else {
-    		modelMap.addAttribute("id", "null"); 	
-    		modelMap.addAttribute("nomeUser", "anonimo");
-    		modelMap.addAttribute("iconaUser", "fa-user");
-    	}
-        return "parolaIntro";
-    }
+    
     
     @GetMapping(value="/dajequattro")
     public String getGiocoQuattro() {
         return "quattro";
     }
-    //Controller verso la visualizzazione del profilo giocatore, ridireziona verso la modalità creazione se l'utente attivo non ha un id
+    //Controller verso la visualizzazione del profilo giocatore, porta verso la modalità creazione se l'utente attivo non ha un id
     @GetMapping(value="/profiloUtente")
     public String profiloGiocatore(ModelMap modelMap) {
     	
@@ -73,7 +39,7 @@ public class GiochiController {
     		modelMap.addAttribute("id", utente.getProfiloGiocatore().getId());
     		modelMap.addAttribute("nome", utente.getProfiloGiocatore().getNome());
     		modelMap.addAttribute("icona", utente.getProfiloGiocatore().getIcona());
-    		modelMap.addAttribute("puntiParola", utente.getProfiloGiocatore().getPunteggi());
+    		modelMap.addAttribute("partiteParola", utente.getProfiloGiocatore().getPartiteParola());
     		return "profiloGioc";
     	}
     	else {
@@ -98,14 +64,11 @@ public class GiochiController {
         if (result.hasErrors()) {
             return "error";
         }
-        modelMap.addAttribute("nome", giocatoreDTO.getNome());
-		modelMap.addAttribute("icona", giocatoreDTO.getIcona());
         giocatoreDTO.setId(giocService.assegnaIDUtente());
         System.out.println("id assegnato a giocatoreDTO "+giocatoreDTO.getNome()+": "+giocatoreDTO.getId());
         giocService.getListaGiocatori().put(giocatoreDTO.getId(), giocatoreDTO);
-        modelMap.addAttribute("id", giocatoreDTO.getId());
         giocService.impostaUtenteAttivo(giocatoreDTO);
-    	return "profiloGioc";
+    	return "redirect:profiloUtente";
     }
     
     @GetMapping(value="/disconnetti")
@@ -132,26 +95,6 @@ public class GiochiController {
     	
     }
     
-    @GetMapping(value="/scoreParola")
-    public String punteggioParola(
-    		ModelMap modelMap, 
-    		@RequestParam("mode") String mode, 
-    		@RequestParam("streak") Integer streak){
-    	giocService.regPunteggioParola(utente.getProfiloGiocatore(), mode, streak);
-    	if (utente.getId()!=null) {
-    		modelMap.addAttribute("id", utente.getProfiloGiocatore().getId());
-    		modelMap.addAttribute("nome", utente.getProfiloGiocatore().getNome());
-    		modelMap.addAttribute("icona", utente.getProfiloGiocatore().getIcona());
-    		modelMap.addAttribute("puntiParola", utente.getProfiloGiocatore().getPunteggi());
-    		
-    		
-    		return "profiloGioc";
-    	}
-    	else {
-    		Giocatore giocatoreDTO=new Giocatore();
-        	modelMap.addAttribute("giocatoreDTO", giocatoreDTO);
-    		return "nuovoProfilo";
-    	}
-    }
+   
     
 }

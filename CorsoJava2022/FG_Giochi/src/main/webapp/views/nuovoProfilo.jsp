@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FG_Giochi - Indovina la Parola</title>
+<title>FG_Giochi - Nuovo Profilo</title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
@@ -109,12 +109,12 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1>Indovina la parola</h1>
+							<h1>Crea il tuo profilo</h1>
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="/FG_Giochi">Home</a></li>
-								<li class="breadcrumb-item active">Indovina la parola</li>
+								<li class="breadcrumb-item active">Nuovo Profilo</li>
 							</ol>
 						</div>
 					</div>
@@ -127,11 +127,27 @@
 				<!-- /.stuff -->
 				<div class="clearfix">
 				<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6" style="text-align: center">
+				<h4>Sei già un utente? metti il tuo ID e accedi!</h4>
+				<form method="get" action="/FG_Giochi/login">
+				<input name="id" type="text"></input><button type="submit" class="btn btn-sm btn-primary" id="login" value="submit">Accedi</button>
+				</form>
+				</div>
+				<div class="col-sm-3"></div>
+				</div>
+				<div class="row">
 				<div class="col-sm-4"></div>
-				<div class="col-sm-4">
+				<div class="col-sm-4" style="text-align: center">
 				<h2 style="color: red">${errore}</h2>
-				<h2>Iscriviti al sito!</h2>
+				<h1>Iscriviti al sito!</h1>
 				<p>piccola nota: il sito non fornisce alcun tipo di protezione reale, non mettere nessun dato sensibile!</p>
+				</div>
+				<div class="col-sm-4"></div>
+				</div>
+				<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4 d-flex justify-content-center">	
 					<form:form action="/FG_Giochi/creaProfiloGiocatore" method="POST" id="formNuovoUtente" modelAttribute="giocatoreDTO">
 						<div class="row">
 						<form:label id="labelNome" path="nome">Scrivi il tuo nome</form:label>
@@ -151,16 +167,7 @@
 				</div>
 				<div class="col-sm-4"></div>
 				</div>
-				<div class="row">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4">
-				<h2>Sei già un utente? metti il tuo ID e accedi!</h2>
-				<form method="get" action="/FG_Giochi/login">
-				<input name="id" type="text"></input><button type="submit" class="btn btn-primary" id="login" value="submit">Accedi</button>
-				</form>
-				</div>
-				<div class="col-sm-4"></div>
-				</div>
+				
 				
 				
 				

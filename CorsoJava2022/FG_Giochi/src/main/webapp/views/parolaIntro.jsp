@@ -27,8 +27,8 @@
 	<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"
 		type="text/javascript"></script>
 
-<script src="static/js/parolaScript.js"></script>
 
+<script src="static/js/parolaSpiegazioneScript.js"></script>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -132,14 +132,11 @@
 					<div class="col-sm-6 d-flex justify-content-center">
 									<select class="form-select" id="mode">
 										<option selected>Scegli una modalita'...</option>
-										<option value="ita">Parola casuale - ITA</option>
-										<option value="capitale">Geografia - Capitale</option>
-										<option value="disney">Disney - Personaggio</option>
-										<option value="animali">Natura - Animali</option>
+										<option value="capitale">Geografia - Capitale</option>>
+										<option value="animaliENG">Inglese - Animali</option>
 										<option value="pokemon">Pokemon - nome</option>
 										<option value="lol">League of Legends - Campioni</option>
 										<option value="rock">Rock - nome band</option>
-										<option value="test">TESTING</option>
 									</select>
 								
 								<a id="genera"><button disabled="true" class="btn btn-primary" id="generaPuls" type="button">Nuova
@@ -197,12 +194,6 @@
 				<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8 d-flex justify-content-center">
-						<a href="parola?mode=capitale"><button>Capitali</button></a>
-						<a href="parola?mode=disney"><button>Disney</button></a>
-						<a href="parola?mode=ita"><button>Parola random</button></a>
-						<a href="parola?mode=animali"><button>Animali</button></a>
-
-
 					</div>
 					<div class="col-sm-2"></div>
 				</div>
