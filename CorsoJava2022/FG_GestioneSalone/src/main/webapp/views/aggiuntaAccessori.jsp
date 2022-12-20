@@ -25,6 +25,9 @@
 	<!-- Demo Template -->
 	<script src="static/js/fireAjax.js"></script>
 	<script src="static/js/demoTemplate.js"></script>
+	
+	<!-- css homemade -->
+	<link rel="stylesheet" href="static/css/autoSaloneStyle.css">	
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -38,7 +41,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
+        <a href="." class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -116,8 +119,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Aggiungi automobile</li>
+              <li class="breadcrumb-item"><a href=".">Home</a></li>
+              <li class="breadcrumb-item active">Lista Auto</li>
             </ol>
           </div>
         </div>
@@ -126,75 +129,54 @@
 
     <!-- Main content -->
     <section class="content">
+
       <!-- Qua la roba -->
       <div class="clearfix">
-      	<div class="formArea" style="margin-left:50px; width:80%">
-     		<form:form method="post" action="aggiungi" modelAttribute="automobile">
-       		<div class="row whiteRow" style="background-color:white">
-    			<div class="col-md-4">
-    				<form:label id="lblTarga" path="targa">Targa:</form:label>
-    				<form:input id="inTarga" path="targa"></form:input>
-    			</div>
-      			<div class="col-md-4">
-      				<form:label id="lblCostruttore" path="costruttore">Costruttore:</form:label>
-      				<form:select path="costruttore">
-				    	<form:option value="-" label="sel costruttore"/>
-				    	<form:options items="${costruttori}" />
-					</form:select>
-      			</div>
-      			<div class="col-md-4">
-      				<form:label id="lblModello" path="modello">Modello:</form:label>
-    				<form:input id="inModello" path="modello"></form:input>
-      			</div>
-      		</div>
-      		<div class="row blueRow" style="background-color:lightblue">
-    			<div class="col-md-3">
-    				<form:label id="lblAlimentazione" path="alimentazione">Alimentazione:</form:label>
-    				<form:select id="inAlimentazione" path="alimentazione">
-				    	<form:option value="-" label="sel alimentazione"/>
-				    	<form:options items="${alimentazioni}" />
-					</form:select>
-    			</div>
-      			<div class="col-md-3">
-      				<form:label id="lblAnno" path="annoCostruzione">Anno costruzione</form:label>
-      				<form:select id="inAnno" path="annoCostruzione">
-				    	<form:option value="-" label="sel anno"/>
-				    	 <c:forEach var = "anno" begin = "1900" end = "2022">
-					        <form:option value="${anno}">${anno}</form:option>
-					     </c:forEach>
-					</form:select>
-      			</div>
-      			<div class="col-md-3">
-      				<form:label id="lblColore" path="colore">Colore:</form:label>
-      				<form:select id="inColore" path="colore">
-				    	<form:option value="-" label="sel colore"/>
-				    	<form:options items="${colori}" />
-					</form:select>
-      			</div>
-      			<div class="col-md-3">
-      				<form:label id="lblCosto" path="costo">Costo:</form:label>
-      				<form:input id="inCosto" path="costo"></form:input>
-      			</div>
-      		</div>
-      		<div class="row whiteRow" style="background-color:white">
-    			<div class="col-md-10">
-    				<b>Accessori</b> (attualmente non funzionante)<br>
-    				<c:forEach var="accessorio" items="${accessori}">
-    				<input type="checkbox" class="btn-check" id="btn-check-outlined-${accessorio.value.descrizione}" autocomplete="off" name="${accessorio.value.descrizione}" value="${accessorio.key}">
+      	<div class="row">
+      	<div class="col-md-2"></div>
+      	<div class="col-md-8">
+      	<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
+      		<tr style="background-color:lightblue; border:1px solid darkblue">
+      			<th class="autoDataCel"><b>ID</b></th>
+      			<th class="autoDataCel"><b>Targa</b></th>
+      			<th class="autoDataCel"><b>Costruttore</b></th>
+      			<th class="autoDataCel"><b>Modello</b></th>
+      			<th class="autoDataCel"><b>Anno</b></th>
+      			<th class="autoDataCel"><b>Costo</b></th>
+      			<th class="autoDataCel"><b>Alimentazione</b></th>
+      			<th class="autoDataCel"><b>Colore</b></th>
+      		</tr>	
+      		<tr style="border:2px solid black">
+      			<td class="autoDataCel">${automobile.id}</td>
+      			<td class="autoDataCel">${automobile.targa}</td>
+      			<td class="autoDataCel">${automobile.costruttore}</td>
+      			<td class="autoDataCel">${automobile.modello}</td>
+      			<td class="autoDataCel">${automobile.annoCostruzione}</td>
+      			<td class="autoDataCel">${automobile.costo}</td>
+      			<td class="autoDataCel">${automobile.alimentazione}</td>
+      			<td class="autoDataCel">${automobile.colore}</td>
+      		</tr>	
+      	</table>
+      	<b>Accessori presenti:</b>
+      	<ul>
+      	<c:forEach items="${automobile.accessori}" var="accessorio">
+		   <li>${accessorio.descrizione}</li>
+		</c:forEach>
+      	</ul>
+      	</div>
+      	<div class="col-md-2"></div>
+      	</div>
+      <div class=row">
+	      <div class="col-md-2"></div>
+	      <div class="col-md-8" style="text-align:center">
+	      <h2>Accessori disponibili</h2>
+		      <c:forEach var="accessorio" items="${accessori}">
+		    		<input type="checkbox" class="btn-check" id="btn-check-outlined-${accessorio.value.descrizione}" autocomplete="off" name="${accessorio.key}" value="true">
 					<label class="btn btn-outline-primary" for="btn-check-outlined-${accessorio.value.descrizione}">${accessorio.value.descrizione} - ${accessorio.value.costo} €</label>
-							  					  
-					</c:forEach>
-					
-    			</div>
-      			<div class="col-md-2">
-      				<button id="btnAdd" type="submit" class="btn btn-primary">Aggiungi</button>
-      			</div>
-      			
-      		</div>
-      		
-      	    </form:form>
+			  </c:forEach>
+		  </div>
+		  <div class="col-md-2"></div>
       </div>
-      
       </div>
     </section>
     <!-- /.content -->

@@ -3,11 +3,11 @@ package srl.neotech.model;
 
 public enum Alimentazione {
 
-	BENZINA("benzina"),
-	DIESEL("diesel"),
+	Benzina("benzina"),
+	Diesel("diesel"),
 	GPL("GPL"),
-	ELETTRICA("elettrica"),
-	IBRIDA("ibrida");
+	Elettrica("elettrica"),
+	Ibrida("ibrida");
 	
 	private String name;
 	

@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import srl.neotech.model.AutomobileDTO;
 
 @Component
-public class RepositoryAutomobili {
+public class AutomobiliRepository {
 
 	private HashMap<String, AutomobileDTO> listaAuto;
 	
 	
-	public RepositoryAutomobili(HashMap<String, AutomobileDTO> listaAuto) {
+	public AutomobiliRepository(HashMap<String, AutomobileDTO> listaAuto) {
 		this.listaAuto = new HashMap<String, AutomobileDTO>();
 	}
 

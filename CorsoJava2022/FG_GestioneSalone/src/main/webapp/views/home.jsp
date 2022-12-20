@@ -128,7 +128,9 @@
     <section class="content">
 
       <!-- Qua la roba -->
-      
+      <div class="zonapulsantone" style="text-align:center">
+ 		<a href="creaRepoAccessori"><button type="button" class="btn btn-lg btn-success">Popola Lista Accessori</button></a>     
+      </div>
 
     </section>
     <!-- /.content -->

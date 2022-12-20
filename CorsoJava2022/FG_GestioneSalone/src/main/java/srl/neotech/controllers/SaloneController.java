@@ -7,8 +7,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import srl.neotech.dao.repository.RepositoryAutomobili;
+import srl.neotech.dao.repository.AccessoriRepository;
+import srl.neotech.dao.repository.AutomobiliRepository;
 import srl.neotech.model.Alimentazione;
 import srl.neotech.model.AutomobileDTO;
 import srl.neotech.model.Colore;
@@ -20,14 +22,17 @@ public class SaloneController {
 
 	
 	@Autowired
-	RepositoryAutomobili repoAuto;
+	AutomobiliRepository repoAuto;
+	@Autowired
+	AccessoriRepository repoAcces;
 	
 	@Autowired
 	SaloneService salService;
 	
 	
 	@GetMapping(value="/listaAuto")
-	public String getListaAuto() {
+	public String getListaAuto(ModelMap modelMap) {
+		modelMap.addAttribute("listaAuto", repoAuto.getListaAuto());
 		return "listaAuto";
 	}
 	@GetMapping(value="/rimozioneAuto")
@@ -42,6 +47,7 @@ public class SaloneController {
 		modelMap.addAttribute("costruttori", Costruttore.values());
 		modelMap.addAttribute("alimentazioni", Alimentazione.values());
 		modelMap.addAttribute("colori", Colore.values());
+		modelMap.addAttribute("accessori", repoAcces.getElencoAccessori());
 		return "aggiungiAuto";
 	}
 	
@@ -56,7 +62,17 @@ public class SaloneController {
 			automobile.setId(salService.generaIdAuto());
 			repoAuto.getListaAuto().put(automobile.getId(), automobile);
 			System.out.println(automobile);
-			return "redirect:home";
+			return "redirect:aggiuntaAccessori?autoId="+automobile.getId();
+	}
+	
+	@GetMapping(value="/aggiuntaAccessori")
+	public String aggiuntaAcc(
+			ModelMap modelMap,
+			@RequestParam String autoId
+			) {
+		modelMap.addAttribute("automobile", repoAuto.getListaAuto().get(autoId));
+		modelMap.addAttribute("accessori", repoAcces.getElencoAccessori());
+		return "aggiuntaAccessori";
 	}
 	
 	@GetMapping(value="/cercaAuto")

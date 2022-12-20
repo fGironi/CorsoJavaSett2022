@@ -25,6 +25,9 @@
 	<!-- Demo Template -->
 	<script src="static/js/fireAjax.js"></script>
 	<script src="static/js/demoTemplate.js"></script>
+	
+	<!-- css homemade -->
+	<link rel="stylesheet" href="static/css/autoSaloneStyle.css">	
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -38,7 +41,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
+        <a href="." class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -116,8 +119,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Gestione Autosalone - Home</li>
+              <li class="breadcrumb-item"><a href=".">Home</a></li>
+              <li class="breadcrumb-item active">Lista Auto</li>
             </ol>
           </div>
         </div>
@@ -128,8 +131,45 @@
     <section class="content">
 
       <!-- Qua la roba -->
-      
+      <div class="clearfix">
+      	<div class="row">
+      	<div class="col-md-2"></div>
+      	<div class="col-md-8">
+      	<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
+      		<tr style="background-color:lightblue; border:1px solid darkblue">
+      			<th class="autoDataCel"><b>ID</b></th>
+      			<th class="autoDataCel"><b>Targa</b></th>
+      			<th class="autoDataCel"><b>Costruttore</b></th>
+      			<th class="autoDataCel"><b>Modello</b></th>
+      			<th class="autoDataCel"><b>Anno</b></th>
+      			<th class="autoDataCel"><b>Costo</b></th>
+      			<th class="autoDataCel"><b>Alimentazione</b></th>
+      			<th class="autoDataCel"><b>Colore</b></th>
+      		</tr>	
+      	<c:forEach items="${listaAuto}" var="auto">
+      		<tr style="border:2px solid black">
+      			<td class="autoDataCel">${auto.key}</td>
+      			<td class="autoDataCel">${auto.value.targa}</td>
+      			<td class="autoDataCel">${auto.value.costruttore}</td>
+      			<td class="autoDataCel">${auto.value.modello}</td>
+      			<td class="autoDataCel">${auto.value.annoCostruzione}</td>
+      			<td class="autoDataCel">${auto.value.costo}</td>
+      			<td class="autoDataCel">${auto.value.alimentazione}</td>
+      			<td class="autoDataCel">${auto.value.colore}</td>
+      		</tr>	
 
+ 	    </c:forEach>
+      			
+      	</table>
+      	
+      	</div>
+      	<div class="col-md-2"></div>
+      	</div>
+      
+      
+      
+      
+      </div>
     </section>
     <!-- /.content -->
   </div>
