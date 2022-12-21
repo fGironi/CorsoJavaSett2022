@@ -26,6 +26,8 @@
 	<script src="static/js/fireAjax.js"></script>
 	<script src="static/js/demoTemplate.js"></script>
   
+  	<link rel="stylesheet" href="static/css/autoSaloneStyle.css">
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -131,55 +133,79 @@
       <div class="clearfix">
       	<div class="row">
       		<div class="col-sm-3"></div>
-      		<div class="col-sm-6">
-      		<form action="confermaRimozione" method="get">
-      		<label >Inserisci l'id dell'auto da rimuovere</label>
-      		<input type="text" name="idAuto" id="autoIDspace"></input>
-      		<button type="submit" class="btn btn-danger">RIMUOVI</button>
-      		</form>
+      		<div class="col-sm-6" style="text-align:center">
+      			<h2>Vuoi rimuovere l'auto ${automobile.id}</h2>
       		</div>
       		<div class="col-sm-3"></div>
       	</div>
       	<div class="row">
-      	<div class="col-md-12 d-flex justify-content-center">
-      		<h2>Lista Automobili</h2>
-      	</div>
+      		<div class="col-md-6 d-flex justify-content-end">
+      				<table class="dettaglioTab">
+      					<tr>
+      						<th>Dettaglio Auto</th>
+      					</tr>
+      					<tr>
+      						<td>ID Auto</td>
+      						<td>${automobile.id}</td>
+      					</tr>
+      					<tr>
+      						<td>Targa</td>
+      						<td>${automobile.targa}</td>
+      					</tr>
+      					<tr>
+      						<td>Costruttore</td>
+      						<td>${automobile.costruttore}</td>
+      					</tr>
+      					<tr>
+      						<td>Modello</td>
+      						<td>${automobile.modello}</td>
+      					</tr>
+      					<tr>
+      						<td>Anno</td>
+      						<td>${automobile.annoCostruzione}</td>
+      					</tr>
+      					<tr>
+      						<td>Costo Base</td>
+      						<td>${automobile.costoBase}</td>
+      					</tr>
+      					<tr>
+      						<td>Costo totale</td>
+      						<td>${automobile.costo}</td>
+      					</tr>
+      					<tr>
+      						<td>Alimentazione</td>
+      						<td>${automobile.alimentazione}</td>
+      					</tr>
+      					<tr>
+      						<td>Colore</td>
+      						<td>${automobile.colore}</td>
+      					</tr>
+      				</table>
+      		</div>
+      		<div class="col-md-6 d-flex justify-content-start">
+      			<table class="dettaglioTab">
+      				<tr><th>Accessori</th></tr>
+      				<c:forEach items="${automobile.accessori}" var="accessorio">
+      					<tr>
+      						<td>${accessorio.tipologia}</td>
+      						<td>${accessorio.descrizione}</td>
+      						<td>${accessorio.costo} €</td>
+      					</tr>
+					</c:forEach>
+				</table>
+      		</div>
       	</div>
       	<div class="row">
       		<div class="col-md-12 d-flex justify-content-center">
-      			<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
-		      		<tr style="background-color:lightblue; border:1px solid darkblue">
-		      			<th class="autoDataCel"><b>ID</b></th>
-		      			<th class="autoDataCel"><b>Targa</b></th>
-		      			<th class="autoDataCel"><b>Costruttore</b></th>
-		      			<th class="autoDataCel"><b>Modello</b></th>
-		      			<th class="autoDataCel"><b>Anno</b></th>
-		      			<th class="autoDataCel"><b>Costo base</b></th>
-		      			<th class="autoDataCel"><b>Alimentazione</b></th>
-		      			<th class="autoDataCel"><b>Colore</b></th>
-		      			<th class="autoDataCel"><b>Dettagli</b></th>
-		      		</tr>	
-		      	<c:forEach items="${listaAuto}" var="auto">
-		      		<tr style="border:2px solid black">
-		      			<td class="autoDataCel">${auto.key}</td>
-		      			<td class="autoDataCel">${auto.value.targa}</td>
-		      			<td class="autoDataCel">${auto.value.costruttore}</td>
-		      			<td class="autoDataCel">${auto.value.modello}</td>
-		      			<td class="autoDataCel">${auto.value.annoCostruzione}</td>
-		      			<td class="autoDataCel">${auto.value.costoBase}</td>
-		      			<td class="autoDataCel">${auto.value.alimentazione}</td>
-		      			<td class="autoDataCel">${auto.value.colore}</td>
-		      			<td class="autoDataCel"><a href="dettaglioAuto?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a></td>
-		      		</tr>	
-		
-		 	    </c:forEach>
-		      			
-		      	</table>
+      			<a href="rimozione?idAuto=${automobile.id}"><button type="button" class="btn btn-lg btn-danger"><b>RIMUOVI</b></button></a>
       		
       		</div>
       	
-      	</div>
+      	</div>      	
+      	
       </div>
+      
+      
 
     </section>
     <!-- /.content -->

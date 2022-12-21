@@ -1,5 +1,8 @@
 package srl.neotech.services;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,11 +77,31 @@ public class SaloneService {
 	}
 	
 	public Integer costoConAccessori(AutomobileDTO auto) {
-		Integer nuovoCosto=auto.getCosto();
+		Integer nuovoCosto=auto.getCostoBase();
 		for (AccessorioDTO acc:auto.getAccessori()) {
 			nuovoCosto=nuovoCosto+acc.getCosto();
 		}
 		
 		return nuovoCosto;
+	}
+	
+	public HashMap<String, AccessorioDTO> sottoListaAccessori(HashMap<String, AccessorioDTO> listaAccessori, Tipologia tipo){
+		HashMap<String, AccessorioDTO> sottoLista=new HashMap<String, AccessorioDTO>();
+		for(AccessorioDTO acc:listaAccessori.values()) {
+			if (acc.getTipologia().equals(tipo)){
+				sottoLista.put(acc.getId(), acc);
+			}
+		}
+		return sottoLista;
+	}
+	
+	public void assegnaAccessori(AutomobileDTO auto, ArrayList<String> idAccessori) {
+		for (String s:idAccessori) {
+			if (accDao.getElencoAccessori().containsKey(s)) {
+				System.out.println("aggiunto accessorio "+s);
+				AccessorioDTO acc=accDao.getElencoAccessori().get(s);
+				auto.getAccessori().add(acc);
+			}
+		}
 	}
 }

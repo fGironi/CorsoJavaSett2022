@@ -142,7 +142,7 @@
       			<th class="autoDataCel"><b>Costruttore</b></th>
       			<th class="autoDataCel"><b>Modello</b></th>
       			<th class="autoDataCel"><b>Anno</b></th>
-      			<th class="autoDataCel"><b>Costo</b></th>
+      			<th class="autoDataCel"><b>Costo base</b></th>
       			<th class="autoDataCel"><b>Alimentazione</b></th>
       			<th class="autoDataCel"><b>Colore</b></th>
       		</tr>	
@@ -152,7 +152,7 @@
       			<td class="autoDataCel">${automobile.costruttore}</td>
       			<td class="autoDataCel">${automobile.modello}</td>
       			<td class="autoDataCel">${automobile.annoCostruzione}</td>
-      			<td class="autoDataCel">${automobile.costo}</td>
+      			<td class="autoDataCel">${automobile.costoBase}</td>
       			<td class="autoDataCel">${automobile.alimentazione}</td>
       			<td class="autoDataCel">${automobile.colore}</td>
       		</tr>	

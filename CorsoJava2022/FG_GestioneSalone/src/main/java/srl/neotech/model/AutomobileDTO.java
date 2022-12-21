@@ -10,6 +10,7 @@ public class AutomobileDTO {
 	private String modello;
 	private Integer annoCostruzione;
 	private Date dataCostruzione;
+	private Integer costoBase;
 	private Integer costo;
 	private Alimentazione alimentazione;
 	private Colore colore;
@@ -21,7 +22,7 @@ public class AutomobileDTO {
 	@Override
 	public String toString() {
 		return "AutomobileDTO [id=" + id + ", targa=" + targa + ", costruttore=" + costruttore + ", modello=" + modello
-				+ ", annoCostruzione=" + annoCostruzione + ", dataCostruzione=" + dataCostruzione + ", costo=" + costo
+				+ ", annoCostruzione=" + annoCostruzione + ", dataCostruzione=" + dataCostruzione + ", costo=" + costoBase
 				+ ", alimentazione=" + alimentazione + ", colore=" + colore + "]";
 	}
 	public AutomobileDTO() {
@@ -57,11 +58,11 @@ public class AutomobileDTO {
 	public void setDataCostruzione(Date annoCostruzione) {
 		this.dataCostruzione = annoCostruzione;
 	}
-	public Integer getCosto() {
-		return costo;
+	public Integer getCostoBase() {
+		return costoBase;
 	}
-	public void setCosto(Integer costo) {
-		this.costo = costo;
+	public void setCostoBase(Integer costo) {
+		this.costoBase = costo;
 	}
 	public Alimentazione getAlimentazione() {
 		return alimentazione;
@@ -86,6 +87,12 @@ public class AutomobileDTO {
 	}
 	public void setAnnoCostruzione(Integer annoCostruzione) {
 		this.annoCostruzione = annoCostruzione;
+	}
+	public Integer getCosto() {
+		return costo;
+	}
+	public void setCosto(Integer costo) {
+		this.costo = costo;
 	}
 	
 	

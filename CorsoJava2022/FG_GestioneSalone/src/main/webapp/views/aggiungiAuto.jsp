@@ -129,35 +129,35 @@
       <!-- Qua la roba -->
       <div class="clearfix">
       	<div class="formArea" style="margin-left:50px; width:80%">
-     		<form:form method="post" action="aggiungi" modelAttribute="automobile">
+     		<form:form method="post" action="aggiungi" modelAttribute="formAuto">
        		<div class="row whiteRow" style="background-color:white">
     			<div class="col-md-4">
-    				<form:label id="lblTarga" path="targa">Targa:</form:label>
-    				<form:input id="inTarga" path="targa"></form:input>
+    				<form:label id="lblTarga" path="automobile.targa">Targa:</form:label>
+    				<form:input id="inTarga" path="automobile.targa"></form:input>
     			</div>
       			<div class="col-md-4">
-      				<form:label id="lblCostruttore" path="costruttore">Costruttore:</form:label>
-      				<form:select path="costruttore">
+      				<form:label id="lblCostruttore" path="automobile.costruttore">Costruttore:</form:label>
+      				<form:select path="automobile.costruttore">
 				    	<form:option value="-" label="sel costruttore"/>
 				    	<form:options items="${costruttori}" />
 					</form:select>
       			</div>
       			<div class="col-md-4">
-      				<form:label id="lblModello" path="modello">Modello:</form:label>
-    				<form:input id="inModello" path="modello"></form:input>
+      				<form:label id="lblModello" path="automobile.modello">Modello:</form:label>
+    				<form:input id="inModello" path="automobile.modello"></form:input>
       			</div>
       		</div>
       		<div class="row blueRow" style="background-color:lightblue">
     			<div class="col-md-3">
-    				<form:label id="lblAlimentazione" path="alimentazione">Alimentazione:</form:label>
-    				<form:select id="inAlimentazione" path="alimentazione">
+    				<form:label id="lblAlimentazione" path="automobile.alimentazione">Alimentazione:</form:label>
+    				<form:select id="inAlimentazione" path="automobile.alimentazione">
 				    	<form:option value="-" label="sel alimentazione"/>
 				    	<form:options items="${alimentazioni}" />
 					</form:select>
     			</div>
       			<div class="col-md-3">
-      				<form:label id="lblAnno" path="annoCostruzione">Anno costruzione</form:label>
-      				<form:select id="inAnno" path="annoCostruzione">
+      				<form:label id="lblAnno" path="automobile.annoCostruzione">Anno costruzione</form:label>
+      				<form:select id="inAnno" path="automobile.annoCostruzione">
 				    	<form:option value="-" label="sel anno"/>
 				    	 <c:forEach var = "anno" begin = "1900" end = "2022">
 					        <form:option value="${anno}">${anno}</form:option>
@@ -165,26 +165,25 @@
 					</form:select>
       			</div>
       			<div class="col-md-3">
-      				<form:label id="lblColore" path="colore">Colore:</form:label>
-      				<form:select id="inColore" path="colore">
+      				<form:label id="lblColore" path="automobile.colore">Colore:</form:label>
+      				<form:select id="inColore" path="automobile.colore">
 				    	<form:option value="-" label="sel colore"/>
 				    	<form:options items="${colori}" />
 					</form:select>
       			</div>
       			<div class="col-md-3">
-      				<form:label id="lblCosto" path="costo">Costo:</form:label>
-      				<form:input id="inCosto" path="costo"></form:input>
+      				<form:label id="lblCosto" path="automobile.costoBase">Costo:</form:label>
+      				<form:input id="inCosto" path="automobile.costoBase"></form:input>
       			</div>
       		</div>
       		<div class="row whiteRow" style="background-color:white">
     			<div class="col-md-10">
-    				<b>Accessori</b> (attualmente non funzionante)<br>
-    				<c:forEach var="accessorio" items="${accessori}">
-    				<input type="checkbox" class="btn-check" id="btn-check-outlined-${accessorio.value.descrizione}" autocomplete="off" name="${accessorio.value.descrizione}" value="${accessorio.key}">
-					<label class="btn btn-outline-primary" for="btn-check-outlined-${accessorio.value.descrizione}">${accessorio.value.descrizione} - ${accessorio.value.costo} €</label>
-							  					  
-					</c:forEach>
-					
+    				<b>Accessori</b><br>
+    				<form:select multiple="true" path="idAccessori" id="selAccessori">
+						<c:forEach items="${accessori}" var="accessorio">
+   							   <form:option value="${accessorio.key}">${accessorio.value.descrizione} - ${accessorio.value.costo}€ </form:option>	
+   						</c:forEach>
+					</form:select>
     			</div>
       			<div class="col-md-2">
       				<button id="btnAdd" type="submit" class="btn btn-primary">Aggiungi</button>

@@ -23,7 +23,7 @@ public class HomeController {
     public String creaAccessori() {
     	//aaaah, il profumo della disperazione
     	salService.faiFintaDiAvereUnDBdiAccessori();
-    	return "home";
+    	return "redirect:/";
     }
     
    

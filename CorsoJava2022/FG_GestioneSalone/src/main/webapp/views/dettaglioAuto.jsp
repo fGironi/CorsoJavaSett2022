@@ -26,6 +26,8 @@
 	<script src="static/js/fireAjax.js"></script>
 	<script src="static/js/demoTemplate.js"></script>
   
+  	<link rel="stylesheet" href="static/css/autoSaloneStyle.css">
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -128,6 +130,73 @@
     <section class="content">
 
       <!-- Qua la roba -->
+      <div class="clearfix">
+      	<div class="row">
+      		<div class="col-sm-3"></div>
+      		<div class="col-sm-6" style="text-align:center">
+      			<h2>Stai visualizzando i dettagli dell'auto ${automobile.id}</h2>
+      		</div>
+      		<div class="col-sm-3"></div>
+      	</div>
+      	<div class="row">
+      		<div class="col-md-6 d-flex justify-content-end">
+      				<table class="dettaglioTab">
+      					<tr>
+      						<th>Dettaglio Auto</th>
+      					</tr>
+      					<tr>
+      						<td>ID Auto</td>
+      						<td>${automobile.id}</td>
+      					</tr>
+      					<tr>
+      						<td>Targa</td>
+      						<td>${automobile.targa}</td>
+      					</tr>
+      					<tr>
+      						<td>Costruttore</td>
+      						<td>${automobile.costruttore}</td>
+      					</tr>
+      					<tr>
+      						<td>Modello</td>
+      						<td>${automobile.modello}</td>
+      					</tr>
+      					<tr>
+      						<td>Anno</td>
+      						<td>${automobile.annoCostruzione}</td>
+      					</tr>
+      					<tr>
+      						<td>Costo Base</td>
+      						<td>${automobile.costoBase}</td>
+      					</tr>
+      					<tr>
+      						<td>Costo totale</td>
+      						<td>${automobile.costo}</td>
+      					</tr>
+      					<tr>
+      						<td>Alimentazione</td>
+      						<td>${automobile.alimentazione}</td>
+      					</tr>
+      					<tr>
+      						<td>Colore</td>
+      						<td>${automobile.colore}</td>
+      					</tr>
+      				</table>
+      		</div>
+      		<div class="col-md-6 d-flex justify-content-start">
+      			<table class="dettaglioTab">
+      				<tr><th>Accessori</th></tr>
+      				<c:forEach items="${automobile.accessori}" var="accessorio">
+      					<tr>
+      						<td>${accessorio.tipologia}</td>
+      						<td>${accessorio.descrizione}</td>
+      						<td>${accessorio.costo} €</td>
+      					</tr>
+					</c:forEach>
+				</table>
+      		</div>
+      	</div>
+      </div>
+      
       
 
     </section>

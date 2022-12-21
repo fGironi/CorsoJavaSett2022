@@ -129,6 +129,8 @@
 
       <!-- Qua la roba -->
       <div class="zonapulsantone" style="text-align:center">
+      	<h1>PREMERE UNA SOLA VOLTA</h1>
+      	<h4>AD OGNI PRESSIONE POPOLA ARTIFICIALMENTE LA LISTA DEGLI ACCESSORI</h4>
  		<a href="creaRepoAccessori"><button type="button" class="btn btn-lg btn-success">Popola Lista Accessori</button></a>     
       </div>
 

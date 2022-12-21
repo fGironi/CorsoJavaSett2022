@@ -142,9 +142,10 @@
       			<th class="autoDataCel"><b>Costruttore</b></th>
       			<th class="autoDataCel"><b>Modello</b></th>
       			<th class="autoDataCel"><b>Anno</b></th>
-      			<th class="autoDataCel"><b>Costo</b></th>
+      			<th class="autoDataCel"><b>Costo base</b></th>
       			<th class="autoDataCel"><b>Alimentazione</b></th>
       			<th class="autoDataCel"><b>Colore</b></th>
+      			<th class="autoDataCel"><b>Dettagli</b></th>
       		</tr>	
       	<c:forEach items="${listaAuto}" var="auto">
       		<tr style="border:2px solid black">
@@ -153,9 +154,10 @@
       			<td class="autoDataCel">${auto.value.costruttore}</td>
       			<td class="autoDataCel">${auto.value.modello}</td>
       			<td class="autoDataCel">${auto.value.annoCostruzione}</td>
-      			<td class="autoDataCel">${auto.value.costo}</td>
+      			<td class="autoDataCel">${auto.value.costoBase}</td>
       			<td class="autoDataCel">${auto.value.alimentazione}</td>
       			<td class="autoDataCel">${auto.value.colore}</td>
+      			<td class="autoDataCel"><a href="dettaglioAuto?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a></td>
       		</tr>	
 
  	    </c:forEach>

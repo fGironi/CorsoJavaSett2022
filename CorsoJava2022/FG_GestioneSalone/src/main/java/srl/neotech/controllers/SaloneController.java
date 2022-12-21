@@ -15,6 +15,7 @@ import srl.neotech.model.Alimentazione;
 import srl.neotech.model.AutomobileDTO;
 import srl.neotech.model.Colore;
 import srl.neotech.model.Costruttore;
+import srl.neotech.model.FormAutoDTO;
 import srl.neotech.services.SaloneService;
 
 @Controller
@@ -36,14 +37,16 @@ public class SaloneController {
 		return "listaAuto";
 	}
 	@GetMapping(value="/rimozioneAuto")
-	public String preRimozioneAuto() {
+	public String preRimozioneAuto(ModelMap modelMap) {
+		modelMap.addAttribute("listaAuto", repoAuto.getListaAuto());
 		return "rimuoviAuto";
 	}
 	@GetMapping(value="/aggiuntaAuto")
 	public String preAggiuntaAuto(ModelMap modelMap) {
 		//mi chiedo come gestire gli accessori, visto che vanno creati singolarmente anche loro
-		AutomobileDTO automobile=new AutomobileDTO();		
-		modelMap.addAttribute("automobile", automobile);
+		AutomobileDTO automobile=new AutomobileDTO();
+		FormAutoDTO formAuto=new FormAutoDTO(automobile);
+		modelMap.addAttribute("formAuto", formAuto);
 		modelMap.addAttribute("costruttori", Costruttore.values());
 		modelMap.addAttribute("alimentazioni", Alimentazione.values());
 		modelMap.addAttribute("colori", Colore.values());
@@ -54,25 +57,31 @@ public class SaloneController {
 	@PostMapping(value="/aggiungi")
 	public String aggiuntaAuto(
 		ModelMap modelMap,
-		@ModelAttribute("automobile") AutomobileDTO automobile,
+		@ModelAttribute("formAuto") FormAutoDTO formAuto,
 		BindingResult result) {
 			if (result.hasErrors()) {
 	            return "error";
 	        }
+			AutomobileDTO automobile=formAuto.getAutomobile();
+			for (String s:formAuto.getIdAccessori()) {
+				System.out.println("segnato accessorio "+s);
+			}
 			automobile.setId(salService.generaIdAuto());
+			salService.assegnaAccessori(automobile, formAuto.getIdAccessori());
+			automobile.setCosto(salService.costoConAccessori(automobile));
 			repoAuto.getListaAuto().put(automobile.getId(), automobile);
 			System.out.println(automobile);
-			return "redirect:aggiuntaAccessori?autoId="+automobile.getId();
+			return "redirect:confermaCreazione?autoId="+automobile.getId();
 	}
 	
-	@GetMapping(value="/aggiuntaAccessori")
+	@GetMapping(value="/confermaCreazione")
 	public String aggiuntaAcc(
 			ModelMap modelMap,
 			@RequestParam String autoId
 			) {
 		modelMap.addAttribute("automobile", repoAuto.getListaAuto().get(autoId));
 		modelMap.addAttribute("accessori", repoAcces.getElencoAccessori());
-		return "aggiuntaAccessori";
+		return "confermaCreazione";
 	}
 	
 	@GetMapping(value="/cercaAuto")
@@ -80,8 +89,24 @@ public class SaloneController {
 		return "cercaAuto";
 	}
 	@GetMapping(value="/dettaglioAuto")
-	public String getDettaglioAuto() {
+	public String getDettaglioAuto(@RequestParam String idAuto, ModelMap modelMap) {
+		AutomobileDTO automobile=repoAuto.getListaAuto().get(idAuto);
+		modelMap.addAttribute("automobile", automobile);
 		return "dettaglioAuto";
+	}
+	
+	@GetMapping(value="/confermaRimozione")
+	public String confRimozione(@RequestParam String idAuto, ModelMap modelMap) {
+		AutomobileDTO automobile=repoAuto.getListaAuto().get(idAuto);
+		modelMap.addAttribute("automobile", automobile);
+		return "confermaRimozione";
+	}
+	
+	@GetMapping(value="/rimozione")
+	public String rimozione(@RequestParam String idAuto) {
+		repoAuto.getListaAuto().remove(idAuto);
+		System.out.println("rimossa l'auto "+idAuto);
+		return "redirect:listaAuto";
 	}
 	
 }
