@@ -10,7 +10,7 @@ import srl.neotech.dao.repository.AccessoriRepository;
 import srl.neotech.dao.repository.AutomobiliRepository;
 import srl.neotech.model.AccessorioDTO;
 import srl.neotech.model.AutomobileDTO;
-import srl.neotech.model.Classe;
+import srl.neotech.model.FormAutoDTO;
 import srl.neotech.model.Tipologia;
 
 @Service
@@ -23,36 +23,6 @@ public class SaloneService {
 	
 	
 	private Integer autoCount=0;
-	
-	
-	
-
-	public void faiFintaDiAvereUnDBdiAccessori() {
-		
-		AccessorioDTO cerchiLega=new AccessorioDTO();
-		cerchiLega.setId(this.generaIdAccessorio());
-		cerchiLega.setClasse(Classe.Esterni);
-		cerchiLega.setCosto(1000);
-		cerchiLega.setDescrizione("cerchi in lega");
-		cerchiLega.setTipologia(Tipologia.cerchi);
-		accDao.getElencoAccessori().put(cerchiLega.getId(),cerchiLega);
-		
-		AccessorioDTO sedPelle=new AccessorioDTO();
-		sedPelle.setId(this.generaIdAccessorio());
-		sedPelle.setClasse(Classe.Interni);
-		sedPelle.setCosto(1500);
-		sedPelle.setDescrizione("sedili in pelle");
-		sedPelle.setTipologia(Tipologia.sedili);
-		accDao.getElencoAccessori().put(sedPelle.getId(), sedPelle);
-		
-		AccessorioDTO carPlay=new AccessorioDTO();
-		carPlay.setId(this.generaIdAccessorio());
-		carPlay.setClasse(Classe.Interni);
-		carPlay.setCosto(800);
-		carPlay.setDescrizione("Apple CarPlay");
-		carPlay.setTipologia(Tipologia.carplay);
-		accDao.getElencoAccessori().put(carPlay.getId(), carPlay);
-	}
 	
 	public String generaIdAuto() {
 		
@@ -95,7 +65,11 @@ public class SaloneService {
 		return sottoLista;
 	}
 	
-	public void assegnaAccessori(AutomobileDTO auto, ArrayList<String> idAccessori) {
+	public void assegnaAccessori(AutomobileDTO auto, FormAutoDTO formAuto) {
+		ArrayList<String> idAccessori=formAuto.getIdAccessori();
+		idAccessori.add(formAuto.getIdAccCar());	idAccessori.add(formAuto.getIdAccTap());
+		idAccessori.add(formAuto.getIdAccTet());	idAccessori.add(formAuto.getIdAccInt());
+		idAccessori.add(formAuto.getIdAccCer());
 		for (String s:idAccessori) {
 			if (accDao.getElencoAccessori().containsKey(s)) {
 				System.out.println("aggiunto accessorio "+s);

@@ -112,12 +112,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Gestione Autosalone - Home</h1>
+            <h1>Gestione Autosalone - Errore</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Gestione Autosalone - Home</li>
+              <li class="breadcrumb-item active">Gestione Autosalone - Errore</li>
             </ol>
           </div>
         </div>
@@ -128,8 +128,10 @@
     <section class="content">
 
       <!-- Qua la roba -->
-      
-
+      <h1 style="color:red">Qualcosa è andato storto</h1>
+      <p> si potrebbero fare tanti check per rendere più facile la comprensione dell'errore, ma accontentiamoci</p>
+	  <p> se sei arrivato qui cliccando su dettaglio automobili è perché non ho messo il requestparam come facoltativo, e mi chiedo sinceramente se abbia senso farlo</p>
+	  <p> non sarebbe esattamente la stessa cosa di visualizzare <a href="listaAuto">lista auto</a>? probabilmente il pulsante sparirà dal menù</p>
     </section>
     <!-- /.content -->
   </div>

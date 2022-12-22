@@ -128,12 +128,23 @@
     <section class="content">
 
       <!-- Qua la roba -->
-      <div class="zonapulsantone" style="text-align:center">
-      	<h1>PREMERE UNA SOLA VOLTA</h1>
-      	<h4>AD OGNI PRESSIONE POPOLA ARTIFICIALMENTE LA LISTA DEGLI ACCESSORI</h4>
- 		<a href="creaRepoAccessori"><button type="button" class="btn btn-lg btn-success">Popola Lista Accessori</button></a>     
-      </div>
-
+     <div class="clearfix">
+     	<div class="row">
+			<div class="col-md-12" style="text-align:center">
+			    <img src="${bgImgUrl}" alt="dovrebbe esserci una macchina qui" style="width:50%">
+			</div>
+	    </div>
+	    <div class="row">
+	     	<div class="col-md-12">
+	   	  		<div class="zonapulsantone" style="text-align:center">
+	      			<h1>PREMERE UNA SOLA VOLTA AL PRIMO AVVIO NEL SERVER</h1>
+	      			<h6>Alla pressione popola artificialmente le liste di auto e accessori</h6>
+	 				<a href="creaRepoAccessori"><button type="button" class="btn btn-lg btn-success">Popola il Database</button></a>     
+	      		</div>
+	     	</div>
+	    </div>
+	    
+	</div>
     </section>
     <!-- /.content -->
   </div>

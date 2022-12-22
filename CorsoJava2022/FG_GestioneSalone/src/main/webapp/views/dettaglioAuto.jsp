@@ -40,7 +40,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
+        <a href="." class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -114,12 +114,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Gestione Autosalone - Home</h1>
+            <h1>Dettagli automobile</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Gestione Autosalone - Home</li>
+              <li class="breadcrumb-item"><a href=".">Home</a></li>
+              <li class="breadcrumb-item active">Dettagli automobile</li>
             </ol>
           </div>
         </div>
@@ -139,7 +139,8 @@
       		<div class="col-sm-3"></div>
       	</div>
       	<div class="row">
-      		<div class="col-md-6 d-flex justify-content-end">
+      		<div class="col-sm-3"></div>
+      		<div class="col-md-3 d-flex justify-content-center">
       				<table class="dettaglioTab">
       					<tr>
       						<th>Dettaglio Auto</th>
@@ -182,7 +183,7 @@
       					</tr>
       				</table>
       		</div>
-      		<div class="col-md-6 d-flex justify-content-start">
+      		<div class="col-md-3 d-flex justify-content-center">
       			<table class="dettaglioTab">
       				<tr><th>Accessori</th></tr>
       				<c:forEach items="${automobile.accessori}" var="accessorio">
@@ -194,6 +195,7 @@
 					</c:forEach>
 				</table>
       		</div>
+      		<div class="col-sm-3"></div>
       	</div>
       </div>
       

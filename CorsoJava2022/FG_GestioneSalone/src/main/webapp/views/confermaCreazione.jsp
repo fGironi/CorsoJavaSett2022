@@ -115,12 +115,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Gestione Autosalone - Home</h1>
+            <h1>Conferma aggiunta</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href=".">Home</a></li>
-              <li class="breadcrumb-item active">Lista Auto</li>
+              <li class="breadcrumb-item active">Conferma aggiunta</li>
             </ol>
           </div>
         </div>
@@ -137,7 +137,7 @@
       	<div class="col-md-8">
       	<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
       		<tr style="background-color:lightblue; border:1px solid darkblue">
-      			<th class="autoDataCel"><b>ID</b></th>
+      			<th hidden class="autoDataCel"><b>ID</b></th>
       			<th class="autoDataCel"><b>Targa</b></th>
       			<th class="autoDataCel"><b>Costruttore</b></th>
       			<th class="autoDataCel"><b>Modello</b></th>
@@ -147,7 +147,7 @@
       			<th class="autoDataCel"><b>Colore</b></th>
       		</tr>	
       		<tr style="border:2px solid black">
-      			<td class="autoDataCel">${automobile.id}</td>
+      			<td hidden class="autoDataCel">${automobile.id}</td>
       			<td class="autoDataCel">${automobile.targa}</td>
       			<td class="autoDataCel">${automobile.costruttore}</td>
       			<td class="autoDataCel">${automobile.modello}</td>
@@ -169,13 +169,7 @@
       <div class=row">
 	      <div class="col-md-2"></div>
 	      <div class="col-md-8" style="text-align:center">
-	      <h2>Accessori disponibili</h2>
-		      <c:forEach var="accessorio" items="${accessori}">
-		    		<input type="checkbox" class="btn-check" id="btn-check-outlined-${accessorio.value.descrizione}" autocomplete="off" name="${accessorio.key}" value="true">
-					<label class="btn btn-outline-primary" for="btn-check-outlined-${accessorio.value.descrizione}">${accessorio.value.descrizione} - ${accessorio.value.costo} €</label>
-			  </c:forEach>
-		  </div>
-		  <div class="col-md-2"></div>
+	      <div class="col-md-2"></div>
       </div>
       </div>
     </section>

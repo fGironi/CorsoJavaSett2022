@@ -38,7 +38,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
+        <a href="." class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -112,12 +112,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Gestione Autosalone - Home</h1>
+            <h1>Rimozione automobile</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Gestione Autosalone - Home</li>
+              <li class="breadcrumb-item"><a href=".">Home</a></li>
+              <li class="breadcrumb-item active">Rimozione automobile</li>
             </ol>
           </div>
         </div>
@@ -157,7 +157,7 @@
 		      			<th class="autoDataCel"><b>Costo base</b></th>
 		      			<th class="autoDataCel"><b>Alimentazione</b></th>
 		      			<th class="autoDataCel"><b>Colore</b></th>
-		      			<th class="autoDataCel"><b>Dettagli</b></th>
+		      			<th class="autoDataCel"><b>Azioni</b></th>
 		      		</tr>	
 		      	<c:forEach items="${listaAuto}" var="auto">
 		      		<tr style="border:2px solid black">
@@ -169,7 +169,10 @@
 		      			<td class="autoDataCel">${auto.value.costoBase}</td>
 		      			<td class="autoDataCel">${auto.value.alimentazione}</td>
 		      			<td class="autoDataCel">${auto.value.colore}</td>
-		      			<td class="autoDataCel"><a href="dettaglioAuto?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a></td>
+		      			<td class="autoDataCel">
+		      			<a href="confermaRimozione?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-trash"></i></button></a>
+		      			<a href="dettaglioAuto?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a>
+		      			</td>
 		      		</tr>	
 		
 		 	    </c:forEach>

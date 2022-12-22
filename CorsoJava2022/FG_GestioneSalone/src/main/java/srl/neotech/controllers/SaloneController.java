@@ -16,6 +16,7 @@ import srl.neotech.model.AutomobileDTO;
 import srl.neotech.model.Colore;
 import srl.neotech.model.Costruttore;
 import srl.neotech.model.FormAutoDTO;
+import srl.neotech.model.Tipologia;
 import srl.neotech.services.SaloneService;
 
 @Controller
@@ -26,7 +27,6 @@ public class SaloneController {
 	AutomobiliRepository repoAuto;
 	@Autowired
 	AccessoriRepository repoAcces;
-	
 	@Autowired
 	SaloneService salService;
 	
@@ -43,14 +43,20 @@ public class SaloneController {
 	}
 	@GetMapping(value="/aggiuntaAuto")
 	public String preAggiuntaAuto(ModelMap modelMap) {
-		//mi chiedo come gestire gli accessori, visto che vanno creati singolarmente anche loro
 		AutomobileDTO automobile=new AutomobileDTO();
 		FormAutoDTO formAuto=new FormAutoDTO(automobile);
 		modelMap.addAttribute("formAuto", formAuto);
 		modelMap.addAttribute("costruttori", Costruttore.values());
 		modelMap.addAttribute("alimentazioni", Alimentazione.values());
 		modelMap.addAttribute("colori", Colore.values());
-		modelMap.addAttribute("accessori", repoAcces.getElencoAccessori());
+		modelMap.addAttribute("accIntrattenimento", salService.sottoListaAccessori(repoAcces.getElencoAccessori(), Tipologia.intrattenimento));
+		modelMap.addAttribute("accTappezzeria", salService.sottoListaAccessori(repoAcces.getElencoAccessori(), Tipologia.tappezzeria));
+		modelMap.addAttribute("accCerchi", salService.sottoListaAccessori(repoAcces.getElencoAccessori(), Tipologia.cerchi));
+		modelMap.addAttribute("accTettino", salService.sottoListaAccessori(repoAcces.getElencoAccessori(), Tipologia.tettino));
+		modelMap.addAttribute("accCarrozzeria", salService.sottoListaAccessori(repoAcces.getElencoAccessori(), Tipologia.carrozzeria));
+		modelMap.addAttribute("accSicurezza", salService.sottoListaAccessori(repoAcces.getElencoAccessori(), Tipologia.sicurezza));
+		modelMap.addAttribute("accComfort", salService.sottoListaAccessori(repoAcces.getElencoAccessori(), Tipologia.comfort));
+		
 		return "aggiungiAuto";
 	}
 	
@@ -67,7 +73,7 @@ public class SaloneController {
 				System.out.println("segnato accessorio "+s);
 			}
 			automobile.setId(salService.generaIdAuto());
-			salService.assegnaAccessori(automobile, formAuto.getIdAccessori());
+			salService.assegnaAccessori(automobile, formAuto);
 			automobile.setCosto(salService.costoConAccessori(automobile));
 			repoAuto.getListaAuto().put(automobile.getId(), automobile);
 			System.out.println(automobile);

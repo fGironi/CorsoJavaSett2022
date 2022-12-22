@@ -18,6 +18,7 @@
  	 <!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 	<!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 	<!-- AdminLTE App -->
@@ -137,26 +138,39 @@
       	<div class="col-md-8">
       	<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
       		<tr style="background-color:lightblue; border:1px solid darkblue">
-      			<th class="autoDataCel"><b>ID</b></th>
+      			<th hidden class="autoDataCel"><b>ID</b></th>
       			<th class="autoDataCel"><b>Targa</b></th>
       			<th class="autoDataCel"><b>Costruttore</b></th>
       			<th class="autoDataCel"><b>Modello</b></th>
       			<th class="autoDataCel"><b>Anno</b></th>
       			<th class="autoDataCel"><b>Costo base</b></th>
+      			<th class="autoDataCel"><b>Costo totale</b></th>
       			<th class="autoDataCel"><b>Alimentazione</b></th>
       			<th class="autoDataCel"><b>Colore</b></th>
-      			<th class="autoDataCel"><b>Dettagli</b></th>
+      			<th class="autoDataCel"><b>Accessori</b></th>
+      			<th class="autoDataCel"><b>Azioni</b></th>
       		</tr>	
       	<c:forEach items="${listaAuto}" var="auto">
       		<tr style="border:2px solid black">
-      			<td class="autoDataCel">${auto.key}</td>
+      			<td hidden class="autoDataCel">${auto.key}</td>
       			<td class="autoDataCel">${auto.value.targa}</td>
       			<td class="autoDataCel">${auto.value.costruttore}</td>
       			<td class="autoDataCel">${auto.value.modello}</td>
       			<td class="autoDataCel">${auto.value.annoCostruzione}</td>
       			<td class="autoDataCel">${auto.value.costoBase}</td>
+      			<td class="autoDataCel">${auto.value.costo}</td>
       			<td class="autoDataCel">${auto.value.alimentazione}</td>
       			<td class="autoDataCel">${auto.value.colore}</td>
+      			<td class="autoDataCel"><div class="dropdown">
+					<button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					   Accessori
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<c:forEach items="${auto.value.accessori}" var="accessorio">
+		      				<li><p class="dropdown-item">${accessorio.descrizione}</p></li>
+		      			</c:forEach>
+					</ul>
+				</div></td>
       			<td class="autoDataCel"><a href="dettaglioAuto?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a></td>
       		</tr>	
 

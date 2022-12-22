@@ -2,7 +2,13 @@ package srl.neotech.model;
 
 public enum Tipologia {
 
-	carplay,
-	sedili,
-	cerchi
+	intrattenimento,
+	tappezzeria,
+	cerchi,
+	tettino,
+	carrozzeria,
+	sicurezza,
+	comfort,
+	
+	
 }

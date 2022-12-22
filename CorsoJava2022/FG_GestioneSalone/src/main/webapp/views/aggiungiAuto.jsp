@@ -38,7 +38,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
+        <a href="." class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -112,11 +112,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Gestione Autosalone - Home</h1>
+            <h1>Aggiung automobile</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href=".">Home</a></li>
               <li class="breadcrumb-item active">Aggiungi automobile</li>
             </ol>
           </div>
@@ -130,34 +130,34 @@
       <div class="clearfix">
       	<div class="formArea" style="margin-left:50px; width:80%">
      		<form:form method="post" action="aggiungi" modelAttribute="formAuto">
-       		<div class="row whiteRow" style="background-color:white">
+       		<div class="row whiteRow" style="background-color:white; padding:10px">
     			<div class="col-md-4">
     				<form:label id="lblTarga" path="automobile.targa">Targa:</form:label>
-    				<form:input id="inTarga" path="automobile.targa"></form:input>
+    				<form:input class="form-control" id="inTarga" path="automobile.targa"></form:input>
     			</div>
       			<div class="col-md-4">
       				<form:label id="lblCostruttore" path="automobile.costruttore">Costruttore:</form:label>
-      				<form:select path="automobile.costruttore">
+      				<form:select path="automobile.costruttore" class="form-select">
 				    	<form:option value="-" label="sel costruttore"/>
 				    	<form:options items="${costruttori}" />
 					</form:select>
       			</div>
       			<div class="col-md-4">
       				<form:label id="lblModello" path="automobile.modello">Modello:</form:label>
-    				<form:input id="inModello" path="automobile.modello"></form:input>
+    				<form:input class="form-control" id="inModello" path="automobile.modello"></form:input>
       			</div>
       		</div>
-      		<div class="row blueRow" style="background-color:lightblue">
+      		<div class="row blueRow" style="background-color:lightblue; padding:10px ">
     			<div class="col-md-3">
     				<form:label id="lblAlimentazione" path="automobile.alimentazione">Alimentazione:</form:label>
-    				<form:select id="inAlimentazione" path="automobile.alimentazione">
+    				<form:select id="inAlimentazione" path="automobile.alimentazione" class="form-select">
 				    	<form:option value="-" label="sel alimentazione"/>
 				    	<form:options items="${alimentazioni}" />
 					</form:select>
     			</div>
       			<div class="col-md-3">
       				<form:label id="lblAnno" path="automobile.annoCostruzione">Anno costruzione</form:label>
-      				<form:select id="inAnno" path="automobile.annoCostruzione">
+      				<form:select id="inAnno" path="automobile.annoCostruzione" class="form-select">
 				    	<form:option value="-" label="sel anno"/>
 				    	 <c:forEach var = "anno" begin = "1900" end = "2022">
 					        <form:option value="${anno}">${anno}</form:option>
@@ -166,27 +166,81 @@
       			</div>
       			<div class="col-md-3">
       				<form:label id="lblColore" path="automobile.colore">Colore:</form:label>
-      				<form:select id="inColore" path="automobile.colore">
+      				<form:select id="inColore" path="automobile.colore" class="form-select">
 				    	<form:option value="-" label="sel colore"/>
 				    	<form:options items="${colori}" />
 					</form:select>
       			</div>
       			<div class="col-md-3">
       				<form:label id="lblCosto" path="automobile.costoBase">Costo:</form:label>
-      				<form:input id="inCosto" path="automobile.costoBase"></form:input>
+      				<form:input class="form-control" id="inCosto" path="automobile.costoBase"></form:input>
       			</div>
       		</div>
-      		<div class="row whiteRow" style="background-color:white">
-    			<div class="col-md-10">
-    				<b>Accessori</b><br>
-    				<form:select multiple="true" path="idAccessori" id="selAccessori">
-						<c:forEach items="${accessori}" var="accessorio">
-   							   <form:option value="${accessorio.key}">${accessorio.value.descrizione} - ${accessorio.value.costo}€ </form:option>	
-   						</c:forEach>
-					</form:select>
+      		<div class="row whiteRow" style="background-color:white; padding:10px">
+    			<div class="col-md-12">
+    				<h4>Accessori</h4>
     			</div>
-      			<div class="col-md-2">
-      				<button id="btnAdd" type="submit" class="btn btn-primary">Aggiungi</button>
+    		</div>
+    		<div class="row whiteRow" style="background-color:white; padding:10px">
+    			<div class="col-md-3">
+    			<h5>Esterni</h5>
+    				<h6>Cerchi</h6>
+   						<form:radiobutton class="form-check-input" path="idAccCer" value="" checked="checked"/>
+	   					default<br>
+						<c:forEach items="${accCerchi}" var="accessorio">
+   							    <form:radiobutton class="form-check-input" path="idAccCer" value="${accessorio.key}"/>
+   							   ${accessorio.value.descrizione} - ${accessorio.value.costo}€<br>
+   						</c:forEach>
+   					<h6>Tetto</h6>
+   						<form:radiobutton class="form-check-input" path="idAccTet" value="" checked="checked"/>
+	   					default<br>
+						<c:forEach items="${accTettino}" var="accessorio">
+   							    <form:radiobutton class="form-check-input" path="idAccTet" value="${accessorio.key}"/>
+   							   ${accessorio.value.descrizione} - ${accessorio.value.costo}€<br>
+   						</c:forEach>
+   					<h6>Carrozzeria</h6>
+   						<form:radiobutton class="form-check-input" path="idAccCar" value="" checked="checked"/>
+	   					default<br>
+						<c:forEach items="${accCarrozzeria}" var="accessorio">
+   							    <form:radiobutton class="form-check-input" path="idAccCar" value="${accessorio.key}"/>
+   							   ${accessorio.value.descrizione} - ${accessorio.value.costo}€<br>
+   						</c:forEach>
+   					
+   					
+   				</div>
+   				<div class="col-md-3">
+      			<h5>Interni</h5>
+      				<h6>Intrattenimento</h6>
+	   					<form:radiobutton class="form-check-input" path="idAccInt" value="" checked="checked"/>
+	   					default<br>
+   						<c:forEach items="${accIntrattenimento}" var="accessorio">
+   							   <form:radiobutton class="form-check-input" path="idAccInt" value="${accessorio.key}"/>
+   							   ${accessorio.value.descrizione} - ${accessorio.value.costo}€<br>
+   						</c:forEach>
+   					<h6>Tappezzeria</h6>
+	   					<form:radiobutton class="form-check-input" path="idAccTap" value="" checked="checked"/>
+	   					default<br>
+   						<c:forEach items="${accTappezzeria}" var="accessorio">
+   							   <form:radiobutton class="form-check-input" path="idAccTap" value="${accessorio.key}"/>
+   							   ${accessorio.value.descrizione} - ${accessorio.value.costo}€<br>
+   						</c:forEach>
+      			</div>
+      			<div class="col-md-3">
+      			<h5>Altro</h5>
+      				<h6>Sicurezza</h6>
+   						<c:forEach items="${accSicurezza}" var="accessorio">
+   							   <form:checkbox class="form-check-input" path="idAccessori" value="${accessorio.key}"/>
+   							   ${accessorio.value.descrizione} - ${accessorio.value.costo}€<br>
+   						</c:forEach>
+   					<h6>Comfort</h6>
+    				<c:forEach items="${accComfort}" var="accessorio">			
+					   		<form:checkbox class="form-check-input" path="idAccessori" value="${accessorio.key}"/>
+   							   ${accessorio.value.descrizione} - ${accessorio.value.costo}€<br>
+					</c:forEach>
+      			</div>
+   				
+      			<div class="col-md-3" style="text-align:center">
+      				<button id="btnAdd" type="submit" class="btn btn-lg btn-primary">Aggiungi</button>
       			</div>
       			
       		</div>
