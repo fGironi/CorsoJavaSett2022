@@ -16,7 +16,9 @@ import srl.neotech.model.AutomobileDTO;
 import srl.neotech.model.Colore;
 import srl.neotech.model.Costruttore;
 import srl.neotech.model.FormAutoDTO;
+import srl.neotech.model.ParagoneRicerca;
 import srl.neotech.model.Tipologia;
+import srl.neotech.services.RicercaService;
 import srl.neotech.services.SaloneService;
 
 @Controller
@@ -29,6 +31,10 @@ public class SaloneController {
 	AccessoriRepository repoAcces;
 	@Autowired
 	SaloneService salService;
+	@Autowired
+	RicercaService ricService;
+	@Autowired
+	ParagoneRicerca paragRicerca;
 	
 	
 	@GetMapping(value="/listaAuto")
@@ -91,9 +97,30 @@ public class SaloneController {
 	}
 	
 	@GetMapping(value="/cercaAuto")
-	public String cercaAuto() {
+	public String risultatiCercaAuto(ModelMap modelMap) {
+		
+		modelMap.addAttribute("paragoneRicerca", paragRicerca);
+		modelMap.addAttribute("costruttori", Costruttore.values());
+		modelMap.addAttribute("alimentazioni", Alimentazione.values());
+		modelMap.addAttribute("colori", Colore.values());
+		System.out.println("inizializzata ricerca, paragone:");
+		System.out.println(paragRicerca);
 		return "cercaAuto";
 	}
+	
+	@PostMapping(value="/cerca")
+	public String getCercaAuto(
+			ModelMap modelMap,
+			@ModelAttribute("paragoneRicerca") ParagoneRicerca paragRicerca) {
+		System.out.println("l'utente ha effettuato una ricerca, paragone:");
+		System.out.println(paragRicerca);
+		ricService.confrontaAuto(paragRicerca);
+		modelMap.addAttribute("paragoneRicerca", paragRicerca);
+		
+		return "cercaAuto";
+	}
+	
+	
 	@GetMapping(value="/dettaglioAuto")
 	public String getDettaglioAuto(@RequestParam String idAuto, ModelMap modelMap) {
 		AutomobileDTO automobile=repoAuto.getListaAuto().get(idAuto);

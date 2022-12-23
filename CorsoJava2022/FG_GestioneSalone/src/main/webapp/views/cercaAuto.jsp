@@ -128,6 +128,139 @@
     <section class="content">
 
       <!-- Qua la roba -->
+      <div class="clearfix">
+	      <div class="row">
+	      	<div class="col-md-2"></div>
+	      	<div class="col-md-8" style="border:2px solid black; padding:10px">
+	      		<form:form action="cerca" method="post" modelAttribute="paragoneRicerca">
+	      		<div class="row">
+	      			<div class="col-md-4">
+	      				<form:input placeholder="Targa" class="form-control" path="targa"/>
+	      			</div>
+	      			<div class="col-md-4">
+	      				<form:select id="paragCostruttore" path="costruttore" class="form-select">
+					    	<form:option value="" label="sel costruttore"/>
+					    	<form:options items="${costruttori}" />
+						</form:select>
+	      			</div>
+	      			<div class="col-md-4">
+	      				<form:input placeholder="Modello" class="form-control" path="modello"/>
+	      			</div>
+	      		</div>
+	      		<div class="row">
+	      			<div class="col-md-3">
+		      			<form:select id="annoMin" path="annoCostrMin" class="form-select">
+					    	<form:option value="" label="anno minimo"/>
+					    	 <c:forEach var = "anno" begin = "1900" end = "2022">
+						        <form:option value="${anno}">${anno}</form:option>
+						     </c:forEach>
+						</form:select>
+					</div>
+					<div class="col-md-3">
+		      			<form:select id="annoMax" path="annoCostrMax" class="form-select">
+					    	<form:option value="" label="anno massimo"/>
+					    	 <c:forEach var = "anno" begin = "1900" end = "2022">
+						        <form:option value="${anno}">${anno}</form:option>
+						     </c:forEach>
+						</form:select>
+					</div>
+	      			<div class="col-md-3">
+	      				<form:select id="paragAlimentazione" path="alimentazione" class="form-select">
+					    	<form:option value="" label="sel alimentazione"/>
+					    	<form:options items="${alimentazioni}" />
+						</form:select>
+	      			</div>
+	      			<div class="col-md-3">
+	      				<form:select id="paragColore" path="colore" class="form-select">
+					    	<form:option value="" label="sel colore"/>
+					    	<form:options items="${colori}" />
+						</form:select>
+	      			</div>
+	      		</div>
+	      		<div class="row">
+		      		<div class="col-md-3">
+						<form:input placeholder="Costo Base Min" class="form-control" path="costoBaseMin"/>
+		      		</div>
+		      		<div class="col-md-3">
+						<form:input placeholder="Costo Base Max" class="form-control" path="costoBaseMax"/>
+		      		</div>
+		      		<div class="col-md-3">
+						<form:input placeholder="Costo Tot Min" class="form-control" path="costoMin"/>
+		      		</div>
+		      		<div class="col-md-3">
+						<form:input placeholder="Costo Tot Max" class="form-control" path="costoMax"/>
+		      		</div>
+		      	</div>
+		      	<div class="row">
+			      	<div class="col-md-12" style="text-align:center">
+			      		<button type="submit" class="btn btn-lg btn-primary">Cerca</button>	
+			      	</div>
+		      	</div>
+	      		</form:form>
+	      	</div>
+	      	<div class="col-md-2"></div>
+	      </div>
+	      
+	      <div class="row">
+		      <div class="col-md-2"></div>
+		      <div class="col-md-8" style="text-align:center">
+		      	<h2>Risultati ricerca</h2>
+		      </div>
+	    	  <div class="col-md-2"></div>
+	      </div>
+	      
+	      <div class="row">
+		      <div class="col-md-2"></div>
+		      <div class="col-md-8 d-flex justify-content-center" style="text-align:center">
+		      	<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
+		      		<tr style="background-color:lightblue; border:1px solid darkblue">
+		      			<th hidden class="autoDataCel"><b>ID</b></th>
+		      			<th class="autoDataCel"><b>Targa</b></th>
+		      			<th class="autoDataCel"><b>Costruttore</b></th>
+		      			<th class="autoDataCel"><b>Modello</b></th>
+		      			<th class="autoDataCel"><b>Anno</b></th>
+		      			<th class="autoDataCel"><b>Costo base</b></th>
+		      			<th class="autoDataCel"><b>Costo totale</b></th>
+		      			<th class="autoDataCel"><b>Alimentazione</b></th>
+		      			<th class="autoDataCel"><b>Colore</b></th>
+		      			<th class="autoDataCel"><b>Accessori</b></th>
+		      			<th class="autoDataCel"><b>Azioni</b></th>
+		      		</tr>	
+		      	<c:forEach items="${paragoneRicerca.autoTrovate}" var="auto">
+		      		<tr style="border:2px solid black">
+		      			<td hidden class="autoDataCel">${auto.id}</td>
+		      			<td class="autoDataCel">${auto.targa}</td>
+		      			<td class="autoDataCel">${auto.costruttore}</td>
+		      			<td class="autoDataCel">${auto.modello}</td>
+		      			<td class="autoDataCel">${auto.annoCostruzione}</td>
+		      			<td class="autoDataCel">${auto.costoBase}</td>
+		      			<td class="autoDataCel">${auto.costo}</td>
+		      			<td class="autoDataCel">${auto.alimentazione}</td>
+		      			<td class="autoDataCel">${auto.colore}</td>
+		      			<td class="autoDataCel"><div class="dropdown">
+							<button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							   Accessori
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+								<c:forEach items="${auto.accessori}" var="accessorio">
+				      				<li><p class="dropdown-item">${accessorio.descrizione}</p></li>
+				      			</c:forEach>
+							</ul>
+						</div></td>
+		      			<td class="autoDataCel"><a href="dettaglioAuto?idAuto=${auto.id}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a></td>
+		      		</tr>	
+		
+		 	    </c:forEach>
+		      			
+		      	</table>
+		      </div>
+	    	  <div class="col-md-2"></div>
+	      </div>
+	      
+	      
+	      
+      </div>
+      
       
 
     </section>
