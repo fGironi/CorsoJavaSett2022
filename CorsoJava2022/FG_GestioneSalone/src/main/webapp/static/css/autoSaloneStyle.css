@@ -7,4 +7,11 @@
 
 .dettaglioTab tr{
 	border: 1px solid black;
+	background-color: white;
+	padding: 5px;
+}
+
+#spazioPulsante{
+	margin:25px;
+	
 }

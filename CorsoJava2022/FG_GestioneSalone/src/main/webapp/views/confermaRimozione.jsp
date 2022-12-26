@@ -134,7 +134,7 @@
       	<div class="row">
       		<div class="col-sm-3"></div>
       		<div class="col-sm-6" style="text-align:center">
-      			<h2>Vuoi rimuovere l'auto ${automobile.id}</h2>
+      			<h2 style="color: crimson">Vuoi rimuovere l'auto ${automobile.id}?</h2>
       		</div>
       		<div class="col-sm-3"></div>
       	</div>
@@ -195,13 +195,18 @@
 				</table>
       		</div>
       	</div>
+      	<div class="row" >
+      		<div class="col-md-12 d-flex justify-content-center">
+      			<div class="dangerSpace" style="margin-top: 20px; margin-bottom:15px">
+      				<i class="fa-solid fa-triangle-exclamation">ATTENZIONE: l'operazione non puo' essere annullata</i>
+      			</div>
+      		</div>
+      	</div>  
       	<div class="row">
       		<div class="col-md-12 d-flex justify-content-center">
       			<a href="rimozione?idAuto=${automobile.id}"><button type="button" class="btn btn-lg btn-danger"><b>RIMUOVI</b></button></a>
-      		
       		</div>
-      	
-      	</div>      	
+      	</div>     	
       	
       </div>
       

@@ -170,8 +170,8 @@
 		      			<td class="autoDataCel">${auto.value.alimentazione}</td>
 		      			<td class="autoDataCel">${auto.value.colore}</td>
 		      			<td class="autoDataCel">
-		      			<a href="confermaRimozione?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-trash"></i></button></a>
-		      			<a href="dettaglioAuto?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a>
+		      			<a href="confermaRimozione?idAuto=${auto.key}"><button type="button" class="btn btn-dark"><i class="fa-solid fa-trash"></i></button></a>
+		      			<a href="dettaglioAuto?idAuto=${auto.key}"><button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a>
 		      			</td>
 		      		</tr>	
 		

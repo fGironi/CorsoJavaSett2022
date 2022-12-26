@@ -197,6 +197,20 @@
       		</div>
       		<div class="col-sm-3"></div>
       	</div>
+      	<div class="row">
+      		<div class="col-sm-4"></div>
+      		<div class="col-sm-2 d-flex justify-content-center">
+      			<div id="spazioPulsante">
+      				<button class="btn btn-lg btn-primary" disabled="true"><i class="fa-solid fa-pen-to-square"> Modifica</i></button>
+      			</div>
+      		</div>
+      		<div class="col-sm-2 d-flex justify-content-center">
+      			<div id="spazioPulsante">
+      				<a href="confermaRimozione?idAuto=${automobile.id}"><button class="btn btn-lg btn-danger"><i class="fa-solid fa-trash"> Rimuovi</i></button></a>
+      			</div>
+      		</div>
+      		<div class="col-sm-4"></div>
+      	</div>
       </div>
       
       

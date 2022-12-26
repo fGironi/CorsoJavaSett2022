@@ -137,8 +137,8 @@
 	    <div class="row">
 	     	<div class="col-md-12">
 	   	  		<div class="zonapulsantone" style="text-align:center">
-	      			<h1>PREMERE UNA SOLA VOLTA AL PRIMO AVVIO NEL SERVER</h1>
-	      			<h6>Alla pressione popola artificialmente le liste di auto e accessori</h6>
+	      			<h6>Alla prima pressione popola artificialmente le liste di auto e accessori</h6>
+	      			<p>Ogni pressione successiva genera altre 10 auto casuali</p>
 	 				<a href="creaRepoAccessori"><button type="button" class="btn btn-lg btn-success">Popola il Database</button></a>     
 	      		</div>
 	     	</div>
