@@ -18,6 +18,7 @@
  	 <!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 	<!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 	<!-- AdminLTE App -->
@@ -202,18 +203,19 @@
 	      </div>
 	      
 	      <div class="row">
-		      <div class="col-md-2"></div>
-		      <div class="col-md-8" style="text-align:center">
+		      <div class="col-sm-2"></div>
+		      <div class="col-sm-8" style="text-align:center">
 		      	<h2>Risultati ricerca</h2>
 		      </div>
-	    	  <div class="col-md-2"></div>
+	    	  <div class="col-sm-2"></div>
 	      </div>
 	      
 	      <div class="row">
-		      <div class="col-md-2"></div>
-		      <div class="col-md-8 d-flex justify-content-center" style="text-align:center">
-		      	<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
-		      		<tr style="background-color:lightblue; border:1px solid darkblue">
+		      <div class="col-sm-2"></div>
+		      <div class="col-sm-8 d-flex justify-content-center">
+		      	<div class="table-responsive overflow-auto" id="tabSpace">
+		      	<table id="tabAuto" class="table table-striped table-hover table-bordered">
+		      		<tr class="table-dark">
 		      			<th hidden class="autoDataCel"><b>ID</b></th>
 		      			<th class="autoDataCel"><b>Targa</b></th>
 		      			<th class="autoDataCel"><b>Costruttore</b></th>
@@ -227,7 +229,7 @@
 		      			<th class="autoDataCel"><b>Azioni</b></th>
 		      		</tr>	
 		      	<c:forEach items="${paragoneRicerca.autoTrovate}" var="auto">
-		      		<tr style="border:2px solid black">
+		      		<tr>
 		      			<td hidden class="autoDataCel">${auto.id}</td>
 		      			<td class="autoDataCel">${auto.targa}</td>
 		      			<td class="autoDataCel">${auto.costruttore}</td>
@@ -247,14 +249,19 @@
 				      			</c:forEach>
 							</ul>
 						</div></td>
-		      			<td class="autoDataCel"><a href="dettaglioAuto?idAuto=${auto.id}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a></td>
+		      			<td class="autoDataCel"><div class="btn-group" role="group" >
+		      				<a href="dettaglioAuto?idAuto=${auto.id}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a>
+		      				<a href="modifica?idAuto=${auto.id}"<button type="button" class="btn btn-dark" title="Modifica"><i class="fa-solid fa-pen-to-square"></i></button></a>
+      						<a href="confermaRimozione?idAuto=${auto.id}"<button type="button" class="btn btn-dark" title="Rimuovi"><i class="fa-solid fa-trash"></i></button></a>
+		      			</div></td>
 		      		</tr>	
 		
 		 	    </c:forEach>
 		      			
-		      	</table>
+		      	</table></div>
+		      	
 		      </div>
-	    	  <div class="col-md-2"></div>
+	    	  <div class="col-sm-2"></div>
 	      </div>
 	      
 	      

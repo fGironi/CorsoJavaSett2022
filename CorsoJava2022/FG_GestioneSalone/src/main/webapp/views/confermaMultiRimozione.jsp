@@ -114,12 +114,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dettagli automobile</h1>
+            <h1>Conferma rimozione</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href=".">Home</a></li>
-              <li class="breadcrumb-item active">Dettagli automobile</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Conferma rimozione</li>
             </ol>
           </div>
         </div>
@@ -134,16 +134,18 @@
       	<div class="row">
       		<div class="col-sm-3"></div>
       		<div class="col-sm-6" style="text-align:center">
-      			<h2>Stai visualizzando i dettagli dell'auto ${automobile.id}</h2>
+      			<h2 style="color: crimson">Vuoi rimuovere queste auto?</h2>
       		</div>
       		<div class="col-sm-3"></div>
       	</div>
+      	
+      	<c:forEach items="${listaRimozione}" var="automobile">
       	<div class="row">
-      		<div class="col-sm-3"></div>
-      		<div class="col-md-6 d-flex justify-content-center">
+      		<div class="col-md-3"></div>
+      		<div class="col-md-6 d-flex justify-content-center" style="text-align:center">
       				<table class="table table-striped table-hover table-bordered">
       					<tr>
-      						<th class="table-dark" colspan="2">Dettaglio Auto</th>
+      						<th class="table-dark" colspan="2">Dettagli Auto</th>
       					</tr>
       					<tr>
       						<td>ID Auto</td>
@@ -181,31 +183,40 @@
       						<td>Colore</td>
       						<td>${automobile.colore}</td>
       					</tr>
-      					<tr><th class="table-dark" colspan="2">Accessori</th></tr>
-      					<c:forEach items="${automobile.accessori}" var="accessorio">
-	      					<tr>
-	      						<td>${accessorio.tipologia} - ${accessorio.descrizione}</td>
-	      						<td>${accessorio.costo} €</td>
-	      					</tr>
-						</c:forEach>
+      					
+      				<tr><th class="table-dark" colspan="2">Accessori</th></tr>
+      				<c:forEach items="${automobile.accessori}" var="accessorio">
+      					<tr>
+      						<td>${accessorio.tipologia} - ${accessorio.descrizione}</td>
+      						<td>${accessorio.costo} €</td>
+      					</tr>
+					</c:forEach>	
       				</table>
       		</div>
-      		<div class="col-sm-3"></div>
+      		<div class="col-md-3"></div>
       	</div>
+      	</c:forEach>
+      	<div class="row" >
+      		<div class="col-md-12 d-flex justify-content-center">
+      			<div class="dangerSpace" style="margin-top: 20px; margin-bottom:15px">
+      				<i class="fa-solid fa-triangle-exclamation">ATTENZIONE: l'operazione non puo' essere annullata</i>
+      			</div>
+      		</div>
+      	</div>  
       	<div class="row">
-      		<div class="col-sm-4"></div>
-      		<div class="col-sm-2 d-flex justify-content-center">
-      			<div id="spazioPulsante">
-      				<a href="modifica?idAuto=${automobile.id}"><button class="btn btn-lg btn-primary"><i class="fa-solid fa-pen-to-square"> Modifica</i></button></a>
-      			</div>
+      		<div class="col-md-12 d-flex justify-content-center">
+      		<form:form method="post" action="rimozioneMultiplaConfermata" modelAttribute="multiRemoverConfirmed">
+      		<c:forEach items="${listaRimozione}" var="automobile">
+      		<form:hidden path="removeIdList" value="${automobile.id}"/>
+      		
+      		</c:forEach>
+      		
+      		
+      			<button type="submit" class="btn btn-lg btn-danger"><b>RIMUOVI</b></button>
+      		</form:form>
       		</div>
-      		<div class="col-sm-2 d-flex justify-content-center">
-      			<div id="spazioPulsante">
-      				<a href="confermaRimozione?idAuto=${automobile.id}"><button class="btn btn-lg btn-danger"><i class="fa-solid fa-trash"> Rimuovi</i></button></a>
-      			</div>
-      		</div>
-      		<div class="col-sm-4"></div>
-      	</div>
+      	</div>     	
+      	
       </div>
       
       

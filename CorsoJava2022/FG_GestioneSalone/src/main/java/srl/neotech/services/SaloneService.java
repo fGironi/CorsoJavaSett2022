@@ -42,7 +42,7 @@ public class SaloneService {
 		if (autoCount<10) numero="00"+accDao.getElencoAccessori().size();
 		else if (autoCount<100) numero="0"+accDao.getElencoAccessori().size();
 		else numero=""+accDao.getElencoAccessori().size();
-		String idAcc="V"+numero;
+		String idAcc="A"+numero;
 		return idAcc;
 	}
 	
@@ -77,5 +77,17 @@ public class SaloneService {
 				auto.getAccessori().add(acc);
 			}
 		}
+	}
+	
+	public ArrayList<AutomobileDTO> sottoListaAuto(ArrayList<String> listaID) {
+		ArrayList<AutomobileDTO> ls=new ArrayList<AutomobileDTO>();
+		for (String s:listaID) {
+			if (autoDAO.getListaAuto().containsKey(s)){
+				ls.add(autoDAO.getListaAuto().get(s));
+			}
+		}
+		
+		
+		return ls;
 	}
 }

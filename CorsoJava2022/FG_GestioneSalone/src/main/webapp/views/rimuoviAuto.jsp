@@ -18,6 +18,7 @@
  	 <!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 	<!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 	<!-- AdminLTE App -->
@@ -25,6 +26,10 @@
 	<!-- Demo Template -->
 	<script src="static/js/fireAjax.js"></script>
 	<script src="static/js/demoTemplate.js"></script>
+	
+	<!-- PageScript -->
+  	<script src="static/js/multiRemove.js"></script>
+  
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -135,20 +140,29 @@
       		<form action="confermaRimozione" method="get">
       		<label >Inserisci l'id dell'auto da rimuovere</label>
       		<input type="text" name="idAuto" id="autoIDspace"></input>
-      		<button type="submit" class="btn btn-danger">RIMUOVI</button>
+      		<button type="submit" class="btn btn-danger"><b>RIMUOVI</b></button>
       		</form>
       		</div>
       		<div class="col-sm-3"></div>
       	</div>
       	<div class="row">
-      	<div class="col-md-12 d-flex justify-content-center">
-      		<h2>Lista Automobili</h2>
+	      	<div class="col-md-12 d-flex justify-content-center">
+	      		<button type="button" id="multipleRemoveStart" class="btn btn-lg btn-dark buttonCel">Seleziona elementi multipli</button>
+	      		
+	      	</div>
       	</div>
+      	<form:form method="post" action="rimozioneMultipla" modelAttribute="multiRemover">
+      	<div class="row">
+	      	<div class="col-md-12 d-flex justify-content-center">
+	      		<button type="submit" class="btn btn-lg btn-danger checkCel">Rimuovi elementi multipli</button>
+	      	</div>
       	</div>
       	<div class="row">
-      		<div class="col-md-12 d-flex justify-content-center">
-      			<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
-		      		<tr style="background-color:lightblue; border:1px solid darkblue">
+      		<div class="col-md-2"></div>
+      		<div class="col-md-8 d-flex justify-content-center">
+      			<div class="table-responsive overflow-auto" id="tabSpace">
+      			<table id="tabAuto" class="table table-striped table-hover table-bordered">
+		      		<tr class="table-dark">
 		      			<th class="autoDataCel"><b>ID</b></th>
 		      			<th class="autoDataCel"><b>Targa</b></th>
 		      			<th class="autoDataCel"><b>Costruttore</b></th>
@@ -157,11 +171,15 @@
 		      			<th class="autoDataCel"><b>Costo base</b></th>
 		      			<th class="autoDataCel"><b>Alimentazione</b></th>
 		      			<th class="autoDataCel"><b>Colore</b></th>
-		      			<th class="autoDataCel"><b>Azioni</b></th>
+		      			<th class="autoDataCel buttonCel"><b>Azioni</b></th>
 		      		</tr>	
 		      	<c:forEach items="${listaAuto}" var="auto">
-		      		<tr style="border:2px solid black">
-		      			<td class="autoDataCel">${auto.key}</td>
+		      		<tr>
+		      			<td class="autoDataCel">
+		      			<span class="checkCel">
+		      				<form:checkbox class="form-check-input" path="removeIdList" value="${auto.key}"/>
+		      			</span>
+		      			${auto.key}</td>
 		      			<td class="autoDataCel">${auto.value.targa}</td>
 		      			<td class="autoDataCel">${auto.value.costruttore}</td>
 		      			<td class="autoDataCel">${auto.value.modello}</td>
@@ -169,19 +187,20 @@
 		      			<td class="autoDataCel">${auto.value.costoBase}</td>
 		      			<td class="autoDataCel">${auto.value.alimentazione}</td>
 		      			<td class="autoDataCel">${auto.value.colore}</td>
-		      			<td class="autoDataCel">
+		      			<td class="autoDataCel buttonCel">
 		      			<a href="confermaRimozione?idAuto=${auto.key}"><button type="button" class="btn btn-dark"><i class="fa-solid fa-trash"></i></button></a>
-		      			<a href="dettaglioAuto?idAuto=${auto.key}"><button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a>
+		  
 		      			</td>
 		      		</tr>	
 		
 		 	    </c:forEach>
 		      			
-		      	</table>
+		      	</table></div>
       		
       		</div>
-      	
+      		<div class="col-md-2"></div>
       	</div>
+      	</form:form>
       </div>
 
     </section>
@@ -205,4 +224,6 @@
 
 
 </body>
+
+
 </html>

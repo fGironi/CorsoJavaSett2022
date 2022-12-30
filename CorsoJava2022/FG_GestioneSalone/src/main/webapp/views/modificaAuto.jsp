@@ -112,12 +112,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Aggiungi automobile</h1>
+            <h1>Modifica automobile</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href=".">Home</a></li>
-              <li class="breadcrumb-item active">Aggiungi automobile</li>
+              <li class="breadcrumb-item active">Modifica automobile</li>
             </ol>
           </div>
         </div>
@@ -129,7 +129,7 @@
       <!-- Qua la roba -->
       <div class="clearfix">
       	<div class="formArea" style="margin-left:50px; width:80%">
-     		<form:form method="post" action="aggiungi" modelAttribute="formAuto">
+     		<form:form method="post" action="modifica" modelAttribute="formAuto">
        		<div class="row whiteRow" style="background-color:white; padding:10px">
     			<div class="col-md-4">
     				<form:label id="lblTarga" path="automobile.targa">Targa:</form:label>
@@ -138,7 +138,7 @@
       			<div class="col-md-4">
       				<form:label id="lblCostruttore" path="automobile.costruttore">Costruttore:</form:label>
       				<form:select path="automobile.costruttore" class="form-select">
-				    	<form:option value="-" label="sel costruttore"/>
+				    	<form:option value="" label="sel costruttore"/>
 				    	<form:options items="${costruttori}" />
 					</form:select>
       			</div>
@@ -151,14 +151,14 @@
     			<div class="col-md-3">
     				<form:label id="lblAlimentazione" path="automobile.alimentazione">Alimentazione:</form:label>
     				<form:select id="inAlimentazione" path="automobile.alimentazione" class="form-select">
-				    	<form:option value="-" label="sel alimentazione"/>
+				    	<form:option value="" label="sel alimentazione"/>
 				    	<form:options items="${alimentazioni}" />
 					</form:select>
     			</div>
       			<div class="col-md-3">
       				<form:label id="lblAnno" path="automobile.annoCostruzione">Anno costruzione</form:label>
       				<form:select id="inAnno" path="automobile.annoCostruzione" class="form-select">
-				    	<form:option value="-" label="sel anno"/>
+				    	<form:option value="" label="sel anno"/>
 				    	 <c:forEach var = "anno" begin = "1900" end = "2022">
 					        <form:option value="${anno}">${anno}</form:option>
 					     </c:forEach>
@@ -167,7 +167,7 @@
       			<div class="col-md-3">
       				<form:label id="lblColore" path="automobile.colore">Colore:</form:label>
       				<form:select id="inColore" path="automobile.colore" class="form-select">
-				    	<form:option value="-" label="sel colore"/>
+				    	<form:option value="" label="sel colore"/>
 				    	<form:options items="${colori}" />
 					</form:select>
       			</div>
@@ -178,7 +178,12 @@
       		</div>
       		<div class="row whiteRow" style="background-color:white; padding:10px">
     			<div class="col-md-12">
-    				<h4>Accessori</h4>
+    				<h4>Accessori precedenti:</h4>
+    				<ul>
+    				<c:forEach items="${accPresenti}" var="accPres">
+    					<li>${accPres.descrizione}</li>
+    					</c:forEach>
+    				</ul>
     			</div>
     		</div>
     		<div class="row whiteRow" style="background-color:white; padding:10px">
@@ -240,10 +245,13 @@
       			</div>
    				
       			<div class="col-md-3" style="text-align:center">
-      				<button id="btnAdd" type="submit" class="btn btn-lg btn-primary">Aggiungi</button>
+      				<form:hidden path = "idAutoMod" value = "${idAuto}"/>
+      				<button id="btnAdd" type="submit" class="btn btn-lg btn-primary">Modifica</button>
       			</div>
       			
       		</div>
+      		
+      		
       		
       	    </form:form>
       </div>

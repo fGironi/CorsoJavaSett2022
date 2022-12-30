@@ -136,22 +136,23 @@
       	<div class="row">
       	<div class="col-md-2"></div>
       	<div class="col-md-8">
-      	<table id="tabAuto" style="text-align:center; border:3px solid black; background-color:white">
-      		<tr style="background-color:lightblue; border:1px solid darkblue">
-      			<th hidden class="autoDataCel"><b>ID</b></th>
-      			<th class="autoDataCel"><b>Targa</b></th>
-      			<th class="autoDataCel"><b>Costruttore</b></th>
-      			<th class="autoDataCel"><b>Modello</b></th>
-      			<th class="autoDataCel"><b>Anno</b></th>
-      			<th class="autoDataCel"><b>Costo base</b></th>
-      			<th class="autoDataCel"><b>Costo totale</b></th>
-      			<th class="autoDataCel"><b>Alimentazione</b></th>
-      			<th class="autoDataCel"><b>Colore</b></th>
-      			<th class="autoDataCel"><b>Accessori</b></th>
-      			<th class="autoDataCel"><b>Azioni</b></th>
+      	<div id="tabSpace" class="table-responsive overflow-auto">
+      	<table id="tabAuto" class="table table-striped table-hover table-bordered">
+      		<tr class="table-dark">
+      			<th hidden class=""><b>ID</b></th>
+      			<th class=""><b>Targa</b></th>
+      			<th class=""><b>Costruttore</b></th>
+      			<th class=""><b>Modello</b></th>
+      			<th class=""><b>Anno</b></th>
+      			<th class=""><b>Costo base</b></th>
+      			<th class=""><b>Costo totale</b></th>
+      			<th class=""><b>Alimentazione</b></th>
+      			<th class=""><b>Colore</b></th>
+      			<th class=""><b>Accessori</b></th>
+      			<th class=""><b>Azioni</b></th>
       		</tr>	
       	<c:forEach items="${listaAuto}" var="auto">
-      		<tr style="border:2px solid black">
+      		<tr>
       			<td hidden class="autoDataCel">${auto.key}</td>
       			<td class="autoDataCel">${auto.value.targa}</td>
       			<td class="autoDataCel">${auto.value.costruttore}</td>
@@ -171,12 +172,17 @@
 		      			</c:forEach>
 					</ul>
 				</div></td>
-      			<td class="autoDataCel"><a href="dettaglioAuto?idAuto=${auto.key}"<button type="button" class="btn btn-dark"><i class="fa-solid fa-circle-info"></i></button></a></td>
+      			<td class="autoDataCel"><div class="btn-group" role="group" >
+      				<a href="dettaglioAuto?idAuto=${auto.key}"<button type="button" class="btn btn-dark" title="Dettagli"><i class="fa-solid fa-circle-info"></i></button></a>
+      				<a href="modifica?idAuto=${auto.key}"<button type="button" class="btn btn-dark" title="Modifica"><i class="fa-solid fa-pen-to-square"></i></button></a>
+      				<a href="confermaRimozione?idAuto=${auto.key}"<button type="button" class="btn btn-dark" title="Rimuovi"><i class="fa-solid fa-trash"></i></button></a>
+
+      			</div></td>
       		</tr>	
 
  	    </c:forEach>
       			
-      	</table>
+      	</table></div>
       	
       	</div>
       	<div class="col-md-2"></div>

@@ -74,6 +74,14 @@ public class TestService {
 			sedCamoscio.setTipologia(Tipologia.tappezzeria);
 			accDao.getElencoAccessori().put(sedCamoscio.getId(), sedCamoscio);
 			
+			AccessorioDTO telaioFibra=new AccessorioDTO();
+			telaioFibra.setId(salService.generaIdAccessorio());
+			telaioFibra.setClasse(Classe.Esterni);
+			telaioFibra.setCosto(5500);
+			telaioFibra.setDescrizione("telaio in fibra di carbonio");
+			telaioFibra.setTipologia(Tipologia.carrozzeria);
+			accDao.getElencoAccessori().put(telaioFibra.getId(), telaioFibra);
+			
 			AccessorioDTO androidEntert=new AccessorioDTO();
 			androidEntert.setId(salService.generaIdAccessorio());
 			androidEntert.setClasse(Classe.Interni);
@@ -122,23 +130,23 @@ public class TestService {
 			sediliRiscaldati.setTipologia(Tipologia.comfort);
 			accDao.getElencoAccessori().put(sediliRiscaldati.getId(), sediliRiscaldati);
 			
+			AccessorioDTO telePost=new AccessorioDTO();
+			telePost.setId(salService.generaIdAccessorio());
+			telePost.setClasse(Classe.Altro);
+			telePost.setCosto(900);
+			telePost.setDescrizione("telecamera posteriore");
+			telePost.setTipologia(Tipologia.comfort);
+			accDao.getElencoAccessori().put(telePost.getId(), telePost);
 			
-			AutomobileDTO auto1=new AutomobileDTO();
-			auto1.setAlimentazione(Alimentazione.Benzina);
-			auto1.setAnnoCostruzione(2000);
-			auto1.setColore(Colore.bianco);
-			auto1.setCostoBase(50000);
-			auto1.setCostruttore(Costruttore.Citroen);
-			auto1.setModello("ProvaCar");
-			auto1.setTarga("AA123ZZ");
-			auto1.setId(salService.generaIdAuto());
-			auto1.getAccessori().add(sediliRiscaldati);
-			auto1.getAccessori().add(sedPelle);
-			auto1.getAccessori().add(antifurtoGPS);
-			auto1.setCosto(salService.costoConAccessori(auto1));
-			autoDao.getListaAuto().put(auto1.getId(), auto1);
+			AccessorioDTO sensPark=new AccessorioDTO();
+			sensPark.setId(salService.generaIdAccessorio());
+			sensPark.setClasse(Classe.Altro);
+			sensPark.setCosto(900);
+			sensPark.setDescrizione("sensori di parcheggio");
+			sensPark.setTipologia(Tipologia.comfort);
+			accDao.getElencoAccessori().put(sensPark.getId(), sensPark);
 			
-			System.out.println("Creati gli accessori e l'auto generati manualmente");
+			System.out.println("Creati gli accessori generati manualmente");
 			accessoriCreati=true;
 		}		
 		//Generazione di 10 veicoli random con JavaFaker

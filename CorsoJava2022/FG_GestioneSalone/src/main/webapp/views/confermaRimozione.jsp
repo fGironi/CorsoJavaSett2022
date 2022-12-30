@@ -139,10 +139,11 @@
       		<div class="col-sm-3"></div>
       	</div>
       	<div class="row">
-      		<div class="col-md-6 d-flex justify-content-end">
-      				<table class="dettaglioTab">
+      		<div class="col-md-3"></div>
+      		<div class="col-md-6 d-flex justify-content-center" style="text-align:center">
+      				<table class="table table-striped table-hover table-bordered">
       					<tr>
-      						<th>Dettaglio Auto</th>
+      						<th class="table-dark" colspan="2">Dettagli Auto</th>
       					</tr>
       					<tr>
       						<td>ID Auto</td>
@@ -180,20 +181,17 @@
       						<td>Colore</td>
       						<td>${automobile.colore}</td>
       					</tr>
-      				</table>
-      		</div>
-      		<div class="col-md-6 d-flex justify-content-start">
-      			<table class="dettaglioTab">
-      				<tr><th>Accessori</th></tr>
+      					
+      				<tr><th class="table-dark" colspan="2">Accessori</th></tr>
       				<c:forEach items="${automobile.accessori}" var="accessorio">
       					<tr>
-      						<td>${accessorio.tipologia}</td>
-      						<td>${accessorio.descrizione}</td>
+      						<td>${accessorio.tipologia} - ${accessorio.descrizione}</td>
       						<td>${accessorio.costo} €</td>
       					</tr>
-					</c:forEach>
-				</table>
+					</c:forEach>	
+      				</table>
       		</div>
+      		<div class="col-md-3"></div>
       	</div>
       	<div class="row" >
       		<div class="col-md-12 d-flex justify-content-center">

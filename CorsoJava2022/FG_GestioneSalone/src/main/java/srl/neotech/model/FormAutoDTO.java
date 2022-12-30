@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class FormAutoDTO {
 
 	private AutomobileDTO automobile;
+	private String idAutoMod;
 	private ArrayList<String> idAccessori;
 	private String idAccTap;
 	private String idAccCer;
@@ -73,6 +74,14 @@ public class FormAutoDTO {
 
 	public void setIdAccInt(String idAccInt) {
 		this.idAccInt = idAccInt;
+	}
+
+	public String getIdAutoMod() {
+		return idAutoMod;
+	}
+
+	public void setIdAutoMod(String idAutoMod) {
+		this.idAutoMod = idAutoMod;
 	}
 	
 	
