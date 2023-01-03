@@ -31,7 +31,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
+        <a href="." class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -109,11 +109,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Home</h1>
+            <h1>${classe.nome} ${classe.anno}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item"><a href=".">Home</a></li>
               <li class="breadcrumb-item active">ValutaClasse</li>
             </ol>
           </div>
@@ -125,17 +125,14 @@
     <section class="content">
 
 	<!-- HERE -->
-    <c:forEach items="${listaClassi}" var="classe">
-    <div class="card" style="width: 18rem;">
-	  <img class="card-img-top" src="https://www.cosepercrescere.it/wp-content/uploads/2016/08/Pikachu-ev.jpg" alt="Card image cap">
-	  <div class="card-body">
-	    <h5 class="card-title">${classe.value.nome} - ${classe.value.anno}</h5>
-	    <p class="card-text">${classe.value.descrizione}</p>
-	    <a href="classe?id=${classe.key}" class="btn btn-primary">Vai alla classe</a>
-	  </div>
-	</div>
+	${classe.id} <br>
+	${classe.nome} <br>
+	${classe.descrizione} <br>
+	${classe.anno} <br>
+	Studenti: <br>
+	<c:forEach items="${classe.listaStudenti}" var="stud">
+    ${stud.id}, ${stud.nominativo} <br>
 	</c:forEach>
-    
       
     </section>
     <!-- /.content -->
