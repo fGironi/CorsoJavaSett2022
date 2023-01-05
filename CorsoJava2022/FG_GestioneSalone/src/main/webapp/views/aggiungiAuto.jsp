@@ -25,6 +25,10 @@
 	<!-- Demo Template -->
 	<script src="static/js/fireAjax.js"></script>
 	<script src="static/js/demoTemplate.js"></script>
+	
+	<!-- Validate -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+	<script src="static/js/addValidation.js"></script>
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -133,7 +137,7 @@
        		<div class="row whiteRow" style="background-color:white; padding:10px">
     			<div class="col-md-4">
     				<form:label id="lblTarga" path="automobile.targa">Targa:</form:label>
-    				<form:input class="form-control required" id="inTarga" path="automobile.targa"></form:input>
+    				<form:input class="form-control required" name="inTarga" path="automobile.targa"></form:input>
     			</div>
       			<div class="col-md-4">
       				<form:label id="lblCostruttore" path="automobile.costruttore">Costruttore:</form:label>
@@ -173,7 +177,7 @@
       			</div>
       			<div class="col-md-3">
       				<form:label id="lblCosto" path="automobile.costoBase">Costo:</form:label>
-      				<form:input class="form-control required" id="inCosto" path="automobile.costoBase"></form:input>
+      				<form:input class="form-control required" path="automobile.costoBase"></form:input>
       			</div>
       		</div>
       		<div class="row whiteRow" style="background-color:white; padding:10px">
@@ -240,7 +244,7 @@
       			</div>
    				
       			<div class="col-md-3" style="text-align:center">
-      				<button id="btnAdd" type="submit" class="btn btn-lg btn-primary">Aggiungi</button>
+      				<button id="addSubmit" type="submit" class="btn btn-lg btn-primary">Aggiungi</button>
       			</div>
       			
       		</div>

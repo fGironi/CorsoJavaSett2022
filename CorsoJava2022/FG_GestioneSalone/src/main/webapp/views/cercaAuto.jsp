@@ -26,6 +26,9 @@
 	<!-- Demo Template -->
 	<script src="static/js/fireAjax.js"></script>
 	<script src="static/js/demoTemplate.js"></script>
+	<!-- Validate -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+	<script src="static/js/searchValidation.js"></script>
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -133,7 +136,7 @@
 	      <div class="row">
 	      	<div class="col-md-2"></div>
 	      	<div class="col-md-8" style="border:2px solid black; padding:10px">
-	      		<form:form action="cerca" method="post" modelAttribute="paragoneRicerca">
+	      		<form:form action="cerca" method="post" modelAttribute="paragoneRicerca" id="formCercaAuto">
 	      		<div class="row">
 	      			<div class="col-md-4">
 	      				<form:input placeholder="Targa" class="form-control" path="targa"/>

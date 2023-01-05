@@ -28,7 +28,8 @@ public class RicercaService {
 		for (AutomobileDTO auto:autoTrovate) {
 			if (paragRicerca.getTarga()!=null && paragRicerca.getTarga().isEmpty()==false) {
 				System.out.println("l'utente ha inserito una targa");
-				if (paragRicerca.getTarga().equals(auto.getTarga())==false){
+				//if (paragRicerca.getTarga().equals(auto.getTarga())==false){
+				if (auto.getTarga().contains(paragRicerca.getTarga())==false) {
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
@@ -44,7 +45,8 @@ public class RicercaService {
 			}
 			if (paragRicerca.getModello()!=null && paragRicerca.getModello().isEmpty()==false) {
 				System.out.println("l'utente ha inserito un modello");
-				if (paragRicerca.getModello().equals(auto.getModello())==false){
+				//if (paragRicerca.getModello().equals(auto.getModello())==false){
+				if (auto.getModello().contains(paragRicerca.getModello())==false) {	
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
