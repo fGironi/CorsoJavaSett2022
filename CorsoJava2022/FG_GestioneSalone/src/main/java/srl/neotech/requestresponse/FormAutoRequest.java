@@ -1,8 +1,10 @@
-package srl.neotech.model;
+package srl.neotech.requestresponse;
 
 import java.util.ArrayList;
 
-public class FormAutoDTO {
+import srl.neotech.model.AutomobileDTO;
+
+public class FormAutoRequest {
 
 	private AutomobileDTO automobile;
 	private String idAutoMod;
@@ -14,7 +16,7 @@ public class FormAutoDTO {
 	private String idAccInt;
 	
 	
-	public FormAutoDTO(AutomobileDTO automobile) {
+	public FormAutoRequest(AutomobileDTO automobile) {
 		super();
 		this.automobile = automobile;
 		this.idAccessori = new ArrayList<String>();

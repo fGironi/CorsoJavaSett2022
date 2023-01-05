@@ -228,7 +228,7 @@
 		      			<th class="autoDataCel"><b>Accessori</b></th>
 		      			<th class="autoDataCel"><b>Azioni</b></th>
 		      		</tr>	
-		      	<c:forEach items="${paragoneRicerca.autoTrovate}" var="auto">
+		      	<c:forEach items="${autoTrovate}" var="auto">
 		      		<tr>
 		      			<td hidden class="autoDataCel">${auto.id}</td>
 		      			<td class="autoDataCel">${auto.targa}</td>

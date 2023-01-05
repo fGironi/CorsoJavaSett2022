@@ -129,35 +129,35 @@
       <!-- Qua la roba -->
       <div class="clearfix">
       	<div class="formArea" style="margin-left:50px; width:80%">
-     		<form:form method="post" action="aggiungi" modelAttribute="formAuto">
+     		<form:form method="post" action="aggiungi" modelAttribute="formAuto" id="formAggiuntaAuto">
        		<div class="row whiteRow" style="background-color:white; padding:10px">
     			<div class="col-md-4">
     				<form:label id="lblTarga" path="automobile.targa">Targa:</form:label>
-    				<form:input class="form-control" id="inTarga" path="automobile.targa"></form:input>
+    				<form:input class="form-control required" id="inTarga" path="automobile.targa"></form:input>
     			</div>
       			<div class="col-md-4">
       				<form:label id="lblCostruttore" path="automobile.costruttore">Costruttore:</form:label>
-      				<form:select path="automobile.costruttore" class="form-select">
+      				<form:select path="automobile.costruttore" class="form-select required">
 				    	<form:option value="-" label="sel costruttore"/>
 				    	<form:options items="${costruttori}" />
 					</form:select>
       			</div>
       			<div class="col-md-4">
       				<form:label id="lblModello" path="automobile.modello">Modello:</form:label>
-    				<form:input class="form-control" id="inModello" path="automobile.modello"></form:input>
+    				<form:input class="form-control required" id="inModello" path="automobile.modello"></form:input>
       			</div>
       		</div>
       		<div class="row blueRow" style="background-color:lightblue; padding:10px ">
     			<div class="col-md-3">
     				<form:label id="lblAlimentazione" path="automobile.alimentazione">Alimentazione:</form:label>
-    				<form:select id="inAlimentazione" path="automobile.alimentazione" class="form-select">
+    				<form:select id="inAlimentazione" path="automobile.alimentazione" class="form-select required">
 				    	<form:option value="-" label="sel alimentazione"/>
 				    	<form:options items="${alimentazioni}" />
 					</form:select>
     			</div>
       			<div class="col-md-3">
       				<form:label id="lblAnno" path="automobile.annoCostruzione">Anno costruzione</form:label>
-      				<form:select id="inAnno" path="automobile.annoCostruzione" class="form-select">
+      				<form:select id="inAnno" path="automobile.annoCostruzione" class="form-select required">
 				    	<form:option value="-" label="sel anno"/>
 				    	 <c:forEach var = "anno" begin = "1900" end = "2022">
 					        <form:option value="${anno}">${anno}</form:option>
@@ -166,14 +166,14 @@
       			</div>
       			<div class="col-md-3">
       				<form:label id="lblColore" path="automobile.colore">Colore:</form:label>
-      				<form:select id="inColore" path="automobile.colore" class="form-select">
+      				<form:select id="inColore" path="automobile.colore" class="form-select required">
 				    	<form:option value="-" label="sel colore"/>
 				    	<form:options items="${colori}" />
 					</form:select>
       			</div>
       			<div class="col-md-3">
       				<form:label id="lblCosto" path="automobile.costoBase">Costo:</form:label>
-      				<form:input class="form-control" id="inCosto" path="automobile.costoBase"></form:input>
+      				<form:input class="form-control required" id="inCosto" path="automobile.costoBase"></form:input>
       			</div>
       		</div>
       		<div class="row whiteRow" style="background-color:white; padding:10px">
@@ -270,4 +270,7 @@
 
 
 </body>
+	<script>
+            $(".required").attr('required', ''); 
+  	</script>
 </html>
