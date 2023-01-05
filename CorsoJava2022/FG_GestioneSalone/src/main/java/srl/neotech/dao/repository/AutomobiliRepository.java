@@ -23,4 +23,5 @@ public class AutomobiliRepository {
 	public void setListaAuto(HashMap<String, AutomobileDTO> listaAuto) {
 		this.listaAuto = listaAuto;
 	}
+
 }

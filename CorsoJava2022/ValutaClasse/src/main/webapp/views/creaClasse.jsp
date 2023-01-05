@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ page contentType="text/html; charset=utf-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,9 +127,53 @@
     <!-- Main content -->
     <section class="content">
 
-	<!-- HERE -->
-      
-    </section>
+	<div class="clearfix">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+			<form:form method="post" action="creazioneCl" modelAttribute="classeForm">
+			<div class="row">
+				<div class="col-sm-6">
+					<form:label class="form-label" path="classe.nome">Nome classe</form:label><form:input class="form-control" path="classe.nome" placeholder="nome classe"/>
+				</div>
+				<div class="col-sm-6">
+					<form:label class="form-label" path="classe.anno">Anno</form:label>
+					<form:select path="classe.anno" class="form-select">
+					   	<form:option value="" label="sel anno"/>
+					   	 <c:forEach var = "y" begin = "2020" end = "2023">
+					        <form:option value="${y}">${y}</form:option>
+					     </c:forEach>
+					</form:select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+						<form:label class="form-label" path="classe.descrizione">Descrizione</form:label><form:textarea rows="3" class="form-control" path="classe.descrizione" placeholder="descrizione del corso"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="altroStud">			
+						<form:label class="form-label" path="nomiStudenti">Aggiungi studente</form:label><form:input class="form-control" path="nomiStudenti" placeholder="nome studente"/>
+					</div>
+				</div>
+			</div>
+			<div class="row">	
+				<div class="col-sm-12">
+					<button id="addStud" type="button" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus">Aggiungi studente</i></button>
+				</div>
+			</div>
+			<div class="row">	
+				<div class="col-sm-12 d-flex justify-content-center">
+					<button type="submit" class="btn btn-lg btn-success"><i class="fa-solid fa-square-check"> Crea la classe</i></button>
+				</div>
+			</div>
+			</form:form>
+			</div>
+		<div class="col-sm-2"></div>		
+	</div>				
+	</div>
+	</section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -150,5 +197,11 @@
 <script src="static/js/fireAjax.js"></script>
 <script src="static/js/demoTemplate.js"></script>
 
+<script type="text/javascript">
+	$("#addStud").click(function(){
+		var htmlStr='<input id="nomiStudenti" name="nomiStudenti" placeholder="nome studente" class="form-control" type="text" value="">';
+		$("#altroStud").append(htmlStr);
+	})
+</script>
 </body>
 </html>

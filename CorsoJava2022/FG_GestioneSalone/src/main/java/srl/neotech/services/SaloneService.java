@@ -10,8 +10,8 @@ import srl.neotech.dao.repository.AccessoriRepository;
 import srl.neotech.dao.repository.AutomobiliRepository;
 import srl.neotech.model.AccessorioDTO;
 import srl.neotech.model.AutomobileDTO;
-import srl.neotech.model.FormAutoDTO;
 import srl.neotech.model.Tipologia;
+import srl.neotech.requestresponse.FormAutoRequest;
 
 @Service
 public class SaloneService {
@@ -65,7 +65,7 @@ public class SaloneService {
 		return sottoLista;
 	}
 	
-	public void assegnaAccessori(AutomobileDTO auto, FormAutoDTO formAuto) {
+	public void assegnaAccessori(AutomobileDTO auto, FormAutoRequest formAuto) {
 		ArrayList<String> idAccessori=formAuto.getIdAccessori();
 		idAccessori.add(formAuto.getIdAccCar());	idAccessori.add(formAuto.getIdAccTap());
 		idAccessori.add(formAuto.getIdAccTet());	idAccessori.add(formAuto.getIdAccInt());

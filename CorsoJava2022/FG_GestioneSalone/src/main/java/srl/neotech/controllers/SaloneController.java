@@ -17,10 +17,10 @@ import srl.neotech.model.Alimentazione;
 import srl.neotech.model.AutomobileDTO;
 import srl.neotech.model.Colore;
 import srl.neotech.model.Costruttore;
-import srl.neotech.model.FormAutoDTO;
 import srl.neotech.model.MultiRemoverDTO;
-import srl.neotech.model.ParagoneRicerca;
 import srl.neotech.model.Tipologia;
+import srl.neotech.requestresponse.FormAutoRequest;
+import srl.neotech.requestresponse.RicercaRequest;
 import srl.neotech.services.RicercaService;
 import srl.neotech.services.SaloneService;
 
@@ -37,7 +37,7 @@ public class SaloneController {
 	@Autowired
 	RicercaService ricService;
 	@Autowired
-	ParagoneRicerca paragRicerca;
+	RicercaRequest paragRicerca;
 	
 	
 	@GetMapping(value="/listaAuto")
@@ -49,7 +49,7 @@ public class SaloneController {
 	@GetMapping(value="/aggiuntaAuto")
 	public String preAggiuntaAuto(ModelMap modelMap) {
 		AutomobileDTO automobile=new AutomobileDTO();
-		FormAutoDTO formAuto=new FormAutoDTO(automobile);
+		FormAutoRequest formAuto=new FormAutoRequest(automobile);
 		modelMap.addAttribute("formAuto", formAuto);
 		modelMap.addAttribute("costruttori", Costruttore.values());
 		modelMap.addAttribute("alimentazioni", Alimentazione.values());
@@ -68,7 +68,7 @@ public class SaloneController {
 	@PostMapping(value="/aggiungi")
 	public String aggiuntaAuto(
 		ModelMap modelMap,
-		@ModelAttribute("formAuto") FormAutoDTO formAuto,
+		@ModelAttribute("formAuto") FormAutoRequest formAuto,
 		BindingResult result) {
 			if (result.hasErrors()) {
 	            return "error";
@@ -111,11 +111,13 @@ public class SaloneController {
 	@PostMapping(value="/cerca")
 	public String getCercaAuto(
 			ModelMap modelMap,
-			@ModelAttribute("paragoneRicerca") ParagoneRicerca paragRicerca) {
+			@ModelAttribute("paragoneRicerca") RicercaRequest paragRicerca) {
 		System.out.println("l'utente ha effettuato una ricerca, paragone:");
 		System.out.println(paragRicerca);
 		ricService.confrontaAuto(paragRicerca);
 		modelMap.addAttribute("paragoneRicerca", paragRicerca);
+		ArrayList<AutomobileDTO> autoTrovate= ricService.confrontaAuto(paragRicerca);
+		modelMap.addAttribute("autoTrovate", autoTrovate);
 		
 		return "cercaAuto";
 	}
@@ -186,7 +188,7 @@ public class SaloneController {
 	public String modifica(@RequestParam String idAuto,	ModelMap modelMap) {
 		AutomobileDTO automobile=repoAuto.getListaAuto().get(idAuto);
 		System.out.println("iniziata la modifica dell'auto "+automobile.getId());
-		FormAutoDTO formAuto=new FormAutoDTO(automobile);
+		FormAutoRequest formAuto=new FormAutoRequest(automobile);
 		modelMap.addAttribute("idAuto", idAuto);
 		modelMap.addAttribute("formAuto", formAuto);
 		modelMap.addAttribute("costruttori", Costruttore.values());
@@ -205,7 +207,7 @@ public class SaloneController {
 	}
 	
 	@PostMapping(value="/modifica")
-	public String modificaPost(ModelMap modelMap, @ModelAttribute("formAuto") FormAutoDTO formAuto,
+	public String modificaPost(ModelMap modelMap, @ModelAttribute("formAuto") FormAutoRequest formAuto,
 			BindingResult result) {
 		if (result.hasErrors()) {
             return "error";

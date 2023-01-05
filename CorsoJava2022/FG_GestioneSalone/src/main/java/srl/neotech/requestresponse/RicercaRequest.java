@@ -1,14 +1,16 @@
-package srl.neotech.model;
+package srl.neotech.requestresponse;
 
-
-import java.util.ArrayList;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+import srl.neotech.model.Alimentazione;
+import srl.neotech.model.Colore;
+import srl.neotech.model.Costruttore;
+
 @Component
 @SessionScope
-public class ParagoneRicerca {
+public class RicercaRequest {
 
 	private String targa;
 	private Costruttore costruttore;
@@ -21,11 +23,7 @@ public class ParagoneRicerca {
 	private Integer costoMax;
 	private Alimentazione alimentazione;
 	private Colore colore;
-	private ArrayList<AutomobileDTO> autoTrovate;
 	
-	public ParagoneRicerca() {
-		this.autoTrovate = new ArrayList<AutomobileDTO>();
-	}
 
 	public String getTarga() {
 		return targa;
@@ -93,19 +91,14 @@ public class ParagoneRicerca {
 	public void setColore(Colore colore) {
 		this.colore = colore;
 	}
-	public ArrayList<AutomobileDTO> getAutoTrovate() {
-		return autoTrovate;
-	}
-	public void setAutoTrovate(ArrayList<AutomobileDTO> autoTrovate) {
-		this.autoTrovate = autoTrovate;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "ParagoneRicerca [targa=" + targa + ", costruttore=" + costruttore + ", modello=" + modello
 				+ ", annoCostrMin=" + annoCostrMin + ", annoCostrMax=" + annoCostrMax + ", costoBaseMin=" + costoBaseMin
 				+ ", costoBaseMax=" + costoBaseMax + ", costoMin=" + costoMin + ", costoMax=" + costoMax
-				+ ", alimentazione=" + alimentazione + ", colore=" + colore + ", autotrovate="+ autoTrovate.size()+ " ]";
+				+ ", alimentazione=" + alimentazione + ", colore=" + colore + " ]";
 	}
 	
 	

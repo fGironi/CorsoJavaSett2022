@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.repository.AutomobiliRepository;
 import srl.neotech.model.AutomobileDTO;
-import srl.neotech.model.ParagoneRicerca;
+import srl.neotech.requestresponse.RicercaRequest;
 
 @Service
 public class RicercaService {
@@ -20,12 +20,12 @@ public class RicercaService {
 
 
 	
-	public void confrontaAuto(ParagoneRicerca paragRicerca) {
-		paragRicerca.getAutoTrovate().clear();
+	public ArrayList<AutomobileDTO> confrontaAuto(RicercaRequest paragRicerca) {
+		ArrayList <AutomobileDTO> autoTrovate=new ArrayList<AutomobileDTO>();
 		ArrayList <String> autoDaRimuovere=new ArrayList <String>();
-		paragRicerca.getAutoTrovate().addAll(autoDao.getListaAuto().values());
-		System.out.println("aggiunte le auto alla lista di paragone, dimensione: "+paragRicerca.getAutoTrovate().size());
-		for (AutomobileDTO auto:paragRicerca.getAutoTrovate()) {
+		autoTrovate.addAll(autoDao.getListaAuto().values());
+		System.out.println("aggiunte le auto alla lista di paragone, dimensione: "+autoTrovate.size());
+		for (AutomobileDTO auto:autoTrovate) {
 			if (paragRicerca.getTarga()!=null && paragRicerca.getTarga().isEmpty()==false) {
 				System.out.println("l'utente ha inserito una targa");
 				if (paragRicerca.getTarga().equals(auto.getTarga())==false){
@@ -109,12 +109,12 @@ public class RicercaService {
 		}
 		for (String id:autoDaRimuovere) {
 			AutomobileDTO auto=autoDao.getListaAuto().get(id);
-			if (paragRicerca.getAutoTrovate().contains(auto)) {
-				paragRicerca.getAutoTrovate().remove(auto);
+			if (autoTrovate.contains(auto)) {
+				autoTrovate.remove(auto);
 			}
 		}
-		System.out.println("dopo la rimozione il numero di auto trovate è "+paragRicerca.getAutoTrovate().size());
-		
+		System.out.println("dopo la rimozione il numero di auto trovate è "+autoTrovate.size());
+		return autoTrovate;
 		
 		
 	}
