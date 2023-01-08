@@ -142,7 +142,7 @@
       			<div class="col-md-4">
       				<form:label id="lblCostruttore" path="automobile.costruttore">Costruttore:</form:label>
       				<form:select path="automobile.costruttore" class="form-select required">
-				    	<form:option value="-" label="sel costruttore"/>
+				    	<form:option value="" label="sel costruttore"/>
 				    	<form:options items="${costruttori}" />
 					</form:select>
       			</div>
@@ -155,14 +155,14 @@
     			<div class="col-md-3">
     				<form:label id="lblAlimentazione" path="automobile.alimentazione">Alimentazione:</form:label>
     				<form:select id="inAlimentazione" path="automobile.alimentazione" class="form-select required">
-				    	<form:option value="-" label="sel alimentazione"/>
+				    	<form:option value="" label="sel alimentazione"/>
 				    	<form:options items="${alimentazioni}" />
 					</form:select>
     			</div>
       			<div class="col-md-3">
       				<form:label id="lblAnno" path="automobile.annoCostruzione">Anno costruzione</form:label>
       				<form:select id="inAnno" path="automobile.annoCostruzione" class="form-select required">
-				    	<form:option value="-" label="sel anno"/>
+				    	<form:option value="" label="sel anno"/>
 				    	 <c:forEach var = "anno" begin = "1900" end = "2022">
 					        <form:option value="${anno}">${anno}</form:option>
 					     </c:forEach>
@@ -171,7 +171,7 @@
       			<div class="col-md-3">
       				<form:label id="lblColore" path="automobile.colore">Colore:</form:label>
       				<form:select id="inColore" path="automobile.colore" class="form-select required">
-				    	<form:option value="-" label="sel colore"/>
+				    	<form:option value="" label="sel colore"/>
 				    	<form:options items="${colori}" />
 					</form:select>
       			</div>

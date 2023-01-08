@@ -4,15 +4,26 @@ $(document).ready(function(){
 		rules: {
 			"automobile.targa" : {
 				required: true,
-				minlength: 7,
-				maxlength: 7
+				minlength: 6,
+				maxlength: 10
 			},
 			"automobile.costoBase": {
 				required: true,
 				number: true,
 				min: 1000
-			}
-						
+			},
+			"automobile.costruttore":{
+				required: true
+			},
+			"automobile.alimentazione":{
+				required: true
+			},
+			"automobile.annoCostruzione":{
+				required: true
+			},
+			"automobile.colore":{
+				required: true
+			}			
 		}
 	});
 	
