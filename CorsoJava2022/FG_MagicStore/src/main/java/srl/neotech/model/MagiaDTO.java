@@ -1,15 +1,17 @@
 package srl.neotech.model;
 
+import java.util.ArrayList;
+
 public class MagiaDTO {
 
 	private String id;
 	private String nome;
 	private EffettoDTO effetto;
-	private String iconaCal;
-	private String iconaSol;
-	private String iconaSlt;
+	private ArrayList<iconaMag> icone;
 	
-	
+	public MagiaDTO() {
+		this.icone = new ArrayList<iconaMag>();
+	}
 	public String getId() {
 		return id;
 	}
@@ -28,23 +30,11 @@ public class MagiaDTO {
 	public void setEffetto(EffettoDTO effetto) {
 		this.effetto = effetto;
 	}
-	public String getIconaCal() {
-		return iconaCal;
+	public ArrayList<iconaMag> getIcone() {
+		return icone;
 	}
-	public void setIconaCal(String iconaCal) {
-		this.iconaCal = iconaCal;
-	}
-	public String getIconaSol() {
-		return iconaSol;
-	}
-	public void setIconaSol(String iconaSol) {
-		this.iconaSol = iconaSol;
-	}
-	public String getIconaSlt() {
-		return iconaSlt;
-	}
-	public void setIconaSlt(String iconaSlt) {
-		this.iconaSlt = iconaSlt;
+	public void setIcone(ArrayList<iconaMag> icone) {
+		this.icone = icone;
 	}
 	
 	

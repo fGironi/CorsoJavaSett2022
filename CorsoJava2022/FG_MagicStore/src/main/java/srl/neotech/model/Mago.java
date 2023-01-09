@@ -54,6 +54,10 @@ public class Mago {
 	public void setAvatarURL(String avatarURL) {
 		this.avatarURL = avatarURL;
 	}
+	@Override
+	public String toString() {
+		return "Mago [id=" + id + ", nome=" + nome + ", fama=" + fama + ", stress=" + stress + ", oro=" + oro + "]";
+	}
 	
 	
 }

@@ -8,10 +8,15 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="static/js/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="static/css/adminlte.min.css">
+   <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -24,7 +29,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
+        <a href="." class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -91,12 +96,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page</h1>
+            <h1>Tesserino praticante magico</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item"><a href=".">Home</a></li>
+              <li class="breadcrumb-item active">Profilo</li>
             </ol>
           </div>
         </div>
@@ -107,6 +112,43 @@
     <section class="content">
 
      <!-- qua la roba -->
+	<div class="clearfix">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4 text-center">
+				<h2><b>Nome:</b> ${mago.nome}</h2>
+				<h4><b>Fama:</b> ${mago.fama}</h4>
+				<h4><b>Oro:</b> ${mago.oro}</h4>
+				<h4><b>Stress:</b> ${mago.stress}</h4>
+			</div>
+			<div class="col-md-4 text-center">
+				<img src="${mago.avatarURL}">
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1"></div>
+				<c:forEach items="${mago.listaMagie}" var="magia">
+				<div class="col">
+				    <div class="card">
+				      <div class="card-body">
+				        <h4 class="card-title"><b>${magia.nome}</b></h4>
+				        <p class="card-text">
+				        Calore:${magia.effetto.calore} Solidità:${magia.effetto.solidita} Salute:${magia.effetto.salute}<br>
+				        Effetto:
+				        	<c:forEach items="${magia.icone}" var="icona">
+				        	<i class="fa-solid ${icona.icoURL}"></i>${icona}
+				        	</c:forEach>
+				        </p>
+				       
+				      </div>
+				    </div>
+				</div>
+				</c:forEach>
+			<div class="col-sm-1"></div>	
+		</div>
+	
+	</div>
 
     </section>
     <!-- /.content -->
@@ -126,10 +168,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="static/js/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="static/js/adminlte.min.js"></script>
 <!-- Demo Template -->

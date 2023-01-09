@@ -7,6 +7,17 @@ public class EffettoDTO {
 	private Integer solidita;
 	private Integer salute;
 	
+	
+	public EffettoDTO(Integer calore, Integer solidita, Integer salute) {
+		this.calore = calore;
+		this.solidita = solidita;
+		this.salute = salute;
+	}
+	
+	public EffettoDTO() {
+		
+	}
+	
 	public Integer getCalore() {
 		return calore;
 	}

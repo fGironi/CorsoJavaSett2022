@@ -8,10 +8,14 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="static/js/plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
+   <!-- Theme style -->
   <link rel="stylesheet" href="static/css/adminlte.min.css">
+   <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -126,10 +130,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="static/js/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="static/js/adminlte.min.js"></script>
 <!-- Demo Template -->

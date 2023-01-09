@@ -8,10 +8,14 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="static/js/plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
+   <!-- Theme style -->
   <link rel="stylesheet" href="static/css/adminlte.min.css">
+   <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -107,6 +111,42 @@
     <section class="content">
 
      <!-- qua la roba -->
+	<div class="clearfix">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-4">
+				<div class="card text-center">
+			      <div class="card-body">
+			        <h5 class="card-title">Bentornato!</h5>
+			        <p class="card-text">Sei già un mago? inserisci il tuo id!</p>
+			        <form id="loginForm" method="get" action="login">
+			        	<div class="row">
+			        		<div class="col"></div>
+				        	<div class=col">
+							<input class="form-control" name="id"></input>
+							</div><div class="col">
+							<button type="submit" class="btn btn-success">Accedi</button>
+							</div>
+						</div>
+					</form>
+			      </div>
+			    </div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card text-center">
+			      <div class="card-body">
+			        <h5 class="card-title">Benvenuto!</h5>
+			        <p class="card-text">Sei un nuovo mago? Crea il tuo profilo!</p>
+			        <a href="nuovoProfilo"><button type="button" class="btn btn-primary">Nuovo Profilo</button> 
+			      </div>
+			    </div>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	
+	
+	</div>
+
 
     </section>
     <!-- /.content -->
@@ -126,10 +166,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="static/js/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="static/js/adminlte.min.js"></script>
 <!-- Demo Template -->
