@@ -36,6 +36,11 @@ public class EffettoDTO {
 	public void setSalute(Integer salute) {
 		this.salute = salute;
 	}
+
+	@Override
+	public String toString() {
+		return "EffettoDTO [calore=" + calore + ", solidita=" + solidita + ", salute=" + salute + "]";
+	}
 	
 	
 }

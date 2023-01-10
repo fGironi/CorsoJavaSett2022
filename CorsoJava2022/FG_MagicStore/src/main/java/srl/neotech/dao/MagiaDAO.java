@@ -7,9 +7,10 @@ import org.springframework.stereotype.Component;
 
 import srl.neotech.dao.repository.MagiaRepository;
 import srl.neotech.model.EffettoDTO;
+import srl.neotech.model.EffettoMag;
 import srl.neotech.model.MagiaDTO;
 import srl.neotech.model.Mago;
-import srl.neotech.model.iconaMag;
+import srl.neotech.model.NegozioDTO;
 import srl.neotech.requestresponse.MagoRequest;
 
 @Component
@@ -33,6 +34,8 @@ public class MagiaDAO {
 		String nuovoID="Mago"+lettera+this.contaUtenti;
 		mago.setId(nuovoID.toUpperCase());
 		magiaRepo.getListaUtenti().put(nuovoID, mago);
+		mago.setNegozio(new NegozioDTO());
+		mago.getNegozio().getEffettiPossibili().addAll(magiaRepo.getListaEffetti());
 		System.out.println("creato nuovo mago:");
 		System.out.println(mago);
 		return mago;
@@ -50,14 +53,14 @@ public class MagiaDAO {
 		ArrayList<MagiaDTO> mb=new ArrayList<MagiaDTO>();
 		
 		MagiaDTO caldo =new MagiaDTO();
-		caldo.setNome("caldo");
+		caldo.setNome("Caldo");
 		EffettoDTO e1= new EffettoDTO(3,2,2);
 		caldo.setEffetto(e1);
 		this.impostaIcone(caldo);
 		mb.add(caldo);
 		
 		MagiaDTO freddo =new MagiaDTO();
-		freddo.setNome("freddo");
+		freddo.setNome("Freddo");
 		EffettoDTO e2= new EffettoDTO(1,2,2);
 		freddo.setEffetto(e2);
 		freddo.setId(this.idMagia(freddo));
@@ -65,7 +68,7 @@ public class MagiaDAO {
 		mb.add(freddo);
 		
 		MagiaDTO mollo =new MagiaDTO();
-		mollo.setNome("mollo");
+		mollo.setNome("Mollo");
 		EffettoDTO e3= new EffettoDTO(2,1,2);
 		mollo.setEffetto(e3);
 		mollo.setId(this.idMagia(mollo));
@@ -73,7 +76,7 @@ public class MagiaDAO {
 		mb.add(mollo);
 		
 		MagiaDTO rigido =new MagiaDTO();
-		rigido.setNome("rigido");
+		rigido.setNome("Rigido");
 		EffettoDTO e4= new EffettoDTO(2,3,2);
 		rigido.setEffetto(e4);
 		rigido.setId(this.idMagia(rigido));
@@ -81,7 +84,7 @@ public class MagiaDAO {
 		mb.add(rigido);
 		
 		MagiaDTO veleno =new MagiaDTO();
-		veleno.setNome("veleno");
+		veleno.setNome("Veleno");
 		EffettoDTO e5= new EffettoDTO(2,2,1);
 		veleno.setEffetto(e5);
 		veleno.setId(this.idMagia(veleno));
@@ -89,7 +92,7 @@ public class MagiaDAO {
 		mb.add(veleno);
 		
 		MagiaDTO cura =new MagiaDTO();
-		cura.setNome("cura");
+		cura.setNome("Cura");
 		EffettoDTO e6= new EffettoDTO(2,2,3);
 		cura.setEffetto(e6);
 		cura.setId(this.idMagia(cura));
@@ -102,20 +105,20 @@ public class MagiaDAO {
 	public void impostaIcone(MagiaDTO magia) {
 		EffettoDTO e=magia.getEffetto();
 		
-		if (e.getCalore()==0) magia.getIcone().add(iconaMag.GHIACCIO);
-		if (e.getCalore()==1) magia.getIcone().add(iconaMag.FREDDO);
-		if (e.getCalore()==3) magia.getIcone().add(iconaMag.CALDO);
-		if (e.getCalore()==4) magia.getIcone().add(iconaMag.FUOCO);
+		if (e.getCalore()==0) magia.getEffetti().add(EffettoMag.GHIACCIO);
+		if (e.getCalore()==1) magia.getEffetti().add(EffettoMag.FREDDO);
+		if (e.getCalore()==3) magia.getEffetti().add(EffettoMag.CALDO);
+		if (e.getCalore()==4) magia.getEffetti().add(EffettoMag.FUOCO);
 		
-		if (e.getSolidita()==0) magia.getIcone().add(iconaMag.LIQUIDO);
-		if (e.getSolidita()==1) magia.getIcone().add(iconaMag.MOLLO);
-		if (e.getSolidita()==3) magia.getIcone().add(iconaMag.RIGIDO);
-		if (e.getSolidita()==4) magia.getIcone().add(iconaMag.PIETRA);
+		if (e.getSolidita()==0) magia.getEffetti().add(EffettoMag.LIQUIDO);
+		if (e.getSolidita()==1) magia.getEffetti().add(EffettoMag.MOLLO);
+		if (e.getSolidita()==3) magia.getEffetti().add(EffettoMag.RIGIDO);
+		if (e.getSolidita()==4) magia.getEffetti().add(EffettoMag.PIETRA);
 		
-		if (e.getSalute()==0) magia.getIcone().add(iconaMag.TOSSICO);
-		if (e.getSalute()==1) magia.getIcone().add(iconaMag.VELENO);
-		if (e.getSalute()==3) magia.getIcone().add(iconaMag.CURA);
-		if (e.getSalute()==4) magia.getIcone().add(iconaMag.RIGENERA);
+		if (e.getSalute()==0) magia.getEffetti().add(EffettoMag.TOSSICO);
+		if (e.getSalute()==1) magia.getEffetti().add(EffettoMag.VELENO);
+		if (e.getSalute()==3) magia.getEffetti().add(EffettoMag.CURA);
+		if (e.getSalute()==4) magia.getEffetti().add(EffettoMag.RIGENERA);
 	}
 	
 	public String idMagia(MagiaDTO magia) {

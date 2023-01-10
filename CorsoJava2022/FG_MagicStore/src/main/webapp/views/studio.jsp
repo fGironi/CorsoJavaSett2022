@@ -111,7 +111,20 @@
     <section class="content">
 
      <!-- qua la roba -->
-
+    <div class="clearfix">
+    <div class="row">
+	    <div class="col-sm-2"></div>
+	    <div class="col-sm-6">
+	    	<img src="https://skaldforge.files.wordpress.com/2017/08/shadow-tome.jpg">
+	    </div>
+	    <div class="col-sm-4">
+	    	<a href="imparaMagia"><button type="button" class="btn btn-lg btn-primary">Impara</button></a>
+	    </div>
+    </div>
+	
+    
+    
+    </div>
     </section>
     <!-- /.content -->
   </div>

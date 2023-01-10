@@ -25,22 +25,27 @@ public class MagiaRepository {
 	public ArrayList<EffettoDTO> creaListaEffetti() {
 		ArrayList<EffettoDTO> listaEffetti=new ArrayList<EffettoDTO>();
 		for (int i=0; i<5; i++) {
-			EffettoDTO e=new EffettoDTO();
-			e.setCalore(i);
 			for (int j=0; j<5; j++) {
-				e.setSalute(j);
 				for (int k=0; k<5; k++) {
-					e.setSolidita(k);
+					EffettoDTO e=new EffettoDTO();
+					e.setCalore(i);
+					e.setSalute(k);
+					e.setSolidita(j);
+					if ((e.getCalore()==3 && e.getSalute()==2 && e.getSolidita()==2)||(e.getCalore()==2 && e.getSalute()==3 && e.getSolidita()==2)|| (e.getCalore()==2 && e.getSalute()==2 && e.getSolidita()==3)) {
+						System.out.println("effetto di base non aggiunto alla lista");
+					}
+					else if ((e.getCalore()==1 && e.getSalute()==2 && e.getSolidita()==2)||(e.getCalore()==2 && e.getSalute()==1 && e.getSolidita()==2)|| (e.getCalore()==2 && e.getSalute()==2 && e.getSolidita()==1)) {
+						System.out.println("effetto di base non aggiunto alla lista");
+					}
+					else {
+						System.out.println("aggiunto effetto "+e.getCalore()+""+e.getSolidita()+""+e.getSalute());
+						listaEffetti.add(e);
+					}
 				}
 			}
-		if ((e.getCalore()==3 && e.getSalute()==2 && e.getSolidita()==2)||(e.getCalore()==2 && e.getSalute()==3 && e.getSolidita()==2)|| (e.getCalore()==2 && e.getSalute()==2 && e.getSolidita()==3)) {
-			System.out.println("effetto di base non aggiunto alla lista");
 		}
-		else if ((e.getCalore()==1 && e.getSalute()==2 && e.getSolidita()==2)||(e.getCalore()==2 && e.getSalute()==1 && e.getSolidita()==2)|| (e.getCalore()==2 && e.getSalute()==2 && e.getSolidita()==1)) {
-			System.out.println("effetto di base non aggiunto alla lista");
-		}
-		else listaEffetti.add(e);
-		}
+		System.out.println("lista effetti completa. numero effetti: "+listaEffetti.size());
+		
 		
 		return listaEffetti;
 	}

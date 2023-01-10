@@ -7,10 +7,10 @@ public class MagiaDTO {
 	private String id;
 	private String nome;
 	private EffettoDTO effetto;
-	private ArrayList<iconaMag> icone;
+	private ArrayList<EffettoMag> effetti;
 	
 	public MagiaDTO() {
-		this.icone = new ArrayList<iconaMag>();
+		this.setEffetti(new ArrayList<EffettoMag>());
 	}
 	public String getId() {
 		return id;
@@ -30,12 +30,13 @@ public class MagiaDTO {
 	public void setEffetto(EffettoDTO effetto) {
 		this.effetto = effetto;
 	}
-	public ArrayList<iconaMag> getIcone() {
-		return icone;
+	public ArrayList<EffettoMag> getEffetti() {
+		return effetti;
 	}
-	public void setIcone(ArrayList<iconaMag> icone) {
-		this.icone = icone;
+	public void setEffetti(ArrayList<EffettoMag> effetti) {
+		this.effetti = effetti;
 	}
+
 	
 	
 }

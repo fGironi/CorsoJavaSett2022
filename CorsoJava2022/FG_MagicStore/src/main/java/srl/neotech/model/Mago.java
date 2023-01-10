@@ -11,6 +11,7 @@ public class Mago {
 	private Integer fama;
 	private Integer stress;
 	private Integer oro;
+	private NegozioDTO negozio;
 	
 	public String getId() {
 		return id;
@@ -57,6 +58,12 @@ public class Mago {
 	@Override
 	public String toString() {
 		return "Mago [id=" + id + ", nome=" + nome + ", fama=" + fama + ", stress=" + stress + ", oro=" + oro + "]";
+	}
+	public NegozioDTO getNegozio() {
+		return negozio;
+	}
+	public void setNegozio(NegozioDTO negozio) {
+		this.negozio = negozio;
 	}
 	
 	

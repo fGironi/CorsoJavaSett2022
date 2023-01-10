@@ -123,7 +123,7 @@
 						<div class="form-check">
 						  <form:radiobutton class="form-check-input" path="avatarURL" id="maleAvatar" value="https://cdn-icons-png.flaticon.com/512/1205/1205647.png"/>
 						  <form:label class="form-check-label" path="avatarURL">
-						    <img src="https://cdn-icons-png.flaticon.com/512/1205/1205647.png" >
+						    <img src="https://cdn-icons-png.flaticon.com/512/1205/1205647.png" style="width:75%">
 						  </form:label>
 						</div>
 					</div>
@@ -131,7 +131,7 @@
 						<div class="form-check">
 						  <form:radiobutton class="form-check-input" path="avatarURL" id="femaleAvatar" value="https://cdn-icons-png.flaticon.com/512/1205/1205659.png"/>
 						  <form:label class="form-check-label" path="avatarURL">
-						    <img src="https://cdn-icons-png.flaticon.com/512/1205/1205659.png" 
+						    <img src="https://cdn-icons-png.flaticon.com/512/1205/1205659.png" style="width:75%">
 						  </form:label>
 						</div>
 					</div>

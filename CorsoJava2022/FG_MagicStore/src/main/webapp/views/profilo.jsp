@@ -114,7 +114,6 @@
      <!-- qua la roba -->
 	<div class="clearfix">
 		<div class="row">
-			<div class="col-md-2"></div>
 			<div class="col-md-4 text-center">
 				<h2><b>Nome:</b> ${mago.nome}</h2>
 				<h4><b>Fama:</b> ${mago.fama}</h4>
@@ -122,31 +121,32 @@
 				<h4><b>Stress:</b> ${mago.stress}</h4>
 			</div>
 			<div class="col-md-4 text-center">
-				<img src="${mago.avatarURL}">
+				<img src="${mago.avatarURL}" style="width:75%">
 			</div>
-			<div class="col-md-2"></div>
-		</div>
-		<div class="row">
-			<div class="col-sm-1"></div>
-				<c:forEach items="${mago.listaMagie}" var="magia">
-				<div class="col">
-				    <div class="card">
-				      <div class="card-body">
-				        <h4 class="card-title"><b>${magia.nome}</b></h4>
-				        <p class="card-text">
-				        Calore:${magia.effetto.calore} Solidità:${magia.effetto.solidita} Salute:${magia.effetto.salute}<br>
-				        Effetto:
-				        	<c:forEach items="${magia.icone}" var="icona">
-				        	<i class="fa-solid ${icona.icoURL}"></i>${icona}
-				        	</c:forEach>
-				        </p>
-				       
-				      </div>
-				    </div>
+			<div class="col-md-3">
+				<h4>Lista magie:</h4>
+				<div id="spellspace" style="max-height:500px; overflow-x: hidden; overflow-y: scroll; border:2px black solid; text-align:center">
+					<c:forEach items="${mago.listaMagie}" var="magia">
+					<div class="row" >
+					    <div class="card">
+					      <div class="card-body">
+					        <h4 class="card-title"><b>${magia.nome}</b></h4>
+					        <p class="card-text">
+					        	<c:forEach items="${magia.effetti}" var="eff">
+					        	<i>${eff.formula} </i>
+					        	</c:forEach>
+					        	<br>
+					        	<c:forEach items="${magia.effetti}" var="eff">
+					        	<i class="fa-solid ${eff.icoURL}"></i>${icona}
+					        	</c:forEach>
+					        </p>
+					      </div>
+					    </div>
+					</div>
+					</c:forEach>
 				</div>
-				</c:forEach>
-			<div class="col-sm-1"></div>	
 		</div>
+		<div class="col-md-1"></div>
 	
 	</div>
 
