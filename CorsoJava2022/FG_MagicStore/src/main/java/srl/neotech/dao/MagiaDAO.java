@@ -11,6 +11,7 @@ import srl.neotech.model.EffettoMag;
 import srl.neotech.model.MagiaDTO;
 import srl.neotech.model.Mago;
 import srl.neotech.model.NegozioDTO;
+import srl.neotech.model.TipologiaEff;
 import srl.neotech.requestresponse.MagoRequest;
 
 @Component
@@ -53,11 +54,8 @@ public class MagiaDAO {
 	public ArrayList<MagiaDTO> magieBase(){
 		ArrayList<MagiaDTO> mb=new ArrayList<MagiaDTO>();
 		
-		MagiaDTO caldo =new MagiaDTO();
+		MagiaDTO caldo =new MagiaDTO(EffettoMag.CALDO, null, null);
 		caldo.setNome("Caldo");
-		EffettoDTO e1= new EffettoDTO(3,2,2);
-		caldo.setEffetto(e1);
-		this.impostaIcone(caldo);
 		mb.add(caldo);
 		
 		MagiaDTO freddo =new MagiaDTO();
@@ -103,24 +101,6 @@ public class MagiaDAO {
 		return mb;
 	}
 	
-	public void impostaIcone(MagiaDTO magia) {
-		EffettoDTO e=magia.getEffetto();
-		
-		if (e.getCalore()==0) magia.getEffetti().add(EffettoMag.GHIACCIO);
-		if (e.getCalore()==1) magia.getEffetti().add(EffettoMag.FREDDO);
-		if (e.getCalore()==3) magia.getEffetti().add(EffettoMag.CALDO);
-		if (e.getCalore()==4) magia.getEffetti().add(EffettoMag.FUOCO);
-		
-		if (e.getSolidita()==0) magia.getEffetti().add(EffettoMag.LIQUIDO);
-		if (e.getSolidita()==1) magia.getEffetti().add(EffettoMag.MOLLO);
-		if (e.getSolidita()==3) magia.getEffetti().add(EffettoMag.RIGIDO);
-		if (e.getSolidita()==4) magia.getEffetti().add(EffettoMag.PIETRA);
-		
-		if (e.getSalute()==0) magia.getEffetti().add(EffettoMag.TOSSICO);
-		if (e.getSalute()==1) magia.getEffetti().add(EffettoMag.VELENO);
-		if (e.getSalute()==3) magia.getEffetti().add(EffettoMag.CURA);
-		if (e.getSalute()==4) magia.getEffetti().add(EffettoMag.RIGENERA);
-	}
 	
 	public String idMagia(MagiaDTO magia) {
 		EffettoDTO e=magia.getEffetto();

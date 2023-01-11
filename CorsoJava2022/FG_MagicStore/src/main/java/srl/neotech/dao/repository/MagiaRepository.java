@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.springframework.stereotype.Component;
 
 import srl.neotech.model.EffettoDTO;
+import srl.neotech.model.MagiaDTO;
 import srl.neotech.model.Mago;
 
 @Component
@@ -13,11 +14,13 @@ public class MagiaRepository {
 
 	private ArrayList<EffettoDTO> listaEffetti;
 	private HashMap <String, Mago> listaUtenti;
-
+	private ArrayList<MagiaDTO> listaMagie;
+	
 	
 	public MagiaRepository() {
 		super();
 		this.listaEffetti = this.creaListaEffetti();
+		this.setListaMagie(null);
 		this.listaUtenti = new HashMap <String, Mago>();
 	}
 
@@ -28,9 +31,7 @@ public class MagiaRepository {
 			for (int j=0; j<5; j++) {
 				for (int k=0; k<5; k++) {
 					EffettoDTO e=new EffettoDTO();
-					e.setCalore(i);
-					e.setSalute(k);
-					e.setSolidita(j);
+					e.setCalore(i);	e.setSalute(k);	e.setSolidita(j);
 					if ((e.getCalore()==3 && e.getSalute()==2 && e.getSolidita()==2)||(e.getCalore()==2 && e.getSalute()==3 && e.getSolidita()==2)|| (e.getCalore()==2 && e.getSalute()==2 && e.getSolidita()==3)) {
 						System.out.println("effetto di base non aggiunto alla lista");
 					}
@@ -45,10 +46,10 @@ public class MagiaRepository {
 			}
 		}
 		System.out.println("lista effetti completa. numero effetti: "+listaEffetti.size());
-		
-		
 		return listaEffetti;
 	}
+	
+	
 	
 	public ArrayList<EffettoDTO> getListaEffetti() {
 		return listaEffetti;
@@ -64,6 +65,16 @@ public class MagiaRepository {
 
 	public void setListaUtenti(HashMap <String, Mago> listaUtenti) {
 		this.listaUtenti = listaUtenti;
+	}
+
+
+	public ArrayList<MagiaDTO> getListaMagie() {
+		return listaMagie;
+	}
+
+
+	public void setListaMagie(ArrayList<MagiaDTO> listaMagie) {
+		this.listaMagie = listaMagie;
 	}
 	
 	
