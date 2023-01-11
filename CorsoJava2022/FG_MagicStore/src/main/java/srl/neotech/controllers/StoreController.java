@@ -35,6 +35,7 @@ public class StoreController {
     @GetMapping(value="/imparaMagia")
     public String impara() {
     	magiaService.imparaNuovaMagia(utente.getMago());
+    	magiaService.avanzaTempo(utente.getMago());
 	    return "redirect:/studio";
     }
 }

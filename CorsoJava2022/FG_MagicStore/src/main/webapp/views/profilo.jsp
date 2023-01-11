@@ -119,6 +119,9 @@
 				<h4><b>Fama:</b> ${mago.fama}</h4>
 				<h4><b>Oro:</b> ${mago.oro}</h4>
 				<h4><b>Stress:</b> ${mago.stress}</h4>
+				<h2><b>Negozio:</b>
+				<h4><b>Giorno:</b> ${mago.negozio.giorno}</h4>
+				<h4><b>Ora:</b> ${mago.negozio.ora}</h4>
 			</div>
 			<div class="col-md-4 text-center">
 				<img src="${mago.avatarURL}" style="width:75%">

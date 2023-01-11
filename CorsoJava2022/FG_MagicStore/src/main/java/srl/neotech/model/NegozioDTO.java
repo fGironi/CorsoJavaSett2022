@@ -13,6 +13,7 @@ public class NegozioDTO {
 	private ArrayList<EffettoDTO> effettiPossibili;
 	
 	public NegozioDTO() {
+		ora=LocalTime.parse("08:00");
 		this.clientiAttuali = new ArrayList<ClienteDTO>();
 		this.clientiSoddisfatti = new ArrayList<ClienteDTO>();
 		this.clientiDelusi = new ArrayList<ClienteDTO>();

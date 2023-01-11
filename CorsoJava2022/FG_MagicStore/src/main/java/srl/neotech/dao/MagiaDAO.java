@@ -36,6 +36,7 @@ public class MagiaDAO {
 		magiaRepo.getListaUtenti().put(nuovoID, mago);
 		mago.setNegozio(new NegozioDTO());
 		mago.getNegozio().getEffettiPossibili().addAll(magiaRepo.getListaEffetti());
+		mago.getNegozio().setGiorno(0);
 		System.out.println("creato nuovo mago:");
 		System.out.println(mago);
 		return mago;

@@ -1,11 +1,14 @@
 package srl.neotech.model;
 
+import java.time.LocalTime;
+
 public class ClienteDTO {
 
 	private String nome;
 	private ProblemaDTO problema;
 	private Integer oro;
 	private Integer pazienza;
+	private LocalTime oraArrivo;
 	
 	public String getNome() {
 		return nome;
@@ -30,6 +33,12 @@ public class ClienteDTO {
 	}
 	public void setPazienza(Integer pazienza) {
 		this.pazienza = pazienza;
+	}
+	public LocalTime getOraArrivo() {
+		return oraArrivo;
+	}
+	public void setOraArrivo(LocalTime oraArrivo) {
+		this.oraArrivo = oraArrivo;
 	}
 	
 	
