@@ -162,7 +162,7 @@ public class AutoService {
 				}
 			}
 			if (request.getColore()!=null && request.getColore().isEmpty()==false) {
-				if (request.getColore().contains(auto.getColore())==false){
+				if (auto.getColore().contains(request.getColore())==false){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
@@ -170,19 +170,38 @@ public class AutoService {
 			}	
 			if (request.getAccessori()!=null && request.getAccessori().isEmpty()==false) {
 				for (AccessorioDTO acc:request.getAccessori()) {
-					if (auto.getAccessori().contains(acc)==false) {
-						autoDaRimuovere.add(auto.getId());
-						continue;
+					for (AccessorioDTO accAuto:auto.getAccessori()) {
+						if (acc.getCosto()!=null) {
+							if (accAuto.getCosto().equals(acc.getCosto())==false) {
+								autoDaRimuovere.add(auto.getId());
+								continue;
+							}
+						}
+						if (acc.getDescrizione()!=null && acc.getDescrizione().isEmpty()==false) {
+							if (accAuto.getDescrizione().contains(acc.getDescrizione())==false) {
+								autoDaRimuovere.add(auto.getId());
+								continue;
+							}
+						}
+						if (acc.getTipologia()!=null) {
+							if (accAuto.getTipologia().equals(acc.getTipologia())==false) {
+								autoDaRimuovere.add(auto.getId());
+								continue;
+							}
+						}
 					}
 				}
 			}
 		}
+		
+		//Rimozione auto dalla lista da tornare
 		for (String id:autoDaRimuovere) {
 			AutoDTO autoRmv=autoDAO.getMappaAuto().get(id);
 			if (autoTrovate.contains(autoRmv)) {
 				autoTrovate.remove(autoRmv);
 			}
 		}
+		
 		return autoTrovate;
 	}
 	

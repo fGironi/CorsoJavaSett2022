@@ -2,6 +2,8 @@ package srl.neotech.controllers;
 
 import java.util.ArrayList;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -71,7 +73,7 @@ public class AutoAPIController {
 	//addauto
 	@ResponseBody
 	@PutMapping(value="/addAuto", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseBase addAuto(@RequestBody RequestAddAuto request) {
+	public ResponseBase addAuto(@Valid @RequestBody RequestAddAuto request) {
 		ResponseBase response=new ResponseBase();
 		try {
 			//chiamo il service

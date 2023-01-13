@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>srl.neotech</groupId>
-	<artifactId>FG_auto_1.0.0_ms</artifactId>
-	<version>1.0</version>
+	<artifactId>FG_auto_1.0.1_ms</artifactId>
+	<version>1.0.1</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -17,6 +17,11 @@
 		<relativePath />
 	</parent>
 	<dependencies>
+		<dependency>
+           <groupId>org.hibernate</groupId>
+           <artifactId>hibernate-validator</artifactId>
+           <version>6.2.0.Final</version>
+       </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -53,21 +58,6 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-		    <groupId>jakarta.el</groupId>
-		    <artifactId>jakarta.el-api</artifactId>
-		    <version>5.0.1</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.hibernate.validator</groupId>
-		    <artifactId>hibernate-validator-annotation-processor</artifactId>
-		    <version>8.0.0.Final</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.hibernate.validator</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-		    <version>8.0.0.Final</version>
 		</dependency>
 
 	</dependencies>
