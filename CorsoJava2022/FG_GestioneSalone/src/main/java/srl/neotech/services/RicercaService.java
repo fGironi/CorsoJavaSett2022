@@ -20,89 +20,89 @@ public class RicercaService {
 
 
 	
-	public ArrayList<AutomobileDTO> confrontaAuto(RicercaRequest paragRicerca) {
+	public ArrayList<AutomobileDTO> confrontaAuto(RicercaRequest request) {
 		ArrayList <AutomobileDTO> autoTrovate=new ArrayList<AutomobileDTO>();
 		ArrayList <String> autoDaRimuovere=new ArrayList <String>();
 		autoTrovate.addAll(autoDao.getListaAuto().values());
 		System.out.println("aggiunte le auto alla lista di paragone, dimensione: "+autoTrovate.size());
 		for (AutomobileDTO auto:autoTrovate) {
-			if (paragRicerca.getTarga()!=null && paragRicerca.getTarga().isEmpty()==false) {
+			if (request.getTarga()!=null && request.getTarga().isEmpty()==false) {
 				System.out.println("l'utente ha inserito una targa");
 				//if (paragRicerca.getTarga().equals(auto.getTarga())==false){
-				if (auto.getTarga().contains(paragRicerca.getTarga())==false) {
+				if (auto.getTarga().contains(request.getTarga())==false) {
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getCostruttore()!=null) {
+			if (request.getCostruttore()!=null) {
 				System.out.println("l'utente ha inserito un costruttore");
-				if (paragRicerca.getCostruttore().equals(auto.getCostruttore())==false){
+				if (request.getCostruttore().equals(auto.getCostruttore())==false){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getModello()!=null && paragRicerca.getModello().isEmpty()==false) {
+			if (request.getModello()!=null && request.getModello().isEmpty()==false) {
 				System.out.println("l'utente ha inserito un modello");
 				//if (paragRicerca.getModello().equals(auto.getModello())==false){
-				if (auto.getModello().contains(paragRicerca.getModello())==false) {	
+				if (auto.getModello().contains(request.getModello())==false) {	
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getAnnoCostrMin()!=null) {
-				if (paragRicerca.getAnnoCostrMin()>auto.getAnnoCostruzione()){
+			if (request.getAnnoCostrMin()!=null) {
+				if (request.getAnnoCostrMin()>auto.getAnnoCostruzione()){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getAnnoCostrMax()!=null) {
-				if (paragRicerca.getAnnoCostrMax()<auto.getAnnoCostruzione()){
+			if (request.getAnnoCostrMax()!=null) {
+				if (request.getAnnoCostrMax()<auto.getAnnoCostruzione()){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getCostoBaseMin()!=null) {
-				if (paragRicerca.getCostoBaseMin()>auto.getCostoBase()){
+			if (request.getCostoBaseMin()!=null) {
+				if (request.getCostoBaseMin()>auto.getCostoBase()){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getCostoBaseMax()!=null) {
-				if (paragRicerca.getCostoBaseMax()<auto.getCostoBase()){
+			if (request.getCostoBaseMax()!=null) {
+				if (request.getCostoBaseMax()<auto.getCostoBase()){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getCostoMin()!=null) {
-				if (paragRicerca.getCostoMin()>auto.getCosto()){
+			if (request.getCostoMin()!=null) {
+				if (request.getCostoMin()>auto.getCosto()){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getCostoMax()!=null) {
-				if (paragRicerca.getCostoMax()<auto.getCosto()){
+			if (request.getCostoMax()!=null) {
+				if (request.getCostoMax()<auto.getCosto()){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getAlimentazione()!=null) {
-				if (paragRicerca.getAlimentazione().equals(auto.getAlimentazione())==false){
+			if (request.getAlimentazione()!=null) {
+				if (request.getAlimentazione().equals(auto.getAlimentazione())==false){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
 				}
 			}
-			if (paragRicerca.getColore()!=null) {
-				if (paragRicerca.getColore().equals(auto.getColore())==false){
+			if (request.getColore()!=null) {
+				if (request.getColore().equals(auto.getColore())==false){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
