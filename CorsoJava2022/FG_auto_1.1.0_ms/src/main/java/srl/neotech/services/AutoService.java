@@ -12,6 +12,7 @@ import srl.neotech.model.AccessorioDTO;
 import srl.neotech.model.AutoDTO;
 import srl.neotech.requestresponse.RequestAddAuto;
 import srl.neotech.requestresponse.RequestSearchAuto;
+import srl.neotech.requestresponse.RequestUpdateAuto;
 
 @Service
 public class AutoService {
@@ -193,7 +194,6 @@ public class AutoService {
 				}
 			}
 		}
-		
 		//Rimozione auto dalla lista da tornare
 		for (String id:autoDaRimuovere) {
 			AutoDTO autoRmv=autoDAO.getMappaAuto().get(id);
@@ -205,4 +205,66 @@ public class AutoService {
 		return autoTrovate;
 	}
 	
+	@Transactional
+	public void updateAuto(RequestUpdateAuto request) {
+		if (autoDAO.getMappaAuto().containsKey(request.getId())) {
+			AutoDTO upAuto=new AutoDTO();	
+			AutoDTO ogAuto=autoDAO.getMappaAuto().get(request.getId());
+			upAuto.setId(ogAuto.getId());
+			System.out.println("inizializzata modifica dell'auto "+upAuto.getId());
+			if (request.getTarga()!=null && request.getTarga().isBlank()==false) {
+				System.out.println("modifica della targa da "+upAuto.getTarga()+" a "+request.getTarga());
+				upAuto.setTarga(request.getTarga());
+				
+			}
+			else upAuto.setTarga(ogAuto.getTarga());
+			
+			if (request.getAlimentazione()!=null) {
+				System.out.println("modifica dell'alimentazione da "+upAuto.getAlimentazione()+" a "+request.getAlimentazione());
+				upAuto.setAlimentazione(request.getAlimentazione());
+			}
+			else upAuto.setAlimentazione(ogAuto.getAlimentazione());
+			
+			if (request.getCostruttore()!=null) {
+				System.out.println("modifica del costruttore da "+upAuto.getCostruttore()+" a "+request.getCostruttore());
+				upAuto.setCostruttore(request.getCostruttore());
+			}
+			else upAuto.setCostruttore(ogAuto.getCostruttore());
+			
+			if (request.getColore()!=null && request.getColore().isBlank()==false) {
+				System.out.println("modifica dell'alimentazione da "+upAuto.getColore()+" a "+request.getColore());
+				upAuto.setColore(request.getColore());
+			}
+			else upAuto.setColore(ogAuto.getColore());
+			
+			if (request.getCostoBase()!=null) {
+				System.out.println("modifica del costo base da "+upAuto.getCostoBase()+" a "+request.getCostoBase());
+				upAuto.setCostoBase(request.getCostoBase());
+			}
+			else upAuto.setCostoBase(ogAuto.getCostoBase());
+			
+			if (request.getModello()!=null && request.getModello().isBlank()==false) {
+				System.out.println("modifica del modello da "+upAuto.getModello()+" a "+request.getModello());
+				upAuto.setModello(request.getModello());
+			}
+			else upAuto.setModello(ogAuto.getModello());
+			
+			if (request.getAnno()!=null) {
+				System.out.println("modifica dell'anno di immatricolazione da "+upAuto.getAnno()+" a "+request.getAnno());
+				upAuto.setAnno(request.getAnno());
+			}
+			else upAuto.setAnno(ogAuto.getAnno());
+			
+			if (request.getAccessori()!=null && request.getAccessori().isEmpty()==false) {
+				System.out.println("modifica degli accessori da "+upAuto.getAccessori().size()+" a "+request.getAccessori().size());
+				//gli accessori si stanno rivelando un oggetto particolarmente complesso, meritevole di un sistema indipendente id aggiunta,
+				//rimozione e quant'altro, probabilmente degno di un suo personale microservice
+				upAuto.setAccessori(request.getAccessori());
+			}
+			else upAuto.setAccessori(ogAuto.getAccessori());
+			
+			upAuto.setCostoTot(this.costoCalculator(upAuto));
+			autoDAO.updateAuto(upAuto);
+		}
+	}
 }

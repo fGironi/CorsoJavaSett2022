@@ -35,4 +35,8 @@ public class AutoDAO {
 	public AutoDTO getAuto(String id) {
 		return autoRepo.getAuto(id);
 	}
+	
+	public void updateAuto(AutoDTO auto) {
+		autoRepo.updateAuto(auto);
+	}
 }

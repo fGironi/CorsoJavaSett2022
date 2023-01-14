@@ -19,6 +19,7 @@ import srl.neotech.requestresponse.GetAutoResponse;
 import srl.neotech.requestresponse.GetListaAutoResponse;
 import srl.neotech.requestresponse.RequestAddAuto;
 import srl.neotech.requestresponse.RequestSearchAuto;
+import srl.neotech.requestresponse.RequestUpdateAuto;
 import srl.neotech.requestresponse.ResponseBase;
 import srl.neotech.services.AutoService;
 
@@ -127,7 +128,25 @@ public class AutoAPIController {
 		return response;
 	}
 	
-	
 	//updateauto
+	@ResponseBody
+	@PostMapping(value="/updateAuto", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseBase updateAuto(@RequestBody RequestUpdateAuto request) {
+	ResponseBase response=new ResponseBase();
+	try {
+		autoService.updateAuto(request);
+		response.setCode("OK");
+		response.setDescr("aggiornata l'auto "+request.getId());
+		
+	}catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		response.setCode("KO");
+		response.setDescr(e.getMessage());
+	}
 	
+	
+	
+	return response;
+	}
 }

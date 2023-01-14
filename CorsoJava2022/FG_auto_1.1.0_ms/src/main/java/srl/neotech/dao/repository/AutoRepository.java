@@ -45,4 +45,8 @@ public class AutoRepository {
 		return this.mappaAuto.get(id);
 	}
 
+	public void updateAuto(AutoDTO auto) {
+		this.mappaAuto.replace(auto.getId(), auto);
+	}
+	
 }

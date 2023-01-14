@@ -19,10 +19,10 @@ public class RequestAddAuto {
 	@Size(max = 7, min = 5, message = "Targa non valida, la dimensione dovrebbe essre tra i 5 e i 7 caratteri")
 	private String targa;
 	@NotNull(message = "campo richiesto, per favore inserisci un modello")
-	@Size(min = 2, message = "Nome modello non valido. Il modello dovrebbe essere almeno di 3 caratteri")
+	@Size(min = 2, message = "Nome modello non valido. Il modello dovrebbe essere almeno di 2 caratteri")
 	private String modello;
 	@NotNull(message = "campo richiesto, per favore inserisci un colore")
-	@Size(min = 2, message = "Colore non valido. Il colore dovrebbe essere di almeno 3 caratteri")
+	@Size(min = 2, message = "Colore non valido. Il colore dovrebbe essere di almeno 2 caratteri")
 	private String colore; 
 	@NotNull(message = "campo richiesto, per favore inserisci un'alimentazione")
 	private Alimentazione alimentazione;

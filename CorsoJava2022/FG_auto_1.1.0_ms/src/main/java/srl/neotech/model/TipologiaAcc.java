@@ -4,7 +4,8 @@ public enum TipologiaAcc {
 
 	CERCHI("Cerchi", "Esterni"),
 	ENTERTAINMENT("Entertainmnet", "Altro"),
-	SEDILI("Sedili","Altro");
+	SEDILI("Sedili","Interni"),
+	ALTRO("Altro", "Altro");
 	
 	private final String nome;
 	private final String categoria;
