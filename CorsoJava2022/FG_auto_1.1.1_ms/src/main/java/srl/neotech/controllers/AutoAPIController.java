@@ -63,7 +63,7 @@ public class AutoAPIController {
 			response.setListaAuto(listaAuto);
 			response.setCode("OK");
 			response.setSimpleData(listaAuto.size());
-			response.setCode("tornata la lista delle auto presenti nel database");
+			response.setDescr("tornata la lista delle auto presenti nel database");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
