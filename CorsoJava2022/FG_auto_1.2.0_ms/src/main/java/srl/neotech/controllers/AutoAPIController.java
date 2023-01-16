@@ -22,12 +22,16 @@ import srl.neotech.requestresponse.RequestSearchAuto;
 import srl.neotech.requestresponse.RequestUpdateAuto;
 import srl.neotech.requestresponse.ResponseBase;
 import srl.neotech.services.AutoService;
+import srl.neotech.services.TestService;
 
 @RestController
 public class AutoAPIController {
 
 	@Autowired
 	AutoService autoService;
+	@Autowired
+	TestService testService;
+	
 	
 	//getauto
 	@ResponseBody
@@ -139,21 +143,37 @@ public class AutoAPIController {
 	@ResponseBody
 	@PostMapping(value="/updateAuto", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseBase updateAuto(@RequestBody RequestUpdateAuto request) {
-	ResponseBase response=new ResponseBase();
-	try {
-		autoService.updateAuto(request);
-		response.setCode("OK");
-		response.setDescr("aggiornata l'auto "+request.getId());
-		
-	}catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		response.setCode("KO");
-		response.setDescr(e.getMessage());
+		ResponseBase response=new ResponseBase();
+		try {
+			autoService.updateAuto(request);
+			response.setCode("OK");
+			response.setDescr("aggiornata l'auto "+request.getId());
+			
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.setCode("KO");
+			response.setDescr(e.getMessage());
+		}
+		return response;
 	}
 	
-	
-	
-	return response;
+	//fakeDB
+	@ResponseBody
+	@GetMapping(value="/fakeAutos")
+	public GetListaAutoResponse fakeAutos() {
+		GetListaAutoResponse response=new GetListaAutoResponse();
+		try {
+			response.setListaAuto(testService.faiFintaDiAvereUnDBdiAccessori());
+			response.setCode("OK");
+			response.setDescr("Create auto randomiche con JavaFaker");
+			
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.setCode("KO");
+			response.setDescr(e.getMessage());
+		}
+		return response;
 	}
 }

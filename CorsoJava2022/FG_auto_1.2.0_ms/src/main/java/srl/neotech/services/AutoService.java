@@ -20,7 +20,7 @@ public class AutoService {
 	@Autowired
 	AutoDAO autoDAO;
 	
-	private String idGenerator() {
+	public String idGenerator() {
 		Integer idCounter=autoDAO.getIdCounter();
 		String zeros;
 		if (idCounter>999) zeros="";
@@ -31,7 +31,7 @@ public class AutoService {
 		return newID;
 	}
 	
-	private Integer costoCalculator(AutoDTO auto) {
+	public Integer costoCalculator(AutoDTO auto) {
 		Integer costoAggiunto=0;
 		for (AccessorioDTO acc:auto.getAccessori()) {
 			costoAggiunto=costoAggiunto+acc.getCosto();
