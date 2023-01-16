@@ -14,7 +14,7 @@ import srl.neotech.model.Alimentazione;
 import srl.neotech.model.Costruttore;
 
 @Valid
-public class RequestUpdateAuto {
+public class UpdateAutoRequest {
 
 		@NotNull(message = "l'id dell'auto da aggiornare è un campo obbligatorio")
 		private String id;

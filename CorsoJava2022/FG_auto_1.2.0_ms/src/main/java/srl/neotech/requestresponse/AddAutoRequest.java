@@ -14,7 +14,7 @@ import srl.neotech.model.Alimentazione;
 import srl.neotech.model.Costruttore;
 
 @Valid
-public class RequestAddAuto {
+public class AddAutoRequest {
 	@NotNull(message = "campo richiesto, per favore inserisci una targa")
 	@Size(max = 7, min = 5, message = "Targa non valida, la dimensione dovrebbe essre tra i 5 e i 7 caratteri")
 	private String targa;
@@ -37,7 +37,7 @@ public class RequestAddAuto {
 	private Integer costoBase;
 	private ArrayList<AccessorioDTO> accessori;
 	
-	public RequestAddAuto() {
+	public AddAutoRequest() {
 		super();
 		this.accessori = new ArrayList<AccessorioDTO>();
 	}

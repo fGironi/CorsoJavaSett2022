@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,12 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import srl.neotech.model.AutoDTO;
+import srl.neotech.requestresponse.AddAutoRequest;
 import srl.neotech.requestresponse.GetAutoResponse;
 import srl.neotech.requestresponse.GetListaAutoResponse;
-import srl.neotech.requestresponse.RequestAddAuto;
-import srl.neotech.requestresponse.RequestSearchAuto;
-import srl.neotech.requestresponse.RequestUpdateAuto;
 import srl.neotech.requestresponse.ResponseBase;
+import srl.neotech.requestresponse.SearchAutoRequest;
+import srl.neotech.requestresponse.UpdateAutoRequest;
 import srl.neotech.services.AutoService;
 import srl.neotech.services.TestService;
 
@@ -81,7 +82,7 @@ public class AutoAPIController {
 	//addauto
 	@ResponseBody
 	@PutMapping(value="/addAuto", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseBase addAuto(@Valid @RequestBody RequestAddAuto request) {
+	public ResponseBase addAuto(@Valid @RequestBody AddAutoRequest request) {
 		ResponseBase response=new ResponseBase();
 		try {
 			//chiamo il service
@@ -101,7 +102,7 @@ public class AutoAPIController {
 
 	//removeauto
 	@ResponseBody
-	@GetMapping(value="/removeAuto", produces = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="/removeAuto", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseBase removeAuto(@RequestParam String id) {
 		ResponseBase response=new ResponseBase();
 		try {
@@ -120,7 +121,7 @@ public class AutoAPIController {
 	//cercaauto
 	@ResponseBody
 	@PostMapping(value="/searchAuto", produces = MediaType.APPLICATION_JSON_VALUE)
-	public GetListaAutoResponse searchAuto(@RequestBody RequestSearchAuto request) {
+	public GetListaAutoResponse searchAuto(@RequestBody SearchAutoRequest request) {
 		GetListaAutoResponse response=new GetListaAutoResponse();
 		try {
 			ArrayList<AutoDTO> autoTrovate=autoService.searchAuto(request);
@@ -142,7 +143,7 @@ public class AutoAPIController {
 	//updateauto
 	@ResponseBody
 	@PostMapping(value="/updateAuto", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseBase updateAuto(@RequestBody RequestUpdateAuto request) {
+	public ResponseBase updateAuto(@RequestBody UpdateAutoRequest request) {
 		ResponseBase response=new ResponseBase();
 		try {
 			autoService.updateAuto(request);

@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import srl.neotech.dao.AutoDAO;
 import srl.neotech.model.AccessorioDTO;
 import srl.neotech.model.AutoDTO;
-import srl.neotech.requestresponse.RequestAddAuto;
-import srl.neotech.requestresponse.RequestSearchAuto;
-import srl.neotech.requestresponse.RequestUpdateAuto;
+import srl.neotech.requestresponse.AddAutoRequest;
+import srl.neotech.requestresponse.SearchAutoRequest;
+import srl.neotech.requestresponse.UpdateAutoRequest;
 
 @Service
 public class AutoService {
@@ -43,7 +43,7 @@ public class AutoService {
 	//In maniera sperimentale, imposto addAuto per tornare una String id da includere nella responseBase. 
 	//Potrebbe essere una bad practice, ma in questo momento sono l'architetto di me stesso
 	@Transactional 
-	public String addAuto(RequestAddAuto request) {
+	public String addAuto(AddAutoRequest request) {
 		AutoDTO auto=new AutoDTO(
 				request.getTarga(), request.getModello(), request.getColore(), 
 				request.getAlimentazione(), request.getCostruttore(), request.getAnno(), request.getCostoBase());
@@ -73,7 +73,7 @@ public class AutoService {
 		return autoDAO.getAuto(id);
 	}
 	
-	public ArrayList<AutoDTO> searchAuto(RequestSearchAuto request){
+	public ArrayList<AutoDTO> searchAuto(SearchAutoRequest request){
 		ArrayList<AutoDTO> autoTrovate=new ArrayList<AutoDTO>();
 		ArrayList <String> autoDaRimuovere=new ArrayList <String>();
 		autoTrovate.addAll(autoDAO.getMappaAuto().values());
@@ -215,7 +215,7 @@ public class AutoService {
 	}
 	
 	@Transactional
-	public void updateAuto(RequestUpdateAuto request) {
+	public void updateAuto(UpdateAutoRequest request) {
 		if (autoDAO.getMappaAuto().containsKey(request.getId())) {
 			AutoDTO upAuto=new AutoDTO();	
 			AutoDTO ogAuto=autoDAO.getMappaAuto().get(request.getId());

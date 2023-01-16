@@ -6,7 +6,7 @@ import srl.neotech.model.AccessorioDTO;
 import srl.neotech.model.Alimentazione;
 import srl.neotech.model.Costruttore;
 
-public class RequestSearchAuto extends ResponseBase{
+public class SearchAutoRequest {
 
 	private String id;
 	private String targa;
