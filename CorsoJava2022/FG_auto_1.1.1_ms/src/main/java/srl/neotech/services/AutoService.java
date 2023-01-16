@@ -169,27 +169,36 @@ public class AutoService {
 					continue;
 				}
 			}	
-			if (request.getAccessori()!=null && request.getAccessori().isEmpty()==false) {
-				for (AccessorioDTO acc:request.getAccessori()) {
-					for (AccessorioDTO accAuto:auto.getAccessori()) {
-						if (acc.getCosto()!=null) {
-							if (accAuto.getCosto().equals(acc.getCosto())==false) {
-								autoDaRimuovere.add(auto.getId());
-								continue;
+			//check accessori
+			//nota: stranamente complicato da gestire, aggiungo commenti per spiegare la logica
+			if (request.getAccessori()!=null && request.getAccessori().isEmpty()==false) { //Se è stata fatta una richiesta di ricerca riguardante gli accessori
+				for (AccessorioDTO acc:request.getAccessori()) { //per ogni richiesta di accessorio (o di una sua caratteristica). Ad esempio "voglio un auto che abbia un accessorio SEDILI e l'entertainment CARPLAY"
+					Boolean hasAcc=false; //metto come presupposto che l'auto in lista non abbia l'accessorio richiesto
+					for (AccessorioDTO accAuto:auto.getAccessori()) { //controllo la singola richiesta per ogni accessorio presente sull'auto 
+						if (acc.getCosto()!=null) { //se è stata fatta una richiesta riguardante questa caratteristica
+							if (accAuto.getCosto().equals(acc.getCosto())==false) { //e l'accessorio che sto controllando non soddisfa la richiesta
+								continue; //passo a controllare direttamente all'accessorio successivo presente sull'auto
 							}
 						}
 						if (acc.getDescrizione()!=null && acc.getDescrizione().isEmpty()==false) {
 							if (accAuto.getDescrizione().contains(acc.getDescrizione())==false) {
-								autoDaRimuovere.add(auto.getId());
 								continue;
+								
 							}
 						}
 						if (acc.getTipologia()!=null) {
 							if (accAuto.getTipologia().equals(acc.getTipologia())==false) {
-								autoDaRimuovere.add(auto.getId());
 								continue;
 							}
 						}
+						hasAcc=true; //se nessuno dei check precedenti ci ha fatto passare all'accessorio successivo, dichiaro che l'accessorio è stato trovato
+									 //notare che nessuno dei check precedenti modifica la variabile hasAcc, quindi una volta che è stato trovato un match anche se continua a controllare non cambierà nulla
+						//break;	 //potrebbe aver senso inserire un "break" per farlo passare direttamente all'accessorio richiesto successivo una volta che è stato trovato un match
+						
+					}
+					if (hasAcc==false) { //se dopo aver controllato tutti gli accessori presenti sull'auto non ho trovato l'accessorio che è stato richiesto
+						autoDaRimuovere.add(auto.getId()); //metto l'auto nella lista di auto da rimuovere
+						break; //e passo direttamente al ciclo successivo di auto, anche se quella in questione dovesse avere altri degli accessori richiesti è sufficiente non averne uno per non essere inclusa nella lista
 					}
 				}
 			}

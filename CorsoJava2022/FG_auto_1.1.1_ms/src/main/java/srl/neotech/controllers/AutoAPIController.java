@@ -41,6 +41,7 @@ public class AutoAPIController {
 			//preparo la response
 			response.setAuto(auto);
 			response.setCode("OK");
+			response.setDescr("tornata l'auto con id "+id);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,6 +62,8 @@ public class AutoAPIController {
 			//preparo la response
 			response.setListaAuto(listaAuto);
 			response.setCode("OK");
+			response.setSimpleData(listaAuto.size());
+			response.setCode("tornata la lista delle auto presenti nel database");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,6 +103,7 @@ public class AutoAPIController {
 		try {
 			autoService.removeAuto(id);
 			response.setCode("OK");
+			response.setDescr("l'auto "+id+" e' stata rimossa correttamente");
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,6 +122,9 @@ public class AutoAPIController {
 			ArrayList<AutoDTO> autoTrovate=autoService.searchAuto(request);
 			response.setCode("OK");
 			response.setListaAuto(autoTrovate);
+			response.setSimpleData(autoTrovate.size());
+			if (autoTrovate.size()==0)	response.setDescr("non sono state trovate auto che soddisfano i criteri richiesti");
+			else response.setDescr("tornata la lista delle auto che soddisfano i criteri richiesti");
 			
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
