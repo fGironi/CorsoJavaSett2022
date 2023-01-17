@@ -11,7 +11,9 @@ import org.hibernate.validator.constraints.Range;
 
 import srl.neotech.model.AccessorioDTO;
 import srl.neotech.model.Alimentazione;
+import srl.neotech.model.Colore;
 import srl.neotech.model.Costruttore;
+import srl.neotech.services.EnumNamePattern;
 
 @Valid
 public class UpdateAutoRequest {
@@ -22,8 +24,9 @@ public class UpdateAutoRequest {
 		private String targa;
 		@Size(min = 2, message = "Nome modello non valido. Il modello dovrebbe essere almeno di 2 caratteri")
 		private String modello;
-		@Size(min = 2, message = "Colore non valido. Il colore dovrebbe essere di almeno 2 caratteri")
-		private String colore; 
+		@EnumNamePattern(regexp="ARANCIONE|ARANCIONEMETAL|ARANCIONEOPACO|BIANCO|BIANCOMETAL|BIANCOOPACO|BLU|BLUMETAL|BLUOPACO|GIALLO|GIALLOMETAL|GIALLOPACO|GRIGIO|GRIGIOMETAL|GRIGIOOPACO|MARRONE|MARRONEMETAL|MARRONEOPACO|NERO|NEROMETAL|NEROOPACO|ROSSO|ROSSOMETAL|ROSSOOPACO|VERDE|VERDEMETAL|VERDEOPACO|VIOLA|VIOLAMETAL|VIOLAOPACO", 
+				message="colore non riconosciuto")
+		private Colore colore; 
 		private Alimentazione alimentazione;
 		private Costruttore costruttore;
 		//nota: se lavorassi con le date qua si potrebbe usare un ottimo validator @PastOrPresent
@@ -45,10 +48,10 @@ public class UpdateAutoRequest {
 		public void setModello(String modello) {
 			this.modello = modello;
 		}
-		public String getColore() {
+		public Colore getColore() {
 			return colore;
 		}
-		public void setColore(String colore) {
+		public void setColore(Colore colore) {
 			this.colore = colore;
 		}
 		public Alimentazione getAlimentazione() {

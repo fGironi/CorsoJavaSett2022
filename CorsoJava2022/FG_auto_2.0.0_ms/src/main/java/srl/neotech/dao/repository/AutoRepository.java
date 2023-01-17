@@ -42,6 +42,7 @@ public class AutoRepository {
 	}
 	
 	public AutoDTO getAuto(String id) {
+		
 		return this.mappaAuto.get(id);
 	}
 

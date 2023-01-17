@@ -11,7 +11,7 @@ public class SearchAutoRequest {
 	private String id;
 	private String targa;
 	private String modello;
-	private String colore; 
+	private String colore; //scelta discutibile, ma permette una ricerca più elastica
 	private Alimentazione alimentazione;
 	private Costruttore costruttore;
 	private Integer annoMin;

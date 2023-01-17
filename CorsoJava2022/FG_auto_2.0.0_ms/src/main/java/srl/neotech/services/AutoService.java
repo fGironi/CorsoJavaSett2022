@@ -45,7 +45,7 @@ public class AutoService {
 	@Transactional 
 	public String addAuto(AddAutoRequest request) {
 		AutoDTO auto=new AutoDTO(
-				request.getTarga(), request.getModello(), request.getColore(), 
+				request.getTarga().toUpperCase(), request.getModello(), request.getColore(), 
 				request.getAlimentazione(), request.getCostruttore(), request.getAnno(), request.getCostoBase());
 		auto.setId(this.idGenerator());
 		auto.getAccessori().addAll(request.getAccessori());
@@ -163,7 +163,7 @@ public class AutoService {
 				}
 			}
 			if (request.getColore()!=null && request.getColore().isEmpty()==false) {
-				if (auto.getColore().contains(request.getColore())==false){
+				if (auto.getColore().getDescrizione().contains(request.getColore().toLowerCase())==false){
 					System.out.println("l'auto "+auto.getId()+" non ha il parametro giusto ed è stata rimossa");
 					autoDaRimuovere.add(auto.getId());
 					continue;
@@ -240,7 +240,7 @@ public class AutoService {
 			}
 			else upAuto.setCostruttore(ogAuto.getCostruttore());
 			
-			if (request.getColore()!=null && request.getColore().isBlank()==false) {
+			if (request.getColore()!=null) {
 				System.out.println("modifica dell'alimentazione da "+upAuto.getColore()+" a "+request.getColore());
 				upAuto.setColore(request.getColore());
 			}

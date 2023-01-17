@@ -12,6 +12,7 @@ import srl.neotech.dao.AutoDAO;
 import srl.neotech.model.AccessorioDTO;
 import srl.neotech.model.Alimentazione;
 import srl.neotech.model.AutoDTO;
+import srl.neotech.model.Colore;
 import srl.neotech.model.Costruttore;
 import srl.neotech.model.TipologiaAcc;
 
@@ -90,8 +91,37 @@ public class TestService {
 			auto.setAnno(rndAnno);
 			System.out.println("Impostato anno: "+auto.getAnno());
 			//Colore
-			String color= faker.color().name();
-			auto.setColore(color);
+			Integer rndCol=rnd.nextInt(Colore.values().length);
+			if (rndCol==0) auto.setColore(Colore.ARANCIONE);
+			else if (rndCol==1) auto.setColore(Colore.ARANCIONEMETAL);
+			else if (rndCol==2) auto.setColore(Colore.ARANCIONEOPACO);
+			else if (rndCol==3) auto.setColore(Colore.BIANCO);
+			else if (rndCol==4) auto.setColore(Colore.BIANCOMETAL);
+			else if (rndCol==5) auto.setColore(Colore.BIANCOOPACO);
+			else if (rndCol==6) auto.setColore(Colore.BLU);
+			else if (rndCol==7) auto.setColore(Colore.BLUMETAL);
+			else if (rndCol==8) auto.setColore(Colore.BLUOPACO);
+			else if (rndCol==9) auto.setColore(Colore.GIALLO);
+			else if (rndCol==10) auto.setColore(Colore.GIALLOMETAL);
+			else if (rndCol==11) auto.setColore(Colore.GIALLOOPACO);
+			else if (rndCol==12) auto.setColore(Colore.GRIGIO);
+			else if (rndCol==13) auto.setColore(Colore.GIALLOMETAL);
+			else if (rndCol==14) auto.setColore(Colore.GIALLOOPACO);
+			else if (rndCol==15) auto.setColore(Colore.MARRONE);
+			else if (rndCol==16) auto.setColore(Colore.MARRONEMETAL);
+			else if (rndCol==17) auto.setColore(Colore.MARRONEOPACO);
+			else if (rndCol==18) auto.setColore(Colore.NERO);
+			else if (rndCol==19) auto.setColore(Colore.NEROMETAL);
+			else if (rndCol==20) auto.setColore(Colore.NEROOPACO);
+			else if (rndCol==21) auto.setColore(Colore.ROSSO);
+			else if (rndCol==22) auto.setColore(Colore.ROSSOMETAL);
+			else if (rndCol==23) auto.setColore(Colore.ROSSOOPACO);
+			else if (rndCol==24) auto.setColore(Colore.VERDE);
+			else if (rndCol==25) auto.setColore(Colore.VERDEMETAL);
+			else if (rndCol==26) auto.setColore(Colore.VERDEOPACO);
+			else if (rndCol==27) auto.setColore(Colore.VIOLA);
+			else if (rndCol==28) auto.setColore(Colore.VIOLAMETAL);
+			else if (rndCol==29) auto.setColore(Colore.VIOLAOPACO);
 			System.out.println("Impostato colore: "+auto.getColore());
 			//Costo
 			Integer rndCosto=rnd.nextInt(20, 500+1);

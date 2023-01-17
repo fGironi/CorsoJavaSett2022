@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 public class AutoDTO {
 
-	//nota: la decisione di passare il colore da un'enum a una string è perché è limitante rispetto alle opzioni che l'user potrebbe voler inserire
-	
 	private String id;
 	private String targa;
 	private String modello;
-	private String colore; 
+	private Colore colore; 
 	private Alimentazione alimentazione;
 	private Costruttore costruttore;
 	private Integer anno;
@@ -19,7 +17,7 @@ public class AutoDTO {
 	
 	
 	
-	public AutoDTO(String targa, String modello, String colore, Alimentazione alimentazione, Costruttore costruttore,
+	public AutoDTO(String targa, String modello, Colore colore, Alimentazione alimentazione, Costruttore costruttore,
 			Integer anno, Integer costoBase) {
 		super();
 		this.targa = targa;
@@ -31,6 +29,8 @@ public class AutoDTO {
 		this.costoBase = costoBase;
 		this.accessori = new ArrayList<AccessorioDTO>();
 	}
+	
+	
 	public AutoDTO() {
 		this.accessori = new ArrayList<AccessorioDTO>();
 	}
@@ -52,10 +52,10 @@ public class AutoDTO {
 	public void setModello(String modello) {
 		this.modello = modello;
 	}
-	public String getColore() {
+	public Colore getColore() {
 		return colore;
 	}
-	public void setColore(String colore) {
+	public void setColore(Colore colore) {
 		this.colore = colore;
 	}
 	public Alimentazione getAlimentazione() {

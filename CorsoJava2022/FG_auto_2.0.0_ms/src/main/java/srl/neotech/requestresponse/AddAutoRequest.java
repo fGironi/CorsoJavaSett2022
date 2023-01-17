@@ -11,7 +11,9 @@ import org.hibernate.validator.constraints.Range;
 
 import srl.neotech.model.AccessorioDTO;
 import srl.neotech.model.Alimentazione;
+import srl.neotech.model.Colore;
 import srl.neotech.model.Costruttore;
+import srl.neotech.services.EnumNamePattern;
 
 @Valid
 public class AddAutoRequest {
@@ -19,18 +21,21 @@ public class AddAutoRequest {
 	@Size(max = 7, min = 5, message = "Targa non valida, la dimensione dovrebbe essre tra i 5 e i 7 caratteri")
 	private String targa;
 	@NotNull(message = "campo richiesto, per favore inserisci un modello")
-	@Size(min = 2, message = "Nome modello non valido. Il modello dovrebbe essere almeno di 2 caratteri")
+	@Size(min = 2, message = "Nome modello non valido, il modello dovrebbe essere almeno di 2 caratteri")
 	private String modello;
 	@NotNull(message = "campo richiesto, per favore inserisci un colore")
-	@Size(min = 2, message = "Colore non valido. Il colore dovrebbe essere di almeno 2 caratteri")
-	private String colore; 
+	@EnumNamePattern(regexp="ARANCIONE|ARANCIONEMETAL|ARANCIONEOPACO|BIANCO|BIANCOMETAL|BIANCOOPACO|BLU|BLUMETAL|BLUOPACO|GIALLO|GIALLOMETAL|GIALLOPACO|GRIGIO|GRIGIOMETAL|GRIGIOOPACO|MARRONE|MARRONEMETAL|MARRONEOPACO|NERO|NEROMETAL|NEROOPACO|ROSSO|ROSSOMETAL|ROSSOOPACO|VERDE|VERDEMETAL|VERDEOPACO|VIOLA|VIOLAMETAL|VIOLAOPACO", 
+	message="colore non riconosciuto")
+	private Colore colore; 
 	@NotNull(message = "campo richiesto, per favore inserisci un'alimentazione")
+	@EnumNamePattern(regexp="BENZINA|DIESEL|ELETTRICA|GPL|IBRIDA|METANO|", message="il valore inserito non è un'alimntazione accettata")
 	private Alimentazione alimentazione;
 	@NotNull(message = "campo richiesto, per favore inserisci un costruttore")
+	@EnumNamePattern(regexp="ALFAROMEO|DALLARA|FERRARI|FIAT|LAMBORGHINI|LANCIA|MASERATI", message="il valore inserito non è un costruttore accettato")
 	private Costruttore costruttore;
 	//nota: se lavorassi con le date qua si potrebbe usare un ottimo validator @PastOrPresent
 	@NotNull(message = "campo richiesto, per favore inserisci l'anno di immatricolazione")
-	@Range(min = 1970, max = 2023, message = "Anno non valido. L'anno dovrebbe essere compreso tra il 1970 ed il 2023")
+	@Range(min = 1970, max = 2023, message = "Anno non valido, l'anno dovrebbe essere compreso tra il 1970 ed il 2023")
 	private Integer anno;
 	@NotNull(message = "campo richiesto, per favore inserisci un costo base")
 	@Min(value = 1000, message = "Costo base non valido, il minimo dovrebbe essere 1000")
@@ -58,11 +63,11 @@ public class AddAutoRequest {
 		this.modello = modello;
 	}
 
-	public String getColore() {
+	public Colore getColore() {
 		return colore;
 	}
 
-	public void setColore(String colore) {
+	public void setColore(Colore colore) {
 		this.colore = colore;
 	}
 

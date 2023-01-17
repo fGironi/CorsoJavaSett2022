@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -82,8 +84,17 @@ public class AutoAPIController {
 	//addauto
 	@ResponseBody
 	@PutMapping(value="/addAuto", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseBase addAuto(@Valid @RequestBody AddAutoRequest request) {
+	public ResponseBase addAuto(@Valid @RequestBody AddAutoRequest request, BindingResult result) {
 		ResponseBase response=new ResponseBase();
+		if (result.hasErrors()) {
+			response.setCode("KO");
+			String testoErrori="";
+			for (ObjectError error: result.getAllErrors()) {
+				testoErrori=testoErrori+error.getDefaultMessage()+". ";
+			}
+			response.setDescr(testoErrori);
+			return response;
+		}
 		try {
 			//chiamo il service
 			String id=autoService.addAuto(request);
