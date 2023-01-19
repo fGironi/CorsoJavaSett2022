@@ -28,8 +28,18 @@ public class AutoService {
 		else if (idCounter>9) zeros="00";
 		else zeros="000";
 		String newID="A"+zeros+idCounter;
+		idCounter++;
 		return newID;
 	}
+	
+	public Integer idAccGenerator() {
+		Integer idCounter=autoDAO.getIdAccCounter();
+		Integer newID=idCounter;
+		idCounter++;
+		return newID;
+	}
+	
+	
 	
 	public Integer costoCalculator(AutoDTO auto) {
 		Integer costoAggiunto=0;
@@ -49,6 +59,9 @@ public class AutoService {
 				request.getAlimentazione(), request.getCostruttore(), request.getAnno(), request.getCostoBase());
 		auto.setId(this.idGenerator());
 		auto.getAccessori().addAll(request.getAccessori());
+		for (AccessorioDTO acc:auto.getAccessori()) {
+			acc.setId(this.idAccGenerator());
+		}
 		auto.setCostoTot(this.costoCalculator(auto));
 		autoDAO.addAuto(auto);
 		return auto.getId();
@@ -269,6 +282,9 @@ public class AutoService {
 				//gli accessori si stanno rivelando un oggetto particolarmente complesso, meritevole di un sistema indipendente id aggiunta,
 				//rimozione e quant'altro, probabilmente degno di un suo personale microservice
 				upAuto.setAccessori(request.getAccessori());
+				for (AccessorioDTO acc:upAuto.getAccessori()) {
+					acc.setId(this.idAccGenerator());
+				}
 			}
 			else upAuto.setAccessori(ogAuto.getAccessori());
 			

@@ -2,45 +2,45 @@ package srl.neotech.model;
 
 public enum Colore {
 
-	NERO ("nero"),
-	NEROMETAL ("nero metallizzato"),
-	NEROOPACO ("nero opaco"),
+	NERSTD ("nero"),
+	NERMTL ("nero metallizzato"),
+	NEROPC ("nero opaco"),
 	
-	BIANCO ("bianco"),
-	BIANCOMETAL ("bianco metallizzato"),
-	BIANCOOPACO ("bianco opaco"),
+	BIASTD ("bianco"),
+	BIAMTL ("bianco metallizzato"),
+	BIAOPC ("bianco opaco"),
 	
-	GRIGIO ("grigio"),
-	GRIGIOMETAL ("grigio metallizzato"),
-	GRIGIOOPACO ("grigio opaco"),
+	GRISTD ("grigio"),
+	GRIMTL ("grigio metallizzato"),
+	GRIOPC ("grigio opaco"),
 	
-	BLU ("blu"),
-	BLUMETAL ("blu metallizzato"),
-	BLUOPACO ("blu opaco"),
+	BLUSTD ("blu"),
+	BLUMTL ("blu metallizzato"),
+	BLUOPC ("blu opaco"),
 	
-	VERDE ("verde"),
-	VERDEMETAL ("verde metallizzato"),
-	VERDEOPACO ("verde opaco"),
+	VERSTD ("verde"),
+	VERMTL ("verde metallizzato"),
+	VEROPC ("verde opaco"),
 	
-	ROSSO ("rosso"),
-	ROSSOMETAL("rosso metallizzato"),
-	ROSSOOPACO("rosso opaco"),
+	ROSSTD ("rosso"),
+	ROSMTL ("rosso metallizzato"),
+	ROSOPC ("rosso opaco"),
 	
-	GIALLO ("giallo"),
-	GIALLOMETAL("giallo metallizzato"),
-	GIALLOOPACO("giallo opaco"),
+	GIASTD ("giallo"),
+	GIAMTL ("giallo metallizzato"),
+	GIAOPC ("giallo opaco"),
 	
-	MARRONE ("marrone"),
-	MARRONEMETAL("marrone metallizzato"),
-	MARRONEOPACO("marrone opaco"),
+	MARSTD ("marrone"),
+	MARMTL ("marrone metallizzato"),
+	MAROPC ("marrone opaco"),
 	
-	ARANCIONE ("arancione"),
-	ARANCIONEMETAL ("arancione metallizzato"),
-	ARANCIONEOPACO ("arancione opaco"),
+	ARASTD ("arancione"),
+	ARAMTL ("arancione metallizzato"),
+	ARAOPC ("arancione opaco"),
 	
-	VIOLA ("viola"),
-	VIOLAMETAL ("viola metallizzato"),
-	VIOLAOPACO ("viola opaco");
+	VIOSTD ("viola"),
+	VIOMTL ("viola metallizzato"),
+	VIOOPC ("viola opaco");
 	
 	private final String descrizione;
 	 

@@ -10,11 +10,13 @@ import srl.neotech.model.AutoDTO;
 public class AutoRepository {
 
 	private Integer idCounter;
+	private Integer idAccCounter;
 	private HashMap<String, AutoDTO> mappaAuto;
 	
 	public AutoRepository() {
 		this.mappaAuto = new HashMap<String, AutoDTO>();
 		this.idCounter=0;
+		this.idAccCounter=0;
 	}
 
 	public HashMap<String, AutoDTO> getMappaAuto() {
@@ -48,6 +50,14 @@ public class AutoRepository {
 
 	public void updateAuto(AutoDTO auto) {
 		this.mappaAuto.replace(auto.getId(), auto);
+	}
+
+	public Integer getIdAccCounter() {
+		return idAccCounter;
+	}
+
+	public void setIdAccCounter(Integer idAccCounter) {
+		this.idAccCounter = idAccCounter;
 	}
 	
 }

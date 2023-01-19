@@ -30,7 +30,24 @@ public class AutoDTO {
 		this.accessori = new ArrayList<AccessorioDTO>();
 	}
 	
-	
+	public AutoDTO(String id, String targa, String modello, Colore colore, Alimentazione alimentazione,
+			Costruttore costruttore, Integer anno, Integer costoBase, Integer costoTot,
+			ArrayList<AccessorioDTO> accessori) {
+		super();
+		this.id = id;
+		this.targa = targa;
+		this.modello = modello;
+		this.colore = colore;
+		this.alimentazione = alimentazione;
+		this.costruttore = costruttore;
+		this.anno = anno;
+		this.costoBase = costoBase;
+		this.costoTot = costoTot;
+		this.accessori = accessori;
+	}
+
+
+
 	public AutoDTO() {
 		this.accessori = new ArrayList<AccessorioDTO>();
 	}

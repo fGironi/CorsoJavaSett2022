@@ -15,13 +15,15 @@ public class AutoDAO {
 	AutoRepository autoRepo;
 	
 	public Integer getIdCounter() {
-		Integer idCounter=autoRepo.getIdCounter();
-		return idCounter;
+		return autoRepo.getIdCounter();
+	}
+	
+	public Integer getIdAccCounter() {
+		return autoRepo.getIdAccCounter();
 	}
 	
 	public void addAuto(AutoDTO auto) {
 		autoRepo.addAuto(auto);
-		autoRepo.setIdCounter(this.getIdCounter()+1);
 	}
 	
 	public void removeAuto(String id) {
