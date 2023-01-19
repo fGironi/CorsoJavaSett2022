@@ -28,14 +28,12 @@ public class AutoService {
 		else if (idCounter>9) zeros="00";
 		else zeros="000";
 		String newID="A"+zeros+idCounter;
-		idCounter++;
 		return newID;
 	}
 	
 	public Integer idAccGenerator() {
 		Integer idCounter=autoDAO.getIdAccCounter();
 		Integer newID=idCounter;
-		idCounter++;
 		return newID;
 	}
 	

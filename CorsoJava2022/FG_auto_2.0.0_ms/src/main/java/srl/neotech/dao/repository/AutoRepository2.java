@@ -33,7 +33,7 @@ public class AutoRepository2 {
 	
 	
 	public AutoDTO getAuto(String id) {
-		//Parametri da passsare alla query
+		//Parametri da passare alla query
 		MapSqlParameterSource params=new MapSqlParameterSource();
 		params.addValue("idAuto", id);
 		//Query
@@ -65,35 +65,42 @@ public class AutoRepository2 {
         );
 		return auto;
 	}
-	/*
+	
 	
 	public List<AutoDTO> getListaAuto(){
 		//Parametri da passsare alla query
 		MapSqlParameterSource params=new MapSqlParameterSource();
 		//Query
-		String query="select * from auto";
+		String query="select * from AUTO";
 		
 		List<AutoDTO> listaAuto=jdbcTemplate.query(
 				query,
                 params,
-                (rs, rowNum) ->new Elemento(rs.getInt("id"), rs.getString("descrizione"))
+                (rs, rowNum) ->new AutoDTO(rs.getString("id"), rs.getString("targa"), rs.getString("modello"), Colore.valueOf(rs.getString("colore")), Alimentazione.valueOf(rs.getString("alimentazione")), Costruttore.valueOf(rs.getString("costruttore")), rs.getInt("anno"), rs.getInt("costoBase"), rs.getInt("costoTot"))
         );
 		return listaAuto;
 	}
 	
 	
-	public void addElemento(Elemento elemento) {
+	public void addAuto(AutoDTO auto) {
 		//configurazione TX
 		TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
 	    TransactionStatus transactionStatus = transactionManager.getTransaction(transactionDefinition);
 		
 		//Parametri da passsare alla query
 		MapSqlParameterSource params=new MapSqlParameterSource();
-		params.addValue("idElemento", elemento.getId());
-		params.addValue("descrElemento", elemento.getDescrizione());
-				
+		params.addValue("id", auto.getId());
+		params.addValue("targa", auto.getTarga());
+		params.addValue("modello", auto.getModello());
+		params.addValue("colore", auto.getColore().name());
+		params.addValue("alimentazione", auto.getAlimentazione().name());
+		params.addValue("costruttore", auto.getCostruttore().name());
+		params.addValue("anno", auto.getAnno());
+		params.addValue("costoBase", auto.getCostoBase());
+		params.addValue("costoTot", auto.getCostoTot());
 		//Query
-		String query="insert into Elemento(id, descrizione) VALUES (:idElemento, :descrElemento)";
+		String query="insert into AUTO(id, targa, modello, colore, alimentazione, costruttore, anno, costoBase, costoTot) VALUES (:id, :targa, :modello, :colore, :alimentazione, :costruttore, :anno, :costoBase, :costoTot)";
+		
 		try {
 			jdbcTemplate.update(query,params);
 			transactionManager.commit(transactionStatus);
@@ -105,6 +112,32 @@ public class AutoRepository2 {
 	}
 	
 	
+	public void addAccessorio(String idAuto, AccessorioDTO acc) {
+		//configurazione TX
+				TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
+			    TransactionStatus transactionStatus = transactionManager.getTransaction(transactionDefinition);
+				
+				//Parametri da passsare alla query
+				MapSqlParameterSource params=new MapSqlParameterSource();
+				params.addValue("idAcc", acc.getId());
+				params.addValue("descrizione", acc.getDescrizione());
+				params.addValue("costo", acc.getCosto());
+				params.addValue("tipologia", acc.getTipologia().name());
+				params.addValue("idAuto", idAuto);
+				
+				String query="insert into ACCESSORIO(id, descrizione, costo, tipologia, idAuto) VALUES (:idAcc, :descrizione, :costo, :tipologia, :idAuto)";
+
+				try {
+					jdbcTemplate.update(query,params);
+					transactionManager.commit(transactionStatus);
+				} catch (DataAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					transactionManager.rollback(transactionStatus);
+				}
+	}
+	
+	/*
 	public void updateElemento (AutoDTO auto) {
 		//configurazione TX
 		TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();

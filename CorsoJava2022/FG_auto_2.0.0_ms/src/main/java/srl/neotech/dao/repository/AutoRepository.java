@@ -17,6 +17,7 @@ public class AutoRepository {
 		this.mappaAuto = new HashMap<String, AutoDTO>();
 		this.idCounter=0;
 		this.idAccCounter=0;
+		
 	}
 
 	public HashMap<String, AutoDTO> getMappaAuto() {

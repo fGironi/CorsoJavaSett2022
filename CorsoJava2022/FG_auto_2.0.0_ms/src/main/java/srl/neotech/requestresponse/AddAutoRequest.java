@@ -24,7 +24,7 @@ public class AddAutoRequest {
 	@Size(min = 2, message = "Nome modello non valido, il modello dovrebbe essere almeno di 2 caratteri")
 	private String modello;
 	@NotNull(message = "campo richiesto, per favore inserisci un colore")
-	@EnumNamePattern(regexp="ARANCIONE|ARANCIONEMETAL|ARANCIONEOPACO|BIANCO|BIANCOMETAL|BIANCOOPACO|BLU|BLUMETAL|BLUOPACO|GIALLO|GIALLOMETAL|GIALLOPACO|GRIGIO|GRIGIOMETAL|GRIGIOOPACO|MARRONE|MARRONEMETAL|MARRONEOPACO|NERO|NEROMETAL|NEROOPACO|ROSSO|ROSSOMETAL|ROSSOOPACO|VERDE|VERDEMETAL|VERDEOPACO|VIOLA|VIOLAMETAL|VIOLAOPACO", 
+	@EnumNamePattern(regexp="NERSTD|NERMTL|NEROPC|BIASTD|BIAMTL|BIAOPC|GRISTD|GRIMTL|GRIOPC|BLUSTD|BLUMTL|BLUOPC|VERSTD|VERMTL|VEROPC|ROSSTD|ROSMTL|ROSOPC|GIASTD|GIAMTL|GIAOPC|MARSTD|MARMTL|MAROPC|ARASTD|ARAMTL|ARAOPC|VIOSTD|VIOMTL|VIOOPC", 
 	message="colore non riconosciuto")
 	private Colore colore; 
 	@NotNull(message = "campo richiesto, per favore inserisci un'alimentazione")

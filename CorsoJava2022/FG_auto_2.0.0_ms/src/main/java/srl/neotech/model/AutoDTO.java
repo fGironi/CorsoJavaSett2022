@@ -16,7 +16,7 @@ public class AutoDTO {
 	private ArrayList<AccessorioDTO> accessori;
 	
 	
-	
+	//Costruttore per l'addAutoRequest
 	public AutoDTO(String targa, String modello, Colore colore, Alimentazione alimentazione, Costruttore costruttore,
 			Integer anno, Integer costoBase) {
 		super();
@@ -30,6 +30,7 @@ public class AutoDTO {
 		this.accessori = new ArrayList<AccessorioDTO>();
 	}
 	
+	//Costruttore completo
 	public AutoDTO(String id, String targa, String modello, Colore colore, Alimentazione alimentazione,
 			Costruttore costruttore, Integer anno, Integer costoBase, Integer costoTot,
 			ArrayList<AccessorioDTO> accessori) {
@@ -46,7 +47,21 @@ public class AutoDTO {
 		this.accessori = accessori;
 	}
 
-
+	
+	//Costruttore provvisorio senza accessori per la lista auto
+	public AutoDTO(String id, String targa, String modello, Colore colore, Alimentazione alimentazione,
+			Costruttore costruttore, Integer anno, Integer costoBase, Integer costoTot) {
+		super();
+		this.id = id;
+		this.targa = targa;
+		this.modello = modello;
+		this.colore = colore;
+		this.alimentazione = alimentazione;
+		this.costruttore = costruttore;
+		this.anno = anno;
+		this.costoBase = costoBase;
+		this.costoTot = costoTot;
+	}
 
 	public AutoDTO() {
 		this.accessori = new ArrayList<AccessorioDTO>();
