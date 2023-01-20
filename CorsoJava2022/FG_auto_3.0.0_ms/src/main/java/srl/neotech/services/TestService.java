@@ -19,10 +19,8 @@ import srl.neotech.model.TipologiaAcc;
 @Service
 public class TestService {
 
-	private Boolean accessoriCreati=false;
 	Faker faker=new Faker();
 	Random rnd=new Random();
-	ArrayList<AccessorioDTO> accessori; 
 	ArrayList<String> targhe;
 	
 	@Autowired
@@ -32,46 +30,11 @@ public class TestService {
 	AutoDAO autoDAO;
 	
 	public TestService() {
-		this.accessori=new ArrayList<AccessorioDTO>();
 		this.targhe=new ArrayList<String>();
 	}
 	
 	public ArrayList<AutoDTO> faiFintaDiAvereUnDBdiAccessori() {
 		
-		if (accessoriCreati==false) {
-			AccessorioDTO cerchiLega=new AccessorioDTO();
-			cerchiLega.setCosto(1000);
-			cerchiLega.setDescrizione("Cerchi in lega");
-			cerchiLega.setTipologia(TipologiaAcc.CERCHI);
-			accessori.add(cerchiLega);
-									
-			AccessorioDTO sedPelle=new AccessorioDTO();
-			sedPelle.setCosto(1500);
-			sedPelle.setDescrizione("Sedili in pelle");
-			sedPelle.setTipologia(TipologiaAcc.SEDILI);
-			
-						
-			AccessorioDTO telaioFibra=new AccessorioDTO();
-			telaioFibra.setCosto(5500);
-			telaioFibra.setDescrizione("Telaio in fibra di carbonio");
-			telaioFibra.setTipologia(TipologiaAcc.ALTRO);
-			accessori.add(telaioFibra);
-			
-			AccessorioDTO carPlay=new AccessorioDTO();
-			carPlay.setCosto(800);
-			carPlay.setDescrizione("Apple CarPlay");
-			carPlay.setTipologia(TipologiaAcc.ENTERTAINMENT);
-			accessori.add(carPlay);
-			
-			AccessorioDTO antifurtoGPS=new AccessorioDTO();
-			antifurtoGPS.setCosto(900);
-			antifurtoGPS.setDescrizione("antifurto GPS");
-			antifurtoGPS.setTipologia(TipologiaAcc.ALTRO);
-			accessori.add(antifurtoGPS);
-				
-			System.out.println("Creati gli accessori generati manualmente");
-			accessoriCreati=true;
-		}		
 		//Generazione di 10 veicoli random con JavaFaker
 			ArrayList<AutoDTO> autoCreate=new ArrayList<AutoDTO>();
 		for (int i=0; i<10; i++) {
@@ -160,10 +123,52 @@ public class TestService {
 			auto.setId(autoServ.idGenerator());
 			System.out.println("Impostato ID: "+auto.getId());
 			//Accessori
-			for (AccessorioDTO acc:this.accessori) {
-				Integer rndAcc=rnd.nextInt(3);
-				if (rndAcc==0) auto.getAccessori().add(acc);
+			if (rnd.nextInt(3)==0) {
+				AccessorioDTO cerchiLega=new AccessorioDTO();
+				cerchiLega.setCosto(1000);
+				cerchiLega.setDescrizione("Cerchi in lega");
+				cerchiLega.setTipologia(TipologiaAcc.CERCHI);
+				cerchiLega.setId(autoDAO.getIdAccCounter());
+				autoDAO.increaseIDAccCounter();
+				auto.getAccessori().add(cerchiLega);
 			}
+			if (rnd.nextInt(3)==0) {							
+				AccessorioDTO sedPelle=new AccessorioDTO();
+				sedPelle.setCosto(1500);
+				sedPelle.setDescrizione("Sedili in pelle");
+				sedPelle.setTipologia(TipologiaAcc.SEDILI);
+				sedPelle.setId(autoDAO.getIdAccCounter());
+				autoDAO.increaseIDAccCounter();
+				auto.getAccessori().add(sedPelle);
+			}
+			if (rnd.nextInt(3)==0) {	
+				AccessorioDTO telaioFibra=new AccessorioDTO();
+				telaioFibra.setCosto(5500);
+				telaioFibra.setDescrizione("Telaio in fibra di carbonio");
+				telaioFibra.setTipologia(TipologiaAcc.ALTRO);
+				telaioFibra.setId(autoDAO.getIdAccCounter());
+				autoDAO.increaseIDAccCounter();
+				auto.getAccessori().add(telaioFibra);
+			}
+			if (rnd.nextInt(3)==0) {		
+				AccessorioDTO carPlay=new AccessorioDTO();
+				carPlay.setCosto(800);
+				carPlay.setDescrizione("Apple CarPlay");
+				carPlay.setTipologia(TipologiaAcc.ENTERTAINMENT);
+				carPlay.setId(autoDAO.getIdAccCounter());
+				autoDAO.increaseIDAccCounter();
+				auto.getAccessori().add(carPlay);
+			}
+			if (rnd.nextInt(3)==0) {		
+				AccessorioDTO antifurtoGPS=new AccessorioDTO();
+				antifurtoGPS.setCosto(900);
+				antifurtoGPS.setDescrizione("antifurto GPS");
+				antifurtoGPS.setTipologia(TipologiaAcc.ALTRO);
+				antifurtoGPS.setId(autoDAO.getIdAccCounter());
+				autoDAO.increaseIDAccCounter();
+				auto.getAccessori().add(antifurtoGPS);
+			}
+			
 			System.out.println("Impostati accessori, numero accessori: "+auto.getAccessori().size());
 			//Costo Totale
 			auto.setCostoTot(autoServ.costoCalculator(auto));

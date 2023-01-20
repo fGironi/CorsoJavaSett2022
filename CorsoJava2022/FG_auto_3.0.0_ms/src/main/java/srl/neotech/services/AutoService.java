@@ -85,6 +85,10 @@ public class AutoService {
 	}
 	
 	public ArrayList<AutoDTO> searchAuto(SearchAutoRequest request){
+		return autoDAO.searchAuto(request);
+	}
+	
+	public ArrayList<AutoDTO> fakeSearchAuto(SearchAutoRequest request){
 		ArrayList<AutoDTO> autoTrovate=new ArrayList<AutoDTO>();
 		ArrayList <String> autoDaRimuovere=new ArrayList <String>();
 		autoTrovate.addAll(autoDAO.getMappaAuto().values());
@@ -227,6 +231,20 @@ public class AutoService {
 	
 	@Transactional
 	public void updateAuto(UpdateAutoRequest request) {
+		if (request.getAccessoriDaAggiungere()!=null)	
+			for (AccessorioDTO acc: request.getAccessoriDaAggiungere()) {
+				acc.setId(this.idAccGenerator());
+				autoDAO.increaseIDAccCounter();
+			}
+		autoDAO.updateAuto(request);
+		if (request.getAccessoriDaAggiungere()!=null || request.getIdAccessoriDaRimuovere()!=null) {
+			AutoDTO autoMod=autoDAO.getAuto(request.getId());
+			autoDAO.aggiornaCostoTot(autoMod.getId(), this.costoCalculator(autoMod));
+		}
+	}
+	
+	@Transactional
+	public void FakeUpdateAuto(UpdateAutoRequest request) {
 		if (autoDAO.getMappaAuto().containsKey(request.getId())) {
 			AutoDTO upAuto=new AutoDTO();	
 			AutoDTO ogAuto=autoDAO.getMappaAuto().get(request.getId());
@@ -275,11 +293,11 @@ public class AutoService {
 			}
 			else upAuto.setAnno(ogAuto.getAnno());
 			
-			if (request.getAccessori()!=null && request.getAccessori().isEmpty()==false) {
-				System.out.println("modifica degli accessori da "+upAuto.getAccessori().size()+" a "+request.getAccessori().size());
+			if (request.getAccessoriDaAggiungere()!=null && request.getAccessoriDaAggiungere().isEmpty()==false) {
+				System.out.println("modifica degli accessori da "+upAuto.getAccessori().size()+" a "+request.getAccessoriDaAggiungere().size());
 				//gli accessori si stanno rivelando un oggetto particolarmente complesso, meritevole di un sistema indipendente id aggiunta,
 				//rimozione e quant'altro, probabilmente degno di un suo personale microservice
-				upAuto.setAccessori(request.getAccessori());
+				upAuto.setAccessori(request.getAccessoriDaAggiungere());
 				for (AccessorioDTO acc:upAuto.getAccessori()) {
 					acc.setId(this.idAccGenerator());
 				}
@@ -287,7 +305,7 @@ public class AutoService {
 			else upAuto.setAccessori(ogAuto.getAccessori());
 			
 			upAuto.setCostoTot(this.costoCalculator(upAuto));
-			autoDAO.updateAuto(upAuto);
+			autoDAO.fakeUpdateAuto(upAuto);
 		}
 	}
 }

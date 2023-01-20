@@ -34,7 +34,8 @@ public class UpdateAutoRequest {
 		private Integer anno;
 		@Min(value = 1000, message = "Costo base non valido, il minimo dovrebbe essere 1000")
 		private Integer costoBase;
-		private ArrayList<AccessorioDTO> accessori;
+		private ArrayList<AccessorioDTO> accessoriDaAggiungere;
+		private ArrayList<Integer> idAccessoriDaRimuovere;
 		
 		public String getTarga() {
 			return targa;
@@ -78,17 +79,23 @@ public class UpdateAutoRequest {
 		public void setCostoBase(Integer costoBase) {
 			this.costoBase = costoBase;
 		}
-		public ArrayList<AccessorioDTO> getAccessori() {
-			return accessori;
+		public ArrayList<AccessorioDTO> getAccessoriDaAggiungere() {
+			return accessoriDaAggiungere;
 		}
-		public void setAccessori(ArrayList<AccessorioDTO> accessori) {
-			this.accessori = accessori;
+		public void setAccessoriDaAggiungere(ArrayList<AccessorioDTO> accessori) {
+			this.accessoriDaAggiungere = accessori;
 		}
 		public String getId() {
 			return id;
 		}
 		public void setId(String id) {
 			this.id = id;
+		}
+		public ArrayList<Integer> getIdAccessoriDaRimuovere() {
+			return idAccessoriDaRimuovere;
+		}
+		public void setIdAccessoriDaRimuovere(ArrayList<Integer> idAccessoriDaRimuovere) {
+			this.idAccessoriDaRimuovere = idAccessoriDaRimuovere;
 		}
 		
 		

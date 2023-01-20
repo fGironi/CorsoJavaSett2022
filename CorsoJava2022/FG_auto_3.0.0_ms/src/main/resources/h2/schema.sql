@@ -80,7 +80,7 @@ FOREIGN KEY (colore) REFERENCES COLORE(codColore),
 FOREIGN KEY (alimentazione )REFERENCES ALIMENTAZIONE(nome),
 FOREIGN KEY (costruttore) REFERENCES COSTRUTTORE(nome)
 );
-INSERT INTO AUTO(id, targa, modello, colore, alimentazione, costruttore, anno, costoBase, costoTot) VALUES('A9999', 'ZZ999ZZ', 'provaZ', 'NERMTL', 'BENZINA','FERRARI','2000', '50000', '50500');
+INSERT INTO AUTO(id, targa, modello, colore, alimentazione, costruttore, anno, costoBase, costoTot) VALUES('A9999', 'ZZ999ZZ', 'provaZ', 'NERMTL', 'BENZINA','FERRARI',2000, 50000, 50500);
 
 CREATE TABLE ACCESSORIO(
 id INT PRIMARY KEY,
@@ -91,6 +91,10 @@ idAuto VARCHAR(5),
 FOREIGN KEY (tipologia) REFERENCES TIPOLOGIAACC(nome),
 FOREIGN KEY (idAuto) REFERENCES AUTO(id)
 );
-INSERT INTO ACCESSORIO(id, descrizione, costo, tipologia, idAuto) VALUES('99', 'parasanti', '400', 'ALTRO', 'A9999');
+INSERT INTO ACCESSORIO(id, descrizione, costo, tipologia, idAuto) VALUES(99, 'parasanti', 400, 'ALTRO', 'A9999');
 
-
+CREATE TABLE IDCOUNTER(
+nome VARCHAR(5) PRIMARY KEY, counter INT);
+INSERT INTO IDCOUNTER (nome, counter) VALUES ('cAuto', 0);
+INSERT INTO IDCOUNTER (nome, counter) VALUES ('cAcc', 0);
+ 
