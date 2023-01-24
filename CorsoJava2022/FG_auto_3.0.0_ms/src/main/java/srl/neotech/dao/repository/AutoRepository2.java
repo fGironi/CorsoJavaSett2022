@@ -70,7 +70,7 @@ public class AutoRepository2 {
 		MapSqlParameterSource params=new MapSqlParameterSource();
 		params.addValue("idAuto", id);
 		//Query
-		String query="select * from auto where id = :idAuto";
+		String query="select * from AUTO where id = :idAuto";
 		AutoDTO auto=jdbcTemplate.queryForObject(
 				query,
                 params,
