@@ -62,11 +62,12 @@ public class GeoRepository {
 				return listaComuni;
 	}
 
-	public List<ComuneDTO> getListaComuni() {
+	public List<ComuneDTO> getListaComuniAuto(String input) {
 		//Parametri da passsare alla query
 		MapSqlParameterSource params=new MapSqlParameterSource();
+		params.addValue("input", input+"%");
 		//Query
-		String query="select * from citta";
+		String query="select * from citta where comune LIKE :input";
 			
 		List<ComuneDTO> listaComuni=jdbcTemplate.query(
 				query,

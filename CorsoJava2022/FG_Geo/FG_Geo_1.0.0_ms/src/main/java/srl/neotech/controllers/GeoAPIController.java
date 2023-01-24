@@ -62,13 +62,15 @@ public class GeoAPIController {
 		return response;
 	}
 	
+
+	
 	@ResponseBody
 	@GetMapping(value="/listaComuni", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ListaComuniResponse getListaComuni() {
+	public ListaComuniResponse getListaComuni(@RequestParam String siglaProv) {
 		ListaComuniResponse response=new ListaComuniResponse();
 		try {
 			//chiamo il service
-			ArrayList<ComuneDTO> listaComuni=geoService.getListaComuni();
+			ArrayList<ComuneDTO> listaComuni=geoService.getListaComuni(siglaProv);
 			//preparo la response
 			response.setComuni(listaComuni);
 			response.setCode("OK");
@@ -83,12 +85,12 @@ public class GeoAPIController {
 	}
 	
 	@ResponseBody
-	@GetMapping(value="/listaComuni", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ListaComuniResponse getListaComuni(@RequestParam String siglaProv) {
+	@GetMapping(value="/listaComuniAuto", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ListaComuniResponse getListaComuniAuto(@RequestParam String input) {
 		ListaComuniResponse response=new ListaComuniResponse();
 		try {
 			//chiamo il service
-			ArrayList<ComuneDTO> listaComuni=geoService.getListaComuni(siglaProv);
+			ArrayList<ComuneDTO> listaComuni=geoService.getListaComuniAuto(input);
 			//preparo la response
 			response.setComuni(listaComuni);
 			response.setCode("OK");

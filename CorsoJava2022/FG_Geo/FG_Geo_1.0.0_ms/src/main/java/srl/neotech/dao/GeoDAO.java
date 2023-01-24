@@ -38,8 +38,8 @@ public class GeoDAO {
 		return listaComuni;
 	}
 
-	public ArrayList<ComuneDTO> getListaComuni() {
-		List<ComuneDTO> listaComuni_=geoRepo.getListaComuni();
+	public ArrayList<ComuneDTO> getListaComuniAuto(String input) {
+		List<ComuneDTO> listaComuni_=geoRepo.getListaComuniAuto(input);
 		ArrayList<ComuneDTO>listaComuni=new ArrayList<ComuneDTO>();
 		listaComuni.addAll(listaComuni_);
 		return listaComuni;

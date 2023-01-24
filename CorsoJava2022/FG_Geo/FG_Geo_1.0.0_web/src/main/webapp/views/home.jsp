@@ -47,7 +47,9 @@
 		</div>	
 		<div class="row text-center" style="margin: 20px">
 			<div class="col-sm-9">
-				<select class="form-control basicAutoSelect" id="autoCom_Select" placeholder="inserisci il comune..." data-url="http://localhost:8080/FG_Geo_1.0.0_ms/listaComuni" autocomplete="off"></select>
+				<input class="form-control" id="autoCom_Select" placeholder="inserisci il comune..."  list="opzioniComuni" autocomplete="off"></select>
+				<datalist id="opzioniComuni">
+				</datalist>
 			</div>
 			<div class="col-sm-3">
 				<button type="button" class="btn btn-lg btn-primary">Previsioni</button>
@@ -62,8 +64,7 @@ $(document).ready(function(){
 	listaReg.regioni.forEach(function(regione) {
 	    $("#reg_select").append(new Option(regione.nome, regione.id));
 	});
-	$('.basicAutoSelect').autoComplete();
-	
+		
 	$("#reg_select").change(function(){
 		var idReg=$("#reg_select").val();
 		var listaProv;
@@ -81,6 +82,14 @@ $(document).ready(function(){
 		});
 	})
 	
+	$("#autoCom_select").keydown(function(){
+		var autoListaComuni;
+		var input=$("#autoCom_select").val();
+		autoListaComuni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaComuniAuto?input="+input)
+		autoListaComuni.comuni.forEach(function(comune) {
+		    $("#opzioniComuni").append(new Option(comune.nome+"("+comune.siglaProv+")", comune.istat));
+		});
+	})
 });
 </script>
 

@@ -28,8 +28,8 @@ public class GeoService {
 		return geoDAO.getListaComuni(siglaProv);
 	}
 
-	public ArrayList<ComuneDTO> getListaComuni() {
-		return geoDAO.getListaComuni();
+	public ArrayList<ComuneDTO> getListaComuniAuto(String input) {
+		return geoDAO.getListaComuniAuto(input);
 	}
 
 }
