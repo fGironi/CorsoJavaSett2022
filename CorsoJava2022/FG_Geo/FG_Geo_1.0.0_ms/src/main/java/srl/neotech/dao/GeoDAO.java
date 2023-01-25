@@ -50,4 +50,8 @@ public class GeoDAO {
 	public GeoLocalizzazioneDTO getGeoLocal(String istat) {
 		return geoRepo.getGeoLocal(istat);
 	}
+
+	public String getIstat(String comune) {
+		return geoRepo.getIstat(comune);
+	}
 }

@@ -93,4 +93,19 @@ public class GeoRepository {
 					);
 				return geo;
 	}
+
+	public String getIstat(String comune) {
+		// TODO Auto-generated method stub
+		MapSqlParameterSource params=new MapSqlParameterSource();
+		params.addValue("comune", comune);
+		//Query
+		String query="select istat from citta where comune=:comune";
+			
+		String istat=jdbcTemplate.queryForObject(
+				query, 
+				params,  
+				(rs, rowNum) -> rs.getString("istat")
+			);
+		return istat;
+	}
 }

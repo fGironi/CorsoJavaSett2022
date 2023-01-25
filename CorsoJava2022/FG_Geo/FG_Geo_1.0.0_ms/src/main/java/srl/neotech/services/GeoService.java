@@ -39,4 +39,8 @@ public class GeoService {
 		System.out.println(geo);
 	}
 
+	public String getIstat(String comune) {
+		return geoDAO.getIstat(comune);
+	}
+
 }

@@ -128,4 +128,24 @@ public class GeoAPIController {
 		return response;
 	}
 	
+	@ResponseBody
+	@GetMapping(value="/getIstat")
+	public ResponseBase getIstat(@RequestParam String comune) {
+		ResponseBase response=new ResponseBase();
+		try {
+			//chiamo il service
+			String istat=geoService.getIstat(comune);
+			//preparo la response
+			response.setSimpleData(istat);
+			response.setCode("OK");
+			response.setDescr("");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.setCode("KO");
+			response.setDescr(e.getMessage());
+		}
+		return response;
+	}
+	
 }

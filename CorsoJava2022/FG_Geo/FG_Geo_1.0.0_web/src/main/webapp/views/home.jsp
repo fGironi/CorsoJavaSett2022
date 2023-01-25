@@ -59,16 +59,16 @@
 	</div>
 </body>
 <script>
+var istat;
 $(document).ready(function(){
 	$("#btnPrevisioni").prop("disabled", true);
-	var istat;
 	var listaReg;
 	listaReg=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaRegioni");
 	listaReg.regioni.forEach(function(regione) {
 	    $("#reg_select").append(new Option(regione.nome, regione.id));
 	});
 	
-	$( "#autoCom_select" ).autocomplete({
+	$("#autoCom_select").autocomplete({
 	      source: function( request, response ) {
 	        $.ajax( {
 	          url: "http://localhost:8080/FG_Geo_1.0.0_ms/listaComuniAuto",
@@ -83,12 +83,10 @@ $(document).ready(function(){
 	      },
 	      minLength: 2,
 	      select: function( event, ui ) {
-	    	//visto che ui dovrebbe essere l'oggetto in questione, perché non riesco ad utilizzare il valore?
-	    	var valIst=ui.item.id;
-	    	istat=valIst;
 	    	$("#btnPrevisioni").prop("disabled", false);
+	    	istat=ui.item.id;
 	      }
-	    } );
+	});
 });
 	
 $("#reg_select").change(function(){
@@ -116,10 +114,9 @@ $("#com_select").change(function(){
 	istat=$("#com_select").val();
 	$("#btnPrevisioni").prop("disabled", false);
 })
-
-
 	
 $("#btnPrevisioni").click(function(){
+	
 	var previsioni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/previsioni?istat="+istat);
 	//TODO
 })
