@@ -22,6 +22,10 @@ public class GeoLocalizzazioneDTO {
 	public void setLatitudine(String latitudine) {
 		this.latitudine = latitudine;
 	}
+	@Override
+	public String toString() {
+		return "GeoLocalizzazioneDTO [longitudine=" + longitudine + ", latitudine=" + latitudine + "]";
+	}
 	
 	
 }

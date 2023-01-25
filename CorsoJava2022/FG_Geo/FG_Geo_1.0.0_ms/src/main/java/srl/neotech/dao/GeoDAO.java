@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import srl.neotech.dao.repository.GeoRepository;
+import srl.neotech.model.ComuneAutoDTO;
 import srl.neotech.model.ComuneDTO;
+import srl.neotech.model.GeoLocalizzazioneDTO;
 import srl.neotech.model.ProvinciaDTO;
 import srl.neotech.model.RegioneDTO;
 
@@ -38,10 +40,14 @@ public class GeoDAO {
 		return listaComuni;
 	}
 
-	public ArrayList<ComuneDTO> getListaComuniAuto(String input) {
-		List<ComuneDTO> listaComuni_=geoRepo.getListaComuniAuto(input);
-		ArrayList<ComuneDTO>listaComuni=new ArrayList<ComuneDTO>();
+	public ArrayList<ComuneAutoDTO> getListaComuniAuto(String input) {
+		List<ComuneAutoDTO> listaComuni_=geoRepo.getListaComuniAuto(input);
+		ArrayList<ComuneAutoDTO>listaComuni=new ArrayList<ComuneAutoDTO>();
 		listaComuni.addAll(listaComuni_);
 		return listaComuni;
+	}
+
+	public GeoLocalizzazioneDTO getGeoLocal(String istat) {
+		return geoRepo.getGeoLocal(istat);
 	}
 }

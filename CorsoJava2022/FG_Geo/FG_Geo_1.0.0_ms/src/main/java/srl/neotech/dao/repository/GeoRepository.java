@@ -7,7 +7,9 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import srl.neotech.model.ComuneAutoDTO;
 import srl.neotech.model.ComuneDTO;
+import srl.neotech.model.GeoLocalizzazioneDTO;
 import srl.neotech.model.ProvinciaDTO;
 import srl.neotech.model.RegioneDTO;
 
@@ -57,23 +59,38 @@ public class GeoRepository {
 				List<ComuneDTO> listaComuni=jdbcTemplate.query(
 						query,
 				        params,
-				        (rs, rowNum) ->new ComuneDTO(rs.getInt("istat"), rs.getString("comune"), rs.getString("provincia"))
+				        (rs, rowNum) ->new ComuneDTO(rs.getString("istat"), rs.getString("comune"), rs.getString("provincia"))
 				        );
 				return listaComuni;
 	}
 
-	public List<ComuneDTO> getListaComuniAuto(String input) {
+	public List<ComuneAutoDTO> getListaComuniAuto(String input) {
 		//Parametri da passsare alla query
 		MapSqlParameterSource params=new MapSqlParameterSource();
 		params.addValue("input", input+"%");
 		//Query
-		String query="select * from citta where comune LIKE :input";
+		String query="select comune, istat from citta where comune LIKE :input";
 			
-		List<ComuneDTO> listaComuni=jdbcTemplate.query(
+		List<ComuneAutoDTO> listaComuni=jdbcTemplate.query(
 				query,
 		        params,
-		        (rs, rowNum) ->new ComuneDTO(rs.getInt("istat"), rs.getString("comune"), rs.getString("provincia"))
+		        (rs, rowNum) -> new ComuneAutoDTO(rs.getString("comune"), rs.getString("comune"), rs.getString("istat"))
 		        );
 		return listaComuni;
+	}
+
+	public GeoLocalizzazioneDTO getGeoLocal(String istat) {
+		//Parametri da passsare alla query
+				MapSqlParameterSource params=new MapSqlParameterSource();
+				params.addValue("istat", istat);
+				//Query
+				String query="select * from geoloc where istat=:istat";
+					
+				GeoLocalizzazioneDTO geo=jdbcTemplate.queryForObject(
+						query, 
+						params,  
+						(rs, rowNum) -> new GeoLocalizzazioneDTO(rs.getString("lng"), rs.getString("lat"))
+					);
+				return geo;
 	}
 }

@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import srl.neotech.model.ComuneAutoDTO;
 import srl.neotech.model.ComuneDTO;
 import srl.neotech.model.ProvinciaDTO;
 import srl.neotech.model.RegioneDTO;
+import srl.neotech.requestresponse.AutoCompleteResponse;
 import srl.neotech.requestresponse.ListaComuniResponse;
 import srl.neotech.requestresponse.ListaProvinceResponse;
 import srl.neotech.requestresponse.ListaRegioniResponse;
+import srl.neotech.requestresponse.ResponseBase;
 import srl.neotech.services.GeoService;
 
 @RestController
@@ -86,15 +89,36 @@ public class GeoAPIController {
 	
 	@ResponseBody
 	@GetMapping(value="/listaComuniAuto", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ListaComuniResponse getListaComuniAuto(@RequestParam String input) {
-		ListaComuniResponse response=new ListaComuniResponse();
+	public AutoCompleteResponse getListaComuniAuto(@RequestParam String term) {
+		AutoCompleteResponse response=new AutoCompleteResponse();
 		try {
 			//chiamo il service
-			ArrayList<ComuneDTO> listaComuni=geoService.getListaComuniAuto(input);
+			ArrayList<ComuneAutoDTO> nomiComuni=geoService.getListaComuniAuto(term);
 			//preparo la response
-			response.setComuni(listaComuni);
+			response.setNomiComuni(nomiComuni);
 			response.setCode("OK");
 			response.setDescr("tornata la lista dei comuni");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.setCode("KO");
+			response.setDescr(e.getMessage());
+		}
+		return response;
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/previsioni")
+	public ResponseBase getPrevisioni(@RequestParam String istat) {
+		ResponseBase response=new ResponseBase();
+		try {
+			//chiamo il service
+			System.out.println("arrivato istat:"+istat);
+			geoService.getPrevisioni(istat);
+			//preparo la response
+			//TODO
+			response.setCode("OK");
+			response.setDescr("");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

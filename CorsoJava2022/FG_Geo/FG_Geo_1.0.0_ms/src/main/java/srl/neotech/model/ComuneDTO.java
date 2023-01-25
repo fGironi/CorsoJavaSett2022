@@ -2,21 +2,21 @@ package srl.neotech.model;
 
 public class ComuneDTO {
 
-	private Integer istat;
+	private String istat;
 	private String nome;
 	private String siglaProv;
 	
-	public ComuneDTO(Integer istat, String nome, String siglaProv) {
+	public ComuneDTO(String istat, String nome, String siglaProv) {
 		super();
 		this.istat = istat;
 		this.nome = nome;
 		this.siglaProv = siglaProv;
 
 	}
-	public Integer getIstat() {
+	public String getIstat() {
 		return istat;
 	}
-	public void setIstat(Integer istat) {
+	public void setIstat(String istat) {
 		this.istat = istat;
 	}
 	public String getNome() {

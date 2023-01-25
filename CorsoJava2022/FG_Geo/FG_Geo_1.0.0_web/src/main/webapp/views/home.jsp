@@ -9,8 +9,9 @@
 	<!-- Bootstrap --> 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> 
-	<!-- Bootstrap Autocomplete -->
-	<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"  integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<!-- Fontawesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- fireAjax -->
@@ -47,50 +48,83 @@
 		</div>	
 		<div class="row text-center" style="margin: 20px">
 			<div class="col-sm-9">
-				<input class="form-control" id="autoCom_Select" placeholder="inserisci il comune..."  list="opzioniComuni" autocomplete="off"></select>
-				<datalist id="opzioniComuni">
-				</datalist>
+				<div class="ui-widget">
+  					<input type="text" class="form-control" id="autoCom_select" placeholder="inserisci il comune..." autocomplete="off"></select>
+				</div>
 			</div>
 			<div class="col-sm-3">
-				<button type="button" class="btn btn-lg btn-primary">Previsioni</button>
+				<button type="button" id="btnPrevisioni" class="btn btn-lg btn-primary">Previsioni</button>
 			</div>
 		</div>
 	</div>
 </body>
 <script>
 $(document).ready(function(){
+	$("#btnPrevisioni").prop("disabled", true);
+	var istat;
 	var listaReg;
 	listaReg=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaRegioni");
 	listaReg.regioni.forEach(function(regione) {
 	    $("#reg_select").append(new Option(regione.nome, regione.id));
 	});
-		
-	$("#reg_select").change(function(){
-		var idReg=$("#reg_select").val();
-		var listaProv;
-		listaProv=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaProvince?idReg="+idReg)
-		listaProv.province.forEach(function(provincia) {
-		    $("#pro_select").append(new Option(provincia.nome, provincia.sigla));
-		});
-	})
-	$("#pro_select").change(function(){
-		var siglaProv=$("#pro_select").val();
-		var listaComuni;
-		listaComuni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaComuni?siglaProv="+siglaProv)
-		listaComuni.comuni.forEach(function(comune) {
-		    $("#com_select").append(new Option(comune.nome+"("+comune.siglaProv+")", comune.istat));
-		});
-	})
 	
-	$("#autoCom_select").keydown(function(){
-		var autoListaComuni;
-		var input=$("#autoCom_select").val();
-		autoListaComuni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaComuniAuto?input="+input)
-		autoListaComuni.comuni.forEach(function(comune) {
-		    $("#opzioniComuni").append(new Option(comune.nome+"("+comune.siglaProv+")", comune.istat));
-		});
-	})
+	$( "#autoCom_select" ).autocomplete({
+	      source: function( request, response ) {
+	        $.ajax( {
+	          url: "http://localhost:8080/FG_Geo_1.0.0_ms/listaComuniAuto",
+	          contentType: "application/json",
+	          data: {
+	            term: request.term
+	          },
+	          success: function( data ) {
+	            response( data.nomiComuni );
+	          }
+	        } );
+	      },
+	      minLength: 2,
+	      select: function( event, ui ) {
+	    	//visto che ui dovrebbe essere l'oggetto in questione, perché non riesco ad utilizzare il valore?
+	    	var valIst=ui.item.id;
+	    	istat=valIst;
+	    	$("#btnPrevisioni").prop("disabled", false);
+	      }
+	    } );
 });
+	
+$("#reg_select").change(function(){
+	var idReg=$("#reg_select").val();
+	var listaProv;
+	$("#pro_select").empty();
+	$("#pro_select").append(new Option("Seleziona una provincia", null));
+	listaProv=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaProvince?idReg="+idReg)
+	listaProv.province.forEach(function(provincia) {
+	    $("#pro_select").append(new Option(provincia.nome, provincia.sigla));
+	});
+})
+$("#pro_select").change(function(){
+	var siglaProv=$("#pro_select").val();
+	var listaComuni;
+	$("#com_select").empty();
+	$("#com_select").append(new Option("Seleziona un comune", null));
+	listaComuni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaComuni?siglaProv="+siglaProv)
+	listaComuni.comuni.forEach(function(comune) {
+	    $("#com_select").append(new Option(comune.nome+"("+comune.siglaProv+")", comune.istat));
+	});
+})
+
+$("#com_select").change(function(){
+	istat=$("#com_select").val();
+	$("#btnPrevisioni").prop("disabled", false);
+})
+
+
+	
+$("#btnPrevisioni").click(function(){
+	var previsioni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/previsioni?istat="+istat);
+	//TODO
+})
+	
+
 </script>
 
 </html>
