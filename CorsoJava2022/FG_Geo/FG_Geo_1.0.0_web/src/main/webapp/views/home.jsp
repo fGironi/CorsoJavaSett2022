@@ -56,6 +56,20 @@
 				<button type="button" id="btnPrevisioni" class="btn btn-lg btn-primary">Previsioni</button>
 			</div>
 		</div>
+		<div class="row text-center" style="margin: 20px">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<table id="previsioniTab" class="table table-light table-striped">
+					<tr><th>Giorno</th><th>Previsioni</th><th>Temp max</th><th>Temp min</th><th>Precipitazioni</th></tr>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+		
+		
+		
 	</div>
 </body>
 <script>
@@ -116,9 +130,20 @@ $("#com_select").change(function(){
 })
 	
 $("#btnPrevisioni").click(function(){
-	
 	var previsioni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/previsioni?istat="+istat);
-	//TODO
+	var iconaMeteo;
+	previsioni.previsioni.forEach(function(previsione){
+		
+		if (previsione.weathercode<2) iconaMeteo="<i class='fa-solid fa-sun'><soleggiato</i>";
+		else if (previsione.weathercode<4) iconaMeteo="<i class='fa-solid fa-cloud'>nuvoloso</i>";
+		else if (previsione.weathercode<50) iconaMeteo="<i class='fa-solid fa-smog'>nebbia</i>";
+		else if (previsione.weathercode<60) iconaMeteo="<i class='fa-solid fa-cloud-sun-rain'>piovischio</i>";
+		else if (previsione.weathercode<70) iconaMeteo="<i class='fa-solid fa-cloud-showers-heavy'>pioggia</i>";
+		else if (previsione.weathercode<80) iconaMeteo="<i class='fa-regular fa-snowflake'>neve</i>";
+		else iconaMeteo="<i class='fa-solid fa-cloud-bolt'>temporale</i>";
+		
+		$("#previsioniTab").find('tbody').append("<tr><td>"+previsione.time+"</td><td>"+iconaMeteo+"</td><td>"+previsione.temperature_2m_max+"</td><td>"+previsione.temperature_2m_min+"</td><td>"+previsione.rain_sum+"</td></tr>");
+	})
 })
 	
 

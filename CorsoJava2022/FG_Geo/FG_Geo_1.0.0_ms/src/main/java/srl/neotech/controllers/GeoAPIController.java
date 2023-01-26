@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import srl.neotech.model.ComuneAutoDTO;
 import srl.neotech.model.ComuneDTO;
+import srl.neotech.model.PrevisioneDTO;
 import srl.neotech.model.ProvinciaDTO;
 import srl.neotech.model.RegioneDTO;
 import srl.neotech.requestresponse.AutoCompleteResponse;
 import srl.neotech.requestresponse.ListaComuniResponse;
 import srl.neotech.requestresponse.ListaProvinceResponse;
 import srl.neotech.requestresponse.ListaRegioniResponse;
+import srl.neotech.requestresponse.PrevisioniResponse;
 import srl.neotech.requestresponse.ResponseBase;
 import srl.neotech.services.GeoService;
 
@@ -109,16 +111,16 @@ public class GeoAPIController {
 	
 	@ResponseBody
 	@GetMapping(value="/previsioni")
-	public ResponseBase getPrevisioni(@RequestParam String istat) {
-		ResponseBase response=new ResponseBase();
+	public PrevisioniResponse getPrevisioni(@RequestParam String istat) {
+		PrevisioniResponse response=new PrevisioniResponse();
 		try {
 			//chiamo il service
 			System.out.println("arrivato istat:"+istat);
-			geoService.getPrevisioni(istat);
+			ArrayList<PrevisioneDTO> previsioni=geoService.getPrevisioni(istat);
 			//preparo la response
-			//TODO
+			response.setPrevisioni(previsioni);
 			response.setCode("OK");
-			response.setDescr("");
+			response.setDescr("tornate le previsioni");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -147,5 +149,7 @@ public class GeoAPIController {
 		}
 		return response;
 	}
+	
+
 	
 }
