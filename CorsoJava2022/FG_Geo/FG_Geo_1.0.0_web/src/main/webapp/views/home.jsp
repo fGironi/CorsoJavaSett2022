@@ -16,11 +16,26 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- fireAjax -->
 	<script src="static/js/fireAjax.js"></script>
+	<style>
+		body {
+		background: powderblue;
+		}
+		body.background {
+		opacity: -2;
+		}
+		html {
+		background-image: url("https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg?w=1380&t=st=1674827139~exp=1674827739~hmac=2f28911ca22780d757c4dd127f0debd26a2eda34f6312492675fcc70eafdd00f");
+		background-size: cover;
+		background-repeat: no-repeat;
+		}
+		
+	</style>
+	
 	
 	<title>FG_Meteo</title>
 </head>
 <body>
-	<div class="clearfix" style="margin: 15px; background-color: lightblue">
+	<div class="clearfix" style="margin: 15px">
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<h1>App meteo</h1>
@@ -59,10 +74,8 @@
 		<div class="row text-center" style="margin: 20px">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
-				<table id="previsioniTab" class="table table-light table-striped">
-					<tr><th>Giorno</th><th>Previsioni</th><th>Temp max</th><th>Temp min</th><th>Precipitazioni</th></tr>
-					<tbody>
-					</tbody>
+				<table id="previsioniTab" class="table table-light table-striped table-bordered">
+					
 				</table>
 			</div>
 			<div class="col-sm-2"></div>
@@ -132,18 +145,23 @@ $("#com_select").change(function(){
 $("#btnPrevisioni").click(function(){
 	var previsioni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/previsioni?istat="+istat);
 	var iconaMeteo;
+	var html="<tbody><tr><th><i class='fa-regular fa-calendar'></i> Giorno</th><th><i class='fa-solid fa-cloud-sun'></i> Previsioni</th><th><i class='fa-solid fa-temperature-arrow-up'></i> Temp max(C°)</th><th><i class='fa-solid fa-temperature-arrow-down'></i> Temp min(C°)</th><th><i class='fa-solid fa-umbrella'></i> Precipitazioni(mm)</th></tr>"
+	
 	previsioni.previsioni.forEach(function(previsione){
+		if (previsione.weathercode==0 || previsione.weathercode==1) iconaMeteo="<i class='fa-solid fa-sun'></i> soleggiato";
+		else if (previsione.weathercode==2 || previsione.weathercode==3) iconaMeteo="<i class='fa-solid fa-cloud'></i> nuvoloso";
+		else if (previsione.weathercode<60) iconaMeteo="<i class='fa-solid fa-smog'></i> nebbia";
+		else if (previsione.weathercode<70) iconaMeteo="<i class='fa-solid fa-cloud-rain'></i> pioggia";
+		else if (previsione.weathercode<80) iconaMeteo="<i class='fa-regular fa-snowflake'></i> neve"
+		else if (previsione.weathercode<85) iconaMeteo="<i class='fa-solid fa-cloud-showers-heavy'></i> rovesci";
+		else if (previsione.weathercode<90) iconaMeteo="<i class='fa-solid fa-cloud-meatball'></i> bufera";
+		else iconaMeteo="<i class='fa-solid fa-cloud-bolt'> temporale</i>";
 		
-		if (previsione.weathercode<2) iconaMeteo="<i class='fa-solid fa-sun'><soleggiato</i>";
-		else if (previsione.weathercode<4) iconaMeteo="<i class='fa-solid fa-cloud'>nuvoloso</i>";
-		else if (previsione.weathercode<50) iconaMeteo="<i class='fa-solid fa-smog'>nebbia</i>";
-		else if (previsione.weathercode<60) iconaMeteo="<i class='fa-solid fa-cloud-sun-rain'>piovischio</i>";
-		else if (previsione.weathercode<70) iconaMeteo="<i class='fa-solid fa-cloud-showers-heavy'>pioggia</i>";
-		else if (previsione.weathercode<80) iconaMeteo="<i class='fa-regular fa-snowflake'>neve</i>";
-		else iconaMeteo="<i class='fa-solid fa-cloud-bolt'>temporale</i>";
-		
-		$("#previsioniTab").find('tbody').append("<tr><td>"+previsione.time+"</td><td>"+iconaMeteo+"</td><td>"+previsione.temperature_2m_max+"</td><td>"+previsione.temperature_2m_min+"</td><td>"+previsione.rain_sum+"</td></tr>");
+		html=html+"<tr><td>"+previsione.time+"</td><td>"+iconaMeteo+"</td><td>"+previsione.temperature_2m_max+"</td><td>"+previsione.temperature_2m_min+"</td><td>"+previsione.rain_sum+"</td></tr>";
 	})
+	html=html+"</tbody>";
+	$("#previsioniTab").empty();
+	$("#previsioniTab").append(html);
 })
 	
 
