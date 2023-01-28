@@ -90,7 +90,7 @@ var istat;
 $(document).ready(function(){
 	$("#btnPrevisioni").prop("disabled", true);
 	var listaReg;
-	listaReg=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaRegioni");
+	listaReg=fire_ajax_get("/FG_Geo_1.0.0_ms/listaRegioni");
 	listaReg.regioni.forEach(function(regione) {
 	    $("#reg_select").append(new Option(regione.nome, regione.id));
 	});
@@ -98,7 +98,7 @@ $(document).ready(function(){
 	$("#autoCom_select").autocomplete({
 	      source: function( request, response ) {
 	        $.ajax( {
-	          url: "http://localhost:8080/FG_Geo_1.0.0_ms/listaComuniAuto",
+	          url: "/FG_Geo_1.0.0_ms/listaComuniAuto",
 	          contentType: "application/json",
 	          data: {
 	            term: request.term
@@ -121,7 +121,7 @@ $("#reg_select").change(function(){
 	var listaProv;
 	$("#pro_select").empty();
 	$("#pro_select").append(new Option("Seleziona una provincia", null));
-	listaProv=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaProvince?idReg="+idReg)
+	listaProv=fire_ajax_get("/FG_Geo_1.0.0_ms/listaProvince?idReg="+idReg)
 	listaProv.province.forEach(function(provincia) {
 	    $("#pro_select").append(new Option(provincia.nome, provincia.sigla));
 	});
@@ -131,7 +131,7 @@ $("#pro_select").change(function(){
 	var listaComuni;
 	$("#com_select").empty();
 	$("#com_select").append(new Option("Seleziona un comune", null));
-	listaComuni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/listaComuni?siglaProv="+siglaProv)
+	listaComuni=fire_ajax_get("/FG_Geo_1.0.0_ms/listaComuni?siglaProv="+siglaProv)
 	listaComuni.comuni.forEach(function(comune) {
 	    $("#com_select").append(new Option(comune.nome+"("+comune.siglaProv+")", comune.istat));
 	});
@@ -143,7 +143,7 @@ $("#com_select").change(function(){
 })
 	
 $("#btnPrevisioni").click(function(){
-	var previsioni=fire_ajax_get("http://localhost:8080/FG_Geo_1.0.0_ms/previsioni?istat="+istat);
+	var previsioni=fire_ajax_get("/FG_Geo_1.0.0_ms/previsioni?istat="+istat);
 	var iconaMeteo;
 	var html="<tbody><tr><th><i class='fa-regular fa-calendar'></i> Giorno</th><th><i class='fa-solid fa-cloud-sun'></i> Previsioni</th><th><i class='fa-solid fa-temperature-arrow-up'></i> Temp max(C°)</th><th><i class='fa-solid fa-temperature-arrow-down'></i> Temp min(C°)</th><th><i class='fa-solid fa-umbrella'></i> Precipitazioni(mm)</th></tr>"
 	
