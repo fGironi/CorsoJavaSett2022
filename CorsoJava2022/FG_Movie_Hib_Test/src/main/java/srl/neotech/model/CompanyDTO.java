@@ -1,9 +1,12 @@
 package srl.neotech.model;
 
+import java.util.ArrayList;
+
 public class CompanyDTO {
 
 	private Integer id;
 	private String companyName;
+	private ArrayList<MovieDTO> moviesList;
 	
 	public Integer getId() {
 		return id;
@@ -17,6 +20,13 @@ public class CompanyDTO {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+	public ArrayList<MovieDTO> getMoviesList() {
+		return moviesList;
+	}
+	public void setMoviesList(ArrayList<MovieDTO> moviesList) {
+		this.moviesList = moviesList;
+	}
+	
 
 	
 

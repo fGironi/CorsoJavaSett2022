@@ -1,5 +1,7 @@
 package srl.neotech.services;
 
+import java.util.ArrayList;
+
 import javax.transaction.Transactional;
 
 import org.dozer.DozerBeanMapper;
@@ -8,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.CompanyDAO;
+import srl.neotech.entity.Movie;
 import srl.neotech.entity.ProductionCompany;
 import srl.neotech.model.CompanyDTO;
+import srl.neotech.model.MovieDTO;
 import srl.neotech.requestresponse.InsertCompanyRequest;
 
 @Service
@@ -23,8 +27,18 @@ public class CompanyService {
 	public CompanyDTO getCompany(Integer company_id) {
 		mapper=new DozerBeanMapper();
 		ProductionCompany pc=companyDAO.getCompany(company_id);
-		System.out.println("informazione poco utile: la compagnia ha fatto il film "+ pc.getMovies().iterator().next().getTitle());
 		CompanyDTO company=mapper.map(pc, CompanyDTO.class);
+		//navigare l'hashset dell'entity non sembra funzionare e manda l'app in loop. Creare un'arraylist usando l'hashset
+		//come costruttore restituisce un'arraylist completa e navigabile. bah.
+		ArrayList<Movie> moviesEntity=new ArrayList<Movie>(pc.getMovies());
+		ArrayList<MovieDTO> movies=new ArrayList<MovieDTO>();
+		System.out.println("film della compagnia:");
+		for (Movie m:moviesEntity) {
+			MovieDTO mov=mapper.map(m, MovieDTO.class);
+			movies.add(mov);
+			System.out.println(mov.getTitle());
+		}
+		company.setMoviesList(movies);
 		return company;
 	}
 
