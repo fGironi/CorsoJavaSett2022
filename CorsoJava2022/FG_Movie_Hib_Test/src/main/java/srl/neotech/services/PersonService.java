@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.PersonDAO;
 import srl.neotech.entity.Movie;
+import srl.neotech.entity.MovieCast;
+import srl.neotech.entity.MovieCrew;
 import srl.neotech.entity.Person;
 import srl.neotech.model.MovieDTO;
 import srl.neotech.model.PersonDTO;
@@ -38,30 +40,28 @@ public class PersonService {
 		
 		Mapper mapper=new DozerBeanMapper();
 		PersonDTO personDTO=mapper.map(p, PersonDTO.class);
-		/*
-		 		Il codice che segue è simpatico, ma l'entity person è costruita incorrettamente è va in loop
-		 		senza riuscire ad ottenere i dati
-		 		
-		ArrayList<MovieDTO> movCast=new ArrayList<MovieDTO>();
-		while (p.getMovieCasts().iterator().hasNext()) {
-			Movie m=p.getMovieCasts().iterator().next().getMovie();
-			MovieDTO movieDTO=mapper.map(m, MovieDTO.class);
-			movCast.add(movieDTO);
-			System.out.println("Movies as cast:");
-			System.out.println(m.getTitle());
-		}
-		personDTO.setMoviesAsCast(movCast);
+			 		
+//		ArrayList<MovieCast> movCastEnt=new ArrayList<MovieCast>(p.getMovieCasts());
+//		ArrayList<MovieDTO> movAsCast=new ArrayList<MovieDTO>();
+//		System.out.println("Movies as cast:");
+//		for (MovieCast mc:movCastEnt) {
+//			Movie m=mc.getMovie();
+//			MovieDTO movieDTO=mapper.map(m, MovieDTO.class);
+//			movAsCast.add(movieDTO);
+//			System.out.println(movieDTO.getTitle());
+//		}
+//		personDTO.setMoviesAsCast(movAsCast);
 		
-		ArrayList<MovieDTO> movCrew=new ArrayList<MovieDTO>();
-		while (p.getMovieCrews().iterator().hasNext()) {
-			Movie m=p.getMovieCrews().iterator().next().getMovie();
+		ArrayList<MovieCrew> movCrewEnt=new ArrayList<MovieCrew>(p.getMovieCrews());
+		ArrayList<MovieDTO> movAsCrew=new ArrayList<MovieDTO>();
+		System.out.println("Movies as crew:");
+		for (MovieCrew mc:movCrewEnt) {
+			Movie m=mc.getMovie();
 			MovieDTO movieDTO=mapper.map(m, MovieDTO.class);
-			movCrew.add(movieDTO);
-			
-			System.out.println("Movies as crew:");
-			System.out.println(m.getTitle());
-		}		personDTO.setMoviesAsCrew(movCrew);
-		*/
+			movAsCrew.add(movieDTO);
+			System.out.println(movieDTO.getTitle());
+		}
+		personDTO.setMoviesAsCrew(movAsCrew);
 		return personDTO;
 	}
 

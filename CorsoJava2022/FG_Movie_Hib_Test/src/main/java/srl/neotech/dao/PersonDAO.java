@@ -28,7 +28,7 @@ public class PersonDAO {
 
 	public void deletePerson(Integer person_id) {
 		Person p=eManager.find(Person.class, person_id);
-		eManager.remove(p);
+		//eManager.remove(p); //commented to avoid dumb removals
 		
 	}
 	
