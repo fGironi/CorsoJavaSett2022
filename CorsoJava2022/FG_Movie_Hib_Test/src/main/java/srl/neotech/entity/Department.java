@@ -1,6 +1,7 @@
 package srl.neotech.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -12,10 +13,11 @@ public class Department {
     @Column(name = "department_id", nullable = false)
     private Integer id;
 
+    @Size(max = 200)
     @Column(name = "department_name", length = 200)
     private String departmentName;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department",fetch = FetchType.LAZY)
     private Set<MovieCrew> movieCrews = new LinkedHashSet<>();
 
     public Integer getId() {

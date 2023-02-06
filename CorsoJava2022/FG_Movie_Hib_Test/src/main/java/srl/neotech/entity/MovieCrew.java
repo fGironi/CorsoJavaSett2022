@@ -8,15 +8,15 @@ public class MovieCrew {
     @EmbeddedId
     private MovieCrewId id;
 
-    @MapsId("movieId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "movie_id", nullable = false)
-    private Movie movie;
-
     @MapsId("personId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "person_id", nullable = false)
     private Person person;
+
+    @MapsId("movieId")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "movie_id", nullable = false)
+    private Movie movie;
 
     @MapsId("departmentId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -31,20 +31,20 @@ public class MovieCrew {
         this.id = id;
     }
 
-    public Movie getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-
     public Person getPerson() {
         return person;
     }
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     public Department getDepartment() {

@@ -1,6 +1,7 @@
 package srl.neotech.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -12,14 +13,19 @@ public class Language {
     @Column(name = "language_id", nullable = false)
     private Integer id;
 
+    @Size(max = 10)
     @Column(name = "language_code", length = 10)
     private String languageCode;
 
+    @Size(max = 500)
     @Column(name = "language_name", length = 500)
     private String languageName;
 
-    @OneToMany(mappedBy = "language")
-    private Set<MovieLanguage> movieLanguages = new LinkedHashSet<>();
+    @ManyToMany
+    @JoinTable(name = "movie_languages",
+            joinColumns = @JoinColumn(name = "language_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private Set<Movie> movies = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -45,12 +51,12 @@ public class Language {
         this.languageName = languageName;
     }
 
-    public Set<MovieLanguage> getMovieLanguages() {
-        return movieLanguages;
+    public Set<Movie> getMovies() {
+        return movies;
     }
 
-    public void setMovieLanguages(Set<MovieLanguage> movieLanguages) {
-        this.movieLanguages = movieLanguages;
+    public void setMovies(Set<Movie> movies) {
+        this.movies = movies;
     }
 
 }

@@ -1,17 +1,9 @@
 package srl.neotech.entity;
 
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "person")
@@ -20,14 +12,14 @@ public class Person {
     @Column(name = "person_id", nullable = false)
     private Integer id;
 
-    @Column(name = "person_name", nullable = false, length = 500)
+    @Size(max = 500)
+    @Column(name = "person_name", length = 500)
     private String personName;
 
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person",fetch = FetchType.LAZY)
     private Set<MovieCrew> movieCrews = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "person", cascade = {CascadeType.PERSIST})
-    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToMany(mappedBy = "person",fetch = FetchType.LAZY)
     private Set<MovieCast> movieCasts = new LinkedHashSet<>();
 
     public Integer getId() {

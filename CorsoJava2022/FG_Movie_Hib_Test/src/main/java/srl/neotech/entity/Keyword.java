@@ -1,6 +1,7 @@
 package srl.neotech.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -11,10 +12,11 @@ public class Keyword {
     @Column(name = "keyword_id", nullable = false)
     private Integer id;
 
+    @Size(max = 100)
     @Column(name = "keyword_name", length = 100)
     private String keywordName;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "movie_keywords",
             joinColumns = @JoinColumn(name = "keyword_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))

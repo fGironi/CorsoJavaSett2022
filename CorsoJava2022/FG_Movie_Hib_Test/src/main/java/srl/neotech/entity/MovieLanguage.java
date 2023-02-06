@@ -18,11 +18,6 @@ public class MovieLanguage {
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
-    @MapsId("languageRoleId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "language_role_id", nullable = false)
-    private LanguageRole languageRole;
-
     public MovieLanguageId getId() {
         return id;
     }
@@ -45,14 +40,6 @@ public class MovieLanguage {
 
     public void setLanguage(Language language) {
         this.language = language;
-    }
-
-    public LanguageRole getLanguageRole() {
-        return languageRole;
-    }
-
-    public void setLanguageRole(LanguageRole languageRole) {
-        this.languageRole = languageRole;
     }
 
 }

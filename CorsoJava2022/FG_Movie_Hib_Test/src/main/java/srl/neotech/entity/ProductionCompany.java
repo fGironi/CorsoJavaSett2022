@@ -1,6 +1,7 @@
 package srl.neotech.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -11,10 +12,11 @@ public class ProductionCompany {
     @Column(name = "company_id", nullable = false)
     private Integer id;
 
+    @Size(max = 200)
     @Column(name = "company_name", length = 200)
     private String companyName;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "movie_company",
             joinColumns = @JoinColumn(name = "company_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))

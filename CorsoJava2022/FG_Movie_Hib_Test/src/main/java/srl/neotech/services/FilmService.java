@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.FilmDAO;
+import srl.neotech.dto.MovieDTO;
 import srl.neotech.entity.Movie;
-import srl.neotech.model.MovieDTO;
 
 @Service
 public class FilmService {

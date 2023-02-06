@@ -1,6 +1,7 @@
 package srl.neotech.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "movie_cast")
@@ -18,12 +19,12 @@ public class MovieCast {
     @JoinColumn(name = "person_id", nullable = false)
     private Person person;
 
+    @Size(max = 400)
     @Column(name = "character_name", length = 400)
     private String characterName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gender_id")
-    private Gender gender;
+    @Column(name = "cast_order")
+    private Integer castOrder;
 
     public MovieCastId getId() {
         return id;
@@ -57,12 +58,12 @@ public class MovieCast {
         this.characterName = characterName;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Integer getCastOrder() {
+        return castOrder;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setCastOrder(Integer castOrder) {
+        this.castOrder = castOrder;
     }
 
 }

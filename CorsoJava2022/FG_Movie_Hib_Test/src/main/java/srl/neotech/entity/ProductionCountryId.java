@@ -5,15 +5,18 @@ import org.hibernate.Hibernate;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class ProductionCountryId implements Serializable {
     private static final long serialVersionUID = 7978110741130401302L;
+    @NotNull
     @Column(name = "movie_id", nullable = false)
     private Integer movieId;
 
+    @NotNull
     @Column(name = "country_id", nullable = false)
     private Integer countryId;
 

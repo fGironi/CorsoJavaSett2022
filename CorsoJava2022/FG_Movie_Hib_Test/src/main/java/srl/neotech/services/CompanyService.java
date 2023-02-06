@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.CompanyDAO;
+import srl.neotech.dto.CompanyDTO;
+import srl.neotech.dto.MovieDTO;
 import srl.neotech.entity.Movie;
 import srl.neotech.entity.ProductionCompany;
-import srl.neotech.model.CompanyDTO;
-import srl.neotech.model.MovieDTO;
 import srl.neotech.requestresponse.InsertCompanyRequest;
 
 @Service

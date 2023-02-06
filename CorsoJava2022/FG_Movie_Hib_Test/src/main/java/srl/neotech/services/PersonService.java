@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.PersonDAO;
+import srl.neotech.dto.MovieDTO;
+import srl.neotech.dto.PersonDTO;
 import srl.neotech.entity.Movie;
 import srl.neotech.entity.MovieCast;
 import srl.neotech.entity.MovieCrew;
 import srl.neotech.entity.Person;
-import srl.neotech.model.MovieDTO;
-import srl.neotech.model.PersonDTO;
 import srl.neotech.requestresponse.InsertPersonRequest;
 
 
@@ -41,16 +41,16 @@ public class PersonService {
 		Mapper mapper=new DozerBeanMapper();
 		PersonDTO personDTO=mapper.map(p, PersonDTO.class);
 			 		
-//		ArrayList<MovieCast> movCastEnt=new ArrayList<MovieCast>(p.getMovieCasts());
-//		ArrayList<MovieDTO> movAsCast=new ArrayList<MovieDTO>();
-//		System.out.println("Movies as cast:");
-//		for (MovieCast mc:movCastEnt) {
-//			Movie m=mc.getMovie();
-//			MovieDTO movieDTO=mapper.map(m, MovieDTO.class);
-//			movAsCast.add(movieDTO);
-//			System.out.println(movieDTO.getTitle());
-//		}
-//		personDTO.setMoviesAsCast(movAsCast);
+		ArrayList<MovieCast> movCastEnt=new ArrayList<MovieCast>(p.getMovieCasts());
+		ArrayList<MovieDTO> movAsCast=new ArrayList<MovieDTO>();
+		System.out.println("Movies as cast:");
+		for (MovieCast mc:movCastEnt) {
+			Movie m=mc.getMovie();
+			MovieDTO movieDTO=mapper.map(m, MovieDTO.class);
+			movAsCast.add(movieDTO);
+			System.out.println(movieDTO.getTitle());
+		}
+		personDTO.setMoviesAsCast(movAsCast);
 		
 		ArrayList<MovieCrew> movCrewEnt=new ArrayList<MovieCrew>(p.getMovieCrews());
 		ArrayList<MovieDTO> movAsCrew=new ArrayList<MovieDTO>();

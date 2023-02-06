@@ -1,6 +1,7 @@
 package srl.neotech.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
@@ -10,19 +11,22 @@ import java.util.Set;
 @Table(name = "movie")
 public class Movie {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "movie_id", nullable = false)
     private Integer id;
 
-    @Column(name = "title", nullable = false, length = 1000)
+    @Size(max = 1000)
+    @Column(name = "title", length = 1000)
     private String title;
 
     @Column(name = "budget")
     private Integer budget;
 
+    @Size(max = 1000)
     @Column(name = "homepage", length = 1000)
     private String homepage;
 
+    @Size(max = 1000)
     @Column(name = "overview", length = 1000)
     private String overview;
 
@@ -38,9 +42,11 @@ public class Movie {
     @Column(name = "runtime")
     private Integer runtime;
 
+    @Size(max = 50)
     @Column(name = "movie_status", length = 50)
     private String movieStatus;
 
+    @Size(max = 1000)
     @Column(name = "tagline", length = 1000)
     private String tagline;
 
@@ -50,65 +56,46 @@ public class Movie {
     @Column(name = "vote_count")
     private Integer voteCount;
 
+    @Size(max = 200)
     @Column(name = "url_image", length = 200)
     private String urlImage;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "production_country",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "country_id"))
     private Set<Country> countries = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST})
+    @OneToMany(mappedBy = "movie",fetch = FetchType.LAZY)
     private Set<MovieCrew> movieCrews = new LinkedHashSet<>();
 
-   
-
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "movie_genres",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private Set<Genre> genres = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST})
-    private Set<MovieLanguage> movieLanguages = new LinkedHashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "movie_languages",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "language_id"))
+    private Set<Language> languages = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST})
+    @OneToMany(mappedBy = "movie",fetch = FetchType.LAZY)
     private Set<MovieCast> movieCasts = new LinkedHashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "movie_keywords",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "keyword_id"))
     private Set<Keyword> keywords = new LinkedHashSet<>();
 
-
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "movie_company",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "company_id"))
     private Set<ProductionCompany> productionCompanies = new LinkedHashSet<>();
-    
-    //method hand implemented --->
-    
-    
-    @ManyToMany
-    @JoinTable(name = "movie_languages",
-              joinColumns = @JoinColumn (name ="movie_id"),
-              inverseJoinColumns = @JoinColumn(name= "language_id"))
-    private Set<Language>languages=new LinkedHashSet<>(); 
 
-//    @ManyToMany
-//    @JoinTable(name = "movie_cast",
-//    	       joinColumns = @JoinColumn (name ="movie_id"), 
-//    	       inverseJoinColumns = @JoinColumn(name="gender"))
-//    private Set<Gender>genders=new LinkedHashSet<>();
-    
-   
-    
-    
-    //end method <---
-    
     public Integer getId() {
         return id;
     }
@@ -237,8 +224,6 @@ public class Movie {
         this.movieCrews = movieCrews;
     }
 
-    
-
     public Set<Genre> getGenres() {
         return genres;
     }
@@ -247,12 +232,12 @@ public class Movie {
         this.genres = genres;
     }
 
-    public Set<MovieLanguage> getMovieLanguages() {
-        return movieLanguages;
+    public Set<Language> getLanguages() {
+        return languages;
     }
 
-    public void setMovieLanguages(Set<MovieLanguage> movieLanguages) {
-        this.movieLanguages = movieLanguages;
+    public void setLanguages(Set<Language> languages) {
+        this.languages = languages;
     }
 
     public Set<MovieCast> getMovieCasts() {
@@ -270,8 +255,6 @@ public class Movie {
     public void setKeywords(Set<Keyword> keywords) {
         this.keywords = keywords;
     }
-
-
 
     public Set<ProductionCompany> getProductionCompanies() {
         return productionCompanies;

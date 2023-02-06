@@ -1,4 +1,4 @@
-package srl.neotech.model;
+package srl.neotech.dto;
 
 public class MovieDTO {
 	

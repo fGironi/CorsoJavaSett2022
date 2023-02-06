@@ -5,20 +5,20 @@ import org.hibernate.Hibernate;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class MovieLanguageId implements Serializable {
-    private static final long serialVersionUID = -7710321790229304033L;
+    private static final long serialVersionUID = 6285178581048653553L;
+    @NotNull
     @Column(name = "movie_id", nullable = false)
     private Integer movieId;
 
+    @NotNull
     @Column(name = "language_id", nullable = false)
     private Integer languageId;
-
-    @Column(name = "language_role_id", nullable = false)
-    private Integer languageRoleId;
 
     public Integer getMovieId() {
         return movieId;
@@ -36,27 +36,18 @@ public class MovieLanguageId implements Serializable {
         this.languageId = languageId;
     }
 
-    public Integer getLanguageRoleId() {
-        return languageRoleId;
-    }
-
-    public void setLanguageRoleId(Integer languageRoleId) {
-        this.languageRoleId = languageRoleId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         MovieLanguageId entity = (MovieLanguageId) o;
-        return Objects.equals(this.languageRoleId, entity.languageRoleId) &&
-                Objects.equals(this.languageId, entity.languageId) &&
+        return Objects.equals(this.languageId, entity.languageId) &&
                 Objects.equals(this.movieId, entity.movieId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(languageRoleId, languageId, movieId);
+        return Objects.hash(languageId, movieId);
     }
 
 }
