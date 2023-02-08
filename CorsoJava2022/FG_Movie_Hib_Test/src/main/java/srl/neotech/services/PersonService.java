@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import javax.transaction.Transactional;
 
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.PersonDAO;
 import srl.neotech.dto.MovieDTO;
+import srl.neotech.dto.MoviePlusRoleDTO;
 import srl.neotech.dto.PersonDTO;
 import srl.neotech.entity.Movie;
 import srl.neotech.entity.MovieCast;
@@ -24,12 +24,14 @@ public class PersonService {
 
 	@Autowired
 	PersonDAO personDAO;
+
+	ModelMapper mapper = new ModelMapper();
+
 	
 	
 
 	@Transactional
 	public void insertPerson(InsertPersonRequest request) {
-		Mapper mapper=new DozerBeanMapper();
 		Person p=mapper.map(request, Person.class);
 		personDAO.insertPerson(p);
 	}
@@ -38,7 +40,6 @@ public class PersonService {
 		
 		Person p=personDAO.getPerson(person_id);
 		
-		Mapper mapper=new DozerBeanMapper();
 		PersonDTO personDTO=mapper.map(p, PersonDTO.class);
 			 		
 		ArrayList<MovieCast> movCastEnt=new ArrayList<MovieCast>(p.getMovieCasts());
@@ -46,7 +47,8 @@ public class PersonService {
 		System.out.println("Movies as cast:");
 		for (MovieCast mc:movCastEnt) {
 			Movie m=mc.getMovie();
-			MovieDTO movieDTO=mapper.map(m, MovieDTO.class);
+			MoviePlusRoleDTO movieDTO=mapper.map(m, MoviePlusRoleDTO.class);
+			movieDTO.setRole(mc.getCharacterName());
 			movAsCast.add(movieDTO);
 			System.out.println(movieDTO.getTitle());
 		}
@@ -57,7 +59,8 @@ public class PersonService {
 		System.out.println("Movies as crew:");
 		for (MovieCrew mc:movCrewEnt) {
 			Movie m=mc.getMovie();
-			MovieDTO movieDTO=mapper.map(m, MovieDTO.class);
+			MoviePlusRoleDTO movieDTO=mapper.map(m, MoviePlusRoleDTO.class);
+			movieDTO.setRole(mc.getDepartment().getDepartmentName());
 			movAsCrew.add(movieDTO);
 			System.out.println(movieDTO.getTitle());
 		}
@@ -67,7 +70,6 @@ public class PersonService {
 
 	@Transactional
 	public void updatePerson(InsertPersonRequest request) {
-		Mapper mapper=new DozerBeanMapper();
 		Person p=mapper.map(request, Person.class);
 		personDAO.updatePerson(p);
 	}

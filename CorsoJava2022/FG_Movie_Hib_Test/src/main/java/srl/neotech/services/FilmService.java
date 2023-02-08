@@ -2,8 +2,7 @@ package srl.neotech.services;
 
 import javax.transaction.Transactional;
 
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +16,8 @@ public class FilmService {
 	@Autowired
 	FilmDAO filmDao;
 	
-	Mapper mapper=new DozerBeanMapper();
-	
+	ModelMapper mapper = new ModelMapper();
+
 	
 	
 	public MovieDTO getFilm(Integer film_id) {
