@@ -2,6 +2,8 @@ package srl.neotech.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +15,8 @@ public class PersonDAO {
 
 	@Autowired
 	PersonRepository personRepo;
+	@Autowired
+	EntityManager entityManager;
 	
 	public List<Person> getAllPersons() {
 		List<Person> persons=personRepo.findAll();
@@ -32,4 +36,5 @@ public class PersonDAO {
 	public Person getPersonById(Integer person_id) {
 		return personRepo.findById(person_id).orElse(null);
 	}
+
 }
