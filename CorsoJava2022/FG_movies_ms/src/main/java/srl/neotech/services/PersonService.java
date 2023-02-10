@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import srl.neotech.dao.PersonDAO;
 import srl.neotech.dto.PersonDTO;
 import srl.neotech.dto.PersonFullDataDTO;
+import srl.neotech.dto.PersonTogetherDTO;
 import srl.neotech.entity.Person;
+import srl.neotech.entity.PersonTogether;
 
 @Service
 public class PersonService {
@@ -40,6 +42,13 @@ public class PersonService {
 			PersonFullDataDTO person=mapper.map(pEntity, PersonFullDataDTO.class);
 			person.setMoviesAsCast(personDAO.movieCastCount(id));
 			person.setMoviesAsCrew(personDAO.movieCrewCount(id));
+			ArrayList<PersonTogetherDTO> pTogether=new ArrayList<PersonTogetherDTO>();
+			List<PersonTogether>pTogetherEntity=personDAO.getPersonsTogether(id);
+			for (PersonTogether pt: pTogetherEntity) {
+				PersonTogetherDTO p=mapper.map(pt, PersonTogetherDTO.class);
+				pTogether.add(p);
+			}
+			person.setPersonsTogether(pTogether);
 			return person;
 		}
 	}

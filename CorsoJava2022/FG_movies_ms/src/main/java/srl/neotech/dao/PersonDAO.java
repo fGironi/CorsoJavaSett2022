@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import srl.neotech.entity.Person;
+import srl.neotech.entity.PersonTogether;
 import srl.neotech.repository.PersonRepository;
 
 @Component
@@ -35,6 +36,11 @@ public class PersonDAO {
 	
 	public Person getPersonById(Integer person_id) {
 		return personRepo.findById(person_id).orElse(null);
+	}
+	
+	public List<PersonTogether> getPersonsTogether(Integer person_id){
+		List<PersonTogether> persons=personRepo.getMoviesTogether(person_id);
+		return persons;
 	}
 
 }

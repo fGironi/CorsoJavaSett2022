@@ -8,6 +8,7 @@ public class PersonFullDataDTO extends PersonDTO {
 	private Integer moviesAsCrew;
 	private ArrayList<MovieCastDTO> movieCasts;
 	private ArrayList<MovieCrewDTO> movieCrews;
+	private ArrayList<PersonTogetherDTO> personsTogether;
 	
 	public Integer getMoviesAsCast() {
 		return moviesAsCast;
@@ -32,6 +33,12 @@ public class PersonFullDataDTO extends PersonDTO {
 	}
 	public void setMovieCrews(ArrayList<MovieCrewDTO> movieCrews) {
 		this.movieCrews = movieCrews;
+	}
+	public ArrayList<PersonTogetherDTO> getPersonsTogether() {
+		return personsTogether;
+	}
+	public void setPersonsTogether(ArrayList<PersonTogetherDTO> personsTogether) {
+		this.personsTogether = personsTogether;
 	}
 	
 	
