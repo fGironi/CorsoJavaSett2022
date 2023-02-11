@@ -19,7 +19,7 @@ public interface PersonRepository extends JpaRepository<Person, Integer>, JpaSpe
 	@Query("select Count(mc) from Person p join p.movieCasts mc where p.id=:person_id")
 	public Integer MovieCastCount(Integer person_id);
 	
-	@Query(nativeQuery = true)
+	@Query(nativeQuery = true )
 	public List<PersonTogether> getMoviesTogether(Integer person_id);
 	
 }
