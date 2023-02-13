@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import srl.neotech.entity.ActorMoviesCount;
 import srl.neotech.entity.Person;
 import srl.neotech.entity.PersonTogether;
 import srl.neotech.repository.PersonRepository;
@@ -45,6 +46,9 @@ public class PersonDAO {
 
 	public List<Person> actorsProdOrDir(){
 		return personRepo.actorsProdOrDir();
+	}
+	public List<ActorMoviesCount> getActorMoviesCount(){
+		return personRepo.getActorMoviesCount();
 	}
 	
 }

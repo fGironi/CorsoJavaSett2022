@@ -92,6 +92,4 @@ public class MovieDAO {
 	  
 	    return query.getResultList();
 	}
-	
-	
 }

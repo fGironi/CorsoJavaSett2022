@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.PersonDAO;
+import srl.neotech.dto.ActorMoviesCountDTO;
 import srl.neotech.dto.PersonDTO;
 import srl.neotech.dto.PersonFullDataDTO;
 import srl.neotech.dto.PersonTogetherDTO;
+import srl.neotech.entity.ActorMoviesCount;
 import srl.neotech.entity.Person;
 import srl.neotech.entity.PersonTogether;
 
@@ -64,4 +66,13 @@ public class PersonService {
 		return persons;
 	}
 
+	public List<ActorMoviesCountDTO> getActorMoviesCount(){
+		ArrayList<ActorMoviesCountDTO> actors=new ArrayList<ActorMoviesCountDTO>();
+		List<ActorMoviesCount> actorEntities=personDAO.getActorMoviesCount();
+		for (ActorMoviesCount amc:actorEntities) {
+			ActorMoviesCountDTO actor=new ActorMoviesCountDTO(amc.getId(), amc.getPersonName(), amc.getMovieCount());
+			actors.add(actor);
+		}
+		return actors;
+	}
 }
