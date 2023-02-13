@@ -20,7 +20,8 @@ public class PersonService {
 	@Autowired
 	PersonDAO personDAO;
 	
-	ModelMapper mapper=new ModelMapper();
+	@Autowired
+	ModelMapper mapper;
 	
 	public List<PersonDTO> getAllPersons() {
 		List<Person> pEntities=personDAO.getAllPersons();

@@ -14,5 +14,4 @@ public interface MovieRepository extends JpaRepository<Movie, Integer>, JpaSpeci
 	public List<Movie> getFilmByActor(String name);
 	
 	
-	
 }

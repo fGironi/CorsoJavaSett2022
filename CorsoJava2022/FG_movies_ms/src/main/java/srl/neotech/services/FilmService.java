@@ -19,15 +19,16 @@ public class FilmService {
 
 	@Autowired
 	FilmDao filmDao;
-
+	
+	@Autowired
+	ModelMapper mapper;
 	
 	
 	
 	public Film getFilm(Integer film_id) {
 		Movie m= filmDao.getMovie(film_id);
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-		Film f=modelMapper.map(m,Film.class);
+		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		Film f=mapper.map(m,Film.class);
 		return f;
 	}
 

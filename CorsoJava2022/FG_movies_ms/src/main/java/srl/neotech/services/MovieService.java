@@ -1,5 +1,9 @@
 package srl.neotech.services;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +19,8 @@ public class MovieService {
 	@Autowired
 	MovieDAO movieDAO;
 
-	ModelMapper mapper = new ModelMapper();
+	@Autowired
+	ModelMapper mapper;
 	
 	public MovieDTO getMovieById(Integer movie_id) {
 		Movie mEntity=movieDAO.getMovieById(movie_id);
@@ -41,5 +46,25 @@ public class MovieService {
 		MovieFullDataDTO movie=mapper.map(mEntity, MovieFullDataDTO.class);
 		//really impressive mr. mapper, really impressive.
 		return movie;
+	}
+	
+	public ArrayList<MovieDTO> searchMovie(
+			String movieTitle, 
+			String castName,
+			Integer budgetMoreThan, 
+			Integer budgetLessThan, 
+			BigDecimal voteMoreThan, 
+			BigDecimal voteLessThan,
+			String companyName,
+			String countryName,
+			String genre
+			){
+		ArrayList<MovieDTO> moviesFound=new ArrayList<MovieDTO>();
+		List<Movie> moviesFoundEntity=movieDAO.searchMovie(movieTitle, castName, budgetMoreThan, budgetLessThan, voteMoreThan, voteLessThan,companyName, countryName, genre);
+		for (Movie m:moviesFoundEntity) {
+			MovieDTO movie=mapper.map(m, MovieDTO.class);
+			moviesFound.add(movie);
+		}
+		return moviesFound;
 	}
 }
