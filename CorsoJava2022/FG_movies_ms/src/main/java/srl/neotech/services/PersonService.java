@@ -53,5 +53,15 @@ public class PersonService {
 			return person;
 		}
 	}
+	
+	public List<PersonDTO> actorsProdOrDir(){
+		List<Person> actorsEntity=personDAO.actorsProdOrDir();
+		ArrayList<PersonDTO> persons=new ArrayList<PersonDTO>();
+		for (Person p:actorsEntity) {
+			PersonDTO person=mapper.map(p, PersonDTO.class);
+			persons.add(person);
+		}
+		return persons;
+	}
 
 }

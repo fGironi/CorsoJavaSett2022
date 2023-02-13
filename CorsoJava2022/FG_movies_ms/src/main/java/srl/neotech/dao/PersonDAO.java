@@ -43,4 +43,8 @@ public class PersonDAO {
 		return persons;
 	}
 
+	public List<Person> actorsProdOrDir(){
+		return personRepo.actorsProdOrDir();
+	}
+	
 }

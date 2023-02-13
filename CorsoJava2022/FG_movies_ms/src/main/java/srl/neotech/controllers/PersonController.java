@@ -45,5 +45,19 @@ public class PersonController {
 	return response;
 	}
 	
+	@GetMapping("/getActorsProdOrDir")
+	public ResponseBase getActorsProdOrDir() {
+		ResponseBase response=new ResponseBase();
+		try {
+			List<PersonDTO> persons=personService.actorsProdOrDir();
+			response.setData(persons);
+			response.setCode("OK");
+		} catch (Exception e) {
+			response.setCode("KO");
+			response.setDescr(e.getMessage());
+		}
+	return response;
+	}
+	
 	
 }

@@ -22,4 +22,10 @@ public interface PersonRepository extends JpaRepository<Person, Integer>, JpaSpe
 	@Query(nativeQuery = true )
 	public List<PersonTogether> getMoviesTogether(Integer person_id);
 	
+	@Query(nativeQuery = true, value="select distinct p.* from person p join movie_cast mc on mc.person_id=p.person_id "
+			+ "where p.person_id in "
+			+ "(select p.person_id from person p "
+			+ "join movie_crew mcr on mcr.person_id=p.person_id "
+			+ "where mcr.department_id in (2, 3))")
+	public List<Person> actorsProdOrDir();
 }
