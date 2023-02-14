@@ -75,4 +75,14 @@ public class PersonService {
 		}
 		return actors;
 	}
+
+	public List<PersonDTO> getActorsByLangCode(String languageCode) {
+		ArrayList<PersonDTO> actors= new ArrayList<PersonDTO>();
+		List<Person> actorsEntity=personDAO.getActorsByLangCode(languageCode);
+		for (Person p:actorsEntity) {
+			PersonDTO actor=mapper.map(p, PersonDTO.class);
+			actors.add(actor);
+		}
+		return actors;
+	}
 }

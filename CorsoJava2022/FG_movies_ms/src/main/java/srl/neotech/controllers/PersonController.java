@@ -74,5 +74,20 @@ public class PersonController {
 	return response;
 	}
 	
+	@GetMapping("/getActorsByLangCode")
+	public ResponseBase getActorsByLangCode(@RequestParam String languageCode) {
+		ResponseBase response=new ResponseBase();
+		try {
+			List<PersonDTO> actors=personService.getActorsByLangCode(languageCode);
+			response.setCode("OK");
+			response.setData(actors);
+			
+		}catch (Exception e) {
+			response.setCode("KO");
+			response.setDescr(e.getMessage());
+		}
+		
+		return response;
+	}
 	
 }

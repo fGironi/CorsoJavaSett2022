@@ -51,4 +51,8 @@ public class PersonDAO {
 		return personRepo.getActorMoviesCount();
 	}
 	
+	public List<Person> getActorsByLangCode(String languageCode){
+		return personRepo.getActorsByLangCode(languageCode);
+	}
+	
 }

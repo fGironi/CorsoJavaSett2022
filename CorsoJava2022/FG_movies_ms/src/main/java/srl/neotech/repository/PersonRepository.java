@@ -30,6 +30,9 @@ public interface PersonRepository extends JpaRepository<Person, Integer>, JpaSpe
 			+ "where mcr.department_id in (2, 3))")
 	public List<Person> actorsProdOrDir();
 	
-	@Query(nativeQuery=true, value="select p.*, count(mc.movie_id) moviesCount from person p join movie_cast mc on mc.person_id=p.person_id group by p.person_id")
+	@Query(nativeQuery=true, value="select p.person_id as id, p.person_name as personName, count(mc.movie_id) as movieCount from person p join movie_cast mc on mc.person_id=p.person_id group by p.person_id")
 	public List<ActorMoviesCount> getActorMoviesCount();
+	
+	@Query("select distinct p from Person p join p.movieCasts mc join mc.movie m join m.languages l where l.languageCode=:languageCode")
+	public List<Person> getActorsByLangCode(String languageCode);
 }
