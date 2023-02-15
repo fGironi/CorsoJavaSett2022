@@ -2,9 +2,9 @@ package srl.neotech.requestresponse;
 
 public class ResponseBase {
 
-	private Object data;
 	private String code;
 	private String descr;
+	private Object data;
 	
 	
 

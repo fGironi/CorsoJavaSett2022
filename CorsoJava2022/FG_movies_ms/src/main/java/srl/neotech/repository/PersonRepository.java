@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import srl.neotech.entity.ActorMoviesCount;
+import srl.neotech.entity.CollabEvaluation;
 import srl.neotech.entity.Person;
 import srl.neotech.entity.PersonTogether;
 
@@ -35,4 +36,36 @@ public interface PersonRepository extends JpaRepository<Person, Integer>, JpaSpe
 	
 	@Query("select distinct p from Person p join p.movieCasts mc join mc.movie m join m.languages l where l.languageCode=:languageCode")
 	public List<Person> getActorsByLangCode(String languageCode);
+	
+	@Query(nativeQuery= true, value="select p.person_id id, p.person_name personName, avg(m.budget) avgBudget, avg(m.revenue) avgRev, avg(m.popularity) avgPop, avg(m.vote_average) avgVote, count(distinct m.movie_id) movieCount from movie m\n"
+			+ "join movie_cast cast on cast.movie_id=m.movie_id\n"
+			+ "join movie_crew crew on crew.movie_id=m.movie_id\n"
+			+ "join person p on p.person_id=crew.person_id\n"
+			+ "where not p.person_id=:person_id\n"
+			+ "and m.movie_id IN(\n"
+			+ "select distinct m.movie_id from movie m\n"
+			+ "join movie_cast cast on cast.movie_id=m.movie_id\n"
+			+ "join movie_crew crew on crew.movie_id=m.movie_id\n"
+			+ "join person pcrew on pcrew.person_id=crew.person_id\n"
+			+ "join person pcast on pcast.person_id=cast.person_id\n"
+			+ "where pcast.person_id=:person_id or pcrew.person_id=:person_id)\n"
+			+ "group by p.person_id having movieCount>1\n"
+			+ "order by avgVote desc")
+	public List<CollabEvaluation> getCollabEvaluationCrew(Integer person_id);
+	
+	@Query(nativeQuery= true, value="select p.person_id id, p.person_name personName, avg(m.budget) avgBudget, avg(m.revenue) avgRev, avg(m.popularity) avgPop, avg(m.vote_average) avgVote, count(distinct m.movie_id) movieCount from movie m\n"
+			+ "join movie_cast cast on cast.movie_id=m.movie_id\n"
+			+ "join movie_crew crew on crew.movie_id=m.movie_id\n"
+			+ "join person p on p.person_id=cast.person_id\n"
+			+ "where not p.person_id=:person_id\n"
+			+ "and m.movie_id IN(\n"
+			+ "select distinct m.movie_id from movie m\n"
+			+ "join movie_cast cast on cast.movie_id=m.movie_id\n"
+			+ "join movie_crew crew on crew.movie_id=m.movie_id\n"
+			+ "join person pcrew on pcrew.person_id=crew.person_id\n"
+			+ "join person pcast on pcast.person_id=cast.person_id\n"
+			+ "where pcast.person_id=:person_id or pcrew.person_id=:person_id)\n"
+			+ "group by p.person_id having movieCount>1\n"
+			+ "order by avgVote desc")
+	public List<CollabEvaluation> getCollabEvaluationCast(Integer person_id);
 }

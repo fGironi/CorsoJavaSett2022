@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 
 import srl.neotech.dao.PersonDAO;
 import srl.neotech.dto.ActorMoviesCountDTO;
+import srl.neotech.dto.CollabEvaluationDTO;
 import srl.neotech.dto.PersonDTO;
 import srl.neotech.dto.PersonFullDataDTO;
 import srl.neotech.dto.PersonTogetherDTO;
 import srl.neotech.entity.ActorMoviesCount;
+import srl.neotech.entity.CollabEvaluation;
 import srl.neotech.entity.Person;
 import srl.neotech.entity.PersonTogether;
 
@@ -84,5 +86,15 @@ public class PersonService {
 			actors.add(actor);
 		}
 		return actors;
+	}
+
+	public List<CollabEvaluationDTO> getCollabEvaluation(Integer person_id) {
+		ArrayList<CollabEvaluationDTO> collabs=new ArrayList<CollabEvaluationDTO>();
+		List<CollabEvaluation> collabsEntity=personDAO.getCollabEvaluation(person_id);
+		for (CollabEvaluation ce:collabsEntity) {
+			CollabEvaluationDTO collab=new CollabEvaluationDTO(ce.getId(), ce.getPersonName(), ce.getAvgBudget(), ce.getAvgRev(), ce.getAvgPop(), ce.getAvgVote(), ce.getMovieCount());
+			collabs.add(collab);
+		}
+		return collabs;
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import srl.neotech.dto.ActorMoviesCountDTO;
+import srl.neotech.dto.CollabEvaluationDTO;
 import srl.neotech.dto.PersonDTO;
 import srl.neotech.requestresponse.ResponseBase;
 import srl.neotech.services.PersonService;
@@ -88,6 +89,21 @@ public class PersonController {
 		}
 		
 		return response;
+	}
+	
+	@GetMapping("/getCollabEvaluation")
+	public ResponseBase getCollabEvaluation(@RequestParam Integer person_id) {
+		ResponseBase response=new ResponseBase();
+		try {
+			List<CollabEvaluationDTO> collabs=personService.getCollabEvaluation(person_id);
+			response.setData(collabs);
+			response.setCode("OK");
+			response.setDescr("Collabs with person "+person_id);
+		} catch (Exception e) {
+			response.setCode("KO");
+			response.setDescr(e.getMessage());
+		}
+	return response;
 	}
 	
 }

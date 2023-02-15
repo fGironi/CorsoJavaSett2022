@@ -1,5 +1,6 @@
 package srl.neotech.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import srl.neotech.entity.ActorMoviesCount;
+import srl.neotech.entity.CollabEvaluation;
 import srl.neotech.entity.Person;
 import srl.neotech.entity.PersonTogether;
 import srl.neotech.repository.PersonRepository;
@@ -54,5 +56,14 @@ public class PersonDAO {
 	public List<Person> getActorsByLangCode(String languageCode){
 		return personRepo.getActorsByLangCode(languageCode);
 	}
+
+	public List<CollabEvaluation> getCollabEvaluation(Integer person_id) {
+		List<CollabEvaluation> collabCast=personRepo.getCollabEvaluationCast(person_id);
+		List<CollabEvaluation> collabCrew=personRepo.getCollabEvaluationCast(person_id);
+		ArrayList<CollabEvaluation> collabs=new ArrayList<CollabEvaluation>();
+		collabs.addAll(collabCrew); collabs.addAll(collabCast);
+		return collabs;
+	}
+
 	
 }
