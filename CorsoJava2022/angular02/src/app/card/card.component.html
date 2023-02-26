@@ -9,10 +9,13 @@
     <p>
       {{cani[counter].descrizione}}
     </p>
+    <input matInput [(ngModel)]="testo"/>
+    <p>{{testo}}</p>
+
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="primary" (click)="increaseCounter()">Next</button>
-    <button mat-button>LIKE</button>
+    <button mat-button (click)="likeDoggo($event)" [disabled]="cani[counter].isLiked">LIKE</button>
     <button mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>
