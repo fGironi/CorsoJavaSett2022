@@ -1,1 +1,6 @@
-<p>prova works!</p>
+<ul>
+  <li *ngFor="let person of persons">
+    <p class="user" [ngStyle]="{'color': person.isOnline ? 'green' : 'red'}">{{person.firstName}} {{person.lastName}} - <span *ngIf="person.isOnline">Online</span><span *ngIf="!person.isOnline">Offline</span></p>
+    <button mat-button (click)="changeStatus(person.id)">CHANGE</button>
+  </li>
+</ul>
