@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { ProvaComponent } from './prova/prova.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './card/card.component';
+import { UserLogComponent } from './user-log/user-log.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProvaComponent,
-    CardComponent
+    CardComponent,
+    UserLogComponent
   ],
   imports: [
     BrowserModule,

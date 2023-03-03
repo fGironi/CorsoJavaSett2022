@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Log in</mat-card-title>
+    <mat-card-subtitle>Benvenuto utente</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="user.img" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <ng-template *ngIf="user.loggedIn; then welcomeBlock else logInBlock"></ng-template>
+    <ng-template #logInBlock>
+      <label>Inserisci il tuo nome utente</label>
+      <input matInput (input)="onInput($event)"/>
+      <button mat-raised-button color="primary" (click)="logIn()" [disabled]="logDisabled">Log in</button>
+    </ng-template>
+    <ng-template #welcomeBlock>
+      <p>Hai già effettuato l'accesso, benvenuto {{user.username}}</p>
+      <button mat-raised-button color="danger" (click)="logOut()">Log out</button>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>
+
